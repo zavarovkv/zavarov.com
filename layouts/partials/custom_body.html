@@ -1,6 +1,71 @@
 <script>
+  // Add likely-light class for dark theme
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.querySelectorAll('.likely').forEach(function(el) {
+      el.classList.add('likely-light');
+    });
+  }
+
   // Initialize Likely social sharing buttons
   if (typeof likely !== 'undefined') {
     likely.initiate();
   }
+
+  // Fix active navigation link highlighting
+  (function() {
+    function highlightActiveNav() {
+      var currentPath = window.location.pathname;
+      var navLinks = document.querySelectorAll('nav a');
+      
+      if (navLinks.length === 0) {
+        return; // Navigation not loaded yet
+      }
+      
+      // Remove any existing link-selected classes first
+      navLinks.forEach(function(link) {
+        link.classList.remove('link-selected');
+      });
+      
+      // Helper function to normalize path (remove /zavarov.com prefix and trailing slashes)
+      function normalizePath(path) {
+        if (!path) return '/';
+        var normalized = path.replace(/^\/zavarov\.com/, '') || '/';
+        normalized = normalized.replace(/\/$/, '') || '/';
+        return normalized;
+      }
+      
+      var currentPathNormalized = normalizePath(currentPath);
+      
+      navLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('http://') || href.startsWith('https://')) {
+          return;
+        }
+        
+        // Normalize link path (also remove /zavarov.com if present)
+        var linkPathNormalized = normalizePath(href);
+        
+        // Special case for home page
+        if (linkPathNormalized === '/' || linkPathNormalized === '') {
+          // Check if we're at root
+          if (currentPathNormalized === '/' || currentPathNormalized === '') {
+            link.classList.add('link-selected');
+          }
+        } else {
+          // For other pages, check if current path matches or starts with link path
+          if (currentPathNormalized === linkPathNormalized || 
+              currentPathNormalized.startsWith(linkPathNormalized + '/')) {
+            link.classList.add('link-selected');
+          }
+        }
+      });
+    }
+    
+    // Run on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', highlightActiveNav);
+    } else {
+      highlightActiveNav();
+    }
+  })();
 </script>
