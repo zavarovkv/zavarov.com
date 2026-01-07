@@ -1,0 +1,19 @@
+zavarov.com — personal blog by Konstantin Zavarov
+
+All original content in this repository (unless otherwise noted) is licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+
+To view a copy of this license, visit:
+https://creativecommons.org/licenses/by-sa/4.0/
+Русская справочная страница: https://creativecommons.org/licenses/by-sa/4.0/deed.ru
+
+This license applies to:
+- all Markdown/HTML content under `content/`
+- custom layouts and partials under `layouts/`
+- other original assets in this repository, except where explicitly stated otherwise.
+
+Third-party components:
+- The Hugo theme `hugo-bearblog` in `themes/hugo-bearblog/` is licensed under the MIT License.
+  See `themes/hugo-bearblog/LICENSE` for details.
+
+
