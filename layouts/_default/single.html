@@ -6,23 +6,43 @@
       {{ .Content }}
     </content>
 
-    {{/* Russian date like "10 января" without year */}}
-    {{- $monthNames := dict "January" "января" "February" "февраля" "March" "марта" "April" "апреля" "May" "мая" "June" "июня" "July" "июля" "August" "августа" "September" "сентября" "October" "октября" "November" "ноября" "December" "декабря" -}}
-    {{- $monthEn := .Date.Format "January" -}}
-    {{- $day := .Date.Format "2" -}}
-    {{- $monthRu := index $monthNames $monthEn -}}
-    {{- $dateStr := printf "%s %s" $day $monthRu -}}
+    {{/* Format date: full date if less than 1 year old, year only if older */}}
+    {{- $now := now -}}
+    {{- $postDate := .Date -}}
+    {{- $yearsDiff := div (sub $now.Unix $postDate.Unix) 31536000 -}}
+    {{- $dateStr := "" -}}
+    {{- if lt $yearsDiff 1 -}}
+      {{/* Less than 1 year: show "10 января" */}}
+      {{- $monthNames := dict "January" "января" "February" "февраля" "March" "марта" "April" "апреля" "May" "мая" "June" "июня" "July" "июля" "August" "августа" "September" "сентября" "October" "октября" "November" "ноября" "December" "декабря" -}}
+      {{- $monthEn := $postDate.Format "January" -}}
+      {{- $day := $postDate.Format "2" -}}
+      {{- $monthRu := index $monthNames $monthEn -}}
+      {{- $dateStr = printf "%s %s" $day $monthRu -}}
+    {{- else -}}
+      {{/* 1 year or older: show only year */}}
+      {{- $dateStr = $postDate.Format "2006" -}}
+    {{- end -}}
 
     <p class="post-meta-inline">
       <span class="post-date">{{ $dateStr }}</span>&nbsp;&nbsp;
-      {{ with .Params.tags }}
+      {{ with .GetTerms "tags" }}
         <span class="post-tags">
-          {{- range $index, $tag := . -}}
-            {{- if gt $index 0 }} {{ end -}}{{ $tag }}
+          {{- range $index, $term := . -}}
+            {{- if gt $index 0 }} {{ end -}}
+            <a href="{{ $term.Permalink }}">{{ $term.LinkTitle }}</a>
           {{- end -}}
         </span>
       {{ end }}
     </p>
+
+    {{/* Social sharing buttons */}}
+    <div class="likely" data-url="{{ .Permalink | absURL }}" data-title="{{ .Title }}">
+      <div class="telegram">Отправить</div>
+      <div class="twitter">Твитнуть</div>
+      <div class="facebook">Поделиться</div>
+      <div class="vkontakte">Поделиться</div>
+      <div class="linkedin">Линкануть</div>
+    </div>
 
     {{ if (.Param "enablePostNavigator")}}
       {{- partial "post_navigator.html" . -}}

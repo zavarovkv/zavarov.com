@@ -26,6 +26,7 @@
   /* Smaller footer text */
   footer {
     font-size: 0.875em;
+    text-align: left;
   }
 </style>
 
@@ -33,10 +34,52 @@
   .post-meta-inline {
     margin-top: 8px;
     font-size: 0.75em; /* меньше, чем футер */
-    color: #556677;
+  }
+
+  .post-meta-inline .post-date {
+    color: #000;
   }
 
   .post-tags {
     color: #556677;
+  }
+
+  .post-tags a {
+    color: #556677;
+  }
+
+  .post-tags a:visited {
+    color: #556677;
+  }
+
+  .post-tags a:hover {
+    color: #d04000;
+  }
+
+  /* Extra space after list items in article content */
+  main ul li {
+    margin: 0 0 5px 0;
+  }
+</style>
+
+<!-- Likely social sharing buttons -->
+<link rel="stylesheet" href="{{ "likely/likely.css" | relURL }}">
+<script src="{{ "likely/likely.js" | relURL }}"></script>
+
+<style>
+  /* Likely social buttons spacing */
+  .likely {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Remove underline from Likely buttons */
+  .likely a {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+
+  .likely a:hover {
+    border-bottom: none !important;
   }
 </style>
