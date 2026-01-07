@@ -1,6 +1,6 @@
 # Base URL used when generating links to your pages
-# Set to the URL for your site
-baseURL = "https://zavarov.com"
+# For GitHub Pages project site, include the repository path and trailing slash
+baseURL = "https://zavarovkv.github.io/zavarov.com/"
 
 # The name of this wonderful theme ;-).
 theme = 'hugo-bearblog'
