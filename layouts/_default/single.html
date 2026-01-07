@@ -1,0 +1,36 @@
+{{ define "main" }}
+  {{ if eq .Type "blog" }}
+    <h1>{{ .Title }}</h1>
+
+    <content>
+      {{ .Content }}
+    </content>
+
+    {{/* Russian date like "10 января" without year */}}
+    {{- $monthNames := dict "January" "января" "February" "февраля" "March" "марта" "April" "апреля" "May" "мая" "June" "июня" "July" "июля" "August" "августа" "September" "сентября" "October" "октября" "November" "ноября" "December" "декабря" -}}
+    {{- $monthEn := .Date.Format "January" -}}
+    {{- $day := .Date.Format "2" -}}
+    {{- $monthRu := index $monthNames $monthEn -}}
+    {{- $dateStr := printf "%s %s" $day $monthRu -}}
+
+    <p class="post-meta-inline">
+      <span class="post-date">{{ $dateStr }}</span>&nbsp;&nbsp;
+      {{ with .Params.tags }}
+        <span class="post-tags">
+          {{- range $index, $tag := . -}}
+            {{- if gt $index 0 }} {{ end -}}{{ $tag }}
+          {{- end -}}
+        </span>
+      {{ end }}
+    </p>
+
+    {{ if (.Param "enablePostNavigator")}}
+      {{- partial "post_navigator.html" . -}}
+    {{ end }}
+  {{ else }}
+    <h1>{{ .Title }}</h1>
+    <content>
+      {{ .Content }}
+    </content>
+  {{ end }}
+{{ end }}
