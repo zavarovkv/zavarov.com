@@ -1,11 +1,4 @@
 <script>
-  // Add likely-light class for dark theme
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.querySelectorAll('.likely').forEach(function(el) {
-      el.classList.add('likely-light');
-    });
-  }
-
   // Initialize Likely social sharing buttons
   if (typeof likely !== 'undefined') {
     likely.initiate();
@@ -42,8 +35,8 @@
       if (titleLink) {
         if (currentPathNormalized === '/' || currentPathNormalized === '') {
           titleLink.classList.add('title-selected');
-          // Hide avatar on home page
-          if (headerContainer) {
+          // Hide avatar on home page (class may already be set by server-side template)
+          if (headerContainer && !headerContainer.classList.contains('home-page')) {
             headerContainer.classList.add('home-page');
           }
         } else {

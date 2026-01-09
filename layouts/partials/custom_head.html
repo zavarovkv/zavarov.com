@@ -1,4 +1,30 @@
 <style>
+  /* Force light theme - disable dark mode */
+  :root {
+    color-scheme: light only;
+  }
+  
+  /* Override any dark theme styles */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #fff !important;
+      --heading-color: #222 !important;
+      --text-color: #444 !important;
+      --link-color: #3273dc !important;
+      --visited-color: #8b6fcb !important;
+      --blockquote-color: #222 !important;
+    }
+    
+    body {
+      background-color: #fff !important;
+      color: #444 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #222 !important;
+    }
+  }
+
   /* Global link styles */
   a {
     color: #337ab7;
@@ -63,24 +89,24 @@
   .title h2 {
     font-size: 0.9rem;
     font-weight: bold;
-    color: #0060a0;
+    color: #0060a0 !important;
     border-bottom: 1px solid;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:link h2,
   .title:active h2 {
-    color: #0060a0;
+    color: #0060a0 !important;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:visited h2 {
-    color: #0060a0;
+    color: #0060a0 !important;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:hover h2 {
-    color: #d04000;
+    color: #d04000 !important;
     border-bottom-color: rgba(208, 64, 0, 0.2);
   }
 
@@ -323,17 +349,9 @@
       overflow-y: auto;
     }
 
-    /* Ensure mobile menu has solid background in dark mode */
-    @media (prefers-color-scheme: dark) {
-      .main-nav {
-        background-color: #01242e !important;
-      }
-    }
-
-    @media (prefers-color-scheme: light) {
-      .main-nav {
-        background-color: #fff !important;
-      }
+    /* Mobile menu background - always light theme */
+    .main-nav {
+      background-color: #fff !important;
     }
 
     .main-nav.active {
