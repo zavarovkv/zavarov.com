@@ -49,6 +49,13 @@
     border-bottom-color: rgba(208, 64, 0, 0.2);
   }
 
+  /* Ensure bold text inside links inherits link colors */
+  a strong,
+  a b {
+    color: inherit;
+    font-weight: bold;
+  }
+
   /* Smaller footer text */
   footer {
     font-size: 0.875em;
@@ -296,7 +303,7 @@
 
     /* Larger font size for title and navigation on mobile */
     .title h2 {
-      font-size: 1rem;
+      font-size: 2em;
     }
 
     .main-nav a {
