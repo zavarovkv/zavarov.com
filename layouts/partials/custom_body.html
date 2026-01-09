@@ -38,11 +38,19 @@
       
       // Check if we're on home page and highlight title
       var titleLink = document.querySelector('.title');
+      var headerContainer = document.querySelector('.header-container');
       if (titleLink) {
         if (currentPathNormalized === '/' || currentPathNormalized === '') {
           titleLink.classList.add('title-selected');
+          // Hide avatar on home page
+          if (headerContainer) {
+            headerContainer.classList.add('home-page');
+          }
         } else {
           titleLink.classList.remove('title-selected');
+          if (headerContainer) {
+            headerContainer.classList.remove('home-page');
+          }
         }
       }
       

@@ -73,13 +73,13 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 1
 
   [[menu.main]]
-    identifier = "telegram"
-    name       = "Канал в Telegram"
-    url        = "https://t.me/pmgen"
+    identifier = "consultations"
+    name       = "Консультации"
+    url        = "/consultations/"
     weight     = 2
 
   [[menu.main]]
-    identifier = "about"
-    name       = "Обо мне"
-    url        = "/about/"
+    identifier = "telegram"
+    name       = "Канал в Telegram"
+    url        = "https://t.me/pmgen"
     weight     = 3
