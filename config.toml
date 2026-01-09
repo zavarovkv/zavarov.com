@@ -73,9 +73,9 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 1
 
   [[menu.main]]
-    identifier = "consultations"
-    name       = "Консультации"
-    url        = "/consultations/"
+    identifier = "consultation"
+    name       = "Консультация"
+    url        = "/consultation/"
     weight     = 2
 
   [[menu.main]]

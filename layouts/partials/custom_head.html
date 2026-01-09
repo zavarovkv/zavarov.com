@@ -106,9 +106,11 @@
     flex-shrink: 0;
   }
 
-  /* Hide avatar on home page */
-  .home-page .title-avatar-container {
-    display: none;
+  /* Hide avatar on home page (desktop only) */
+  @media (min-width: 769px) {
+    .home-page .title-avatar-container {
+      display: none;
+    }
   }
 
   .title-avatar {
@@ -171,6 +173,17 @@
     border-bottom: none !important;
     flex-shrink: 0;
     margin-top: 6px;
+    font-variant-emoji: none;
+    -webkit-font-feature-settings: "liga" 0;
+    font-feature-settings: "liga" 0;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .back-to-blog span {
+    font-size: 1.2em;
+    display: inline-block;
+    line-height: 1;
   }
 
   .back-to-blog:hover {
