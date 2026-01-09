@@ -1,9 +1,6 @@
 {{ define "main" }}
   {{ if eq .Type "blog" }}
-    <div class="post-title-with-back">
-      <a href="{{ "/blog/" | relURL }}" class="back-to-blog"><span style="font-family: monospace;">↩</span></a>
-      <h1>{{ .Title }}</h1>
-    </div>
+    <h1>{{ .Title }}</h1>
 
     <content>
       {{ .Content }}
