@@ -1,3 +1,6 @@
+<!-- Inter font - local files -->
+{{- partial "fonts.html" . -}}
+
 <style>
   /* Force light theme - disable dark mode */
   :root {
@@ -99,7 +102,6 @@
     color: #0060a0 !important;
     border-bottom: 1px solid;
     border-bottom-color: rgba(0, 96, 160, 0.2);
-    transform: scaleY(1.125);
   }
 
   .title:link h2,
@@ -366,6 +368,15 @@
     font-weight: bold !important;
     border-bottom: none !important;
     cursor: default;
+  }
+
+  /* Plug divider */
+  .plug::after {
+    content: "* * *";
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.4em 0px 1.2em;
   }
 </style>
 
