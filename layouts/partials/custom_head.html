@@ -96,7 +96,7 @@
     border-bottom: none !important;
   }
 
-  .title h2 {
+  .title .title-text {
     font-size: 0.9rem;
     font-weight: bold;
     color: #0060a0 !important;
@@ -104,18 +104,18 @@
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
-  .title:link h2,
-  .title:active h2 {
+  .title:link .title-text,
+  .title:active .title-text {
     color: #0060a0 !important;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
-  .title:visited h2 {
+  .title:visited .title-text {
     color: #0060a0 !important;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
-  .title:hover h2 {
+  .title:hover .title-text {
     color: #d04000 !important;
     border-bottom-color: rgba(208, 64, 0, 0.2);
   }
@@ -125,12 +125,12 @@
     cursor: default;
   }
 
-  .title-selected h2 {
+  .title-selected .title-text {
     border-bottom: none !important;
     color: #0060a0 !important;
   }
 
-  .title-selected:hover h2 {
+  .title-selected:hover .title-text {
     color: #0060a0 !important;
     border-bottom: none !important;
   }
@@ -292,7 +292,7 @@
       justify-self: start;
     }
 
-    .title h2 {
+    .title .title-text {
       grid-column: 2;
       justify-self: center;
       text-align: center;
@@ -305,7 +305,7 @@
     }
 
     /* Larger font size for title and navigation on mobile */
-    .title h2 {
+    .title .title-text {
       font-size: 1.2em;
     }
 

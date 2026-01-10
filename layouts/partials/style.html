@@ -47,8 +47,16 @@
     transform: scaleY(1.1);
   }
 
-  /* Exclude title h2 from general heading styles - it has its own styling */
-  .title h2 {
+  h2 {
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 35px;
+    transform: scaleY(1.05);
+  }
+
+  /* Title text in header - not a heading */
+  .title .title-text {
     color: inherit;
   }
 
@@ -149,6 +157,14 @@
 
   ul.blog-posts li a:visited {
     color: var(--visited-color);
+  }
+
+  /* Blog tags */
+  .blog-tags {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-top: 30px;
+    display: block;
   }
 
 </style>
