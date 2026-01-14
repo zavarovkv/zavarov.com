@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+<head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106247763', 'ym');
+
+      ym(106247763, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <!-- /Yandex.Metrika counter -->
+  
+  <!-- KaTeX for math formulas (local files) -->
+  <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}">
+  <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
+  <script defer src="{{ "katex/auto-render.min.js" | relURL }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "\\(", right: "\\)", display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+  
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{- partial "favicon.html" . -}}
+  <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
+
+  {{- partial "seo_tags.html" . -}}
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+
+  {{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  {{- partial "style.html" . -}}
+
+  <!-- A partial to be overwritten by the user.
+  Simply place a custom_head.html into
+  your local /layouts/partials-directory -->
+  {{- partial "custom_head.html" . -}}
+</head>
+
+<body>
+  <!-- Yandex.Metrika counter (noscript) -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/106247763" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  
+  <header>
+    {{- partial "header.html" . -}}
+  </header>
+  <main>
+    {{- block "main" . }}{{- end }}
+  </main>
+  <footer>
+    {{- partial "footer.html" . -}}
+  </footer>
+
+  <!-- A partial to be overwritten by the user.
+  Simply place a custom_body.html into
+  your local /layouts/partials-directory -->
+  {{- partial "custom_body.html" . -}}
+</body>
+
+</html>

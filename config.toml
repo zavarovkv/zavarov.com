@@ -62,6 +62,9 @@ ignoreErrors = ["error-disable-taxonomy"]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.math]
+        enable = true
   [markup.highlight]
     style = 'friendly'
     lineNos = true

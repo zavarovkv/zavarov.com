@@ -1,30 +1,85 @@
 {{ define "main" }}
 <content>
   {{ if .Data.Singular }}
-  <h1 style="margin-bottom: 0.3em;">Тег: {{ .Title }}</h1>
+  <h2 style="margin-bottom: 0.3em;">Тег «{{ .Title }}»</h2>
   <small style="display: block; margin-top: -0.5em; margin-bottom: 1em;">
     <a href="{{ "blog" | relURL }}">Remove filter</a>
   </small>
   {{ end }}
-  <ul class="blog-posts">
-    {{ range .Pages }}
-    <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </li>
-    {{ else }}
-    <li>
-      No posts yet
-    </li>
-    {{ end }}
-  </ul>
+
   {{ if not .Data.Singular }}
-  <small class="blog-tags">
-    <div>
-      {{ range .Site.Taxonomies.tags }}
-      <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+    {{/* Собираем все уникальные категории */}}
+    {{ $allCategories := slice }}
+    {{ range .Pages }}
+      {{ if .Params.categories }}
+        {{ range .Params.categories }}
+          {{ if not (in $allCategories .) }}
+            {{ $allCategories = $allCategories | append . }}
+          {{ end }}
+        {{ end }}
       {{ end }}
-    </div>
-  </small>
+    {{ end }}
+
+    {{/* Выводим каждую категорию */}}
+    {{ range $allCategories }}
+      {{ $category := . }}
+      <h2>{{ $category }}</h2>
+      <ul class="blog-posts">
+        {{ range $.Pages }}
+          {{ if .Params.categories }}
+            {{ if in .Params.categories $category }}
+              <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    {{/* Статьи без категории */}}
+    {{ $uncategorized := where .Pages ".Params.categories" "eq" nil }}
+    {{ $uncategorized = $uncategorized | union (where .Pages ".Params.categories" "eq" (slice)) }}
+    {{ if $uncategorized }}
+      <h2>Без категории</h2>
+      <ul class="blog-posts">
+        {{ range $uncategorized }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    <small class="blog-tags">
+      <div>
+        {{/* Сортируем теги по количеству статей (убывание) */}}
+        {{ $tagsByCount := .Site.Taxonomies.tags.ByCount }}
+        {{ $count := len $tagsByCount }}
+        {{ $sortedTags := slice }}
+        {{/* Создаем обратный порядок: от последнего к первому */}}
+        {{ range $i := (seq $count) }}
+          {{ $reverseIdx := sub $count $i }}
+          {{ $sortedTags = $sortedTags | append (index $tagsByCount $reverseIdx) }}
+        {{ end }}
+        {{ range $sortedTags }}
+        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
+        {{ end }}
+      </div>
+    </small>
+  {{ else }}
+    {{/* Для страниц с фильтром по тегу - обычный список */}}
+    <ul class="blog-posts">
+      {{ range .Pages }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ else }}
+      <li>
+        No posts yet
+      </li>
+      {{ end }}
+    </ul>
   {{ end }}
 </content>
 {{ end }}
