@@ -25,14 +25,10 @@
       {{ $category := . }}
       <h2>{{ $category }}</h2>
       <ul class="blog-posts">
-        {{ range $.Pages }}
-          {{ if .Params.categories }}
-            {{ if in .Params.categories $category }}
-              <li>
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-              </li>
-            {{ end }}
-          {{ end }}
+        {{ range (where $.Pages ".Params.categories" "intersect" (slice $category)).ByDate.Reverse }}
+          <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </li>
         {{ end }}
       </ul>
     {{ end }}
@@ -43,7 +39,7 @@
     {{ if $uncategorized }}
       <h2>Без категории</h2>
       <ul class="blog-posts">
-        {{ range $uncategorized }}
+        {{ range $uncategorized.ByDate.Reverse }}
         <li>
           <a href="{{ .Permalink }}">{{ .Title }}</a>
         </li>
@@ -70,7 +66,7 @@
   {{ else }}
     {{/* Для страниц с фильтром по тегу - обычный список */}}
     <ul class="blog-posts">
-      {{ range .Pages }}
+      {{ range .Pages.ByDate.Reverse }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
       </li>
