@@ -9,7 +9,7 @@ theme = 'hugo-bearblog'
 title = "Константин Заваров"
 author = "Konstantin Zavarov"
 copyright = "Copyright © 2026, Konstantin Zavarov."
-languageCode = "en-US"
+languageCode = "ru"
 
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
