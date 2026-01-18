@@ -14,6 +14,12 @@ languageCode = "ru"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
+# Sitemap configuration
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
 # Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
 disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"]
@@ -39,6 +45,15 @@ ignoreErrors = ["error-disable-taxonomy"]
   # opengraph structured data template.
   # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
   title = "Константин Заваров"
+  
+  # SEO improvements
+  authorName = "Константин Заваров"
+  authorURL = "https://zavarovkv.github.io/zavarov.com/"
+  
+  # Open Graph image settings
+  ogImage = "images/share.png"
+  ogImageWidth = 1200
+  ogImageHeight = 630
 
   # This theme will, by default, inject a made-with-line at the bottom of the page.
   # You can turn it off, but we would really appreciate if you don't :-).
