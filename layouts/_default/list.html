@@ -47,22 +47,7 @@
       </ul>
     {{ end }}
 
-    <small class="blog-tags">
-      <div>
-        {{/* Сортируем теги по количеству статей (убывание) */}}
-        {{ $tagsByCount := .Site.Taxonomies.tags.ByCount }}
-        {{ $count := len $tagsByCount }}
-        {{ $sortedTags := slice }}
-        {{/* Создаем обратный порядок: от последнего к первому */}}
-        {{ range $i := (seq $count) }}
-          {{ $reverseIdx := sub $count $i }}
-          {{ $sortedTags = $sortedTags | append (index $tagsByCount $reverseIdx) }}
-        {{ end }}
-        {{ range $sortedTags }}
-        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>&nbsp;
-        {{ end }}
-      </div>
-    </small>
+    {{/* Блок с тегами временно скрыт */}}
   {{ else }}
     {{/* Для страниц с фильтром по тегу - обычный список */}}
     <ul class="blog-posts">
