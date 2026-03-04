@@ -46,12 +46,10 @@
 
     {{/* Telegram Discussion comments */}}
     {{ with .Params.telegram_post }}
-    <div style="margin-left: -13px; margin-right: -13px;">
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-discussion="pmgen/{{ . }}"
-        data-comments-limit="20">
-      </script>
-    </div>
+    <script async src="https://telegram.org/js/telegram-widget.js?22"
+      data-telegram-discussion="pmgen/{{ . }}"
+      data-comments-limit="20">
+    </script>
     {{ end }}
 
     {{ if (.Param "enablePostNavigator")}}
