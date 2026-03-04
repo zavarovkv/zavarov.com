@@ -18,6 +18,11 @@
     {{- $title = "Константин Заваров" -}}
     {{- $subtitle = "Личный блог о продакт-менеджменте" -}}
     {{- $path = "og.png" -}}
+  {{- else if .IsSection -}}
+    {{/* Section pages (e.g. /blog/) */}}
+    {{- $title = (.Title | default .Site.Title) -}}
+    {{- $subtitle = "zavarov.com · Константин Заваров" -}}
+    {{- $path = printf "%sog.png" .RelPermalink -}}
   {{- end -}}
 
   {{- if $title -}}
