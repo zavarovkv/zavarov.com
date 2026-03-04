@@ -1533,7 +1533,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		__webpack_require__.g = (function() {
 /******/ 			if (typeof globalThis === 'object') return globalThis;
 /******/ 			try {
-/******/ 				return this || new Function('return this')();
+/******/ 				return this || (typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : {}));
 /******/ 			} catch (e) {
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
