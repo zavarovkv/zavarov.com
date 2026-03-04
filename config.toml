@@ -35,25 +35,14 @@ ignoreErrors = ["error-disable-taxonomy"]
   # Hint: It's good practise to also put a "favicon.ico"-file into your "static"-folder.
   favicon = "images/favicon.png"
 
-  # These "images" are used for the structured data templates. This will show up, when
-  # services like Twitter or Slack want to generate a preview of a link to your site.
-  # See https://gohugo.io/templates/internal#twitter-cards and
-  # https://gohugo.io/templates/internal#open-graph.
-  images = ["images/share.png"]
-
   # Another "title" :-). This one is used as the site_name on the Hugo's internal
   # opengraph structured data template.
   # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
   title = "Константин Заваров"
-  
+
   # SEO improvements
   authorName = "Константин Заваров"
   authorURL = "https://zavarov.com/"
-  
-  # Open Graph image settings
-  ogImage = "images/share.png"
-  ogImageWidth = 1200
-  ogImageHeight = 630
 
   # This theme will, by default, inject a made-with-line at the bottom of the page.
   # You can turn it off, but we would really appreciate if you don't :-).
