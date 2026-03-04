@@ -1,6 +1,9 @@
 <!-- Inter font - local files -->
 {{- partial "fonts.html" . -}}
 
+<!-- RSS feed autodiscovery -->
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}"  />
+
 <style>
   /* Force light theme - disable dark mode */
   :root {
