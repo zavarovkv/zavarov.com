@@ -25,12 +25,13 @@
   {{ if .Params.tags }},
   "keywords": {{ (delimit .Params.tags ", ") | jsonify }}
   {{ end }}
-  {{ if .Site.Params.images }},
+  ,
   "image": {
     "@type": "ImageObject",
-    "url": {{ ((index .Site.Params.images 0) | absURL) | jsonify }}
+    "url": {{ (printf "%sog.png" .Permalink) | jsonify }},
+    "width": 1200,
+    "height": 630
   }
-  {{ end }}
 }
 </script>
 {{ else }}

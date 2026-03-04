@@ -16,11 +16,16 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ .Permalink }}" />
 
-<!-- Open Graph / Facebook -->
-{{ template "_internal/opengraph.html" . }}
+<!-- Open Graph -->
+<meta property="og:title" content="{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}" />
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:locale" content="ru_RU" />
 
-<!-- Twitter -->
-{{ template "_internal/twitter_cards.html" . }}
+<!-- OG Image -->
+{{- partial "og-image.html" . -}}
 
 <!-- Schema.org structured data -->
 {{ template "_internal/schema.html" . }}

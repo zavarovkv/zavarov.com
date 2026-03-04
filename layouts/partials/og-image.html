@@ -1,0 +1,36 @@
+{{/* OG Image Generator - creates unique 1200x630 images per blog post */}}
+{{- if .IsPage -}}
+  {{- $base := resources.Get "og/og-base.png" -}}
+  {{- $boldFont := resources.Get "fonts/Inter-Bold.ttf" -}}
+  {{- $regularFont := resources.Get "fonts/Inter-Regular.ttf" -}}
+
+  {{- if and $base $boldFont $regularFont -}}
+    {{/* Layer 1: Post title */}}
+    {{- $img := $base.Filter (images.Text .Title (dict
+      "color" "#ffffff"
+      "size" 52
+      "linespacing" 8
+      "x" 80
+      "y" 80
+      "font" $boldFont
+    )) -}}
+
+    {{/* Layer 2: Attribution */}}
+    {{- $img = $img.Filter (images.Text "zavarov.com · Константин Заваров" (dict
+      "color" "#888888"
+      "size" 24
+      "x" 80
+      "y" 540
+      "font" $regularFont
+    )) -}}
+
+    {{/* Save to post-specific path */}}
+    {{- $img = resources.Copy (printf "%sog.png" .RelPermalink) $img -}}
+
+    <meta property="og:image" content="{{ $img.Permalink }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="{{ $img.Permalink }}" />
+  {{- end -}}
+{{- end -}}
