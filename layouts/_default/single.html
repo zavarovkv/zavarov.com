@@ -25,11 +25,11 @@
 
     <p class="post-meta-inline">
       <span class="post-date">{{ $dateStr }}</span>&nbsp;&nbsp;
-      {{ with .GetTerms "tags" }}
+      {{ with .Params.tags }}
         <span class="post-tags">
-          {{- range $index, $term := . -}}
-            {{- if gt $index 0 }} {{ end -}}
-            <a href="{{ $term.Permalink }}">{{ $term.LinkTitle }}</a>
+          {{- range $index, $tag := . -}}
+            {{- if gt $index 0 }}, {{ end -}}
+            {{ $tag }}
           {{- end -}}
         </span>
       {{ end }}
