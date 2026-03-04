@@ -5,7 +5,7 @@
 &lt;h2 id="1-диаграмма-для-визуализации-объема-рынка">1. Диаграмма для визуализации объема рынка&lt;/h2>
 &lt;p>Гистограмма показывает выручку за последние 5 лет по годам, а график — темпы роста год к году. Самая простая и понятная визуализация объема рынка в динамике.&lt;/p></description></item><item><title>Шаблон дизайна A/B-теста</title><link>https://zavarov.com/template-abt/</link><pubDate>Mon, 22 Aug 2022 12:00:00 +0300</pubDate><guid>https://zavarov.com/template-abt/</guid><description>&lt;p>Шаблон в Google Sheets для проектирования A/B-тестов. Помогает структурировать эксперимент до его запуска — от формулировки гипотезы до расчёта продолжительности теста.&lt;/p>
 &lt;p>&lt;a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Скачать шаблон&lt;/a>&lt;/p>
-&lt;img src="https://zavarov.com/images/template-abt.png" alt="Шаблон дизайна A/B-теста">
+&lt;img loading="lazy" src="https://zavarov.com/images/template-abt.png" alt="Шаблон дизайна A/B-теста">
 &lt;h2 id="что-внутри">Что внутри&lt;/h2>
 &lt;p>&lt;strong>Описание эксперимента&lt;/strong> — формулировка гипотезы в формате: «Если [изменение в продукте], то изменится [целевая метрика] на величину [ожидаемый результат], потому что [данные из исследований]». Здесь же указывается целевая метрика и дата начала эксперимента.&lt;/p>
 &lt;p>&lt;strong>Исходные значения&lt;/strong> — параметры для расчёта:&lt;/p>
