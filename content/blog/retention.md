@@ -23,7 +23,7 @@ Retention можно считать в окнах разного размера:
 
 ## Данные для исследования
 
-Для расчетов будем использовать синтетический dataset состоящий из двух полей (столбцов): *«user_id»* — уникальный ID пользователя; *«date»* — дата посещения продукта. Исходный dataset можно найти по [ссылке](/zavarov.com/data/retention-dataset.csv), вот так выглядят его первые 10 строк:
+Для расчетов будем использовать синтетический dataset состоящий из двух полей (столбцов): *«user_id»* — уникальный ID пользователя; *«date»* — дата посещения продукта. Исходный dataset можно найти по [ссылке](/data/retention-dataset.csv), вот так выглядят его первые 10 строк:
 
 | user_id | date |
 |---|---|
@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Путь к файлу с данными
-dataset_path = 'https://zavarov.com/data/retention-dataset.csv'
+dataset_path = 'https://data/retention-dataset.csv'
 
 # Чтение данных и парсинг даты
 df = pd.read_csv(dataset_path, parse_dates=['date'])
@@ -110,7 +110,7 @@ classic_retention = calculate_classic_retention(df, days)
 plt_show(days, classic_retention, xs=[1, 7, 28, 56], title='Daily Classic Retention')
 ```
 
-![Classic Retention](/zavarov.com/images/retention-classic.png)
+![Classic Retention](/images/retention-classic.png)
 
 Видим, что на следующий день после первого захода в продукт — вернулось 70% пользователей, на 7 день — 36%, на 28 день — 20%. Примерно через 30 дней кривая выходит на плато, т. е. для продукта найден Product/Market Fit.
 
@@ -160,7 +160,7 @@ rolling_retention = calculate_rolling_retention(df, days)
 plt_show(days, rolling_retention, xs=[1, 7, 28, 56], title='Daily Rolling Retention')
 ```
 
-![Rolling Retention](/zavarov.com/images/retention-rolling.png)
+![Rolling Retention](/images/retention-rolling.png)
 
 Видим, что со следующего дня после первого захода в продукт — вернулось 93% пользователей, с 7 дня — 69%, с 28 день — 46%.
 
@@ -205,7 +205,7 @@ full_retention = calculate_full_retention(df, days)
 plt_show(days, full_retention, xs=[1, 3, 6], title='Daily Full Retention')
 ```
 
-![Full Retention](/zavarov.com/images/retention-full.png)
+![Full Retention](/images/retention-full.png)
 
 Видим, что 70% пользователей вернулись в продукт на следующий день после первого знакомства с ним. И поскольку это значение метрики совпадает со значением Classic Retention, вероятно в вычислениях я не ошибся:). 22% пользователей заходили в продукт ежедневно на протяжении 3 дней; и только 2% пользователей заходили в продукт ежедневно на протяжении 6 дней.
 

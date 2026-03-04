@@ -1,6 +1,6 @@
 # Base URL used when generating links to your pages
 # For GitHub Pages project site, include the repository path and trailing slash
-baseURL = "https://zavarovkv.github.io/zavarov.com/"
+baseURL = "https://zavarov.com/"
 
 # The name of this wonderful theme ;-).
 theme = 'hugo-bearblog'
@@ -48,7 +48,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   
   # SEO improvements
   authorName = "Константин Заваров"
-  authorURL = "https://zavarovkv.github.io/zavarov.com/"
+  authorURL = "https://zavarov.com/"
   
   # Open Graph image settings
   ogImage = "images/share.png"

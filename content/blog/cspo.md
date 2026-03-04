@@ -29,4 +29,4 @@ categories = ["Статьи"]
 
 И в итоге вы получите официальную бумажку. Сложность получения: 1/10. Цена получения: 7/10. Нужность: каждый решает сам.
 
-![CSPO Certificate](/zavarov.com/images/cspo-certificate.png)
+![CSPO Certificate](/images/cspo-certificate.png)

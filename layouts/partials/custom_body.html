@@ -33,11 +33,10 @@
         link.classList.remove('link-selected');
       });
       
-      // Helper function to normalize path (remove /zavarov.com prefix and trailing slashes)
+      // Helper function to normalize path (remove trailing slashes)
       function normalizePath(path) {
         if (!path) return '/';
-        var normalized = path.replace(/^\/zavarov\.com/, '') || '/';
-        normalized = normalized.replace(/\/$/, '') || '/';
+        var normalized = path.replace(/\/$/, '') || '/';
         return normalized;
       }
       
@@ -67,7 +66,7 @@
           return;
         }
         
-        // Normalize link path (also remove /zavarov.com if present)
+        // Normalize link path
         var linkPathNormalized = normalizePath(href);
         
         // Special case for home page

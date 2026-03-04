@@ -51,6 +51,5 @@ All served locally (no CDN): Inter font family (`static/fonts/`), KaTeX math ren
 - Content front matter: TOML (`+++` delimiters)
 - Markdown renderer: Goldmark with `unsafe: true` and math extensions enabled
 - All content is in Russian with Cyrillic font support
-- Base URL includes repo path: `https://zavarovkv.github.io/zavarov.com/`
-- Nav active-link JS normalizes paths with `/zavarov.com` prefix
+- Base URL: `https://zavarov.com/` (custom domain via GitHub Pages CNAME)
 - Content license: CC BY-SA 4.0
