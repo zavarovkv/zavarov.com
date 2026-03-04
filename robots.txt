@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: https://zavarovkv.github.io/zavarov.com/sitemap.xml
+Sitemap: https://zavarov.com/sitemap.xml
