@@ -6,7 +6,7 @@ description = "Лидерство — навык позитивного влия
 categories = ["Статьи"]
 +++
 
-*Оригнал интервью опубликован на [VC](https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno).*
+*Оригинал интервью опубликован на [VC](https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno).*
 
 <br>
 
