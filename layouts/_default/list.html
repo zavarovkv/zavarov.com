@@ -1,67 +1,96 @@
 {{ define "main" }}
 <content>
-  {{ if .Data.Singular }}
-  <h2 style="margin-bottom: 0.3em;">Тег «{{ .Title }}»</h2>
-  <small style="display: block; margin-top: -0.5em; margin-bottom: 1em;">
-    <a href="{{ "blog" | relURL }}">Remove filter</a>
-  </small>
-  {{ end }}
+  {{/* Получаем все посты блога */}}
+  {{ $blogSection := site.GetPage "/blog" }}
+  {{ $allPosts := $blogSection.Pages }}
 
-  {{ if not .Data.Singular }}
-    {{/* Собираем все уникальные категории */}}
-    {{ $allCategories := slice }}
-    {{ range .Pages }}
-      {{ if .Params.categories }}
-        {{ range .Params.categories }}
-          {{ if not (in $allCategories .) }}
-            {{ $allCategories = $allCategories | append . }}
-          {{ end }}
-        {{ end }}
+  {{/* Собираем все уникальные теги */}}
+  {{ $allTags := slice }}
+  {{ range $allPosts }}
+    {{ range .Params.tags }}
+      {{ if and . (not (in $allTags .)) }}
+        {{ $allTags = $allTags | append . }}
       {{ end }}
     {{ end }}
-
-    {{/* Выводим каждую категорию */}}
-    {{ range $allCategories }}
-      {{ $category := . }}
-      <h2>{{ $category }}</h2>
-      <ul class="blog-posts">
-        {{ range (where $.Pages ".Params.categories" "intersect" (slice $category)).ByDate.Reverse }}
-          <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </li>
-        {{ end }}
-      </ul>
-    {{ end }}
-
-    {{/* Статьи без категории */}}
-    {{ $uncategorized := where .Pages ".Params.categories" "eq" nil }}
-    {{ $uncategorized = $uncategorized | union (where .Pages ".Params.categories" "eq" (slice)) }}
-    {{ if $uncategorized }}
-      <h2>Без категории</h2>
-      <ul class="blog-posts">
-        {{ range $uncategorized.ByDate.Reverse }}
-        <li>
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-      </ul>
-    {{ end }}
-
-    {{/* Блок с тегами временно скрыт */}}
-  {{ else }}
-    {{/* Для страниц с фильтром по тегу - обычный список */}}
-    <ul class="blog-posts">
-      {{ range .Pages.ByDate.Reverse }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </li>
-      {{ else }}
-      <li>
-        No posts yet
-      </li>
-      {{ end }}
-    </ul>
   {{ end }}
+
+  <h1>Статьи</h1>
+
+  {{/* Собираем все группы: теги + разное (если есть) */}}
+  {{ $groups := slice }}
+  {{ range $allTags }}
+    {{ $groups = $groups | append . }}
+  {{ end }}
+  {{ $hasUntagged := false }}
+  {{ range $allPosts }}
+    {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+      {{ $hasUntagged = true }}
+    {{ end }}
+  {{ end }}
+  {{ if $hasUntagged }}
+    {{ $groups = $groups | append "_untagged" }}
+  {{ end }}
+
+  {{ $half := math.Ceil (div (len $groups) 2.0) }}
+
+  {{/* Все статьи — группируем по тегам в 2 колонки */}}
+  <div class="posts-columns">
+    <div class="posts-column">
+      {{ range first (int $half) $groups }}
+        {{ if eq . "_untagged" }}
+          <div class="posts-group">
+            <h3 class="posts-group-title">Разное</h3>
+            <ul class="blog-posts">
+              {{ range $allPosts.ByDate.Reverse }}
+                {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ else }}
+          {{ $tag := . }}
+          <div class="posts-group">
+            <h3 class="posts-group-title">{{ $tag }}</h3>
+            <ul class="blog-posts">
+              {{ range $allPosts.ByDate.Reverse }}
+                {{ if in .Params.tags $tag }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+    <div class="posts-column">
+      {{ range after (int $half) $groups }}
+        {{ if eq . "_untagged" }}
+          <div class="posts-group">
+            <h3 class="posts-group-title">Разное</h3>
+            <ul class="blog-posts">
+              {{ range $allPosts.ByDate.Reverse }}
+                {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ else }}
+          {{ $tag := . }}
+          <div class="posts-group">
+            <h3 class="posts-group-title">{{ $tag }}</h3>
+            <ul class="blog-posts">
+              {{ range $allPosts.ByDate.Reverse }}
+                {{ if in .Params.tags $tag }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
 </content>
 {{ end }}
-

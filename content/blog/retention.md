@@ -3,7 +3,7 @@ title = "Считаем Classic, Rolling и Full Retention на Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
 description = "Разбираем как вручную посчитать 3 вида метрики Retention с помощью Python и Pandas и нарисовать кривую Retention с помощью Matplotlib."
-tags = ["python", "retention", "analytics"]
+tags = ["Метрики и аналитика"]
 categories = ["Статьи"]
 telegram_post = 37
 +++

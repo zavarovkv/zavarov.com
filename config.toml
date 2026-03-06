@@ -78,7 +78,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 [menu]
   [[menu.main]]
     identifier = "blog"
-    name       = "Блог"
+    name       = "Статьи"
     url        = "/blog/"
     weight     = 1
 
