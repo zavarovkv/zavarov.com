@@ -41,6 +41,11 @@
     text-decoration: none;
   }
 
+  /* Lighter body text */
+  main {
+    font-weight: 300;
+  }
+
   /* Content links: uniform semi-bold weight (except blog listing) */
   main a {
     font-weight: 600;
@@ -237,6 +242,11 @@
   main ul li,
   main ol li {
     margin: 0 0 5px 0;
+  }
+
+  /* Bold numbers in ordered lists */
+  main ol li::marker {
+    font-weight: 600;
   }
 
   /* Navigation menu */
