@@ -3,7 +3,7 @@ title = "Шаблон методов приоритизации задач ICE, 
 slug = "template-rice"
 date = "2022-07-01T12:00:00+03:00"
 description = "Шаблон Google Sheets для приоритизации продуктовых инициатив методами ICE, RICE и DRICE."
-tags = ["Шаблоны"]
+tags = ["Стратегия и фреймворки"]
 categories = ["Статьи"]
 +++
 
