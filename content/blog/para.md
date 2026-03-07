@@ -21,7 +21,7 @@ categories = ["Продуктивность"]
 В 2025 году на GitHub создано [121 миллион новых 
 репозиториев](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) — рекорд за всю историю платформы.
 
- <img loading="lazy" src="/images/octoverse-genai-projects.png" alt="GitHub Octoverse: рост проектов с GenAI SDK">
+ <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост проектов с GenAI SDK">
 
 Отдельно подчеркну: Markdown — это формат, который однозначно понимает любая LLM, в отличие от .docx, .pdf и других форматов документов. И это не только заголовки и списки — вот полная [специикация](https://spec.commonmark.org/0.31.2/#introduction). Markdown переживёт любой инструмент. Evernote умирает, Notion однажды закроется, Google Docs привязан к аккаунту, md-файл откроется через 20 лет в любом текстовом редакторе — это plain text.
 
