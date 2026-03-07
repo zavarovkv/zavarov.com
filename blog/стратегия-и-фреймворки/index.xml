@@ -8,4 +8,14 @@
 &lt;p>Вот такая простая теорема, которая легко интуитивно выводится и подтверждается менеджерами edTech-компаний. Логичный вывод для будущих учеников любых курсов: в self-paced режиме обучения вероятность дойти до конца курса и получить диплом ниже, так же как и вероятность вернуть деньги за обучение.&lt;/p></description></item><item><title>Управление продуктом — это управление маркетингом</title><link>https://zavarov.com/kotler/</link><pubDate>Fri, 24 May 2024 15:17:01 +0300</pubDate><guid>https://zavarov.com/kotler/</guid><description>&lt;p>А продакт-менеджер — специалист по маркетингу.&lt;/p>
 &lt;p>Такое определение очевидно для людей, которые получали высшее образование в сфере маркетинга. Но не всегда понятно тому, кто пришел в профессию продакта из технических специальностей.&lt;/p>
 &lt;p>Я как выходец из «технарей» долгое время считал, что «маркетинг» ограничивается мероприятиями по поиску каналов продвижения; донесению ценности продукта до пользователей; продаже товаров (физических или цифровых, не принципиально). Но такое понимание маркетинга — очень-очень далеко от истины.&lt;/p>
-&lt;p>Хотя сложно поспорить с тем, что именно подобными задачами и занимаются специалисты в digital-компаниях, которых часто называют маркетологами (Marketing Manager — MM) или даже продуктовыми маркетологами (Product Marketing Manager — PMM).&lt;/p></description></item></channel></rss>
+&lt;p>Хотя сложно поспорить с тем, что именно подобными задачами и занимаются специалисты в digital-компаниях, которых часто называют маркетологами (Marketing Manager — MM) или даже продуктовыми маркетологами (Product Marketing Manager — PMM).&lt;/p></description></item><item><title>Шаблон методов приоритизации задач ICE, RICE, DRICE</title><link>https://zavarov.com/template-rice/</link><pubDate>Fri, 01 Jul 2022 12:00:00 +0300</pubDate><guid>https://zavarov.com/template-rice/</guid><description>&lt;p>Шаблон в Google Sheets для приоритизации продуктовых инициатив тремя методами: ICE, RICE и DRICE. Подробнее про методы — в статье &lt;a href="https://zavarov.com/drice/">«Методы приоритизации ICE, RICE, DRICE»&lt;/a>.&lt;/p>
+&lt;p>&lt;a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Скачать шаблон&lt;/a>&lt;/p>
+&lt;h2 id="что-внутри">Что внутри&lt;/h2>
+&lt;p>&lt;strong>ICE&lt;/strong> — простейший метод приоритизации. Каждая инициатива оценивается по трём параметрам от 0 до 10:&lt;/p>
+&lt;ul>
+&lt;li>Impact (влияние на метрику)&lt;/li>
+&lt;li>Confidence (уверенность в оценке)&lt;/li>
+&lt;li>Ease (лёгкость реализации)&lt;/li>
+&lt;li>ICE Score = I × C × E&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>RICE&lt;/strong> — более точный метод от Intercom. Таблица с колонками:&lt;/p></description></item></channel></rss>
