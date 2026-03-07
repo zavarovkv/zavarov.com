@@ -16,7 +16,7 @@ categories = ["Продуктивность"]
 
 <img loading="lazy" src="/images/zettelkasten-luhmann.png" alt="Никлас Луман">
 
-*Никлас Луман*
+ {{< caption >}}Никлас Луман{{< /caption >}} 
 
 ## Суть метода
 
@@ -26,7 +26,8 @@ Zettelkästen — метод хранения идей в отдельных к�
 
 <img loading="lazy" src="/images/zettelkasten-card.jpeg" alt="Карточка идеи Лумана">
 
-*А вот так выглядела карточка идеи в доцифровую эпоху*
+ {{< caption >}}А вот так выглядела карточка идеи в доцифровую эпоху{{< /caption >}}
+
 
 ## Принципы хранения идей
 
@@ -50,4 +51,4 @@ Zettelkästen — метод хранения идей в отдельных к�
 
 <img loading="lazy" src="/images/zettelkasten-vscode.png" alt="VSCode с настроенными плагинами для Zettelkästen">
 
-*VSCode с настроенными плагинами для Zettelkästen*
+ {{< caption >}}VSCode с настроенными плагинами для Zettelkästen{{< /caption >}}
