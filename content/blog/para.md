@@ -2,7 +2,7 @@
 title = "Второй мозг: PARA × Obsidian × Granola × Claude"
 slug = "para"
 date = "2026-03-07T00:00:00+03:00"
-description = ""
+description = "Как выстроить систему управления знаниями из PARA, Obsidian, Granola и Claude — и почему это работает как второй мозг."
 categories = ["Продуктивность"]
 +++
 

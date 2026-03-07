@@ -43,6 +43,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   # SEO improvements
   authorName = "Константин Заваров"
   authorURL = "https://zavarov.com/"
+  telegramChannel = "pmgen"
 
   # This theme will, by default, inject a made-with-line at the bottom of the page.
   # You can turn it off, but we would really appreciate if you don't :-).
