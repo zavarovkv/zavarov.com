@@ -22,8 +22,8 @@
     "@type": "WebPage",
     "@id": {{ .Permalink | jsonify }}
   }
-  {{ if .Params.tags }},
-  "keywords": {{ (delimit .Params.tags ", ") | jsonify }}
+  {{ if .Params.categories }},
+  "keywords": {{ (delimit .Params.categories ", ") | jsonify }}
   {{ end }}
   ,
   "image": {

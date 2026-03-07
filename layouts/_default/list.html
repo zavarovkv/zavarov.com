@@ -7,7 +7,7 @@
   {{/* Собираем все уникальные теги */}}
   {{ $allTags := slice }}
   {{ range $allPosts }}
-    {{ range .Params.tags }}
+    {{ range .Params.categories }}
       {{ if and . (not (in $allTags .)) }}
         {{ $allTags = $allTags | append . }}
       {{ end }}
@@ -23,7 +23,7 @@
   {{ end }}
   {{ $hasUntagged := false }}
   {{ range $allPosts }}
-    {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+    {{ if or (not .Params.categories) (eq (len .Params.categories) 0) }}
       {{ $hasUntagged = true }}
     {{ end }}
   {{ end }}
@@ -42,7 +42,7 @@
             <h3 class="posts-group-title">Разное</h3>
             <ul class="blog-posts">
               {{ range $allPosts.ByDate.Reverse }}
-                {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+                {{ if or (not .Params.categories) (eq (len .Params.categories) 0) }}
               <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if ge .Date (now.AddDate 0 0 -30) }} <span class="badge-new">NEW</span>{{ end }}</li>
                 {{ end }}
               {{ end }}
@@ -54,7 +54,7 @@
             <h3 class="posts-group-title">{{ $tag }}</h3>
             <ul class="blog-posts">
               {{ range $allPosts.ByDate.Reverse }}
-                {{ if in .Params.tags $tag }}
+                {{ if in .Params.categories $tag }}
               <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if ge .Date (now.AddDate 0 0 -30) }} <span class="badge-new">NEW</span>{{ end }}</li>
                 {{ end }}
               {{ end }}
@@ -70,7 +70,7 @@
             <h3 class="posts-group-title">Разное</h3>
             <ul class="blog-posts">
               {{ range $allPosts.ByDate.Reverse }}
-                {{ if or (not .Params.tags) (eq (len .Params.tags) 0) }}
+                {{ if or (not .Params.categories) (eq (len .Params.categories) 0) }}
               <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if ge .Date (now.AddDate 0 0 -30) }} <span class="badge-new">NEW</span>{{ end }}</li>
                 {{ end }}
               {{ end }}
@@ -82,7 +82,7 @@
             <h3 class="posts-group-title">{{ $tag }}</h3>
             <ul class="blog-posts">
               {{ range $allPosts.ByDate.Reverse }}
-                {{ if in .Params.tags $tag }}
+                {{ if in .Params.categories $tag }}
               <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if ge .Date (now.AddDate 0 0 -30) }} <span class="badge-new">NEW</span>{{ end }}</li>
                 {{ end }}
               {{ end }}
