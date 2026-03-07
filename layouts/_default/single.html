@@ -11,13 +11,14 @@
     {{- $postDate := .Date -}}
     {{- $yearsDiff := div (sub $now.Unix $postDate.Unix) 31536000 -}}
     {{- $dateStr := "" -}}
+    {{- $monthNames := dict "January" "января" "February" "февраля" "March" "марта" "April" "апреля" "May" "мая" "June" "июня" "July" "июля" "August" "августа" "September" "сентября" "October" "октября" "November" "ноября" "December" "декабря" -}}
     {{- if lt $yearsDiff 1 -}}
-      {{/* Less than 1 year: show "10 января" */}}
-      {{- $monthNames := dict "January" "января" "February" "февраля" "March" "марта" "April" "апреля" "May" "мая" "June" "июня" "July" "июля" "August" "августа" "September" "сентября" "October" "октября" "November" "ноября" "December" "декабря" -}}
+      {{/* Less than 1 year: show "7 марта 2026" */}}
       {{- $monthEn := $postDate.Format "January" -}}
       {{- $day := $postDate.Format "2" -}}
+      {{- $year := $postDate.Format "2006" -}}
       {{- $monthRu := index $monthNames $monthEn -}}
-      {{- $dateStr = printf "%s %s" $day $monthRu -}}
+      {{- $dateStr = printf "%s %s %s" $day $monthRu $year -}}
     {{- else -}}
       {{/* 1 year or older: show only year */}}
       {{- $dateStr = $postDate.Format "2006" -}}

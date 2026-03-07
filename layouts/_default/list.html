@@ -1,8 +1,8 @@
 {{ define "main" }}
 <content>
-  {{/* Получаем все посты блога */}}
+  {{/* Получаем все посты блога (без скрытых) */}}
   {{ $blogSection := site.GetPage "/blog" }}
-  {{ $allPosts := $blogSection.Pages }}
+  {{ $allPosts := where $blogSection.Pages ".Params.hidden" "ne" true }}
 
   {{/* Собираем все уникальные теги */}}
   {{ $allTags := slice }}
