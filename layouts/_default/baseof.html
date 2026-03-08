@@ -75,6 +75,11 @@
   your local /layouts/partials-directory -->
   {{- partial "custom_body.html" . -}}
 
+  {{ if .Params.mermaid }}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+  {{ end }}
+
   <!-- Scroll to top button -->
   <button class="scroll-to-top" aria-label="Scroll to top">
     <div class="scroll-to-top-arrow">
