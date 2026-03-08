@@ -2,9 +2,28 @@
 &lt;p>Статья называется «Второй мозг», а значит мы будем строить систему, напоминающую структуру мозга человека.&lt;/p>
 &lt;pre class="mermaid">
 graph LR
- A[Granola] --> B[PARA]
- B --> C[Obsidian]
- C --> D[Claude]
+ S@{ shape: text, label: "Звук" }
+ T@{ shape: text, label: "Текст" }
+ I@{ shape: text, label: "Изображения" }
+ S e1@--> A[**Слуховая кора**]
+ T e2@--> B[**Зрительная кора**]
+ I e3@--> B
+ A e4@--> C[**Гиппокамп**]
+ B e5@--> C
+ C e6@--> Память
+ Память e7@--> F[**Префронтальная кора**]
+ e1@{ animate: true, curve: linear }
+ e2@{ animate: true, curve: linear }
+ e3@{ animate: true, curve: linear }
+ e4@{ animate: true, curve: linear }
+ e5@{ animate: true, curve: linear }
+ e6@{ animate: true, curve: linear }
+ e7@{ animate: true, curve: linear }
+
+ subgraph Память
+ direction TB
+ short[**Кратковременная**] &lt;--> long[**Долговременная**]
+ end
 &lt;/pre>
 
 &lt;p style="margin-top: 0; margin-bottom: 25px; font-size: small; font-style: italic; text-align: right;">Элементы структуры мозга&lt;/p></description></item><item><title>Люди, которые пишут интересно</title><link>https://zavarov.com/people/</link><pubDate>Mon, 15 Sep 2025 15:17:01 +0300</pubDate><guid>https://zavarov.com/people/</guid><description>&lt;p>Хочу поделиться подборкой интернет-людей, которые интересно пишут на около продуктовые темы и которых полезно читать. Я часто возвращаюсь к тем или иным статьям из этого списка авторов, особенно в моменты поиска творческого вдохновения.&lt;/p>
