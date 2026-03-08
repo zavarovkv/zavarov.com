@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Константин Заваров</title><link>https://zavarov.com/</link><description>Recent content on Константин Заваров</description><generator>Hugo</generator><language>ru</language><copyright>Copyright © 2026, Konstantin Zavarov.</copyright><lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0300</lastBuildDate><atom:link href="https://zavarov.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Второй мозг: PARA × Obsidian × Granola × Claude</title><link>https://zavarov.com/second-brain/</link><pubDate>Sat, 07 Mar 2026 00:00:00 +0300</pubDate><guid>https://zavarov.com/second-brain/</guid><description>&lt;p>Несколько лет назад я &lt;a href="https://zavarov.com/zettelkasten/">организовывал&lt;/a> заметки по методу Zettelkasten в VS Code, с тех пор все поменялось, во многом из-за экспоненциального развития LLM и agentic AI. Хочу поделиться свежим стеком инструментов, которые отлично приживаются в условиях дефицита времени и интенсивной работы с информацией: &lt;span class="underline">PARA × Obsidian × Granola × Claude&lt;/span>.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Константин Заваров</title><link>https://zavarov.com/</link><description>Recent content on Константин Заваров</description><generator>Hugo</generator><language>ru</language><copyright>Copyright © 2026, Konstantin Zavarov.</copyright><lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0300</lastBuildDate><atom:link href="https://zavarov.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Второй мозг: PARA × Obsidian × Granola × Claude</title><link>https://zavarov.com/second-brain/</link><pubDate>Sat, 07 Mar 2026 00:00:00 +0300</pubDate><guid>https://zavarov.com/second-brain/</guid><description>&lt;p>Несколько лет назад я &lt;a href="https://zavarov.com/zettelkasten/">организовывал&lt;/a> заметки по методу Zettelkasten в VS Code, с тех пор все поменялось, во многом из-за экспоненциального развития LLM и agentic AI. Хочу поделиться свежим стеком инструментов, которые помогают снизить когнитивную нагрузку и не терять информацию в условиях дефицита времени: &lt;span class="underline">PARA × Obsidian × Granola × Claude&lt;/span>.&lt;/p>
 &lt;p>Статья называется «Второй мозг», а значит мы будем строить систему, напоминающую структуру мозга человека.&lt;/p>
 &lt;pre class="mermaid">
 graph LR
  S@{ shape: text, label: "Звук" }
  T@{ shape: text, label: "Текст" }
  I@{ shape: text, label: "Изображения" }
- S e1@--> A[**Слуховая кора**]
- T e2@--> B[**Зрительная кора**]
+ S e1@--> A[**Слуховая кора**&lt;br>
+ *Захватывает и обрабатывает звук*]
+ T e2@--> B[**Зрительная кора**&lt;br>
+ *Захватывает и обрабатывает визуальные образы*]
  I e3@--> B
- A e4@--> C[**Гиппокамп**]
+ A e4@--> C[**Гиппокамп**&lt;br>
+ *Маршрутизирует и индексирует информацию*]
  B e5@--> C
- C e6@--> Память
- Память e7@--> F[**Префронтальная кора**]
+ C e6@--> mem
+ mem e7@--> F[**Префронтальная кора**&lt;br>
+ *Анализ, планирование, принятие решений*]
  e1@{ animate: true, curve: linear }
  e2@{ animate: true, curve: linear }
  e3@{ animate: true, curve: linear }
@@ -20,7 +24,7 @@ graph LR
  e6@{ animate: true, curve: linear }
  e7@{ animate: true, curve: linear }
 
- subgraph Память
+ subgraph mem[**Память**]
  direction TB
  short[**Кратковременная**] &lt;--> long[**Долговременная**]
  end
