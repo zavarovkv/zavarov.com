@@ -176,7 +176,7 @@ telegram_post = 58
 
 [4] На основе статьи Марти Кагана о принятии продуктовых решений «Coaching – Decisions», опубликованной в блоге SVPG.
 
-[5] На основании статьи Arnold Modell «The Concept of Psychic Energy», опубликованной в научном журнале «Journal of the American Psychoanalytic Association». По моим предположениям именно этот человек первым ввел термин “Психическая энергия” (англ. – “Psychic Energy”).
+[5] На основании статьи Arnold Modell «The Concept of Psychic Energy», опубликованной в научном журнале «Journal of the American Psychoanalytic Association». По моим предположениям именно этот человек первым ввел термин «Психическая энергия» (англ. – «Psychic Energy»).
 
 [6] На основании бизнес-романа Денниса Баке «Человек решающий. Как построить организацию будущего, где решения принимает каждый». Замечательный небольшой рассказ о построении культуры в компании, где каждый человек принимает решения. Мне хочется назвать ее «Продуктовая культура».
 
@@ -186,7 +186,7 @@ telegram_post = 58
 
 [9] На основе книги нобелевского лауреата Дэниэла Канемана «Думай медленно... решай быстро».
 
-[10] На основе главы “The Rise of Worse is Better” из книги “Lisp: Good News, Bad News, How to Win Big”, Richard P. Gabriel.
+[10] На основе главы «The Rise of Worse is Better» из книги «Lisp: Good News, Bad News, How to Win Big», Richard P. Gabriel.
 
 [11] Имеется в виду статья «From Managing Products To Managing Product Managers» от соавтора «Empowered: Ordinary People, Extraordinary Products», Chris Jones, опубликованная в блоге SVPG.
 
