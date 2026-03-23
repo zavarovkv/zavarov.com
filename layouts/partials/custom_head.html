@@ -492,6 +492,64 @@
     }
   }
 
+  /* Telegram CTA block */
+  .tg-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 30px 0;
+    padding: 20px 24px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  .tg-cta-title {
+    font-weight: 600;
+    font-size: 0.95em;
+    color: var(--heading-color);
+    margin-bottom: 4px;
+  }
+
+  .tg-cta-description {
+    font-size: 0.85em;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .tg-cta-button {
+    flex-shrink: 0;
+    padding: 8px 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #fff !important;
+    background: #2AABEE;
+    border: none !important;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+
+  .tg-cta-button:hover {
+    background: #229ED9;
+    color: #fff !important;
+    border: none !important;
+  }
+
+  .tg-cta-button:visited {
+    color: #fff !important;
+    border: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .tg-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+  }
+
   /* Plug divider */
   .plug::after {
     content: "* * *";
