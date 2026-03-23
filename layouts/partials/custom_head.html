@@ -117,7 +117,7 @@
   .header-container {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 26px;
     flex-wrap: wrap;
   }
 
@@ -401,11 +401,6 @@
       color: #d04000;
     }
 
-    /* Hide overlay div — no longer needed */
-    .mobile-menu-overlay {
-      display: none !important;
-    }
-
     /* Lock body scroll when menu is open */
     body.menu-open {
       overflow: hidden;
@@ -518,14 +513,17 @@
     line-height: 1.4;
   }
 
-  .tg-cta-button {
+  .tg-cta-button,
+  .tg-cta-button:link,
+  .tg-cta-button:visited {
     flex-shrink: 0;
     padding: 8px 20px;
     font-size: 0.85em;
     font-weight: 600;
-    color: #fff !important;
+    color: #fff;
     background: #2AABEE;
-    border: none !important;
+    border: none;
+    border-bottom: none;
     border-radius: 6px;
     white-space: nowrap;
     transition: background 0.2s ease;
@@ -533,13 +531,9 @@
 
   .tg-cta-button:hover {
     background: #229ED9;
-    color: #fff !important;
-    border: none !important;
-  }
-
-  .tg-cta-button:visited {
-    color: #fff !important;
-    border: none !important;
+    color: #fff;
+    border: none;
+    border-bottom: none;
   }
 
   @media (max-width: 768px) {
@@ -572,13 +566,12 @@
   }
 
   /* Remove underline from Likely buttons */
-  .likely a {
-    border-bottom: none !important;
-    text-decoration: none !important;
-  }
-
+  .likely a,
+  .likely a:link,
+  .likely a:visited,
   .likely a:hover {
-    border-bottom: none !important;
+    border-bottom: none;
+    text-decoration: none;
   }
 
   /* Underline style with SVG background */
@@ -655,7 +648,9 @@
     background-color: #d04000;
   }
 
-  .button {
+  .button,
+  .button:link,
+  .button:visited {
     display: inline-block;
     padding: 12px 24px;
     font-size: 16px;
@@ -663,8 +658,9 @@
     line-height: 22px;
     background: linear-gradient(180deg, #f88040 0%, #e04040 100%);
     border: 0;
+    border-bottom: none;
     border-radius: 4px;
-    color: #fff !important;
+    color: #fff;
     cursor: pointer;
     transition: .33s ease-out;
     text-decoration: none;
@@ -672,7 +668,8 @@
 
   .button:hover {
     box-shadow: inset 0 0 100px rgba(0, 0, 0, .08);
-    color: #fff !important;
+    color: #fff;
+    border-bottom: none;
     transition: none;
   }
 
@@ -683,25 +680,27 @@
     margin-top: 6px;
   }
 
-  .social-icon {
-    color: #999 !important;
-    border-bottom: none !important;
+  .social-icon,
+  .social-icon:link,
+  .social-icon:visited {
+    color: #999;
+    border-bottom: none;
     transition: color 0.2s ease;
   }
 
   .social-icon:hover {
-    border-bottom: none !important;
+    border-bottom: none;
   }
 
   .social-telegram:hover {
-    color: #26A5E4 !important;
+    color: #26A5E4;
   }
 
   .social-linkedin:hover {
-    color: #0A66C2 !important;
+    color: #0A66C2;
   }
 
   .social-github:hover {
-    color: #333 !important;
+    color: #333;
   }
 </style>
