@@ -15,6 +15,7 @@
   </script>
   <!-- /Yandex.Metrika counter -->
   
+  {{ if .Params.math }}
   <!-- KaTeX for math formulas (local files) -->
   <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}">
   <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
@@ -32,10 +33,13 @@
       });
     });
   </script>
+  {{ end }}
   
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preload" href="{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-300.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-600.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   {{- partial "favicon.html" . -}}
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 
