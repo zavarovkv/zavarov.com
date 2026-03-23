@@ -17,21 +17,21 @@
   /* Override any dark theme styles */
   @media (prefers-color-scheme: dark) {
     :root {
-      --background-color: #fff !important;
-      --heading-color: #222 !important;
-      --text-color: #444 !important;
-      --link-color: #3273dc !important;
-      --visited-color: #8b6fcb !important;
-      --blockquote-color: #222 !important;
+      --background-color: #fff;
+      --heading-color: #222;
+      --text-color: #444;
+      --link-color: #3273dc;
+      --visited-color: #8b6fcb;
+      --blockquote-color: #222;
     }
-    
+
     body {
-      background-color: #fff !important;
-      color: #444 !important;
+      background-color: #fff;
+      color: #444;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
-      color: #222 !important;
+      color: #222;
     }
   }
 
@@ -128,35 +128,37 @@
   }
 
   /* Avatar next to title */
-  .title {
+  .title,
+  .title:link,
+  .title:visited {
     display: flex;
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
-    border-bottom: none !important;
+    border-bottom: none;
   }
 
   .title .title-text {
     font-size: 0.9rem;
     font-weight: bold;
-    color: #0060a0 !important;
+    color: #0060a0;
     border-bottom: 1px solid;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:link .title-text,
   .title:active .title-text {
-    color: #0060a0 !important;
+    color: #0060a0;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:visited .title-text {
-    color: #0060a0 !important;
+    color: #0060a0;
     border-bottom-color: rgba(0, 96, 160, 0.2);
   }
 
   .title:hover .title-text {
-    color: #d04000 !important;
+    color: #d04000;
     border-bottom-color: rgba(208, 64, 0, 0.2);
   }
 
@@ -166,13 +168,13 @@
   }
 
   .title-selected .title-text {
-    border-bottom: none !important;
-    color: #0060a0 !important;
+    border-bottom: none;
+    color: #0060a0;
   }
 
   .title-selected:hover .title-text {
-    color: #0060a0 !important;
-    border-bottom: none !important;
+    color: #0060a0;
+    border-bottom: none;
   }
 
   .title-avatar-container {
@@ -228,7 +230,7 @@
   /* Ensure h1 has proper margin-bottom */
   main h1,
   article h1 {
-    margin-bottom: 35px !important;
+    margin-bottom: 35px;
   }
 
   .post-meta-inline {
@@ -366,7 +368,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background-color: #fff !important;
+      background-color: #fff;
       flex-direction: column;
       align-items: stretch;
       padding: 80px 0 20px;
@@ -390,11 +392,11 @@
       font-size: 1.1rem;
       font-weight: 400;
       color: var(--heading-color);
-      border-bottom: 1px solid #e5e5e5 !important;
+      border-bottom: 1px solid #e5e5e5;
     }
 
     .main-nav a:first-child {
-      border-top: 1px solid #e5e5e5 !important;
+      border-top: 1px solid #e5e5e5;
     }
 
     .main-nav a:hover {
@@ -408,10 +410,12 @@
   }
 
   /* Selected navigation link */
-  .link-selected {
-    color: #d04000 !important;
-    font-weight: bold !important;
-    border-bottom: none !important;
+  .link-selected,
+  .link-selected:link,
+  .link-selected:visited {
+    color: #d04000;
+    font-weight: bold;
+    border-bottom: none;
     cursor: default;
   }
 
@@ -423,11 +427,13 @@
     margin-bottom: 1.5em;
   }
 
-  .tag-filter {
+  .tag-filter,
+  .tag-filter:link,
+  .tag-filter:visited {
     font-size: 0.85em;
-    color: #556677 !important;
+    color: #556677;
     border: 1px solid #ddd;
-    border-bottom: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd;
     border-radius: 3px;
     padding: 2px 10px;
     font-weight: normal;
@@ -435,17 +441,13 @@
   }
 
   .tag-filter:hover {
-    color: #d04000 !important;
-    border-color: #d04000 !important;
-  }
-
-  .tag-filter:visited {
-    color: #556677 !important;
+    color: #d04000;
+    border-color: #d04000;
   }
 
   .tag-filter.active {
-    color: #d04000 !important;
-    border-color: #d04000 !important;
+    color: #d04000;
+    border-color: #d04000;
   }
 
   /* Posts grouped by tags in 2 columns */
