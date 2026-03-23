@@ -103,18 +103,16 @@
         return;
       }
       
-      var overlay = document.querySelector('.mobile-menu-overlay');
-      
       function closeMenu() {
         nav.classList.remove('active');
         toggle.classList.remove('active');
-        if (overlay) overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
       }
-      
+
       function openMenu() {
         nav.classList.add('active');
         toggle.classList.add('active');
-        if (overlay) overlay.classList.add('active');
+        document.body.classList.add('menu-open');
       }
       
       toggle.addEventListener('click', function() {
@@ -124,11 +122,6 @@
           openMenu();
         }
       });
-      
-      // Close menu when clicking on overlay
-      if (overlay) {
-        overlay.addEventListener('click', closeMenu);
-      }
       
       // Close menu when clicking on a link
       var navLinks = nav.querySelectorAll('a');
