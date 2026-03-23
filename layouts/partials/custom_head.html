@@ -405,6 +405,12 @@
       color: #d04000;
     }
 
+    .main-nav .link-selected,
+    .main-nav .link-selected:link,
+    .main-nav .link-selected:visited {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
     /* Lock body scroll when menu is open */
     body.menu-open {
       overflow: hidden;
@@ -558,9 +564,11 @@
   }
 </style>
 
-<!-- Likely social sharing buttons -->
+<!-- Likely social sharing buttons (only on blog posts) -->
+{{ if eq .Type "blog" }}
 <link rel="stylesheet" href="{{ "likely/likely.css" | relURL }}">
 <script src="{{ "likely/likely.js" | relURL }}"></script>
+{{ end }}
 
 <style>
   /* Likely social buttons spacing */

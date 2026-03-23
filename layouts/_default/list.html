@@ -1,5 +1,5 @@
 {{ define "main" }}
-<content>
+<article>
   {{/* Получаем все посты блога (без скрытых) */}}
   {{ $blogSection := site.GetPage "/blog" }}
   {{ $allPosts := where $blogSection.Pages ".Params.hidden" "ne" true }}
@@ -92,5 +92,5 @@
       {{ end }}
     </div>
   </div>
-</content>
+</article>
 {{ end }}

@@ -2,9 +2,9 @@
   {{ if eq .Type "blog" }}
     <h1>{{ .Title }}</h1>
 
-    <content>
+    <article>
       {{ .Content }}
-    </content>
+    </article>
 
     {{/* Format date: full date if less than 1 year old, year only if older */}}
     {{- $now := now -}}
@@ -56,8 +56,8 @@
 
   {{ else }}
     <h1>{{ .Title }}</h1>
-    <content>
+    <article>
       {{ .Content }}
-    </content>
+    </article>
   {{ end }}
 {{ end }}
