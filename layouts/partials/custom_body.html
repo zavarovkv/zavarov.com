@@ -107,12 +107,15 @@
         nav.classList.remove('active');
         toggle.classList.remove('active');
         document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
       }
 
       function openMenu() {
+        window.scrollTo(0, 0);
         nav.classList.add('active');
         toggle.classList.add('active');
         document.body.classList.add('menu-open');
+        document.documentElement.classList.add('menu-open');
       }
       
       toggle.addEventListener('click', function() {
