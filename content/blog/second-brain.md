@@ -53,7 +53,7 @@ graph LR
 В 2025 году на GitHub создано [121 миллион новых 
 репозиториев](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) — рекорд за всю историю платформы.
 
- <img loading="lazy" src="/images/octoverse-genai-projects.png" alt="GitHub Octoverse: рост репозиториев на GitHub">
+ <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub">
 
 {{< caption >}}Количество репозиториев на GitHub{{< /caption >}} 
 

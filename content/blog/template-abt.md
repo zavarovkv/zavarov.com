@@ -10,7 +10,7 @@ categories = ["Метрики и аналитика"]
 
 <a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Скачать шаблон</a>
 
-<img loading="lazy" src="/images/template-abt.png" alt="Шаблон дизайна A/B-теста">
+<img loading="lazy" src="/images/template-abt.webp" alt="Шаблон дизайна A/B-теста">
 
 ## Что внутри
 
