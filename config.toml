@@ -14,6 +14,10 @@ languageCode = "ru"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
+# Output formats: add JSON feed for AI crawlers
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 # Sitemap configuration
 [sitemap]
   changefreq = "monthly"

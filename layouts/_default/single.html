@@ -25,7 +25,7 @@
     {{- end -}}
 
     <p class="post-meta-inline">
-      <span class="post-date">{{ $dateStr }}</span>
+      <time datetime="{{ .Date.Format "2006-01-02" }}" class="post-date">{{ $dateStr }}</time>
     </p>
 
     {{/* Social sharing buttons */}}
