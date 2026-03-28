@@ -14,9 +14,19 @@ languageCode = "ru"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
-# Output formats: add JSON feed for AI crawlers
+# Custom output format for llms.txt
+[mediaTypes."text/plain"]
+  suffixes = ["txt"]
+
+[outputFormats.LLMS]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  notAlternative = true
+
+# Output formats: add JSON feed and llms.txt for AI crawlers
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "LLMS"]
 
 # Sitemap configuration
 [sitemap]

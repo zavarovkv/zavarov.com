@@ -30,19 +30,58 @@ Automated via GitHub Actions — every push to `main` builds and deploys to GitH
 ## Project Structure
 
 ```
-content/          Blog posts (Markdown + TOML front matter)
-layouts/          Custom template overrides
-  partials/       Header, footer, styles, SEO, structured data
-  shortcodes/     Custom shortcodes (plug, div)
+content/              Blog posts (Markdown + TOML front matter)
+layouts/
+  _default/
+    baseof.html       Base HTML (analytics, KaTeX, scroll-to-top)
+    single.html       Blog post template (date, sharing, Telegram comments)
+    list.html         Blog listing grouped by categories (2-column layout)
+    index.json        JSON Feed template (auto-generated)
+    sitemap.xml       Custom sitemap with per-page priorities
+    home.llms.txt     LLM-friendly content index (auto-generated)
+  partials/
+    header.html       Header with dual-state GIF avatar
+    style.html        Main inlined CSS (light theme only)
+    custom_head.html  Additional CSS (header, avatar, mobile menu, social)
+    custom_body.html  JS (Likely, external links, nav, mobile menu, Yoda easter egg)
+    seo_tags.html     Meta tags (OG, Twitter Card, robots, canonical)
+    structured_data.html  JSON-LD schemas (BlogPosting, Person, BreadcrumbList)
+    og-image.html     Dynamic OG image generation (1200x630)
+  shortcodes/
+    plug.html         Divider shortcode
 static/
-  fonts/          Inter font family (WOFF2)
-  katex/          Math rendering (local KaTeX)
-  likely/         Social sharing buttons
-  images/         Avatars, favicon, OG image
+  fonts/              Inter font family (WOFF2, preloaded)
+  katex/              Math rendering (local KaTeX)
+  likely/             Social sharing buttons
+  images/             Avatars, favicon, OG base image
 themes/
-  hugo-bearblog/  Base theme (git submodule)
-config.toml       Site configuration
+  hugo-bearblog/      Base theme (git submodule)
+config.toml           Site configuration
 ```
+
+## SEO & AI Optimization
+
+- **Structured data**: BlogPosting, Person, WebSite, BreadcrumbList (JSON-LD)
+- **Meta tags**: Open Graph, Twitter Card, canonical, robots directives
+- **Sitemap**: Custom template with differentiated priorities (home 1.0, sections 0.8, posts 0.7)
+- **JSON Feed**: Auto-generated at `/index.json` for AI crawlers
+- **llms.txt**: Auto-generated at `/llms.txt` — LLM-friendly site index with all blog posts
+- **Semantic HTML**: `<article>`, `<time datetime>`, `<nav>`, `<main>`, `<header>`, `<footer>`
+- **OG images**: Dynamically generated per page with title overlay
+- **RSS**: Feed autodiscovery at `/index.xml`
+
+## Output Formats
+
+Hugo generates the following outputs on build:
+
+| File | Format | Purpose |
+|------|--------|---------|
+| `index.html` | HTML | Main site |
+| `index.xml` | RSS | Feed readers |
+| `index.json` | JSON Feed 1.1 | AI crawlers, programmatic access |
+| `llms.txt` | Plain text | LLM content discovery |
+| `sitemap.xml` | XML | Search engine crawling |
+| `robots.txt` | Plain text | Crawler directives |
 
 ## License
 
