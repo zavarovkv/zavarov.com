@@ -1,7 +1,7 @@
 <div class="header-container{{ if .IsHome }} home-page{{ end }}">
-  <a href="{{ "" | relURL }}" class="title">
+  <a href="{{ "" | relURL }}" class="title{{ if .IsHome }} title-selected{{ end }}"{{ if .IsHome }} aria-current="page"{{ end }}>
     <div class="title-avatar-container">
-      <img src="{{ "images/avatar1.webp" | relURL }}" alt="Константин Заваров" class="title-avatar title-avatar-default">
+      <img src="{{ "images/avatar1.webp" | relURL }}" alt="{{ .Site.Params.authorName | default .Site.Params.author }}" class="title-avatar title-avatar-default">
       <img src="{{ "images/avatar2.webp" | relURL }}" alt="" class="title-avatar title-avatar-hover">
     </div>
     <span class="title-text"><span class="title-first-name">Константин </span><span class="title-last-name">Заваров</span></span>

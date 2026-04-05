@@ -8,20 +8,23 @@
   {{- $subtitle := "" -}}
   {{- $path := "" -}}
 
+  {{- $authorName := .Site.Params.authorName | default .Site.Params.author -}}
+  {{- $attribution := printf "zavarov.com · %s" $authorName -}}
+
   {{- if .IsPage -}}
     {{/* Blog post: title + attribution */}}
     {{- $title = .Title -}}
-    {{- $subtitle = "zavarov.com · Константин Заваров" -}}
+    {{- $subtitle = $attribution -}}
     {{- $path = printf "%sog.png" .RelPermalink -}}
   {{- else if .IsHome -}}
     {{/* Homepage */}}
-    {{- $title = "Константин Заваров" -}}
+    {{- $title = $authorName -}}
     {{- $subtitle = "Личный блог о продакт-менеджменте" -}}
     {{- $path = "og.png" -}}
   {{- else if .IsSection -}}
     {{/* Section pages (e.g. /blog/) */}}
     {{- $title = (.Title | default .Site.Title) -}}
-    {{- $subtitle = "zavarov.com · Константин Заваров" -}}
+    {{- $subtitle = $attribution -}}
     {{- $path = printf "%sog.png" .RelPermalink -}}
   {{- end -}}
 

@@ -34,6 +34,7 @@
   }
 }
 </script>
+{{ if eq .Section "blog" }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,11 +55,13 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": {{ .Title | jsonify }}
+      "name": {{ .Title | jsonify }},
+      "item": {{ .Permalink | jsonify }}
     }
   ]
 }
 </script>
+{{ end }}
 {{ else if .IsHome }}
 <script type="application/ld+json">
 {
@@ -82,7 +85,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Константин Заваров",
+  "name": {{ (.Site.Params.authorName | default .Site.Params.author) | jsonify }},
   "url": {{ .Site.BaseURL | jsonify }},
   "jobTitle": "Head of Product",
   "sameAs": [

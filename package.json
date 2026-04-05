@@ -1,4 +1,10 @@
 {
+  "name": "zavarov-com",
+  "private": true,
+  "description": "Dev-only source for static/likely/ assets. Hugo does not use npm at build time.",
+  "scripts": {
+    "update-likely": "npm install && cp node_modules/ilyabirman-likely/release/likely.js node_modules/ilyabirman-likely/release/likely.css static/likely/"
+  },
   "devDependencies": {
     "ilyabirman-likely": "^3.2.0"
   }
