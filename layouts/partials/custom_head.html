@@ -9,30 +9,32 @@
 <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}"  />
 
 <style>
-  /* Force light theme - disable dark mode */
-  :root {
-    color-scheme: light only;
+  /* Color scheme — driven by [data-theme] on <html>, set by inline script in <head> */
+  :root { color-scheme: light; }
+  [data-theme="dark"] { color-scheme: dark; }
+
+  /* Dark theme palette (light palette lives in style.html :root) */
+  [data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --heading-color: #e8e8e8;
+    --text-color: #c7ccd1;
+    --link-color: #6ab0e6;
+    --visited-color: #b09ce0;
+    --blockquote-color: #e8e8e8;
   }
-  
-  /* Override any dark theme styles */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background-color: #fff;
-      --heading-color: #222;
-      --text-color: #444;
-      --link-color: #0060a0;
-      --visited-color: #8b6fcb;
-      --blockquote-color: #222;
-    }
 
-    body {
-      background-color: #fff;
-      color: #444;
-    }
+  [data-theme="dark"] body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 
-    h1, h2, h3, h4, h5, h6 {
-      color: #222;
-    }
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6 {
+    color: var(--heading-color);
   }
 
   /* Quote style (Stratechery-inspired) */
@@ -46,6 +48,11 @@
     font-size: 1em;
     color: var(--text-color);
     quotes: none;
+  }
+
+  [data-theme="dark"] q {
+    background-color: #252018;
+    border-left-color: #e8e8e8;
   }
 
   /* Lighter body text */
@@ -83,6 +90,19 @@
   a:hover {
     color: #d04000;
     border-bottom-color: rgba(208, 64, 0, 0.2);
+  }
+
+  /* Dark theme link colors */
+  [data-theme="dark"] a:link,
+  [data-theme="dark"] a:active,
+  [data-theme="dark"] a:visited {
+    color: #6ab0e6;
+    border-bottom-color: rgba(106, 176, 230, 0.25);
+  }
+
+  [data-theme="dark"] a:hover {
+    color: #ff7a40;
+    border-bottom-color: rgba(255, 122, 64, 0.25);
   }
 
   /* Ensure bold text inside links inherits link colors */
@@ -158,6 +178,18 @@
     border-bottom-color: rgba(208, 64, 0, 0.2);
   }
 
+  [data-theme="dark"] .title .title-text,
+  [data-theme="dark"] .title:link .title-text,
+  [data-theme="dark"] .title:visited .title-text {
+    color: #6ab0e6;
+    border-bottom-color: rgba(106, 176, 230, 0.25);
+  }
+
+  [data-theme="dark"] .title:hover .title-text {
+    color: #ff7a40;
+    border-bottom-color: rgba(255, 122, 64, 0.25);
+  }
+
   /* Selected title (on home page) */
   .title-selected {
     cursor: default;
@@ -171,6 +203,11 @@
   .title-selected:hover .title-text {
     color: #0060a0;
     border-bottom: none;
+  }
+
+  [data-theme="dark"] .title-selected .title-text,
+  [data-theme="dark"] .title-selected:hover .title-text {
+    color: #6ab0e6;
   }
 
   .title-avatar-container {
@@ -211,6 +248,14 @@
   }
 
   .title-avatar-container:hover .title-avatar-hover {
+    opacity: 1;
+  }
+
+  /* Dark theme: always show hover avatar (yellow variant) */
+  [data-theme="dark"] .title-avatar-default {
+    opacity: 0;
+  }
+  [data-theme="dark"] .title-avatar-hover {
     opacity: 1;
   }
 
@@ -255,6 +300,16 @@
 
   .post-tags a:hover {
     color: #d04000;
+  }
+
+  [data-theme="dark"] .post-tags,
+  [data-theme="dark"] .post-tags a,
+  [data-theme="dark"] .post-tags a:visited {
+    color: #8a98a6;
+  }
+
+  [data-theme="dark"] .post-tags a:hover {
+    color: #ff7a40;
   }
 
   /* Extra space after list items in article content */
@@ -374,7 +429,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #fff;
+      background-color: var(--background-color);
       flex-direction: column;
       align-items: stretch;
       padding: 80px 0 20px;
@@ -403,18 +458,36 @@
       border-bottom: 1px solid #e5e5e5;
     }
 
+    [data-theme="dark"] .main-nav a {
+      border-bottom-color: #2a2a2a;
+    }
+
     .main-nav a:first-child {
       border-top: 1px solid #e5e5e5;
+    }
+
+    [data-theme="dark"] .main-nav a:first-child {
+      border-top-color: #2a2a2a;
     }
 
     .main-nav a:hover {
       color: #d04000;
     }
 
+    [data-theme="dark"] .main-nav a:hover {
+      color: #ff7a40;
+    }
+
     .main-nav .link-selected,
     .main-nav .link-selected:link,
     .main-nav .link-selected:visited {
       border-bottom: 1px solid #e5e5e5;
+    }
+
+    [data-theme="dark"] .main-nav .link-selected,
+    [data-theme="dark"] .main-nav .link-selected:link,
+    [data-theme="dark"] .main-nav .link-selected:visited {
+      border-bottom-color: #2a2a2a;
     }
 
     /* Lock scroll when menu is open */
@@ -439,6 +512,12 @@
     cursor: default;
   }
 
+  [data-theme="dark"] .link-selected,
+  [data-theme="dark"] .link-selected:link,
+  [data-theme="dark"] .link-selected:visited {
+    color: #ff7a40;
+  }
+
   /* Tags list on blog page */
   .tags-list {
     display: flex;
@@ -460,6 +539,13 @@
     cursor: pointer;
   }
 
+  [data-theme="dark"] .tag-filter,
+  [data-theme="dark"] .tag-filter:link,
+  [data-theme="dark"] .tag-filter:visited {
+    color: #8a98a6;
+    border-color: #333;
+  }
+
   .tag-filter:hover {
     color: #d04000;
     border-color: #d04000;
@@ -468,6 +554,12 @@
   .tag-filter.active {
     color: #d04000;
     border-color: #d04000;
+  }
+
+  [data-theme="dark"] .tag-filter:hover,
+  [data-theme="dark"] .tag-filter.active {
+    color: #ff7a40;
+    border-color: #ff7a40;
   }
 
   /* Posts grouped by tags in 2 columns */
@@ -521,6 +613,10 @@
     background: #f2f2f2;
   }
 
+  [data-theme="dark"] .tg-cta {
+    background: #252525;
+  }
+
   .tg-cta-title {
     font-weight: 600;
     font-size: 0.95em;
@@ -532,6 +628,10 @@
     font-size: 0.85em;
     color: #666;
     line-height: 1.4;
+  }
+
+  [data-theme="dark"] .tg-cta-description {
+    color: #9da2a6;
   }
 
   .tg-cta-button,
@@ -555,6 +655,15 @@
     color: #fff;
     border: none;
     border-bottom: none;
+  }
+
+  /* Keep Telegram button readable in dark mode (override [data-theme="dark"] a:link) */
+  [data-theme="dark"] .tg-cta-button,
+  [data-theme="dark"] .tg-cta-button:link,
+  [data-theme="dark"] .tg-cta-button:visited,
+  [data-theme="dark"] .tg-cta-button:hover {
+    color: #fff;
+    border-bottom-color: transparent;
   }
 
   @media (max-width: 768px) {
@@ -629,6 +738,12 @@
     justify-content: center;
   }
 
+  [data-theme="dark"] .scroll-to-top {
+    background: rgba(30, 30, 30, 0.95);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
   .scroll-to-top.visible {
     opacity: 1;
     visibility: visible;
@@ -671,6 +786,10 @@
     background-color: #d04000;
   }
 
+  [data-theme="dark"] .scroll-to-top:hover .scroll-to-top-arrow span {
+    background-color: #ff7a40;
+  }
+
   .button,
   .button:link,
   .button:visited {
@@ -696,11 +815,91 @@
     transition: none;
   }
 
+  /* Footer bar: social icons (left) + theme toggle (right) */
+  .footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .footer-copy {
+    margin-top: 10px;
+    color: #999;
+  }
+
   /* Social icons in footer */
   .social-icons {
     display: flex;
     gap: 12px;
-    margin-top: 6px;
+  }
+
+  /* Theme toggle button — grid cell lets both icons overlap in the same spot */
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #9da2a6;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.15s ease;
+  }
+
+  .theme-toggle:hover {
+    color: #F5B700; /* warm sun yellow */
+  }
+
+  [data-theme="dark"] .theme-toggle:hover {
+    color: #E4E8F0; /* cool silver for moon */
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.92);
+  }
+
+  /* Both icons occupy the same grid cell; active one is shown via transform/opacity */
+  .theme-toggle svg {
+    grid-area: 1 / 1;
+    transform-origin: center;
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.35s ease;
+    will-change: transform, opacity;
+  }
+
+  /* Show current-state icon: sun on light, moon on dark */
+  [data-theme="light"] .theme-toggle .theme-icon-light {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  [data-theme="light"] .theme-toggle .theme-icon-dark {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+  }
+  [data-theme="dark"] .theme-toggle .theme-icon-dark {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+  [data-theme="dark"] .theme-toggle .theme-icon-light {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+
+  /* Subtle hover flourish: sun tilts slightly, moon tilts the other way */
+  .theme-toggle:hover .theme-icon-light {
+    transform: rotate(15deg) scale(1);
+  }
+  .theme-toggle:hover .theme-icon-dark {
+    transform: rotate(-15deg) scale(1);
+  }
+  /* Keep the hidden icon hidden on hover */
+  [data-theme="light"] .theme-toggle:hover .theme-icon-dark {
+    transform: rotate(90deg) scale(0);
+  }
+  [data-theme="dark"] .theme-toggle:hover .theme-icon-light {
+    transform: rotate(-90deg) scale(0);
   }
 
   .social-icon,
@@ -715,25 +914,26 @@
     border-bottom: none;
   }
 
-  .social-telegram:hover {
-    color: #26A5E4;
+  .social-telegram:hover { color: #26A5E4; }
+  .social-linkedin:hover { color: #0A66C2; }
+  .social-github:hover   { color: #333; }
+  .social-email:hover    { color: #EA4335; }
+  .social-rss:hover      { color: #FF6600; }
+
+  /* Dark theme: keep rest state gray, override [data-theme="dark"] a:link inherit.
+     Hover keeps brand colors (GitHub flipped since #333 is invisible on dark bg). */
+  [data-theme="dark"] .social-icon,
+  [data-theme="dark"] .social-icon:link,
+  [data-theme="dark"] .social-icon:visited {
+    color: #9da2a6;
+    border-bottom: none;
   }
 
-  .social-linkedin:hover {
-    color: #0A66C2;
-  }
-
-  .social-github:hover {
-    color: #333;
-  }
-
-  .social-email:hover {
-    color: #EA4335;
-  }
-
-  .social-rss:hover {
-    color: #FF6600;
-  }
+  [data-theme="dark"] .social-telegram:hover { color: #26A5E4; }
+  [data-theme="dark"] .social-linkedin:hover { color: #0A66C2; }
+  [data-theme="dark"] .social-github:hover   { color: #f0f6fc; }
+  [data-theme="dark"] .social-email:hover    { color: #EA4335; }
+  [data-theme="dark"] .social-rss:hover      { color: #FF6600; }
 
   /* Keyboard focus styles */
   a:focus-visible,

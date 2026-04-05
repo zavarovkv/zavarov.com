@@ -2,6 +2,20 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 
 <head>
+  <!-- Theme init (must run before paint to prevent FOUC).
+       Default: follow prefers-color-scheme until user picks explicitly. -->
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        var resolved = (stored === 'light' || stored === 'dark')
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', resolved);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
