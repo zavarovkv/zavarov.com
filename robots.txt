@@ -1,2 +1,1 @@
-User-Agent: *
-Sitemap: https://zavarov.com/sitemap.xml
+User-agent: *
