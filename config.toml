@@ -14,6 +14,10 @@ languageCode = "ru"
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
+# Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"]
+
 # Custom output format for llms.txt
 [mediaTypes."text/plain"]
   suffixes = ["txt"]
@@ -28,15 +32,6 @@ enableRobotsTXT = true
 [outputs]
   home = ["HTML", "RSS", "JSON", "LLMS"]
 
-# Sitemap configuration
-[sitemap]
-  changefreq = "monthly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-# Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
-disableKinds = ["taxonomy"]
-ignoreErrors = ["error-disable-taxonomy"]
 [permalinks]
   blog = "/:slug/"
   categories = "/blog/:slug"

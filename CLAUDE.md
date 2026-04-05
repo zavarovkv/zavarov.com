@@ -24,11 +24,15 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - **Theme**: `themes/hugo-bearblog/` (submodule) — base theme is never modified directly
 - **Layout overrides**: `layouts/` contains all customizations over the base theme
   - `layouts/_default/baseof.html` — base HTML with Yandex.Metrika analytics, KaTeX math, scroll-to-top button
-  - `layouts/_default/list.html` — blog listing grouped by category
+  - `layouts/_default/list.html` — blog listing grouped by category (delegates column rendering to `posts-column.html`)
   - `layouts/_default/single.html` — individual post with date formatting, tags, Likely social sharing
+  - `layouts/_default/sitemap.xml` — custom sitemap with per-page priorities (home 1.0, sections 0.8, posts 0.7)
+  - `layouts/_default/_markup/render-link.html` — markdown render hook; external links automatically get `target="_blank" rel="noopener"` at build time
+  - `layouts/_default/_markup/render-image.html` — markdown render hook for images
   - `layouts/partials/style.html` — main inlined CSS (light theme only, dark mode disabled)
   - `layouts/partials/custom_head.html` — additional inlined CSS for header, avatar, mobile menu, social buttons
-  - `layouts/partials/custom_body.html` — JS: Likely init, external link handling, active nav highlighting, mobile menu, scroll-to-top
+  - `layouts/partials/custom_body.html` — JS: Likely init, active nav highlighting, mobile menu, scroll-to-top
+  - `layouts/partials/posts-column.html` — single column of grouped posts for the blog listing (used twice by `list.html`)
   - `layouts/partials/seo_tags.html` + `structured_data.html` — SEO meta tags and JSON-LD schemas
   - `layouts/partials/header.html` — header with dual-state GIF avatar (default + hover)
   - `layouts/shortcodes/plug.html` — "* * *" divider shortcode
@@ -37,9 +41,10 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 
 - Blog posts: `content/blog/*.md` with TOML front matter (`+++`)
 - Pages: `content/consultation.md`, `content/_index.md`
-- Front matter fields: `title`, `slug`, `date`, `description`, `tags`, `categories`
-- Posts are grouped by `categories` on the blog listing page
+- Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`
+- Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
 - URL pattern: `/:slug/` (configured in `config.toml` permalinks)
+- Text rule: never use the letter «ё» — always write «е» (its «её» → «ее», «еще» instead of «ещё»)
 
 ## Static Assets
 

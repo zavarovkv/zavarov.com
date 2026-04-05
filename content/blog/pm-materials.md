@@ -26,7 +26,7 @@ categories = ["Подборки"]
 - [«Спроси маму», Роберт Фитцпатрик](https://www.litres.ru/book/robert-fitcpatrik/sprosi-mamu-kak-obschatsya-s-klientami-i-podtverdit-prav-23963007/). Обязательная классика по подготовке к глубинным интервью. Есть как сторонники подхода описанного в книге, так и противники, но и те и другие ее читали и не остались равнодушными.
 - [«Running Lean: Iterate from Plan A to a Plan That Works», Ash Maurya](https://www.amazon.com/Running-Lean-Iterate-Plan-Works/dp/1098108779/)
 - [Видео «How to Talk to Users», Eric Migicovsky (Y Combinator)](https://www.youtube.com/watch?v=MT4Ig2uqjTc)
-- [Видео «ABCDХ-сегментация», Артём Азевич (Акселератор ФРИИ)](https://www.youtube.com/watch?v=LGMfr3he0lc)
+- [Видео «ABCDХ-сегментация», Артем Азевич (Акселератор ФРИИ)](https://www.youtube.com/watch?v=LGMfr3he0lc)
 - [Видео «Оценка рынка», Александр Скурихин (Акселератор ФРИИ, Яндекс)](https://www.youtube.com/watch?v=cPdp_nFW6YY)
 - [producthunt.com](https://www.producthunt.com/)
 

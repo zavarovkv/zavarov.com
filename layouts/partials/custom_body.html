@@ -4,20 +4,6 @@
     likely.initiate();
   }
 
-  // Add target="_blank" to external links in content (exclude same domain)
-  (function() {
-    var currentHost = window.location.hostname;
-    var contentLinks = document.querySelectorAll('main a[href^="http"], article a[href^="http"]');
-    contentLinks.forEach(function(link) {
-      var linkUrl = new URL(link.getAttribute('href'));
-      // Only add target="_blank" if link is to a different domain
-      if (linkUrl.hostname !== currentHost && !link.getAttribute('target')) {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener');
-      }
-    });
-  })();
-
   // Fix active navigation link highlighting
   (function() {
     function highlightActiveNav() {
@@ -144,13 +130,8 @@
   (function() {
     function initScrollToTop() {
       var scrollToTopBtn = document.querySelector('.scroll-to-top');
-      
-      if (!scrollToTopBtn) {
-        // Retry if button not found yet
-        setTimeout(initScrollToTop, 100);
-        return;
-      }
-      
+      if (!scrollToTopBtn) return;
+
       // Show/hide button based on scroll position
       function handleScroll() {
         var scrollY = window.pageYOffset || document.documentElement.scrollTop;

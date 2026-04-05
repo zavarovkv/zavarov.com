@@ -39,16 +39,20 @@ layouts/
     index.json        JSON Feed template (auto-generated)
     sitemap.xml       Custom sitemap with per-page priorities
     home.llms.txt     LLM-friendly content index (auto-generated)
+    _markup/
+      render-link.html   Render hook: external links get target="_blank" at build time
+      render-image.html  Render hook for images
   partials/
-    header.html       Header with dual-state GIF avatar
-    style.html        Main inlined CSS (light theme only)
-    custom_head.html  Additional CSS (header, avatar, mobile menu, social)
-    custom_body.html  JS (Likely, external links, nav, mobile menu, Yoda easter egg)
-    seo_tags.html     Meta tags (OG, Twitter Card, robots, canonical)
+    header.html         Header with dual-state GIF avatar
+    style.html          Main inlined CSS (light theme only)
+    custom_head.html    Additional CSS (header, avatar, mobile menu, social)
+    custom_body.html    JS (Likely, nav, mobile menu, scroll-to-top, Yoda easter egg)
+    posts-column.html   Single column of grouped posts for blog listing
+    seo_tags.html       Meta tags (OG, Twitter Card, robots, canonical)
     structured_data.html  JSON-LD schemas (BlogPosting, Person, BreadcrumbList)
-    og-image.html     Dynamic OG image generation (1200x630)
+    og-image.html       Dynamic OG image generation (1200x630)
   shortcodes/
-    plug.html         Divider shortcode
+    plug.html           Divider shortcode
 static/
   fonts/              Inter font family (WOFF2, preloaded)
   katex/              Math rendering (local KaTeX)
