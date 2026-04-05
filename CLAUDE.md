@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal blog (zavarov.com) built with Hugo, using the hugo-bearblog theme (git submodule). Content is in Russian, focused on Product Management topics.
+Personal blog (zavarov.com) built with Hugo. Layouts are fully self-contained in this repo (no theme dependency). Content is in Russian, focused on Product Management topics.
 
 ## Build & Development Commands
 
@@ -13,7 +13,7 @@ hugo server          # Local dev server with live reload
 hugo --minify        # Production build (outputs to /public)
 ```
 
-Hugo extended version is required. The theme is a git submodule — clone with `--recurse-submodules` or run `git submodule update --init`.
+Hugo extended version is required.
 
 ## Deployment
 
@@ -21,8 +21,10 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 
 ## Architecture
 
-- **Theme**: `themes/hugo-bearblog/` (submodule) — base theme is never modified directly
-- **Layout overrides**: `layouts/` contains all customizations over the base theme
+- **Layouts**: `layouts/` contains all templates — self-contained, no theme dependency
+  - `layouts/index.html` — homepage template (renders `content/_index.md`)
+  - `layouts/404.html` — 404 page
+  - `layouts/partials/favicon.html` — favicon link from `site.Params.favicon`
   - `layouts/_default/baseof.html` — base HTML with Yandex.Metrika analytics, KaTeX math, scroll-to-top button
   - `layouts/_default/list.html` — blog listing grouped by category (delegates column rendering to `posts-column.html`)
   - `layouts/_default/single.html` — individual post with date formatting, tags, Likely social sharing

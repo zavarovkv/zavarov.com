@@ -2,9 +2,6 @@
 # For GitHub Pages project site, include the repository path and trailing slash
 baseURL = "https://zavarov.com/"
 
-# The name of this wonderful theme ;-).
-theme = 'hugo-bearblog'
-
 # Basic metadata configuration for your blog.
 title = "Константин Заваров"
 author = "Konstantin Zavarov"

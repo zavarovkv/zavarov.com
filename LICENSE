@@ -12,8 +12,7 @@ This license applies to:
 - custom layouts and partials under `layouts/`
 - other original assets in this repository, except where explicitly stated otherwise.
 
-Third-party components:
-- The Hugo theme `hugo-bearblog` in `themes/hugo-bearblog/` is licensed under the MIT License.
-  See `themes/hugo-bearblog/LICENSE` for details.
+Note: Layout code was initially derived from the Bear Blog theme by Jan Raasch
+(https://github.com/janraasch/hugo-bearblog), which is MIT-licensed.
 
 

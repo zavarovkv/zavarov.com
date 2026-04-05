@@ -1,12 +1,11 @@
 # zavarov.com
 
-Personal blog by [Konstantin Zavarov](https://zavarov.com) about Product Management — built with [Hugo](https://gohugo.io) and the [Bear Blog](https://github.com/janraasch/hugo-bearblog) theme.
+Personal blog by [Konstantin Zavarov](https://zavarov.com) about Product Management — built with [Hugo](https://gohugo.io). Layouts are inspired by [Bear Blog](https://github.com/janraasch/hugo-bearblog) but fully self-contained (no theme dependency).
 
 ## Quick Start
 
 ```bash
-# Clone with theme submodule
-git clone --recurse-submodules https://github.com/zavarovkv/zavarov.com.git
+git clone https://github.com/zavarovkv/zavarov.com.git
 cd zavarov.com
 
 # Run local dev server
@@ -53,13 +52,13 @@ layouts/
     og-image.html       Dynamic OG image generation (1200x630)
   shortcodes/
     plug.html           Divider shortcode
+  index.html            Homepage template
+  404.html              404 page
 static/
   fonts/              Inter font family (WOFF2, preloaded)
   katex/              Math rendering (local KaTeX)
   likely/             Social sharing buttons
   images/             Avatars, favicon, OG base image
-themes/
-  hugo-bearblog/      Base theme (git submodule)
 config.toml           Site configuration
 ```
 
@@ -90,4 +89,4 @@ Hugo generates the following outputs on build:
 ## License
 
 All original content is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-The Hugo theme is licensed under the [MIT License](themes/hugo-bearblog/LICENSE).
+Layout code is licensed under [MIT](LICENSE).
