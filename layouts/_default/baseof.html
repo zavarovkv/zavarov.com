@@ -98,7 +98,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+      var mermaidTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'neutral';
+      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
       mermaid.run().then(function() {
         document.querySelectorAll('.mermaid').forEach(function(el) {
           el.style.visibility = 'visible';
@@ -108,13 +109,6 @@
   </script>
   {{ end }}
 
-  <!-- Scroll to top button -->
-  <button class="scroll-to-top" aria-label="Scroll to top">
-    <div class="scroll-to-top-arrow">
-      <span></span>
-      <span></span>
-    </div>
-  </button>
 </body>
 
 </html>

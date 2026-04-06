@@ -715,81 +715,6 @@
     margin: 0px;
   }
 
-  /* Scroll to top button */
-  .scroll-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    transform: translateY(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  [data-theme="dark"] .scroll-to-top {
-    background: rgba(30, 30, 30, 0.95);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .scroll-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .scroll-to-top:hover {
-    transform: translateY(-3px);
-  }
-
-  .scroll-to-top-arrow {
-    position: relative;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .scroll-to-top-arrow span {
-    width: 8px;
-    height: 2px;
-    background-color: var(--text-color);
-    border-radius: 1px;
-    transition: all 0.3s ease;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-
-  .scroll-to-top-arrow span:nth-child(1) {
-    transform: translate(-50%, -50%) rotate(-45deg) translateX(-2px) translateY(-2px);
-  }
-
-  .scroll-to-top-arrow span:nth-child(2) {
-    transform: translate(-50%, -50%) rotate(45deg) translateX(2px) translateY(-2px);
-  }
-
-  .scroll-to-top:hover .scroll-to-top-arrow span {
-    background-color: #d04000;
-  }
-
-  [data-theme="dark"] .scroll-to-top:hover .scroll-to-top-arrow span {
-    background-color: #ff7a40;
-  }
-
   .button,
   .button:link,
   .button:visited {
@@ -815,6 +740,14 @@
     transition: none;
   }
 
+  [data-theme="dark"] .button,
+  [data-theme="dark"] .button:link,
+  [data-theme="dark"] .button:visited,
+  [data-theme="dark"] .button:hover {
+    color: #fff;
+    border-bottom-color: transparent;
+  }
+
   /* Footer bar: social icons (left) + theme toggle (right) */
   .footer-bar {
     display: flex;
@@ -834,34 +767,96 @@
     gap: 12px;
   }
 
-  /* Theme toggle button — sunrise/sunset vertical swap */
+  /* Footer controls: lang + theme toggle grouped on the right */
+  .footer-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Language toggle — pill button */
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 28px;
+    padding: 0 10px;
+    background: transparent;
+    border: 1px solid #d0d0d0;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .lang-toggle {
+    border-color: #3a3a3a;
+  }
+
+  .lang-toggle:hover {
+    border-color: #999;
+  }
+
+  [data-theme="dark"] .lang-toggle:hover {
+    border-color: #666;
+  }
+
+  .lang-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .lang-label {
+    font-family: var(--font-main);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #9da2a6;
+    transition: color 0.2s ease;
+  }
+
+  .lang-toggle:hover .lang-label {
+    color: var(--heading-color);
+  }
+
+  [data-theme="dark"] .lang-toggle:hover .lang-label {
+    color: #e8e8e8;
+  }
+
+  /* Theme toggle button — circle with border */
   .theme-toggle {
     display: grid;
     place-items: center;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     padding: 0;
     background: transparent;
-    border: none;
+    border: 1px solid #d0d0d0;
+    border-radius: 50%;
     color: #9da2a6;
     cursor: pointer;
     overflow: hidden;
-    transition: color 0.2s ease, transform 0.15s ease;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .theme-toggle {
+    border-color: #3a3a3a;
   }
 
   .theme-toggle:hover {
-    color: #F5B700; /* warm sun yellow */
+    color: #F5B700;
+    border-color: #999;
   }
 
   [data-theme="dark"] .theme-toggle:hover {
-    color: #7EB6FF; /* soft sky blue for moon */
+    color: #7EB6FF;
+    border-color: #666;
   }
 
   .theme-toggle:active {
-    transform: scale(0.92);
+    transform: scale(0.95);
   }
 
-  /* Both icons occupy the same grid cell; sunrise/sunset via translateY */
+  /* Both icons occupy the same grid cell; swap via rotate + scale */
   .theme-toggle svg {
     grid-area: 1 / 1;
     transform-origin: center;
@@ -870,39 +865,33 @@
     will-change: transform, opacity;
   }
 
-  /* Active icon: centered and visible */
+  /* Active icon: visible, in place */
   [data-theme="light"] .theme-toggle .theme-icon-light {
-    transform: translateY(0) scale(1);
+    transform: rotate(0) scale(1);
     opacity: 1;
   }
-  /* Hidden icon: "set" below the horizon */
   [data-theme="light"] .theme-toggle .theme-icon-dark {
-    transform: translateY(14px) scale(0.6);
+    transform: rotate(90deg) scale(0);
     opacity: 0;
   }
   [data-theme="dark"] .theme-toggle .theme-icon-dark {
-    transform: translateY(0) scale(1);
+    transform: rotate(0) scale(1);
     opacity: 1;
   }
-  /* Hidden icon: "set" below the horizon */
   [data-theme="dark"] .theme-toggle .theme-icon-light {
-    transform: translateY(14px) scale(0.6);
+    transform: rotate(-90deg) scale(0);
     opacity: 0;
   }
 
-  /* Hover: active icon gently floats up; sun also spins slowly */
+  /* Hover: sun spins gently in place */
   [data-theme="light"] .theme-toggle:hover .theme-icon-light {
-    transform: translateY(-2px) scale(1) rotate(90deg);
+    transform: rotate(90deg) scale(1);
   }
-  [data-theme="dark"] .theme-toggle:hover .theme-icon-dark {
-    transform: translateY(-2px) scale(1);
-  }
-  /* Keep hidden icon hidden on hover */
   [data-theme="light"] .theme-toggle:hover .theme-icon-dark {
-    transform: translateY(14px) scale(0.6);
+    transform: rotate(90deg) scale(0);
   }
   [data-theme="dark"] .theme-toggle:hover .theme-icon-light {
-    transform: translateY(14px) scale(0.6);
+    transform: rotate(-90deg) scale(0);
   }
 
   .social-icon,
@@ -942,8 +931,22 @@
   @media (max-width: 768px) {
     .social-icons { gap: 16px; }
     .social-icon svg { width: 20px; height: 20px; }
-    .theme-toggle { width: 32px; height: 32px; }
-    .theme-toggle svg { width: 22px; height: 22px; }
+    .footer-controls { gap: 10px; }
+    .lang-toggle { height: 34px; padding: 0 12px; }
+    .lang-label { font-size: 0.7rem; }
+    .theme-toggle { width: 34px; height: 34px; }
+    .theme-toggle svg { width: 20px; height: 20px; }
+  }
+
+  /* Code blocks: invert background in dark theme for readability */
+  [data-theme="dark"] .highlight,
+  [data-theme="dark"] .highlight pre,
+  [data-theme="dark"] .highlight table {
+    background-color: #0d1117;
+  }
+
+  [data-theme="dark"] code {
+    background-color: #2a2a2a;
   }
 
   /* Keyboard focus styles */
