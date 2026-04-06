@@ -834,7 +834,7 @@
     gap: 12px;
   }
 
-  /* Theme toggle button — grid cell lets both icons overlap in the same spot */
+  /* Theme toggle button — sunrise/sunset vertical swap */
   .theme-toggle {
     display: grid;
     place-items: center;
@@ -845,6 +845,7 @@
     border: none;
     color: #9da2a6;
     cursor: pointer;
+    overflow: hidden;
     transition: color 0.2s ease, transform 0.15s ease;
   }
 
@@ -853,53 +854,55 @@
   }
 
   [data-theme="dark"] .theme-toggle:hover {
-    color: #E4E8F0; /* cool silver for moon */
+    color: #7EB6FF; /* soft sky blue for moon */
   }
 
   .theme-toggle:active {
     transform: scale(0.92);
   }
 
-  /* Both icons occupy the same grid cell; active one is shown via transform/opacity */
+  /* Both icons occupy the same grid cell; sunrise/sunset via translateY */
   .theme-toggle svg {
     grid-area: 1 / 1;
     transform-origin: center;
-    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-                opacity 0.35s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
+                opacity 0.3s ease;
     will-change: transform, opacity;
   }
 
-  /* Show current-state icon: sun on light, moon on dark */
+  /* Active icon: centered and visible */
   [data-theme="light"] .theme-toggle .theme-icon-light {
-    transform: rotate(0) scale(1);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
+  /* Hidden icon: "set" below the horizon */
   [data-theme="light"] .theme-toggle .theme-icon-dark {
-    transform: rotate(90deg) scale(0);
+    transform: translateY(14px) scale(0.6);
     opacity: 0;
   }
   [data-theme="dark"] .theme-toggle .theme-icon-dark {
-    transform: rotate(0) scale(1);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
+  /* Hidden icon: "set" below the horizon */
   [data-theme="dark"] .theme-toggle .theme-icon-light {
-    transform: rotate(-90deg) scale(0);
+    transform: translateY(14px) scale(0.6);
     opacity: 0;
   }
 
-  /* Subtle hover flourish: sun tilts slightly, moon tilts the other way */
-  .theme-toggle:hover .theme-icon-light {
-    transform: rotate(15deg) scale(1);
+  /* Hover: active icon gently floats up; sun also spins slowly */
+  [data-theme="light"] .theme-toggle:hover .theme-icon-light {
+    transform: translateY(-2px) scale(1) rotate(90deg);
   }
-  .theme-toggle:hover .theme-icon-dark {
-    transform: rotate(-15deg) scale(1);
+  [data-theme="dark"] .theme-toggle:hover .theme-icon-dark {
+    transform: translateY(-2px) scale(1);
   }
-  /* Keep the hidden icon hidden on hover */
+  /* Keep hidden icon hidden on hover */
   [data-theme="light"] .theme-toggle:hover .theme-icon-dark {
-    transform: rotate(90deg) scale(0);
+    transform: translateY(14px) scale(0.6);
   }
   [data-theme="dark"] .theme-toggle:hover .theme-icon-light {
-    transform: rotate(-90deg) scale(0);
+    transform: translateY(14px) scale(0.6);
   }
 
   .social-icon,
@@ -934,6 +937,14 @@
   [data-theme="dark"] .social-github:hover   { color: #f0f6fc; }
   [data-theme="dark"] .social-email:hover    { color: #EA4335; }
   [data-theme="dark"] .social-rss:hover      { color: #FF6600; }
+
+  /* Larger touch targets for mobile footer */
+  @media (max-width: 768px) {
+    .social-icons { gap: 16px; }
+    .social-icon svg { width: 20px; height: 20px; }
+    .theme-toggle { width: 32px; height: 32px; }
+    .theme-toggle svg { width: 22px; height: 22px; }
+  }
 
   /* Keyboard focus styles */
   a:focus-visible,
