@@ -21,11 +21,8 @@
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": {{ .Permalink | jsonify }}
-  }
-  {{ if .Params.categories }},
-  "keywords": {{ (delimit .Params.categories ", ") | jsonify }}
-  {{ end }}
-  ,
+  }{{ if .Params.categories }},
+  "keywords": {{ (delimit .Params.categories ", ") | jsonify }}{{ end }},
   "image": {
     "@type": "ImageObject",
     "url": {{ (printf "%sog.png" .Permalink) | jsonify }},

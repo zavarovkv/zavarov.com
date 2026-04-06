@@ -51,6 +51,49 @@
     }
   })();
 
+  // Language toggle (bi-state: ru ↔ en; visual only for now)
+  (function() {
+    var STORAGE_KEY = 'lang';
+    var TITLES = { ru: 'Switch to English', en: 'Переключить на русский' };
+
+    function initLangToggle() {
+      var btn = document.querySelector('.lang-toggle');
+      if (!btn) return;
+      var stored = null;
+      try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+      var lang = (stored === 'en') ? 'en' : 'ru';
+      btn.setAttribute('data-lang', lang);
+      btn.title = TITLES[lang];
+      btn.setAttribute('aria-label', TITLES[lang]);
+
+      btn.addEventListener('click', function() {
+        var next = btn.getAttribute('data-lang') === 'ru' ? 'en' : 'ru';
+        btn.setAttribute('data-lang', next);
+        btn.title = TITLES[next];
+        btn.setAttribute('aria-label', TITLES[next]);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+        // Flash sparkle gold when switching to EN
+        if (next === 'en') {
+          var sparkle = btn.querySelector('.lang-sparkle');
+          if (sparkle) {
+            sparkle.classList.add('sparkle-flash');
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                sparkle.classList.remove('sparkle-flash');
+              });
+            });
+          }
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLangToggle);
+    } else {
+      initLangToggle();
+    }
+  })();
+
   // Theme toggle (bi-state: light ↔ dark; follows system until first explicit click)
   (function() {
     var STORAGE_KEY = 'theme';
