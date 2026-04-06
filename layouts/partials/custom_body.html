@@ -75,6 +75,22 @@
       }
     }
 
+    // Rebuild Telegram Discussion widget with correct dark/light theme
+    function syncTelegramWidget() {
+      var container = document.getElementById('tg-comments');
+      if (!container) return;
+      var discussion = container.getAttribute('data-tg-discussion');
+      if (!discussion) return;
+      container.innerHTML = '';
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://telegram.org/js/telegram-widget.js?22';
+      s.setAttribute('data-telegram-discussion', discussion);
+      s.setAttribute('data-comments-limit', container.getAttribute('data-tg-limit') || '20');
+      if (currentTheme() === 'dark') s.setAttribute('data-dark', '1');
+      container.appendChild(s);
+    }
+
     // Follow system changes until user has made an explicit choice
     function onSystemChange() {
       if (storedChoice() === null) {
@@ -82,6 +98,7 @@
         var btn = document.querySelector('.theme-toggle');
         if (btn) btn.title = LABELS[currentTheme()];
         syncLikelyTheme();
+        syncTelegramWidget();
       }
     }
     if (mql.addEventListener) {
@@ -92,6 +109,7 @@
 
     function initThemeToggle() {
       syncLikelyTheme();
+      syncTelegramWidget();
       var btn = document.querySelector('.theme-toggle');
       if (!btn) return;
       btn.title = LABELS[currentTheme()];
@@ -101,6 +119,7 @@
         root.setAttribute('data-theme', next);
         btn.title = LABELS[next];
         syncLikelyTheme();
+        syncTelegramWidget();
       });
     }
 
