@@ -1,10 +1,10 @@
 # Konstantin Zavarov — https://zavarov.com/
 
-> Личный блог Константина Заварова. Автор — Константин Заваров, Head of Product в Ozon. Контент на русском языке.
+> Konstantin Zavarov's blog about product management. Автор — Konstantin Zavarov, Head of Product в Ozon. Контент на русском языке.
 
 ## Об авторе
 
-Константин Заваров — Head of Product в Ozon с 12+ годами опыта в IT. Ранее работал в Яндексе, Мегамаркете и Лаборатории Касперского. С 2021 по 2025 год вел курсы в Яндекс Практикуме. Ведет Telegram-канал «Код Продакта» (https://t.me/pmgen).
+Konstantin Zavarov — Head of Product в Ozon с 12+ годами опыта в IT. Ранее работал в Яндексе, Мегамаркете и Лаборатории Касперского. С 2021 по 2025 год вел курсы в Яндекс Практикуме. Ведет Telegram-канал «Код Продакта» (https://t.me/pmgen).
 
 ## Контакты
 
@@ -20,25 +20,25 @@
 - Консультация: https://zavarov.com/consultation/
 
 ## Статьи
-- [The Brand Age, Paul Graham](https://zavarov.com/en/brandage/): Reflections on Paul Graham's essay 'The Brand Age': why technological advantage is temporary and when betting on brand becomes a matter of survival.
-- [Product Strategy ≠ Template](https://zavarov.com/en/product-strategy/): There's no universal product strategy template — and there never will be. On what strategy can look like in practice, and why it's a living system, not a document.
+- [The Brand Age, Paul Graham](https://zavarov.com/en/brandage/): Reflections on Paul Graham's essay "The Brand Age": why technological advantage is finite, and when betting on brand becomes a matter of survival.
+- [Product Strategy ≠ Template](https://zavarov.com/en/product-strategy/): There's no universal product strategy template. On what strategy can look like in practice and why it's a living system, not a document.
 - [Second Brain: PARA × Obsidian × Granola × Claude](https://zavarov.com/en/second-brain/): How to build a knowledge management system from PARA, Obsidian, Granola, and Claude — and why it works like a second brain.
-- [People Who Write Interestingly](https://zavarov.com/en/people/): A curated list of authors who write compelling content on product-related topics and are worth coming back to.
-- [Prioritization Methods: ICE, RICE, DRICE](https://zavarov.com/en/drice/): A detailed breakdown of the ICE, RICE, and DRICE task prioritization methods: formulas, examples, and a comparison of approaches.
-- [10 Deadly Sins of a Beginning Product Manager](https://zavarov.com/en/10-evils/): 10 key mistakes beginner product managers make that hinder professional growth and consistent business performance.
+- [People Who Write Interestingly](https://zavarov.com/en/people/): A curated list of authors who write compelling content on product topics and are worth coming back to.
+- [Prioritization Methods: ICE, RICE, DRICE](https://zavarov.com/en/drice/): A detailed breakdown of ICE, RICE, and DRICE prioritization methods: formulas, examples, and a comparison of approaches.
+- [10 Deadly Sins of a Junior Product Manager](https://zavarov.com/en/10-evils/): 10 key mistakes junior product managers make that hinder professional growth and stable business results.
 - [Thinking Through Writing](https://zavarov.com/en/text/): How Amazon's document-centric culture develops critical thinking, and why the ability to work with text matters for product managers.
-- [Books and Materials for Product Managers](https://zavarov.com/en/pm-materials/): A curated list of the best books, courses, and materials for developing product skills. Regularly updated.
-- [The Evolution of Goal-Setting Frameworks: From OKR to NCT](https://zavarov.com/en/nct/): The evolution of goal-setting frameworks: from MBO and OKR to NCT — a framework by Ravi Mehta that could replace OKR.
-- [Product CEO: How a Product Manager Creates Meaning and Communicates Value](https://zavarov.com/en/pm-ceo/): How a product manager creates meaning and communicates the value of a product to the business, the team, and the users.
-- [Tools and Services for Product Managers](https://zavarov.com/en/pm-tools/): Sharing the tools I use in my work for building products, managing business processes, and handling personal tasks
-- [The Growth Dilemma of Educational Course Economics](https://zavarov.com/en/edtech/): Why the economics of educational courses don't scale well, and what the growth dilemma looks like for edTech companies in the Russian-speaking internet market.
+- [Books and Resources for Product Managers](https://zavarov.com/en/pm-materials/): A curated list of the best books, courses, and resources for developing product management skills. Regularly updated.
+- [The Evolution of Goal-Setting Frameworks: From OKR to NCT](https://zavarov.com/en/nct/): The evolution of goal-setting frameworks: from MBO and OKR to NCT — Ravi Mehta's framework that could replace OKR.
+- [CEO of the Product: How a Product Manager Creates Meaning and Communicates Value](https://zavarov.com/en/pm-ceo/): How a product manager creates meaning and communicates the value of a product to the business, the team, and users.
+- [Tools and Services for Product Managers](https://zavarov.com/en/pm-tools/): Sharing the tools I use for product development, business processes, and personal productivity
+- [The Growth Dilemma of Educational Course Economics](https://zavarov.com/en/edtech/): Why the economics of educational courses don't scale well, and what the growth dilemma looks like for edTech companies in the Russian-speaking market.
 - [Product Management Is Marketing Management](https://zavarov.com/en/kotler/): Why a product manager is essentially a marketing specialist, and how this understanding changes the approach to product management.
 - [Loyalty ≠ Satisfaction](https://zavarov.com/en/nps-csi/): Why loyalty and satisfaction are different concepts, and how to measure them correctly using NPS and CSI.
 - [On Leadership](https://zavarov.com/en/leader/): What leadership is, why it matters, and where to start if you want to develop the skill of positively influencing people.
 - [Calculating Classic, Rolling, and Full Retention in Python](https://zavarov.com/en/retention/): A walkthrough of how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve using Matplotlib.
 - [Chart Templates for Data Visualization](https://zavarov.com/en/template-diagrams/): A Google Sheets template with reference chart examples for visualizing product, business, and financial data.
-- [The Zettelkasten Note-Taking Method](https://zavarov.com/en/zettelkasten/): The increasingly popular note-taking method from the extraordinarily prolific German sociologist Niklas Luhmann.
-- [How to Run a Retrospective for a Large Team](https://zavarov.com/en/retrospective/): A detailed 8-step plan with timings for running an engaging retrospective for a large team (10+ people).
+- [The Zettelkasten Method of Note-Taking](https://zavarov.com/en/zettelkasten/): The increasingly popular note-taking method from the extraordinarily productive German sociologist Niklas Luhmann.
+- [How to Run a Retrospective for a Large Team](https://zavarov.com/en/retrospective/): A detailed 8-step plan with timings for running an engaging retrospective with a large team (10+ people).
 - [A/B Test Design Template](https://zavarov.com/en/template-abt/): A Google Sheets template for designing A/B tests: hypothesis formulation, sample size calculation, and experiment duration.
-- [ICE, RICE, DRICE Prioritization Framework Template](https://zavarov.com/en/template-rice/): A Google Sheets template for prioritizing product initiatives using the ICE, RICE, and DRICE methods.
-- [On the Certified Scrum Product Owner Certification](https://zavarov.com/en/cspo/): What to expect from CSPO training and certification beyond just another badge to collect.
+- [ICE, RICE, DRICE Prioritization Template](https://zavarov.com/en/template-rice/): A Google Sheets template for prioritizing product initiatives using the ICE, RICE, and DRICE methods.
+- [On the Certified Scrum Product Owner Certification](https://zavarov.com/en/cspo/): What to expect from CSPO training and certification beyond just another badge.

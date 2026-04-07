@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Roundups on Konstantin Zavarov</title><link>https://zavarov.com/en/blog/roundups/</link><description>Recent content in Roundups on Konstantin Zavarov</description><generator>Hugo</generator><language>en</language><copyright>Copyright © 2026, Konstantin Zavarov.</copyright><lastBuildDate>Tue, 02 Jul 2024 15:17:01 +0300</lastBuildDate><atom:link href="https://zavarov.com/en/blog/roundups/index.xml" rel="self" type="application/rss+xml"/><item><title>Tools and Services for Product Managers</title><link>https://zavarov.com/en/pm-tools/</link><pubDate>Tue, 02 Jul 2024 15:17:01 +0300</pubDate><guid>https://zavarov.com/en/pm-tools/</guid><description>&lt;p>I want to share the services and tools I use on a daily basis to get work done. Maybe you&amp;rsquo;ll discover something new and make your workflow a little more comfortable.&lt;/p>
+&lt;h2>Product Awareness and UX&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.producthunt.com/" target="_blank" rel="noopener noreferrer">ProductHunt&lt;/a> — the go-to resource for staying on top of the product landscape: new launches, updates, and the evolution of existing products.&lt;/li>
+&lt;li>&lt;a href="https://www.useronboard.com/" target="_blank" rel="noopener noreferrer">UserOnboard&lt;/a> — a library of detailed UX teardowns for popular services like Gmail, Instagram, Apple Music, Netflix, and more.&lt;/li>
+&lt;/ul>
+&lt;h2>Research and A/B Testing&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.statista.com/" target="_blank" rel="noopener noreferrer">Statista&lt;/a> — a knowledge base with up-to-date market analytics and research. A corporate account with access to detailed reports is great to have, but the free version still lets you view the basics.&lt;/li>
+&lt;li>&lt;a href="https://wordstat.yandex.com/" target="_blank" rel="noopener noreferrer">Yandex Wordstat&lt;/a> — useful for analyzing user search queries in the Russian-language internet segment.&lt;/li>
+&lt;li>&lt;a href="https://www.researchgate.net/" target="_blank" rel="noopener noreferrer">ResearchGate&lt;/a> — a massive library of academic papers on virtually any topic.&lt;/li>
+&lt;li>&lt;a href="https://www.evanmiller.org/ab-testing/" target="_blank" rel="noopener noreferrer">Evan&amp;rsquo;s Awesome A/B Tools&lt;/a> — one of the oldest and most popular online tools for planning and analyzing A/B tests: sample size estimation and experiment result evaluation.&lt;/li>
+&lt;li>&lt;a href="https://goodui.org/" target="_blank" rel="noopener noreferrer">GoodUI&lt;/a> — a pattern library featuring A/B tests and breakdowns of their results.&lt;/li>
+&lt;/ul>
+&lt;h2>Diagrams, Flowcharts, and Graphics&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://miro.com" target="_blank" rel="noopener noreferrer">Miro&lt;/a> — the de facto standard for visual collaboration.&lt;/li>
+&lt;li>&lt;a href="https://mermaid.js.org/" target="_blank" rel="noopener noreferrer">Mermaid&lt;/a> — a tool for generating diagrams from plain text (code). Integrates with many modern wiki systems: Notion, Google Docs, Confluence.&lt;/li>
+&lt;li>&lt;a href="https://www.drawio.com/" target="_blank" rel="noopener noreferrer">Draw.io&lt;/a> — a simple, user-friendly tool for creating more complex diagrams than Mermaid supports. Saves files directly to Google Drive and requires no registration or login.&lt;/li>
+&lt;li>&lt;a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Canva&lt;/a> — the best tool for creating visual assets; the free version is more than enough for most straightforward tasks.&lt;/li>
+&lt;li>&lt;a href="https://emojipedia.org/" target="_blank" rel="noopener noreferrer">Emojipedia&lt;/a> — an emoji reference for adding a touch of personality to requirements and task descriptions.&lt;/li>
+&lt;/ul>
+&lt;h2>Personal and Team Productivity&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://culturedcode.com/things/" target="_blank" rel="noopener noreferrer">Things&lt;/a> — a clean, beautifully designed to-do app for Mac and iOS with minimalist aesthetics and excellent typography, perfect for design perfectionists.&lt;/li>
+&lt;li>&lt;a href="https://ilyabirman.ru/typography-layout/" target="_blank" rel="noopener noreferrer">Ilya Birman&amp;rsquo;s Typography Layout&lt;/a> — a keyboard layout that makes it easy to type proper typographic characters and symbols quickly (✓≈≠₽x↓−&amp;quot;&amp;quot;). If you write a lot and care about how your text looks, give Birman&amp;rsquo;s layout a try — it&amp;rsquo;s a joy to use.&lt;/li>
+&lt;li>&lt;a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian&lt;/a> — a note-taking app built around Markdown (.md) files.&lt;/li>
+&lt;li>&lt;a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT&lt;/a> — a replacement for Google Search.&lt;/li>
+&lt;li>&lt;a href="https://google.com" target="_blank" rel="noopener noreferrer">Google Sheets, Slides, Colab&lt;/a> — the essential baseline toolkit for any product manager.&lt;/li>
+&lt;/ul>
+&lt;h2>Rapid MVP Development and Vibe Coding&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Cursor IDE&lt;/a> — a code editor on steroids that lets you build apps and services with minimal programming knowledge, incredibly fast.&lt;/li>
+&lt;li>&lt;a href="https://docs.github.com/en/pages" target="_blank" rel="noopener noreferrer">GitHub / GitHub Pages&lt;/a> — deploy static sites to production quickly and for free.&lt;/li>
+&lt;li>&lt;a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel&lt;/a> — deploy more complex services to production quickly and for free.&lt;/li>
+&lt;/ul></description></item></channel></rss>
