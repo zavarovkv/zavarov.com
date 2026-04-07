@@ -20,7 +20,7 @@
     {{/* Homepage */}}
     {{- $title = $authorName -}}
     {{- $subtitle = cond (eq .Language.Lang "en") "Personal blog about product management" "Личный блог о продакт-менеджменте" -}}
-    {{- $path = "og.png" -}}
+    {{- $path = printf "%sog.png" .RelPermalink -}}
   {{- else if .IsSection -}}
     {{/* Section pages (e.g. /blog/) */}}
     {{- $title = (.Title | default .Site.Title) -}}
