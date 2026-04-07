@@ -19,7 +19,7 @@
   {{- else if .IsHome -}}
     {{/* Homepage */}}
     {{- $title = $authorName -}}
-    {{- $subtitle = "Личный блог о продакт-менеджменте" -}}
+    {{- $subtitle = cond (eq .Language.Lang "en") "Personal blog about product management" "Личный блог о продакт-менеджменте" -}}
     {{- $path = "og.png" -}}
   {{- else if .IsSection -}}
     {{/* Section pages (e.g. /blog/) */}}

@@ -21,6 +21,9 @@
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 <meta property="og:locale" content="{{ if eq .Site.Language.Lang "en" }}en_US{{ else }}ru_RU{{ end }}" />
+{{- range .Translations }}
+<meta property="og:locale:alternate" content="{{ if eq .Language.Lang "en" }}en_US{{ else }}ru_RU{{ end }}" />
+{{- end }}
 
 <!-- OG Image -->
 {{- partial "og-image.html" . -}}

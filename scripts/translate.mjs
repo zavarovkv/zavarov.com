@@ -11,9 +11,28 @@
  *   node scripts/translate.mjs consultation.md             # pages too
  */
 
+import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile, stat, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
+
+/** Normalized SHA-256: collapse whitespace, trim, then hash. */
+function sourceHash(text) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  return createHash("sha256").update(normalized).digest("hex").slice(0, 12);
+}
+
+/** Read source_hash from EN file's TOML front matter. */
+function readStoredHash(content) {
+  const m = content.match(/^source_hash\s*=\s*"([a-f0-9]+)"/m);
+  return m ? m[1] : null;
+}
+
+/** Add or replace source_hash in translated file's front matter. */
+function addSourceHash(translated, hash) {
+  const stripped = translated.replace(/^source_hash\s*=\s*"[a-f0-9]+"\n/m, "");
+  return stripped.replace(/^\+\+\+\n/, `+++\nsource_hash = "${hash}"\n`);
+}
 
 const RU_DIR = "content/ru";
 const EN_DIR = "content/en";
@@ -69,10 +88,10 @@ async function main() {
 
     if (!forceAll) {
       try {
-        const ruStat = await stat(ruPath);
-        const enStat = await stat(enPath);
-        if (enStat.mtimeMs >= ruStat.mtimeMs) {
-          console.log(`  skip ${file} (up to date)`);
+        const ruContent = await readFile(ruPath, "utf-8");
+        const enContent = await readFile(enPath, "utf-8");
+        if (sourceHash(ruContent) === readStoredHash(enContent)) {
+          console.log(`  skip ${file} (unchanged)`);
           continue;
         }
       } catch {
@@ -115,7 +134,7 @@ async function main() {
         ],
       });
 
-      const translated = message.content[0].text;
+      const translated = addSourceHash(message.content[0].text, sourceHash(ruContent));
       await writeFile(enPath, translated, "utf-8");
 
       const inputTokens = message.usage.input_tokens;
