@@ -2,30 +2,30 @@
 title = "On the Certified Scrum Product Owner Certification"
 slug = "cspo"
 date = "2021-02-13T12:00:00+03:00"
-description = "What to expect from CSPO training and certification beyond just another badge to collect."
-categories = ["Саморазвитие"]
+description = "What to expect from CSPO training and certification beyond just another badge."
+categories = ["Self-Development"]
 +++
 
-In his book [Empowered: Ordinary People, Extraordinary Products](https://www.amazon.com/EMPOWERED-Ordinary-Extraordinary-Products-Silicon/dp/111969129X), Marty Cagan recommends that aspiring product managers get CSPO-certified early in their careers. I want to share what you can actually expect from this training and certification — beyond just another achievement to add to your profile (and a fairly pricey one at that).
+In his book [Empowered: Ordinary People, Extraordinary Products](https://www.amazon.com/EMPOWERED-Ordinary-Extraordinary-Products-Silicon/dp/111969129X), Marty Cagan recommends that aspiring product managers get CSPO training and certification early in their careers. I want to share what you can actually expect from this training — beyond just another badge to collect (and a fairly pricey one at that).
 
-The training runs for two full days. The first day covers agile and scrum fundamentals through group exercises, with a brief overview of other product development methodologies. For anyone just entering the profession, this day is genuinely valuable — it builds a deeper, more intentional understanding of scrum. That knowledge serves as a useful baseline for evaluating and comparing the processes at your own company or within your product.
+The training runs two full days. The first day covers the fundamentals of Agile and Scrum through group exercises, with a brief overview of other product development methodologies. For those just entering the profession, this day is genuinely valuable — it builds a deeper, more intentional understanding of Scrum. That knowledge is useful as a foundation for evaluating and comparing the processes at your own company or on your product.
 
-More experienced product managers will find the first day helpful for formalizing and structuring what they already know. Most of us work directly with development teams, and a fresh perspective can bring new energy and creative thinking to those relationships.
+More experienced product managers will find it helpful for formalizing and structuring what they already know. Most of us work directly with development teams, and a fresh perspective can spark new ideas around creativity and engagement within the team.
 
 <!--more-->
 
-The second day is more interesting, as the material focuses exclusively on the product owner role.
+The second day is more interesting, as the material focuses exclusively on the work of a product owner.
 
-A quick note: product owner is one of the defined roles in scrum. The person in this role is responsible for maximizing the value of the product — for users and for the business. That said, you'll sometimes come across the view online (even from fairly well-known product people) that a PO is essentially just a backlog ticket-shuffler. That's not accurate — but because every company has different development processes and organizational structures, the PO role can end up spread across multiple people. The result is that someone with the "PO" title might indeed end up doing little more than moving cards around in the backlog (while a colleague on the dev side shuffles JSON :).
+A quick note worth making: product owner is one of the roles in Scrum. The goal of the person in this role is to maximize the value of the product — for users and for the business. That said, you'll find opinions online (sometimes from fairly well-known product folks) that a PO does nothing but shuffle tasks around in the product backlog. That's not the case, of course. But since every company has different development processes and org structures, the PO role can get spread across multiple people — which means you might end up with someone officially called a PO who really does just move tickets around in the backlog (while their developer colleague moves JSON around :).
 
-The second day covers practices for defining product goals and product vision, the lean startup concept, approaches to validating value and growth hypotheses, and building a product roadmap. It also digs into best practices for writing user stories and creating user story maps. After each module, there's time set aside to reflect on the material and capture your key takeaways.
+Anyway, the second day covers practices for shaping product goals and product vision, the Lean Startup concept, approaches to validating value and growth hypotheses, and building a product roadmap. You also dig into best practices for writing User Stories and creating User Story Maps. After each module, there's time to reflect on what you've covered and jot down your key takeaways.
 
-If you're thinking about committing two days to this training, here are a few tips:
+If you're thinking about dedicating a couple of days to this training, here are a few tips:
 
-1. Choose an in-person training over an online one. You'll be more engaged, which means better results.
-2. Choose an English-speaking trainer. Most of the material you'll return to as your questions evolve — books, videos, articles — hasn't been translated into Russian. Better to get comfortable with the original terminology from the start.
-3. Even if you're an experienced PM, try to stay fully present and engaged throughout. New ideas will come to you, and your own experience and knowledge can be genuinely valuable to other participants — share it generously and with respect.
+1. Choose an in-person training over an online one. It leads to greater engagement, and that means better outcomes.
+2. Choose an English-speaking trainer. Most of the material you'll return to with new questions — books, videos, articles — isn't available in Russian. Better to get comfortable with the original terminology from the start.
+3. Even if you're an experienced PM, try to fully immerse yourself in the learning process. First, that's how new ideas come to you. Second, your experience and knowledge can be genuinely useful to other participants — share them, and do so generously.
 
-At the end of it all, you'll receive an official certificate. Difficulty: 1/10. Cost: 7/10. Whether it's worth it: that's for each person to decide.
+And at the end, you'll get an official certificate. Difficulty to obtain: 1/10. Cost to obtain: 7/10. Whether it's worth it: that's for you to decide.
 
 ![CSPO Certificate](/images/cspo-certificate.webp)

@@ -3,27 +3,27 @@ title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
 description = "A walkthrough of how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve using Matplotlib."
-categories = ["Метрики и аналитика"]
+categories = ["Metrics and Analytics"]
 telegram_post = 37
 +++
 
-In this post, I want to walk through how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve using Matplotlib. Most of the time, a product manager will use an analytics platform to analyze data and metrics — but let's imagine our PM is stranded on a desert island with nothing but a Python interpreter and a few extra libraries. That's exactly what we'll use.
+In this post, I want to walk through how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve using Matplotlib. Most of the time, a product manager would use an analytics platform for data and metrics analysis — but let's imagine our PM has been stranded on a deserted island with nothing but a Python interpreter and a handful of libraries. That's exactly what we'll use.
 
 First, a quick refresher on the metric and its types.
 
-***Classic Retention Rate*** is a metric that shows the percentage of users who returned to the product on a specific day *N* (week *N*, month *N*, quarter *N*, etc.) since their first visit. For example, if *100* new users came on day *0* and *15* of them came back on day *1*, then Day 1 Retention is *15 / 100 = 15%*.
+***Classic Retention Rate*** is a metric that shows the percentage of users who returned to the product on a specific day *N* (week *N*, month *N*, quarter *N*, etc.) after their first visit. For example, if *100* new users came on day *0* and *15* of them returned on day *1*, then day *1* Retention is *15 / 100 = 15%*.
 
-***Rolling Retention Rate*** shows the percentage of users who returned to the product on day *N* **or later** since their first visit. For example, two users visited the product for the first time on the same day (day *0*). One of them returned on day *1*, the other on day *5*. Both will be counted as having returned by day *1*.
+***Rolling Retention Rate*** shows the percentage of users who returned to the product on day *N* **or later** after their first visit. For example, two users visit the product for the first time on the same day (day *0*). One returns on day *1*, the other on day *5*. Both will be counted as having returned by day *1*.
 
-***Full Retention Rate*** shows the percentage of users who visited the app **every day up to day N** since their first visit. For example, *Full Retention Rate for day 3* is the percentage of users who visited the product on days 1, 2, and 3 since their first visit.
+***Full Retention Rate*** shows the percentage of users who visited the app **every single day up to day N** after their first visit. For example, *Full Retention Rate for day 3* is the percentage of users who visited the product on days 1, 2, and 3 after their first visit.
 
 Retention can be calculated across different window sizes: daily, weekly, monthly, or quarterly. In this post, we'll work with daily Retention.
 
-GoPractice has excellent in-depth articles on Retention metrics and even benchmark values: [[one]](https://gopractice.ru/product/retention/), [[two]](https://gopractice.ru/product/nday-retention-rollling-retention/), and [[three]](https://gopractice.ru/product/lenny_rachitsky_what_is_good_retention/). I'll focus here on how to calculate these metrics by hand.
+GoPractice has excellent in-depth articles on Retention metrics and benchmark values: [[one]](https://gopractice.ru/product/retention/), [[two]](https://gopractice.ru/product/nday-retention-rollling-retention/), and [[three]](https://gopractice.ru/product/lenny_rachitsky_what_is_good_retention/). I'll focus here on how to calculate these metrics by hand.
 
 ## The Dataset
 
-For our calculations, we'll use a synthetic dataset with two fields (columns): *«user_id»* — the unique user ID; *«date»* — the date of the product visit. You can find the original dataset [here](/data/retention-dataset.csv). Here are the first 10 rows:
+For our calculations, we'll use a synthetic dataset with two fields (columns): *"user_id"* — a unique user ID; *"date"* — the date the user visited the product. You can find the original dataset [here](/data/retention-dataset.csv). Here are the first 10 rows:
 
 | user_id | date |
 |---|---|
@@ -38,7 +38,7 @@ For our calculations, we'll use a synthetic dataset with two fields (columns): *
 | 5da0336e-2cce-48c8-94e9-c0968433d930 | 2020-01-02 |
 | b8df8afb-23ed-4a0f-bb1d-4b5f5a2a94fd | 2020-01-25 |
 
-Let's import the necessary libraries and load the data into a Pandas DataFrame.
+Let's import the required libraries and load the data into a Pandas DataFrame.
 
 ```python
 import pandas as pd
@@ -48,15 +48,15 @@ import matplotlib.ticker as mtick
 # Path to the data file
 dataset_path = 'https://data/retention-dataset.csv'
 
-# Read data and parse dates
+# Read the data and parse dates
 df = pd.read_csv(dataset_path, parse_dates=['date'])
 ```
 
 ## Calculating Classic Retention
 
-Now let's write a function called *calculate_classic_retention* that takes a DataFrame and calculates Classic Retention for the days we need. We'll pass the DataFrame and a list of target days as inputs.
+Now let's write a function *calculate_classic_retention* that takes a DataFrame and calculates Classic Retention for the specified days. We'll pass the DataFrame and a list of target days as inputs.
 
-For the calculations, we'll need to create two additional columns in the DataFrame: *start_date* — the date of the user's first visit; *day* — the number of days between the first visit and the current visit.
+To perform the calculations, we'll need to create two additional columns in the DataFrame: *start_date* — the date of the user's first product visit; *day* — the number of days between the first visit date and the current visit date.
 
 To calculate *Retention for day N*, we simply count the number of rows in the *day* column (with unique *user_id* values) and divide by the total number of users in the cohort.
 
@@ -84,7 +84,7 @@ def calculate_classic_retention(df: pd.DataFrame, days: list) -> list:
     return classic_retention
 ```
 
-To visualize the Retention curve, I wrote a *plt_show* function that takes *days* — a list of day numbers; *retention* — a list of calculated Retention values for those days; *xs* — a list of day indices to highlight on the chart.
+To visualize the Retention curve, I wrote a *plt_show* function that takes: *days* — a list of day numbers; *retention* — a list of calculated Retention values for those days; *xs* — a list of day indices to highlight on the chart.
 
 ```python
 def plt_show(days: list, retention: list, xs: list, title: str):
@@ -100,7 +100,7 @@ def plt_show(days: list, retention: list, xs: list, title: str):
     plt.show()
 ```
 
-Let's calculate Classic Retention, plot the curve, and mark the values for days *1, 7, 28, and 56*. We'll see that our synthetic dataset produces synthetically wonderful metric values — well above the "40 — 20 — 10" rule of thumb.
+Let's calculate Classic Retention and plot the curve, marking values for days *1, 7, 28, and 56*. On our synthetic dataset, we'll see synthetically excellent numbers — well above the "40 — 20 — 10" benchmark rule.
 
 ```python
 days = list(range(0, 63))
@@ -112,7 +112,7 @@ plt_show(days, classic_retention, xs=[1, 7, 28, 56], title='Daily Classic Retent
 
 ![Classic Retention](/images/retention-classic.png)
 
-We can see that 70% of users returned the day after their first visit, 36% came back on day 7, and 20% on day 28. After roughly 30 days, the curve flattens out — indicating that the product has found Product/Market Fit.
+We can see that 70% of users returned on the day after their first visit, 36% came back on day 7, and 20% on day 28. Around the 30-day mark, the curve flattens out into a plateau — a sign that the product has found Product/Market Fit.
 
 ## Calculating Rolling Retention
 
@@ -162,11 +162,11 @@ plt_show(days, rolling_retention, xs=[1, 7, 28, 56], title='Daily Rolling Retent
 
 ![Rolling Retention](/images/retention-rolling.png)
 
-We can see that 93% of users returned to the product starting from the day after their first visit, 69% from day 7 onward, and 46% from day 28 onward.
+We can see that 93% of users returned starting from the day after their first visit, 69% from day 7, and 46% from day 28.
 
 ## Calculating Full Retention
 
-Finally, let's write the function for calculating Full Retention.
+Finally, let's write the function for Full Retention.
 
 ```python
 def calculate_full_retention(df: pd.DataFrame, days: list) -> list:
@@ -207,11 +207,11 @@ plt_show(days, full_retention, xs=[1, 3, 6], title='Daily Full Retention')
 
 ![Full Retention](/images/retention-full.png)
 
-We can see that 70% of users returned to the product the day after their first visit. Since this matches the Classic Retention value, I probably didn't make a mistake in the calculations :). 22% of users visited the product every day for 3 consecutive days, and only 2% visited it every day for 6 consecutive days.
+We can see that 70% of users returned to the product the day after their first visit. Since this matches the Classic Retention value, I probably didn't make any calculation errors :). 22% of users visited the product every day for 3 consecutive days, and only 2% kept coming back daily for 6 days.
 
 ## Takeaways
 
 - Source code is available in [[Google Colab]](https://colab.research.google.com/drive/1jIwW-itIFvCIpIhH6ANaQx5RwtzYDjfL?usp=sharing) and on [[GitHub]](https://github.com/zavarovkv/python-notebooks/blob/main/calculate_retention_rate.ipynb), first of all.
-- There are no universal parameters for calculating Retention that work for every product. The right metric type, window size, and benchmark values all depend on the nature of the product and its current goals.
-- That said, Classic Retention is a more widely used metric than Rolling or Full Retention.
-- Calculating these metrics by hand is fairly straightforward, but it does take some practice with product analytics tooling.
+- There are no universal Retention calculation parameters that work for every product. The right metric type, window size, and benchmark values all depend on your product's nature and current goals.
+- That said, Classic Retention is a more widely used measure than Rolling or Full Retention.
+- Calculating these metrics by hand is fairly straightforward, but it takes a bit of practice with product analytics tooling.
