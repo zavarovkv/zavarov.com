@@ -6,24 +6,8 @@
       {{ .Content }}
     </article>
 
-    {{/* Format date: full date if less than 1 year old, year only if older */}}
-    {{- $now := now -}}
-    {{- $postDate := .Date -}}
-    {{- $yearsDiff := div (sub $now.Unix $postDate.Unix) 31536000 -}}
-    {{- $dateStr := "" -}}
-    {{- if lt $yearsDiff 1 -}}
-      {{/* Less than 1 year: show "7 марта 2026" / "7 March 2026" */}}
-      {{- $monthKey := printf "month_%s" ($postDate.Format "January" | lower) -}}
-      {{- $day := $postDate.Format "2" -}}
-      {{- $year := $postDate.Format "2006" -}}
-      {{- $dateStr = printf "%s %s %s" $day (i18n $monthKey) $year -}}
-    {{- else -}}
-      {{/* 1 year or older: show only year */}}
-      {{- $dateStr = $postDate.Format "2006" -}}
-    {{- end -}}
-
     <p class="post-meta-inline">
-      <time datetime="{{ .Date.Format "2006-01-02" }}" class="post-date">{{ $dateStr }}</time>
+      <time datetime="{{ .Date.Format "2006-01-02" }}" class="post-date">{{ partial "format-date.html" . }}</time>
     </p>
 
     {{/* Social sharing buttons */}}

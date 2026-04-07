@@ -6,6 +6,10 @@ on:
       - main  # Set a branch to deploy
   pull_request:
 
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

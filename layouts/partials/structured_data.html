@@ -31,7 +31,6 @@
   }
 }
 </script>
-{{ if eq .Section "blog" }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,24 +40,29 @@
       "@type": "ListItem",
       "position": 1,
       "name": {{ i18n "home" | jsonify }},
-      "item": {{ .Site.BaseURL | jsonify }}
-    },
+      "item": {{ .Site.Home.Permalink | jsonify }}
+    }{{ if eq .Section "blog" }},
     {
       "@type": "ListItem",
       "position": 2,
       "name": {{ i18n "articles" | jsonify }},
-      "item": {{ (printf "%sblog/" .Site.BaseURL) | jsonify }}
+      "item": {{ (printf "%sblog/" .Site.Home.Permalink) | jsonify }}
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": {{ .Title | jsonify }},
       "item": {{ .Permalink | jsonify }}
-    }
+    }{{ else }},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ .Title | jsonify }},
+      "item": {{ .Permalink | jsonify }}
+    }{{ end }}
   ]
 }
 </script>
-{{ end }}
 {{ else if .IsHome }}
 <script type="application/ld+json">
 {
@@ -86,9 +90,9 @@
   "url": {{ .Site.BaseURL | jsonify }},
   "jobTitle": "Head of Product",
   "sameAs": [
-    "https://t.me/zavarov",
-    "https://www.linkedin.com/in/zavarovkv/",
-    "https://github.com/zavarovkv/"
+    {{ .Site.Params.social.telegram | jsonify }},
+    {{ .Site.Params.social.linkedin | jsonify }},
+    {{ .Site.Params.social.github | jsonify }}
   ]
 }
 </script>

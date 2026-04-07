@@ -36,7 +36,8 @@ function addSourceHash(translated, hash) {
 
 const RU_DIR = "content/ru";
 const EN_DIR = "content/en";
-const MODEL = "claude-sonnet-4-6";
+const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-6";
+const MAX_RETRIES = 3;
 
 const SYSTEM_PROMPT = `You are a professional translator from Russian to English.
 You translate blog posts about Product Management, strategy, and leadership.
@@ -111,6 +112,7 @@ async function main() {
   console.log(`\nTranslating ${toTranslate.length} file(s)...\n`);
 
   const client = new Anthropic();
+  let failed = 0;
 
   for (const file of toTranslate) {
     const ruPath = join(RU_DIR, file);
@@ -122,31 +124,47 @@ async function main() {
 
     process.stdout.write(`  ${file} ... `);
 
-    try {
-      const message = await client.messages.create({
-        model: MODEL,
-        max_tokens: 8192,
-        system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: "user",
-            content: `Translate this blog post from Russian to English:\n\n${ruContent}`,
-          },
-        ],
-      });
+    let success = false;
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        const message = await client.messages.create({
+          model: MODEL,
+          max_tokens: 8192,
+          system: SYSTEM_PROMPT,
+          messages: [
+            {
+              role: "user",
+              content: `Translate this blog post from Russian to English:\n\n${ruContent}`,
+            },
+          ],
+        });
 
-      const translated = addSourceHash(message.content[0].text, sourceHash(ruContent));
-      await writeFile(enPath, translated, "utf-8");
+        const translated = addSourceHash(message.content[0].text, sourceHash(ruContent));
+        await writeFile(enPath, translated, "utf-8");
 
-      const inputTokens = message.usage.input_tokens;
-      const outputTokens = message.usage.output_tokens;
-      console.log(`done (${inputTokens}+${outputTokens} tokens)`);
-    } catch (err) {
-      console.log(`FAILED: ${err.message}`);
+        const inputTokens = message.usage.input_tokens;
+        const outputTokens = message.usage.output_tokens;
+        console.log(`done (${inputTokens}+${outputTokens} tokens)`);
+        success = true;
+        break;
+      } catch (err) {
+        if (attempt < MAX_RETRIES) {
+          const delay = attempt * 2000;
+          process.stdout.write(`retry ${attempt}/${MAX_RETRIES} in ${delay}ms ... `);
+          await new Promise((r) => setTimeout(r, delay));
+        } else {
+          console.log(`FAILED after ${MAX_RETRIES} attempts: ${err.message}`);
+        }
+      }
     }
+    if (!success) failed++;
   }
 
-  console.log("\nDone.");
+  console.log(`\nDone. ${toTranslate.length - failed} translated, ${failed} failed.`);
+  if (failed > toTranslate.length / 2) {
+    console.error("ERROR: More than half of translations failed. Exiting with error.");
+    process.exit(1);
+  }
 }
 
 main();

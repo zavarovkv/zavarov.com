@@ -60,28 +60,21 @@ ignoreErrors = ["error-disable-taxonomy"]
   favicon = "images/favicon.png"
   authorURL = "https://zavarov.com/"
   telegramChannel = "pmgen"
+  yandexMetrikaId = 106247763
+  newPostDays = 30
 
-  # This theme will, by default, inject a made-with-line at the bottom of the page.
-  # You can turn it off, but we would really appreciate if you don't :-).
-  # hideMadeWithLine = true
+  # Social links (used in footer and structured data)
+  [params.social]
+    telegram = "https://t.me/zavarov"
+    linkedin = "https://www.linkedin.com/in/zavarovkv/"
+    github = "https://github.com/zavarovkv/"
+    email = "zavarovkv@gmail.com"
 
-  # By default, if you want to read more than one blog post you have to always go
-  # back to the /blog page.
-  # By enabling this feature each blog post will have at the end a navigator
-  # enablePostNavigator = true
-
-  # By default, this theme displays dates with a format like "02 Jan, 2006", but
-  # you can customize it by setting the `dateFormat` param in your site's config
-  # file. See [Hugo's Format function docs](https://gohugo.io/functions/format/)
-  # for details. An example TOML config that uses [ISO
-  # 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
-  # dateFormat = "2006-01-02"
-
-# Configure markup highlighter to match "Bearblog" aesthetics, see
-# https://gohugo.io/configuration/markup/#highlight
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
+      # Required for HTML in markdown (shortcodes, styled blocks).
+      # Safe because all content is author-controlled. Disable if opening to guest posts.
       unsafe = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.typographer]
