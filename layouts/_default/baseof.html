@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html lang="{{ .Language.Lang }}">
 
 <head>
   <!-- Theme init (must run before paint to prevent FOUC).
@@ -59,6 +59,10 @@
 
   {{- partial "seo_tags.html" . -}}
   {{- partial "structured_data.html" . -}}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+  {{- range .Translations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+  {{- end }}
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   {{ with .OutputFormats.Get "rss" -}}

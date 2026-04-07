@@ -4,7 +4,7 @@
   {{ range $groups }}
     {{ if eq . "_untagged" }}
       <div class="posts-group">
-        <h3 class="posts-group-title">Разное</h3>
+        <h3 class="posts-group-title">{{ i18n "misc" }}</h3>
         <ul class="blog-posts">
           {{ range $allPosts.ByDate.Reverse }}
             {{ if or (not .Params.categories) (eq (len .Params.categories) 0) }}

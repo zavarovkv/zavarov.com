@@ -6,7 +6,8 @@ baseURL = "https://zavarov.com/"
 title = "Константин Заваров"
 author = "Konstantin Zavarov"
 copyright = "Copyright © 2026, Konstantin Zavarov."
-languageCode = "ru"
+defaultContentLanguage = "ru"
+defaultContentLanguageInSubdirectory = false
 
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
@@ -32,6 +33,20 @@ ignoreErrors = ["error-disable-taxonomy"]
 [permalinks]
   blog = "/:slug/"
   categories = "/blog/:slug"
+
+[languages]
+  [languages.ru]
+    weight = 1
+    languageCode = "ru"
+    languageName = "RU"
+    title = "Константин Заваров"
+    contentDir = "content/ru"
+  [languages.en]
+    weight = 2
+    languageCode = "en"
+    languageName = "EN"
+    title = "Konstantin Zavarov"
+    contentDir = "content/en"
 
 [params]
   # The "description" of your website. This is used in the meta data of your generated html.
@@ -85,21 +100,34 @@ ignoreErrors = ["error-disable-taxonomy"]
     lineNumbersInTable = false
     codeFences = true
 
-[menu]
-  [[menu.main]]
+[languages.ru.menu]
+  [[languages.ru.menu.main]]
     identifier = "blog"
     name       = "Статьи"
     url        = "/blog/"
     weight     = 1
 
-  [[menu.main]]
+  [[languages.ru.menu.main]]
     identifier = "consultation"
     name       = "Консультация"
     url        = "/consultation/"
     weight     = 2
 
-  [[menu.main]]
+  [[languages.ru.menu.main]]
     identifier = "telegram"
     name       = "Канал в Telegram"
+    url        = "https://t.me/pmgen"
+    weight     = 3
+
+[languages.en.menu]
+  [[languages.en.menu.main]]
+    identifier = "blog"
+    name       = "Articles"
+    url        = "/en/blog/"
+    weight     = 1
+
+  [[languages.en.menu.main]]
+    identifier = "telegram"
+    name       = "Telegram Channel"
     url        = "https://t.me/pmgen"
     weight     = 3
