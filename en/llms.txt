@@ -1,0 +1,22 @@
+# Konstantin Zavarov — https://zavarov.com/
+
+> Личный блог Константина Заварова. Автор — Константин Заваров, Head of Product в Ozon. Контент на русском языке.
+
+## Об авторе
+
+Константин Заваров — Head of Product в Ozon с 12+ годами опыта в IT. Ранее работал в Яндексе, Мегамаркете и Лаборатории Касперского. С 2021 по 2025 год вел курсы в Яндекс Практикуме. Ведет Telegram-канал «Код Продакта» (https://t.me/pmgen).
+
+## Контакты
+
+- Сайт: https://zavarov.com/
+- Telegram: https://t.me/zavarov
+- Telegram-канал: https://t.me/pmgen
+- LinkedIn: https://linkedin.com/in/zavarovkv
+- GitHub: https://github.com/zavarovkv
+
+## Разделы
+
+- Блог: https://zavarov.com/blog/
+- Консультация: https://zavarov.com/consultation/
+
+## Статьи
