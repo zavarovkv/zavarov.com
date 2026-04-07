@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal blog (zavarov.com) built with Hugo. Layouts are fully self-contained in this repo (no theme dependency). Multilingual: Russian (default) + English (auto-translated via Claude API). Content is focused on Product Management topics.
+Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via Claude API). Content is focused on Product Management topics. Site-specific overrides in `layouts/partials/` (header, extra_head only).
 
 ## Build & Development Commands
 
@@ -24,30 +24,11 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 
 ## Architecture
 
-- **Layouts**: `layouts/` contains all templates — self-contained, no theme dependency
-  - `layouts/index.html` — homepage template (renders `content/{ru,en}/_index.md`)
-  - `layouts/404.html` — 404 page
-  - `layouts/_default/baseof.html` — base HTML with Yandex.Metrika analytics, KaTeX math, Mermaid (deferred), hreflang tags
-  - `layouts/_default/list.html` — blog listing grouped by category (delegates column rendering to `posts-column.html`)
-  - `layouts/_default/single.html` — individual post with i18n date formatting, Likely social sharing
-  - `layouts/_default/sitemap.xml` — custom sitemap with per-page priorities (home 1.0, sections 0.8, posts 0.7)
-  - `layouts/_default/index.json` — JSON Feed 1.1 template for AI crawlers (auto-generated at `/index.json`)
-  - `layouts/_default/home.llms.txt` — LLM-friendly content index (auto-generated at `/llms.txt`)
-  - `layouts/_default/_markup/render-link.html` — markdown render hook; external links automatically get `target="_blank" rel="noopener noreferrer"` at build time
-  - `layouts/_default/_markup/render-image.html` — markdown render hook for images (lazy loading, async decoding)
-  - `layouts/partials/style.html` — main inlined CSS (dark/light theme support)
-  - `layouts/partials/custom_head.html` — additional inlined CSS for header, avatar, mobile menu, social buttons, focus-visible, prefers-reduced-motion
-  - `layouts/partials/custom_body.html` — JS: Likely init, mobile menu, theme toggle
-  - `layouts/partials/nav.html` — main navigation with server-side active-link highlighting (`aria-current="page"`)
-  - `layouts/partials/header.html` — header with dual-state GIF avatar (default + hover)
-  - `layouts/partials/footer.html` — footer with social icons, language switcher (`.Translations` link), theme toggle
-  - `layouts/partials/favicon.html` — favicon links (32×32, 192×192, apple-touch-icon 180×180)
-  - `layouts/partials/posts-column.html` — single column of grouped posts for the blog listing (used twice by `list.html`)
-  - `layouts/partials/seo_tags.html` + `structured_data.html` — SEO meta tags and JSON-LD schemas (BlogPosting, Person, WebSite, BreadcrumbList)
-  - `layouts/partials/og-image.html` — dynamic Open Graph image generation (1200×630) via Hugo Resources API
-  - `layouts/shortcodes/plug.html` — "* * *" divider
-  - `layouts/shortcodes/caption.html` — image with caption wrapper
-  - `layouts/shortcodes/mermaid.html` — Mermaid diagram wrapper (requires `mermaid = true` in front matter)
+- **Theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides all base layouts, CSS, JS, fonts, shortcodes, i18n UI strings
+- **Site overrides** (only 2 files in `layouts/partials/`):
+  - `header.html` — custom first/last name split for responsive styling
+  - `extra_head.html` — Yandex/Google verification meta tags
+- **i18n**: site's `i18n/*.toml` contain only category display name mappings; all UI strings come from theme
 
 ## Multilingual (i18n)
 

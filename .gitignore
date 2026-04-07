@@ -17,6 +17,4 @@ Thumbs.db
 # Node modules
 node_modules/
 
-# Legacy theme (layouts are self-contained)
-themes/
 

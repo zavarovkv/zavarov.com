@@ -6,6 +6,7 @@ baseURL = "https://zavarov.com/"
 title = "Константин Заваров"
 author = "Konstantin Zavarov"
 copyright = "Copyright © 2026, Konstantin Zavarov."
+theme = "hugo-mini"
 defaultContentLanguage = "ru"
 defaultContentLanguageInSubdirectory = false
 
@@ -62,6 +63,46 @@ ignoreErrors = ["error-disable-taxonomy"]
   telegramChannel = "pmgen"
   yandexMetrikaId = 106247763
   newPostDays = 30
+  avatar = "images/avatar1.webp"
+  avatarHover = "images/avatar2.webp"
+  consoleArt = '''
+                          ____
+                       _.' :  `._
+                   .-.'`.  ;   .'`.-.
+          __      / : ___\ ;  /___ ; \      __
+        ,' _ ""--.:__;".-.";: :".-.":__;.--"" _`,
+        :' `.t""--.. '<@.`;_  ',@>` ..--""j.' `;
+             `:-.._J '-.-'L__ `-- ' L_..-;'
+               "-.__ ;  .-"  "-.  : __.-"
+                   L ' /.------.\  ' J
+                    "-.   "--"   .-"
+                   __.l"-:_JL_;-";.__
+                .-j/'.;  ;""""  / .'\""-.
+              .' /:  "-.:     .-" .';  `.
+           .-"  / ;  "-. "-..-" .-"  :    "-.
+        .+"-. : :       "-.__.-"      ;-._   \
+        ; \  `.; ;                    : : "+. ;
+        :  ;   ; ;                    : ;  : \:
+        ;  :   ; :                    ;:   ;  :
+       : \  ;  :  ;                  : ;  /  ::
+       ;  ; :   ; :                  ;   :   ;:
+       :  :  ;  :  ;                : :  ;  : ;
+       ;\    :   ; :                ; ;     ; ;
+       : `."-;   :  ;              :  ;    /  ;
+        ;    -:   ; :              ;  : .-"   :
+        :\     \  :  ;            : \.-"      :
+         ;`.    \  ; :            ;.'_..--  / ;
+         :  "-.  "-:  ;          :/"      .'  :
+          \         \ :          ;/  __        :
+           \       .-`.\        /t-""  ":-+.   :
+            `.  .-"    `l    __/ /`. :  ; ; \  ;
+              \   .-" .-"-.  .-" .' j \  /   ;/
+               \ / .-"   /.     .'.' ;_:'    ;
+                :-""-.`./-.'     /    `.___.'
+'''
+
+  [params.author]
+    jobTitle = "Head of Product"
 
   # Social links (used in footer and structured data)
   [params.social]
