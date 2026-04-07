@@ -17,7 +17,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const RU_DIR = "content/ru";
 const EN_DIR = "content/en";
-const MODEL = "claude-sonnet-4-6-20250514";
+const MODEL = "claude-sonnet-4-6";
 
 const SYSTEM_PROMPT = `You are a professional translator from Russian to English.
 You translate blog posts about Product Management, strategy, and leadership.
