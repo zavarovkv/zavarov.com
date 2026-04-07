@@ -127,6 +127,12 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 1
 
   [[languages.en.menu.main]]
+    identifier = "consultation"
+    name       = "Consultation"
+    url        = "/en/consultation/"
+    weight     = 2
+
+  [[languages.en.menu.main]]
     identifier = "telegram"
     name       = "Telegram Channel"
     url        = "https://t.me/pmgen"
