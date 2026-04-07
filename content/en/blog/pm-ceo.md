@@ -3,7 +3,7 @@ title = "CEO of the Product: How a Product Manager Creates Meaning and Communica
 slug = "pm-ceo"
 date = "2024-07-24T15:17:01+03:00"
 description = "How a product manager creates meaning and communicates the value of a product to the business, the team, and users."
-categories = ["Marketing"]
+categories = ["marketing"]
 +++
 
 *This article was originally published on [Delovoy Mir](https://delovoymir.biz/ceo-produkta-kak-prodakt-menedzher-sozdaet-smysly-i-transliruet-cennosti.html).*

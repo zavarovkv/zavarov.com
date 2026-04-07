@@ -3,7 +3,7 @@ title = "The Growth Dilemma of Educational Course Economics"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
 description = "Why the economics of educational courses don't scale well, and what the growth dilemma looks like for edTech companies in the Russian-speaking market."
-categories = ["Strategy and Frameworks"]
+categories = ["strategy"]
 telegram_post = 43
 +++
 

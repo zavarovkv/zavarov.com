@@ -3,7 +3,7 @@ title = "Second Brain: PARA × Obsidian × Granola × Claude"
 slug = "second-brain"
 date = "2026-03-07T00:00:00+03:00"
 description = "How to build a knowledge management system from PARA, Obsidian, Granola, and Claude — and why it works like a second brain."
-categories = ["Productivity"]
+categories = ["productivity"]
 telegram_post = 69
 mermaid = true
 +++

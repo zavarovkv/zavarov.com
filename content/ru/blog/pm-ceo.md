@@ -3,7 +3,7 @@ title = "CEO продукта: как продакт-менеджер созда
 slug = "pm-ceo"
 date = "2024-07-24T15:17:01+03:00"
 description = "Как продакт-менеджер создает смыслы и транслирует ценность продукта бизнесу, команде и пользователям."
-categories = ["Маркетинг"]
+categories = ["marketing"]
 +++
 
 *Оригинал статьи опубликован на [Деловой мир](https://delovoymir.biz/ceo-produkta-kak-prodakt-menedzher-sozdaet-smysly-i-transliruet-cennosti.html).*

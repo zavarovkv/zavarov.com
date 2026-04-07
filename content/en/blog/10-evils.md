@@ -3,7 +3,7 @@ title = "10 Deadly Sins of a Junior Product Manager"
 slug = "10-evils"
 date = "2024-09-29T15:17:01+03:00"
 description = "10 key mistakes junior product managers make that hinder professional growth and stable business results."
-categories = ["Self-Development"]
+categories = ["self-development"]
 telegram_post = 58
 +++
 

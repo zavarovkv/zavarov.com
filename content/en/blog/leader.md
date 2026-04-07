@@ -3,7 +3,7 @@ title = "On Leadership"
 slug = "leader"
 date = "2024-03-28T15:17:01+03:00"
 description = "What leadership is, why it matters, and where to start if you want to develop the skill of positively influencing people."
-categories = ["Team and Leadership"]
+categories = ["leadership"]
 +++
 
 *The original interview was published on [VC](https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno).*

@@ -3,7 +3,7 @@ title = "A/B Test Design Template"
 slug = "template-abt"
 date = "2022-08-22T12:00:00+03:00"
 description = "A Google Sheets template for designing A/B tests: hypothesis formulation, sample size calculation, and experiment duration."
-categories = ["Metrics & Analytics"]
+categories = ["metrics"]
 +++
 
 A Google Sheets template for designing A/B tests. It helps you structure an experiment before launch — from hypothesis formulation to test duration calculation.

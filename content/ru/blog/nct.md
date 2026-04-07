@@ -3,7 +3,7 @@ title = "Эволюция методов целеполагания от OKR д�
 slug = "nct"
 date = "2024-08-24T15:17:01+03:00"
 description = "Эволюция методов целеполагания: от MBO и OKR до NCT — фреймворка Ravi Mehta, который может заменить OKR."
-categories = ["Стратегия и фреймворки"]
+categories = ["strategy"]
 telegram_post = 45
 +++
 

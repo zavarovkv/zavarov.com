@@ -3,7 +3,7 @@ title = "Tools and Services for Product Managers"
 slug = "pm-tools"
 date = "2024-07-02T15:17:01+03:00"
 description = "Sharing the tools I use for product development, business processes, and personal productivity"
-categories = ["Roundups"]
+categories = ["collections"]
 telegram_post = 33
 +++
 

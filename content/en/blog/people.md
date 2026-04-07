@@ -3,7 +3,7 @@ title = "People Who Write Interestingly"
 slug = "people"
 date = "2025-09-15T15:17:01+03:00"
 description = "A curated list of authors who write compelling content on product topics and are worth coming back to."
-categories = ["Curated Lists"]
+categories = ["collections"]
 telegram_post = 56
 +++
 

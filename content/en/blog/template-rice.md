@@ -3,7 +3,7 @@ title = "ICE, RICE, DRICE Prioritization Template"
 slug = "template-rice"
 date = "2022-07-01T12:00:00+03:00"
 description = "A Google Sheets template for prioritizing product initiatives using the ICE, RICE, and DRICE methods."
-categories = ["Strategy and Frameworks"]
+categories = ["strategy"]
 +++
 
 A Google Sheets template for prioritizing product initiatives using three methods: ICE, RICE, and DRICE. For a deeper dive into the methods, see the article [«ICE, RICE, DRICE Prioritization Methods»](/drice/).

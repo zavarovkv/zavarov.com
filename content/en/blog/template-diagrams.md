@@ -3,7 +3,7 @@ title = "Chart Templates for Data Visualization"
 slug = "template-diagrams"
 date = "2023-07-19T12:00:00+03:00"
 description = "A Google Sheets template with reference chart examples for visualizing product, business, and financial data."
-categories = ["Metrics & Analytics"]
+categories = ["metrics"]
 telegram_post = 31
 +++
 

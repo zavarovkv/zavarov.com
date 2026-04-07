@@ -3,7 +3,7 @@ title = "Шаблон диаграмм для визуализации данн�
 slug = "template-diagrams"
 date = "2023-07-19T12:00:00+03:00"
 description = "Шаблон в Google Sheets с эталонными примерами диаграмм для визуализации продуктовых, бизнесовых и финансовых данных."
-categories = ["Метрики и аналитика"]
+categories = ["metrics"]
 telegram_post = 31
 +++
 

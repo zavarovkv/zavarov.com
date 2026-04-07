@@ -60,3 +60,25 @@ other = "November"
 
 [month_december]
 other = "December"
+
+# Category display names
+[cat_marketing]
+other = "Marketing"
+
+[cat_strategy]
+other = "Strategy & Frameworks"
+
+[cat_metrics]
+other = "Metrics & Analytics"
+
+[cat_leadership]
+other = "Team & Leadership"
+
+[cat_self-development]
+other = "Self-Development"
+
+[cat_productivity]
+other = "Productivity"
+
+[cat_collections]
+other = "Collections"

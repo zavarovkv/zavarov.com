@@ -3,7 +3,7 @@ title = "Методы приоритизации ICE, RICE, DRICE"
 slug = "drice"
 date = "2024-10-24T15:17:01+03:00"
 description = "Подробный разбор методов приоритизации задач ICE, RICE и DRICE: формулы, примеры и сравнение подходов."
-categories = ["Стратегия и фреймворки"]
+categories = ["strategy"]
 telegram_post = 57
 math = true
 +++

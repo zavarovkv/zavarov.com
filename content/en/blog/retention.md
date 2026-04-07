@@ -3,7 +3,7 @@ title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
 description = "A walkthrough of how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve using Matplotlib."
-categories = ["Metrics and Analytics"]
+categories = ["metrics"]
 telegram_post = 37
 +++
 

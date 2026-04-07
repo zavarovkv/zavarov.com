@@ -3,7 +3,7 @@ title = "Prioritization Methods: ICE, RICE, DRICE"
 slug = "drice"
 date = "2024-10-24T15:17:01+03:00"
 description = "A detailed breakdown of ICE, RICE, and DRICE prioritization methods: formulas, examples, and a comparison of approaches."
-categories = ["Strategy and Frameworks"]
+categories = ["strategy"]
 telegram_post = 57
 math = true
 +++

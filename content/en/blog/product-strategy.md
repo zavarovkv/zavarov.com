@@ -3,7 +3,7 @@ title = "Product Strategy ≠ Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
 description = "There's no universal product strategy template. On what strategy can look like in practice and why it's a living system, not a document."
-categories = ["Strategy and Frameworks"]
+categories = ["strategy"]
 telegram_post = 70
 +++
 

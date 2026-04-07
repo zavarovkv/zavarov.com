@@ -3,7 +3,7 @@ title = "Product Management Is Marketing Management"
 slug = "kotler"
 date = "2024-05-24T15:17:01+03:00"
 description = "Why a product manager is essentially a marketing specialist, and how this understanding changes the approach to product management."
-categories = ["Marketing"]
+categories = ["marketing"]
 telegram_post = 40
 +++
 

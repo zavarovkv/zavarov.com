@@ -3,7 +3,7 @@ title = "Books and Resources for Product Managers"
 slug = "pm-materials"
 date = "2024-09-02T15:17:01+03:00"
 description = "A curated list of the best books, courses, and resources for developing product management skills. Regularly updated."
-categories = ["Curated Lists"]
+categories = ["collections"]
 +++
 
 There's no shortage of materials online for developing product skills and broadening your horizons. But I want to bring together the most useful, practical, and valuable ones. This list is continuously improving — new materials get added, outdated ones removed. I hope you find something worth your time.

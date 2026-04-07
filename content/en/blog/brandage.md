@@ -3,7 +3,7 @@ title = "The Brand Age, Paul Graham"
 slug = "brandage"
 date = "2026-04-05T12:00:00+03:00"
 description = "Reflections on Paul Graham's essay \"The Brand Age\": why technological advantage is finite, and when betting on brand becomes a matter of survival."
-categories = ["Marketing"]
+categories = ["marketing"]
 telegram_post = 71
 +++
 

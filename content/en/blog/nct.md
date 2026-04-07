@@ -3,7 +3,7 @@ title = "The Evolution of Goal-Setting Frameworks: From OKR to NCT"
 slug = "nct"
 date = "2024-08-24T15:17:01+03:00"
 description = "The evolution of goal-setting frameworks: from MBO and OKR to NCT — Ravi Mehta's framework that could replace OKR."
-categories = ["Strategy and Frameworks"]
+categories = ["strategy"]
 telegram_post = 45
 +++
 

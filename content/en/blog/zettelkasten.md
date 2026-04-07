@@ -3,7 +3,7 @@ title = "The Zettelkasten Method of Note-Taking"
 slug = "zettelkasten"
 date = "2023-03-12T12:00:00+03:00"
 description = "The increasingly popular note-taking method from the extraordinarily productive German sociologist Niklas Luhmann."
-categories = ["Productivity"]
+categories = ["productivity"]
 +++
 
 <span class="underline">Zettelkasten</span> is an increasingly popular method of organizing notes and ideas, developed by the extraordinarily productive German sociologist [Niklas Luhmann](https://en.wikipedia.org/wiki/Niklas_Luhmann), who over his lifetime managed to write more than 70 major academic books and 500 scholarly articles, and received prestigious doctoral honors and prizes for his contributions to sociology.

@@ -60,3 +60,25 @@ other = "ноября"
 
 [month_december]
 other = "декабря"
+
+# Category display names
+[cat_marketing]
+other = "Маркетинг"
+
+[cat_strategy]
+other = "Стратегия и фреймворки"
+
+[cat_metrics]
+other = "Метрики и аналитика"
+
+[cat_leadership]
+other = "Команда и лидерство"
+
+[cat_self-development]
+other = "Саморазвитие"
+
+[cat_productivity]
+other = "Продуктивность"
+
+[cat_collections]
+other = "Подборки"

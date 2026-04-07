@@ -3,7 +3,7 @@ title = "Про лидерство"
 slug = "leader"
 date = "2024-03-28T15:17:01+03:00"
 description = "Что такое лидерство, зачем оно нужно и с чего начать, если хотите развить навык позитивного влияния на людей."
-categories = ["Команда и лидерство"]
+categories = ["leadership"]
 +++
 
 *Оригинал интервью опубликован на [VC](https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno).*

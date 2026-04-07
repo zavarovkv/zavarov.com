@@ -3,7 +3,7 @@ title = "How to Run a Retrospective for a Large Team"
 slug = "retrospective"
 date = "2022-11-12T12:00:00+03:00"
 description = "A detailed 8-step plan with timings for running an engaging retrospective with a large team (10+ people)."
-categories = ["Team and Leadership"]
+categories = ["leadership"]
 telegram_post = 13
 +++
 

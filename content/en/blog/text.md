@@ -3,7 +3,7 @@ title = "Thinking Through Writing"
 slug = "text"
 date = "2024-09-24T15:17:01+03:00"
 description = "How Amazon's document-centric culture develops critical thinking, and why the ability to work with text matters for product managers."
-categories = ["Self-development"]
+categories = ["self-development"]
 telegram_post = 55
 +++
 

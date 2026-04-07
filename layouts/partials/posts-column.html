@@ -16,7 +16,8 @@
     {{ else }}
       {{ $tag := . }}
       <div class="posts-group">
-        <h3 class="posts-group-title">{{ $tag }}</h3>
+        {{- $catKey := printf "cat_%s" $tag -}}
+        <h3 class="posts-group-title">{{ i18n $catKey | default $tag }}</h3>
         <ul class="blog-posts">
           {{ range $allPosts.ByDate.Reverse }}
             {{ if in .Params.categories $tag }}

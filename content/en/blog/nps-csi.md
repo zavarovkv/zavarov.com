@@ -3,7 +3,7 @@ title = "Loyalty ≠ Satisfaction"
 slug = "nps-csi"
 date = "2024-04-24T15:17:01+03:00"
 description = "Why loyalty and satisfaction are different concepts, and how to measure them correctly using NPS and CSI."
-categories = ["Marketing"]
+categories = ["marketing"]
 telegram_post = 35
 +++
 
