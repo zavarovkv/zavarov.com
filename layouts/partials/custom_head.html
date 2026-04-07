@@ -695,17 +695,12 @@
 <!-- Likely social sharing buttons (only on blog posts) -->
 {{ if eq .Type "blog" }}
 <link rel="stylesheet" href="{{ "likely/likely.css" | relURL }}">
-<script src="{{ "likely/likely.js" | relURL }}"></script>
-{{ end }}
-
+<script defer src="{{ "likely/likely.js" | relURL }}"></script>
 <style>
-  /* Likely social buttons spacing */
   .likely {
     margin-top: 15px;
     margin-bottom: 15px;
   }
-
-  /* Remove underline from Likely buttons */
   .likely a,
   .likely a:link,
   .likely a:visited,
@@ -713,6 +708,10 @@
     border-bottom: none;
     text-decoration: none;
   }
+</style>
+{{ end }}
+
+<style>
 
   /* Underline style with SVG background */
   .underline {

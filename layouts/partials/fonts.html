@@ -1,13 +1,5 @@
 <style>
-/* Inter font faces - local files */
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-200.woff2" | relURL }}') format('woff2');
-}
+/* Inter font faces — only weights actually used: 300 (body), 600 (headings/links) */
 
 @font-face {
   font-family: 'Inter';
@@ -19,18 +11,10 @@
 
 @font-face {
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 300;
   font-display: swap;
-  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-regular.woff2" | relURL }}') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-500.woff2" | relURL }}') format('woff2');
+  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-300italic.woff2" | relURL }}') format('woff2');
 }
 
 @font-face {
@@ -39,21 +23,5 @@
   font-weight: 600;
   font-display: swap;
   src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-600.woff2" | relURL }}') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-700.woff2" | relURL }}') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('{{ "fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-300italic.woff2" | relURL }}') format('woff2');
 }
 </style>
