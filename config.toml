@@ -62,6 +62,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   authorURL = "https://zavarov.com/"
   telegramChannel = "pmgen"
   yandexMetrikaId = 106247763
+  copyrightYear = 2023
   newPostDays = 30
   avatar = "images/avatar1.webp"
   avatarHover = "images/avatar2.webp"

@@ -61,6 +61,10 @@ All served locally (no CDN):
 - `static/likely/` — Ilya Birman's Likely social sharing buttons (updated via `npm run update-likely`)
 - `static/images/` — avatars, post images, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation
 
+## Theme vs Site Overrides
+
+`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials inside the theme), apply it in the theme. Never work around it with patches in `layouts/partials/extra_head.html` or other site-level overrides. Site overrides exist strictly for site-specific concerns: `header.html` — custom name markup, `extra_head.html` — search engine verification meta tags only.
+
 ## Key Conventions
 
 - Config file: `config.toml` (TOML format)

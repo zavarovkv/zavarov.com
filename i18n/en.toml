@@ -1,4 +1,11 @@
-# Site-specific category display names (base UI strings come from theme)
+# Site-specific i18n overrides (these take priority over theme defaults)
+[tg_cta_title]
+other = "Product Management Channel"
+
+[tg_cta_description]
+other = "Writing about building digital products and managing teams"
+
+# Category display names
 [cat_marketing]
 other = "Marketing"
 
