@@ -1,11 +1,11 @@
 # zavarov.com
 
-Personal blog by [Konstantin Zavarov](https://zavarov.com) about Product Management — built with [Hugo](https://gohugo.io). Multilingual (Russian + English). Layouts are inspired by [Bear Blog](https://github.com/janraasch/hugo-bearblog) but fully self-contained (no theme dependency).
+Personal blog by [Konstantin Zavarov](https://zavarov.com) about Product Management — built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme. Multilingual (Russian + English).
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/zavarovkv/zavarov.com.git
+git clone --recursive https://github.com/zavarovkv/zavarov.com.git
 cd zavarov.com
 
 # Run local dev server
@@ -48,50 +48,27 @@ Requires `ANTHROPIC_API_KEY` in GitHub Secrets.
 ## Project Structure
 
 ```
+themes/hugo-mini/       Theme (git submodule) — all layouts, CSS, JS, shortcodes
+layouts/partials/       Site-level overrides (only 2 files):
+  header.html             Custom first/last name split for responsive styling
+  extra_head.html         Yandex/Google verification meta tags
 content/
-  ru/                 Russian content (primary, written manually)
-    blog/             Blog posts (Markdown + TOML front matter)
-    _index.md         Homepage
-    consultation.md   Consultation page
-  en/                 English content (auto-generated, do not edit)
-    blog/             Translated blog posts
-    _index.md         Homepage
+  ru/                   Russian content (primary, written manually)
+    blog/               Blog posts (Markdown + TOML front matter)
+    _index.md           Homepage
+    consultation.md     Consultation page
+  en/                   English content (auto-generated, do not edit)
 i18n/
-  ru.toml             Russian UI strings
-  en.toml             English UI strings
+  ru.toml               Category display name mappings
+  en.toml               Category display name mappings
 scripts/
-  translate.mjs       Translation script (Claude API)
-layouts/
-  _default/
-    baseof.html       Base HTML (analytics, KaTeX, hreflang tags)
-    single.html       Blog post template (i18n dates, sharing, Telegram comments)
-    list.html         Blog listing grouped by categories (2-column layout)
-    index.json        JSON Feed template (auto-generated)
-    sitemap.xml       Custom sitemap with per-page priorities
-    home.llms.txt     LLM-friendly content index (auto-generated)
-    _markup/
-      render-link.html   Render hook: external links get target="_blank" at build time
-      render-image.html  Render hook for images
-  partials/
-    header.html         Header with dual-state GIF avatar
-    style.html          Main inlined CSS (dark/light theme)
-    custom_head.html    Additional CSS (header, avatar, mobile menu, social)
-    custom_body.html    JS (Likely, mobile menu, theme toggle)
-    footer.html         Footer with social icons, language switcher, theme toggle
-    posts-column.html   Single column of grouped posts for blog listing
-    seo_tags.html       Meta tags (OG, Twitter Card, robots, canonical, og:locale)
-    structured_data.html  JSON-LD schemas (BlogPosting, Person, BreadcrumbList)
-    og-image.html       Dynamic OG image generation (1200x630)
-  shortcodes/
-    plug.html           Divider shortcode
-  index.html            Homepage template
-  404.html              404 page
+  translate.mjs         Translation script (Claude API)
 static/
-  fonts/              Inter font family (WOFF2, preloaded)
-  katex/              Math rendering (local KaTeX)
-  likely/             Social sharing buttons
-  images/             Avatars, favicon, OG base image
-config.toml           Site configuration (multilingual, per-language menus)
+  fonts/                Inter font family (WOFF2, preloaded)
+  katex/                Math rendering (local KaTeX)
+  likely/               Social sharing buttons
+  images/               Avatars, favicon, OG base image
+config.toml             Site configuration (multilingual, per-language menus)
 ```
 
 ## Multilingual
