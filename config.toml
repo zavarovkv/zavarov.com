@@ -64,6 +64,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   yandexMetrikaId = 106247763
   copyrightYear = 2023
   newPostDays = 30
+  aiTranslatedLang = "en"
   avatar = "images/avatar1.webp"
   avatarHover = "images/avatar2.webp"
   consoleArt = '''
