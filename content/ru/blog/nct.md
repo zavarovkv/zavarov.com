@@ -34,7 +34,7 @@ Ravi Mehta в описанной им концепции NCT предлагае�
 
 Я не считаю, что Ravi Mehta изобрел ракету, он скорее формализовал подход, который многие команды и так используют по наитию для целеполагания. И у которых этот подход приживается сильно лучше, чем OKR. Полезно про него знать.
 
-<h2>Примечания</h2>
+## Примечания
 
 [1] В блоге Reforge есть подробная [статья](https://www.reforge.com/blog/set-better-goals-with-ncts-not-okrs) от [Ravi Mehta](https://www.linkedin.com/in/ravimehta/) (ex-CPO Tinder, Facebook) про NCT.
 
