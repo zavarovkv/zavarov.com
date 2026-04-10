@@ -1,5 +1,5 @@
 +++
-source_hash = "802058414c11"
+source_hash = "b09dda5d4c1a"
 title = "The Growth Dilemma of Online Course Economics"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
@@ -8,38 +8,38 @@ categories = ["strategy"]
 telegram_post = 43
 +++
 
-While comparing top edTech companies in the Russian internet market, I noticed an interesting scaling problem baked into the economics of their courses — one they all seem to live with. I'm not talking about product-driven edTech platforms like LinguaLeo, but companies that create educational courses for upskilling or career transitions.
+Comparing the top edTech companies in the Russian internet market, I noticed an interesting scaling problem baked into their course economics — one they all seem to live with. I'm not talking about product-driven edTech platforms like Lingualeo, but companies that create educational courses for upskilling or career transitions.
 
-<h2>Product EdTech Theorem #1</h2>
+## Product EdTech Theorem #1
 
-<q>The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, the presence of deadlines leads to ↓ Revenue and ↑ Completion Rate.</q>
+<q>The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, having deadlines leads to ↓ Revenue and ↑ Completion Rate.</q>
 
-This simple theorem is easy to derive intuitively and is confirmed by managers at edTech companies. The practical takeaway for prospective students: in a self-paced learning format, you're less likely to finish the course, earn the certificate — or get your money back if things go sideways.
+It's a simple theorem, easily derived intuitively and confirmed by edTech managers. The practical takeaway for prospective students: in a self-paced course, you're less likely to finish and earn your certificate — and less likely to get a refund.
 
-And a corollary follows directly from this theorem:
+Which gives us a direct corollary:
 
-<q>In courses without deadlines, the number of refunds → 0.</q>
+<q>In educational courses without deadlines, the number of refunds → 0.</q>
 
-<h2>Type "A" Companies</h2>
+## Type "A" Companies
 
-These companies build courses with a noble goal: to help as many students as possible reach their educational objectives — most commonly, to land a job.
+These companies build courses with a noble goal: to help as many students as possible reach their educational objectives — most often, landing a job.
 
-The proven way to boost Completion Rate (COR) is through hard motivation: strict deadlines and an elimination-style structure. That's exactly what Product EdTech Theorem #1 tells us. But a "strict deadlines" model is impossible without a team of experts coordinating students, answering questions quickly, and reviewing assignments.
+The proven way to boost Completion Rate is through strong motivation: hard deadlines and an elimination-style structure. That's exactly what Product EdTech Theorem #1 says. But "hard deadlines" can't exist without a team of experts who coordinate students, answer questions quickly, and review assignments.
 
-Students at these courses tend to have a strong experience, reflected in high NPS scores (above 50%). This, in turn, drives a steady stream of new paying students through organic and referral channels — and generates solid Revenue (Revenue = avg. price × students). But it also means growing Costs tied to the expert team.
+When students have a great experience, it shows up in high NPS scores (above 50%). That, in turn, drives a steady flow of new paying students through organic and referral channels — and strong Revenue (Revenue = avg. price × students). But it also means growing Costs tied to that expert team.
 
-The result: as the student base grows, Revenue scales linearly — and so do variable Costs. That's not the economics of a product business, where Revenue grows exponentially while Costs stay fixed (or capped).
+The result: as student numbers grow, Revenue grows linearly — and so do variable Costs. That's not the economics of a product business, where revenue scales rapidly against fixed (or capped) costs.
 
-<h2>Type "B" Companies</h2>
+## Type "B" Companies
 
-These companies treat courses as a product business: minimize variable costs and grow revenue by attracting as many students as possible through any means available.
+These companies treat courses as a product business: minimize variable costs, maximize revenue, and try to attract as many students as possible by any means necessary.
 
-"Minimize costs" unravels into a chain reaction: no student support team → no strict deadlines → minimal course completion → low NPS (zero percent on a good day) → almost no organic acquisition of new paying students.
+"Minimize costs" unravels like this: no student support team → no hard deadlines → minimal course completion → low NPS (0% on a good day) → very few new paying students coming in organically.
 
-The end result: they set out to build a product business, managed to drive variable costs to near zero — but now critically lack the student volume needed to drive meaningful revenue growth.
+They set out to build a product business, even managed to drive variable costs to zero — but end up critically short on students to actually grow revenue.
 
-<h2>The Dilemma</h2>
+## The Dilemma
 
-The dilemma is the choice between path "A" and path "B." Neither path actually produces a scalable product business from a single course. So companies find their optimal growth strategy elsewhere: launching as many courses as possible, across as many topics as possible — and scaling through volume.
+It comes down to choosing between path "A" and path "B." Neither one lets you build a true product business around a single course. So companies find their optimal growth strategy elsewhere: launch as many courses as possible, across as many categories as possible. Scale the course catalog, not the course.
 
-If both paths lead to the same place — scaling by course count — and deliver roughly the same profit margins, the question becomes: why do so many companies choose path "B"? Especially when path "A" builds a strong market reputation, while path "B" results in a narrowly capped market and steadily rising customer acquisition costs.
+If both paths ultimately lead to scaling through more courses — and the profit margins end up roughly the same — the question becomes: why do so many companies choose path "B"? Especially when path "A" builds a strong market reputation, while path "B" leaves you stuck in a shrinking addressable market with rising customer acquisition costs.
