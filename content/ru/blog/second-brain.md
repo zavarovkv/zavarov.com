@@ -65,7 +65,7 @@ graph LR
 
 **Claude Code** — agentic AI с доступом к файловой системе, в нашем случае — к папке Obsidian vault. Он может читать, редактировать, создавать и анализировать любые файлы в этом пространстве. По названию может показаться, что он предназначен только для написания кода, но это не так — он отлично справляется с анализом и работой над любыми текстовыми документами. Интересная особенность, что взаимодействие с Claude Code происходит в терминале. Но, поверьте, он настолько удобен, что не вызывает каких-либо сложностей.
 
-<img loading="lazy" src="/images/obsidian-claude-scr.png" alt="Obsidian и Claude Code CLI">
+<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI">
 
 {{< caption >}}Obsidian и Claude Code CLI{{< /caption >}} 
 
