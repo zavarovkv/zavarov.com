@@ -58,7 +58,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 ## Static Assets
 
 All served locally (no CDN):
-- `static/fonts/` — Inter font family (WOFF2 files for 200/300/300italic/400/500/600/700; theme `fonts.html` declares `@font-face` for the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`
+- `static/fonts/` — Inter font family (WOFF2 files for 200/300/300italic/400/500/600/700; the bundled `assets/css/main.css` declares `@font-face` for the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`. Theme CSS and JS are bundled, minified and fingerprinted via Hugo Pipes — see `themes/hugo-mini/assets/css/main.css` and `themes/hugo-mini/assets/js/main.js`. Per-page HTML no longer inlines theme styles; the browser caches one `/css/main.min.<sha>.css` and one `/js/main.<lang>.min.<sha>.js` per language.
 - `static/katex/` — KaTeX math rendering (loaded conditionally on `math = true` in front matter)
 - `static/likely/` — Ilya Birman's Likely social sharing buttons (updated via `npm run update-likely`)
 - `static/images/` — avatars, post images, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation
