@@ -48,15 +48,17 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Blog posts: `content/ru/blog/*.md` with TOML front matter (`+++`)
 - Pages: `content/ru/consultation.md`, `content/ru/_index.md`
 - EN equivalents: `content/en/blog/*.md`, `content/en/_index.md` (auto-generated)
-- Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`
+- Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`
 - Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
+- `pinned = true` in a post's front matter floats it to the top of its category group on the blog listing (chronological order is preserved among multiple pinned posts and among the rest)
+- Markdown headings (`## `, `### `) get a clickable `#` anchor link via theme render hook — convert any inline `<h2>...</h2>` HTML in old posts to native markdown `##` so the hook can attach
 - URL pattern: `/:slug/` for RU, `/en/:slug/` for EN (configured in `config.toml` permalinks)
 - Text rule: never use the letter «ё» — always write «е» (its «её» → «ее», «еще» instead of «ещё»)
 
 ## Static Assets
 
 All served locally (no CDN):
-- `static/fonts/` — Inter font family (WOFF2: 200, 300, 300italic, 400, 500, 600, 700), preloaded in `baseof.html`
+- `static/fonts/` — Inter font family (WOFF2 files for 200/300/300italic/400/500/600/700; theme `fonts.html` declares `@font-face` for the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`
 - `static/katex/` — KaTeX math rendering (loaded conditionally on `math = true` in front matter)
 - `static/likely/` — Ilya Birman's Likely social sharing buttons (updated via `npm run update-likely`)
 - `static/images/` — avatars, post images, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation
