@@ -6,8 +6,7 @@
 &lt;p>&lt;q>Отсутствие дедлайнов в образовательном курсе ведет к ↑ выручки (Revenue) и ↓ доходимости (COR). И наоборот, наличие дедлайнов ведет к ↓ выручки и ↑ доходимости.&lt;/q>&lt;/p>
 &lt;p>Вот такая простая теорема, которая легко интуитивно выводится и подтверждается менеджерами edTech-компаний. Логичный вывод для будущих учеников любых курсов: в self-paced режиме обучения вероятность дойти до конца курса и получить диплом ниже, так же как и вероятность вернуть деньги за обучение.&lt;/p></description></item><item><title>Шаблон методов приоритизации задач ICE, RICE, DRICE</title><link>https://zavarov.com/template-rice/</link><pubDate>Fri, 01 Jul 2022 12:00:00 +0300</pubDate><guid>https://zavarov.com/template-rice/</guid><description>&lt;p>Шаблон в Google Sheets для приоритизации продуктовых инициатив тремя методами: ICE, RICE и DRICE. Подробнее про методы — в статье &lt;a href="https://zavarov.com/drice/">«Методы приоритизации ICE, RICE, DRICE»&lt;/a>.&lt;/p>
 &lt;p>&lt;a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Скачать шаблон&lt;/a>&lt;/p>
-&lt;h2 id="что-внутри">Что внутри&lt;/h2>
-&lt;p>&lt;strong>ICE&lt;/strong> — простейший метод приоритизации. Каждая инициатива оценивается по трем параметрам от 0 до 10:&lt;/p>
+&lt;h2 id="что-внутри">Что внутри&lt;a class="heading-anchor" href="#%d1%87%d1%82%d0%be-%d0%b2%d0%bd%d1%83%d1%82%d1%80%d0%b8" aria-label="Copy link to this section">#&lt;/a>&lt;/h2>&lt;p>&lt;strong>ICE&lt;/strong> — простейший метод приоритизации. Каждая инициатива оценивается по трем параметрам от 0 до 10:&lt;/p>
 &lt;ul>
 &lt;li>Impact (влияние на метрику)&lt;/li>
 &lt;li>Confidence (уверенность в оценке)&lt;/li>
