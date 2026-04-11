@@ -3,6 +3,10 @@
 /resources/_gen/
 .hugo_build.lock
 
+# Telegram reactions — regenerated at build time by
+# scripts/fetch-telegram-reactions.mjs, not versioned
+/data/telegram_reactions.json
+
 # OS files
 .DS_Store
 Thumbs.db

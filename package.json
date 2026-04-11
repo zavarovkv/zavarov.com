@@ -5,6 +5,7 @@
   "scripts": {
     "translate": "node scripts/translate.mjs",
     "translate:force": "node scripts/translate.mjs --force",
+    "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs",
     "update-likely": "npm install && cp node_modules/ilyabirman-likely/release/likely.js node_modules/ilyabirman-likely/release/likely.css static/likely/"
   },
   "devDependencies": {

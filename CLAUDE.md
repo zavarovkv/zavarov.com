@@ -14,13 +14,14 @@ hugo --minify                            # Production build (outputs to /public)
 npm run translate                        # Translate new/changed content to EN
 npm run translate -- --force             # Re-translate all content
 npm run translate -- blog/brandage.md    # Translate specific file
+npm run fetch-telegram-reactions         # Pull reaction/view counts from Telegram channel into data/telegram_reactions.json
 ```
 
-Hugo extended version is required. Translation requires `ANTHROPIC_API_KEY` env variable.
+Hugo extended version is required. Translation requires `ANTHROPIC_API_KEY` env variable. The Telegram reactions fetch script lives inside the theme (`themes/hugo-mini/scripts/fetch-telegram-reactions.mjs`) and is invoked via the npm alias above — it auto-resolves channel and content dir from Hugo config.
 
 ## Deployment
 
-Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm install` → `npm run translate` (Claude API) → commit EN translations → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`ANTHROPIC_API_KEY`).
+Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm install` → `npm run translate` (Claude API) → commit EN translations → `npm run fetch-telegram-reactions` → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`ANTHROPIC_API_KEY`). Telegram reactions step uses `continue-on-error: true` so a Telegram outage never blocks the deploy — the Hugo partials handle missing data gracefully.
 
 ## Architecture
 

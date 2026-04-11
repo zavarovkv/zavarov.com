@@ -51,6 +51,10 @@ jobs:
           git diff --cached --quiet || git commit -m "Auto-translate EN content [skip ci]"
           git push
 
+      - name: Fetch Telegram reactions
+        continue-on-error: true
+        run: npm run fetch-telegram-reactions
+
       - name: Build
         run: hugo --minify
 
