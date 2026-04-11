@@ -52,6 +52,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
 - `pinned = true` in a post's front matter floats it to the top of its category group on the blog listing (chronological order is preserved among multiple pinned posts and among the rest)
 - Markdown headings (`## `, `### `) get a clickable `#` anchor link via theme render hook — convert any inline `<h2>...</h2>` HTML in old posts to native markdown `##` so the hook can attach
+- `params.popularPosts` in `config.toml` — curated list of slugs shown as a "Популярное"/"Popular" block at the bottom of every single post. Slugs are resolved per current language (RU/EN) via `site.GetPage`; missing slugs are silently skipped. Edit this list when you want to change which posts get featured — the block isn't algorithmic, it's hand-picked.
 - URL pattern: `/:slug/` for RU, `/en/:slug/` for EN (configured in `config.toml` permalinks)
 - Text rule: never use the letter «ё» — always write «е» (its «её» → «ее», «еще» instead of «ещё»)
 
