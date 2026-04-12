@@ -154,9 +154,11 @@ ignoreErrors = ["error-disable-taxonomy"]
 
   [[languages.ru.menu.main]]
     identifier = "telegram"
-    name       = "Канал в Telegram"
+    name       = "Подписаться"
     url        = "https://t.me/pmgen"
     weight     = 3
+    [languages.ru.menu.main.params]
+      icon = "telegram"
 
 [languages.en.menu]
   [[languages.en.menu.main]]
@@ -173,6 +175,8 @@ ignoreErrors = ["error-disable-taxonomy"]
 
   [[languages.en.menu.main]]
     identifier = "telegram"
-    name       = "Telegram Channel"
+    name       = "Subscribe"
     url        = "https://t.me/pmgen"
     weight     = 3
+    [languages.en.menu.main.params]
+      icon = "telegram"

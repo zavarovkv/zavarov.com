@@ -1,9 +1,4 @@
 # Site-specific i18n overrides (these take priority over theme defaults)
-[tg_cta_title]
-other = "Канал о продуктовом менеджменте"
-
-[tg_cta_description]
-other = "Пишу про создание digital-продуктов и управление командами — без воды"
 
 # Category display names
 [cat_marketing]

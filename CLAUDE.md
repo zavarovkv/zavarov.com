@@ -29,7 +29,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - **Site overrides** (only 2 files in `layouts/partials/`):
   - `header.html` — custom first/last name split for responsive styling
   - `extra_head.html` — Yandex/Google verification meta tags
-- **i18n**: site's `i18n/*.toml` contain only category display name mappings; all UI strings come from theme
+- **i18n**: site's `i18n/*.toml` contain only category display name overrides; all UI strings come from theme
 
 ## Multilingual (i18n)
 
