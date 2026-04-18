@@ -22,7 +22,7 @@ jobs:
           submodules: true  # Checkout hugo-mini theme
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.145.0'
           extended: true
@@ -34,22 +34,36 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
+      # Anti-loop guard: translation produces an auto-commit by the bot.
+      # Skip retranslation when we're processing that bot commit, and on PRs
+      # (which should never mutate the default branch or spend API tokens).
       - name: Translate content
-        if: github.actor != 'github-actions[bot]' && github.event_name != 'pull_request'
+        if: >-
+          github.event_name == 'push'
+          && github.ref == 'refs/heads/main'
+          && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: npm run translate
 
       - name: Commit translations
-        if: github.actor != 'github-actions[bot]' && github.event_name != 'pull_request'
+        if: >-
+          github.event_name == 'push'
+          && github.ref == 'refs/heads/main'
+          && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add content/en/
-          git diff --cached --quiet || git commit -m "Auto-translate EN content [skip ci]"
-          git push
+          if git diff --cached --quiet; then
+            echo "No translation changes to commit."
+          else
+            git commit -m "Auto-translate EN content [skip ci]"
+            git push
+          fi
 
       - name: Fetch Telegram reactions
         continue-on-error: true
@@ -59,7 +73,7 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
