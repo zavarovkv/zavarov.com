@@ -67,14 +67,6 @@ ignoreErrors = ["error-disable-taxonomy"]
   aiTranslatedLang = "en"
   avatar = "images/avatar1.webp"
   avatarHover = "images/avatar2.webp"
-  popularPosts = [
-    "brandage",
-    "product-strategy",
-    "10-evils",
-    "text",
-    "second-brain",
-    "pm-tools",
-  ]
   consoleArt = '''
                           ____
                        _.' :  `._
