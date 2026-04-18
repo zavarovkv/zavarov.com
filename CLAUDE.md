@@ -21,7 +21,7 @@ Hugo extended version is required. Translation requires `ANTHROPIC_API_KEY` env 
 
 ## Deployment
 
-Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm ci` → `npm run translate` (Claude API) → commit EN translations → `npm run fetch-telegram-reactions` → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`ANTHROPIC_API_KEY`). Telegram reactions step uses `continue-on-error: true` so a Telegram outage never blocks the deploy — the Hugo partials handle missing data gracefully. The "Translate content" and "Commit translations" steps are gated on `github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'` — the author-email check (rather than `github.actor`) is what reliably breaks the auto-translate bot loop, and the branch check keeps CI from touching anything on PRs.
+Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm ci` → `npm run translate` (Claude API) → commit EN translations → `npm run fetch-telegram-reactions` → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`ANTHROPIC_API_KEY`). Telegram reactions step uses `continue-on-error: true` so a Telegram outage never blocks the deploy — the fetch script also does its own per-post retry with exponential backoff and 429 Retry-After handling, and the Hugo partials handle missing data gracefully. The "Translate content" and "Commit translations" steps are gated on `github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'` — the author-email check (rather than `github.actor`) is what reliably breaks the auto-translate bot loop, and the branch check keeps CI from touching anything on PRs.
 
 ## Architecture
 
@@ -42,14 +42,15 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Language switcher in footer uses Hugo's `.Translations` (server-side links, no JS)
 - hreflang tags in `<head>` for SEO
 - Translation script: `scripts/translate.mjs` — Node.js, uses `@anthropic-ai/sdk` (claude-sonnet-4-6)
-- EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/`
+- EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash.
 
 ## Content
 
 - Blog posts: `content/ru/blog/*.md` with TOML front matter (`+++`)
 - Pages: `content/ru/consultation.md`, `content/ru/_index.md`
 - EN equivalents: `content/en/blog/*.md`, `content/en/_index.md` (auto-generated)
-- Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`
+- Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`. EN files additionally carry `source_hash` written by the translator (see Multilingual section).
+- `hidden = true` excludes a post from listings, recent-posts sidebar, JSON feed, and `llms.txt` (but the page still renders at its permalink and is crawlable). Use for unlisted/evergreen pages linked only from specific posts.
 - Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
 - `pinned = true` in a post's front matter floats it to the top of its category group on the blog listing (chronological order is preserved among multiple pinned posts and among the rest)
 - Markdown headings (`## `, `### `) get a clickable `#` anchor link via theme render hook — convert any inline `<h2>...</h2>` HTML in old posts to native markdown `##` so the hook can attach. Mobile: icon is hidden by default (`display: none`), tap heading to reveal it, tap icon to copy URL + scroll natively. `h2`/`h3` have `scroll-margin-top: 0.75rem` for breathing room after anchor navigation.
@@ -59,7 +60,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 
 ## Static Assets
 
-All served locally (no CDN). Fonts, KaTeX, and Likely live in the theme (`themes/hugo-mini/static/`) and are served directly from there — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS and JS are bundled, minified and fingerprinted via Hugo Pipes (`themes/hugo-mini/assets/css/main.css`, `themes/hugo-mini/assets/js/main.js`). The browser caches one `/css/main.min.<sha>.css` and one `/js/main.<lang>.min.<sha>.js` per language.
+Fonts, KaTeX, and Likely live in the theme (`themes/hugo-mini/static/`) and are served directly from there — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS and JS are bundled, minified and fingerprinted via Hugo Pipes (`themes/hugo-mini/assets/css/main.css`, `themes/hugo-mini/assets/js/main.js`). The browser caches one `/css/main.min.<sha>.css` and one `/js/main.<lang>.min.<sha>.js` per language.
 
 Theme-owned (do not duplicate in site):
 - Inter font family (WOFF2 for 200/300/300italic/400/500/600/700; `@font-face` declares only the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`.
@@ -71,9 +72,24 @@ Site-owned (`static/` in the blog repo):
 - `data/` — post-specific datasets referenced from markdown (e.g. `retention-dataset.csv`).
 - `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
 
+Third-party (CDN):
+- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) in `themes/hugo-mini/layouts/_default/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. For full supply-chain safety, self-host under `themes/hugo-mini/static/` (the `static/katex/` layout is the precedent).
+
 ## Theme vs Site Overrides
 
 `themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/partials/extra_head.html` or by re-adding shadowed copies of theme assets. Site overrides exist strictly for site-specific concerns; currently the only one is `extra_head.html` for search-engine verification meta tags.
+
+## Config Parameters
+
+Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/hugo-mini/layouts/` for usage):
+
+- **Identity**: `authorURL`, `favicon`, `avatar` / `avatarHover` (two-frame hover on header), `[params.author].jobTitle`, `[params.social]` (telegram, linkedin, github, email — rendered in footer and JSON-LD).
+- **i18n UI**: `aiTranslatedLang` (language code whose footer gets the AI-translated sparkle icon; here `"en"`), per-language `authorName` / `description` / `title` under `[languages.<lang>.params]`.
+- **Copyright/freshness**: `copyrightYear` (start year for the `YYYY–currentYear` range in footer), `newPostDays` (window in days for the "new" badge on listings).
+- **Listing layout**: `recentSidebarCount` (see Content section), `socialSharing` (default true; set false to hide Likely bar on posts), `pinned` (front-matter, not params).
+- **Analytics** (all optional; theme emits each block only if its ID is set): `yandexMetrikaId`, `googleAnalyticsId`, `plausibleDomain` / `plausibleSrc`, `umamiWebsiteId` / `umamiSrc`.
+- **Telegram**: `telegramChannel` (channel slug used for post comments widget and reactions fetch).
+- **Easter eggs**: `consoleArt` (multi-line string printed via `console.log` on page load; theme has `consoleYoda` as a default variant).
 
 ## Key Conventions
 
