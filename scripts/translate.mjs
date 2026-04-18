@@ -28,10 +28,23 @@ function readStoredHash(content) {
   return m ? m[1] : null;
 }
 
-/** Add or replace source_hash in translated file's front matter. */
+/**
+ * Add or replace source_hash in translated file's front matter.
+ * Operates only on the opening TOML block (everything up to the
+ * first closing `+++`), so `+++` sequences inside the body cannot
+ * be mistaken for delimiters.
+ */
 function addSourceHash(translated, hash) {
-  const stripped = translated.replace(/^source_hash\s*=\s*"[a-f0-9]+"\n/m, "");
-  return stripped.replace(/^\+\+\+\n/, `+++\nsource_hash = "${hash}"\n`);
+  const match = translated.match(/^\+\+\+\r?\n([\s\S]*?)\r?\n\+\+\+\r?\n/);
+  if (!match) {
+    throw new Error(
+      "Translation is missing TOML front matter (expected +++ delimiters at start)"
+    );
+  }
+  const [fullBlock, fmBody] = match;
+  const rest = translated.slice(fullBlock.length);
+  const cleaned = fmBody.replace(/^source_hash\s*=\s*"[a-f0-9]+"\n?/m, "");
+  return `+++\nsource_hash = "${hash}"\n${cleaned}\n+++\n${rest}`;
 }
 
 const RU_DIR = "content/ru";
@@ -89,15 +102,19 @@ async function main() {
     }
 
     if (!forceAll) {
+      let enContent;
       try {
+        enContent = await readFile(enPath, "utf-8");
+      } catch (err) {
+        if (err.code !== "ENOENT") throw err;
+        // EN file doesn't exist — falls through to translate
+      }
+      if (enContent !== undefined) {
         const ruContent = await readFile(ruPath, "utf-8");
-        const enContent = await readFile(enPath, "utf-8");
         if (sourceHash(ruContent) === readStoredHash(enContent)) {
           console.log(`  skip ${file} (unchanged)`);
           continue;
         }
-      } catch {
-        // EN file doesn't exist — needs translation
       }
     }
 
@@ -139,7 +156,22 @@ async function main() {
           ],
         });
 
-        const translated = addSourceHash(message.content[0].text, sourceHash(ruContent));
+        // Guard against truncation: saving a partial translation with a
+        // valid source_hash would mark it "up to date" forever.
+        if (message.stop_reason !== "end_turn") {
+          throw new Error(
+            `API returned stop_reason="${message.stop_reason}" — response likely truncated (bump max_tokens)`
+          );
+        }
+
+        const first = message.content && message.content[0];
+        if (!first || first.type !== "text" || typeof first.text !== "string") {
+          throw new Error(
+            `Expected text content block, got ${first ? first.type : "empty content"}`
+          );
+        }
+
+        const translated = addSourceHash(first.text, sourceHash(ruContent));
         await writeFile(enPath, translated, "utf-8");
 
         const inputTokens = message.usage.input_tokens;
