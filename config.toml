@@ -14,7 +14,10 @@ defaultContentLanguageInSubdirectory = false
 enableRobotsTXT = true
 
 # Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
-disableKinds = ["taxonomy"]
+# "term" included too: without it Hugo still builds per-category pages
+# (each a duplicate of the full blog listing, since the theme's list.html
+# always renders the whole /blog section).
+disableKinds = ["taxonomy", "term"]
 ignoreErrors = ["error-disable-taxonomy"]
 
 # Custom output format for llms.txt
@@ -33,7 +36,6 @@ ignoreErrors = ["error-disable-taxonomy"]
 
 [permalinks]
   blog = "/:slug/"
-  categories = "/blog/:slug"
 
 [languages]
   [languages.ru]
@@ -46,6 +48,28 @@ ignoreErrors = ["error-disable-taxonomy"]
       description = "Личный блог Константина Заварова"
       title = "Константин Заваров"
       authorName = "Константин Заваров"
+      # Free-text bio for /llms.txt (theme's home.llms.txt output)
+      [languages.ru.params.llms]
+        about = "Константин Заваров — Head of Product в Ozon с 12+ годами опыта в IT. Ранее работал в Яндексе, Мегамаркете и Лаборатории Касперского. С 2021 по 2025 год вел курсы в Яндекс Практикуме. Ведет Telegram-канал «Код Продакта» (https://t.me/pmgen). Контент на русском языке."
+    # Per-language markup REPLACES the root [markup] section (Hugo does not
+    # deep-merge it), so this block must mirror [markup] below in full. The
+    # only intended difference: Russian typographic quotes («») — EN keeps
+    # Goldmark's default English smart quotes.
+    [languages.ru.markup]
+      [languages.ru.markup.goldmark]
+        [languages.ru.markup.goldmark.renderer]
+          unsafe = true
+        [languages.ru.markup.goldmark.extensions]
+          [languages.ru.markup.goldmark.extensions.typographer]
+            leftDoubleQuote = "&laquo;"
+            rightDoubleQuote = "&raquo;"
+          [languages.ru.markup.goldmark.extensions.math]
+            enable = true
+      [languages.ru.markup.highlight]
+        style = 'friendly'
+        lineNos = true
+        lineNumbersInTable = false
+        codeFences = true
   [languages.en]
     weight = 2
     languageCode = "en"
@@ -56,6 +80,9 @@ ignoreErrors = ["error-disable-taxonomy"]
       description = "Konstantin Zavarov's blog about product management"
       title = "Konstantin Zavarov"
       authorName = "Konstantin Zavarov"
+      # Free-text bio for /en/llms.txt (theme's home.llms.txt output)
+      [languages.en.params.llms]
+        about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the «Код Продакта» Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
   favicon = "images/favicon.png"
@@ -120,9 +147,6 @@ ignoreErrors = ["error-disable-taxonomy"]
       # Safe because all content is author-controlled. Disable if opening to guest posts.
       unsafe = true
     [markup.goldmark.extensions]
-      [markup.goldmark.extensions.typographer]
-        leftDoubleQuote = "&laquo;"
-        rightDoubleQuote = "&raquo;"
       [markup.goldmark.extensions.math]
         enable = true
   [markup.highlight]

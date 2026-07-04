@@ -42,13 +42,13 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Language switcher in footer uses Hugo's `.Translations` (server-side links, no JS)
 - hreflang tags in `<head>` for SEO
 - Translation script: `scripts/translate.mjs` — Node.js, uses `@anthropic-ai/sdk` (claude-sonnet-4-6)
-- EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash.
+- EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash. Exception: `_index.md` files are skipped by the script, so `content/en/_index.md` is maintained by hand.
 
 ## Content
 
 - Blog posts: `content/ru/blog/*.md` with TOML front matter (`+++`)
 - Pages: `content/ru/consultation.md`, `content/ru/_index.md`
-- EN equivalents: `content/en/blog/*.md`, `content/en/_index.md` (auto-generated)
+- EN equivalents: `content/en/blog/*.md` (auto-generated), `content/en/_index.md` (manual — the translate script skips `_index.md`)
 - Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`. EN files additionally carry `source_hash` written by the translator (see Multilingual section).
 - `hidden = true` excludes a post from listings, recent-posts sidebar, JSON feed, and `llms.txt` (but the page still renders at its permalink and is crawlable). Use for unlisted/evergreen pages linked only from specific posts.
 - Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
@@ -73,7 +73,7 @@ Site-owned (`static/` in the blog repo):
 - `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
 
 Third-party (CDN):
-- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) in `themes/hugo-mini/layouts/_default/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. For full supply-chain safety, self-host under `themes/hugo-mini/static/` (the `static/katex/` layout is the precedent).
+- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) with an SRI `integrity` hash in `themes/hugo-mini/layouts/_default/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, recompute the hash from the npm tarball (command is in the template comment) and render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. If the CDN script fails to load (offline, SRI mismatch), the raw diagram source is shown instead of a blank hole. For full supply-chain safety, self-host under `themes/hugo-mini/static/` (the `static/katex/` layout is the precedent).
 
 ## Theme vs Site Overrides
 
@@ -89,6 +89,7 @@ Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/
 - **Listing layout**: `recentSidebarCount` (see Content section), `socialSharing` (default true; set false to hide Likely bar on posts), `pinned` (front-matter, not params).
 - **Analytics** (all optional; theme emits each block only if its ID is set): `yandexMetrikaId`, `googleAnalyticsId`, `plausibleDomain` / `plausibleSrc`, `umamiWebsiteId` / `umamiSrc`.
 - **Telegram**: `telegramChannel` (channel slug used for post comments widget and reactions fetch).
+- **llms.txt**: per-language `llms.about` under `[languages.<lang>.params]` — free-text author bio rendered in the theme's `home.llms.txt` output; contacts/sections/articles are derived from `params.social`, `menu.main`, and the blog section automatically.
 - **Easter eggs**: `consoleArt` (multi-line string printed via `console.log` on page load; theme has `consoleYoda` as a default variant).
 
 ## Key Conventions

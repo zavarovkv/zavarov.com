@@ -159,8 +159,13 @@ async function main() {
         // Guard against truncation: saving a partial translation with a
         // valid source_hash would mark it "up to date" forever.
         if (message.stop_reason !== "end_turn") {
-          throw new Error(
-            `API returned stop_reason="${message.stop_reason}" — response likely truncated (bump max_tokens)`
+          // Deterministic failure — retrying with the same max_tokens can
+          // only truncate again, so skip the retry loop.
+          throw Object.assign(
+            new Error(
+              `API returned stop_reason="${message.stop_reason}" — response likely truncated (bump max_tokens)`
+            ),
+            { permanent: true }
           );
         }
 
@@ -180,6 +185,10 @@ async function main() {
         success = true;
         break;
       } catch (err) {
+        if (err.permanent) {
+          console.log(`FAILED (permanent, no retry): ${err.message}`);
+          break;
+        }
         if (attempt < MAX_RETRIES) {
           const delay = attempt * 2000;
           process.stdout.write(`retry ${attempt}/${MAX_RETRIES} in ${delay}ms ... `);
