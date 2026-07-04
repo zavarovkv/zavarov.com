@@ -1,25 +1,27 @@
 # Konstantin Zavarov — https://zavarov.com/
 
-> Konstantin Zavarov's blog about product management. Автор — Konstantin Zavarov, Head of Product в Ozon. Контент на русском языке.
+> Konstantin Zavarov's blog about product management
 
-## Об авторе
+## About the author
 
-Konstantin Zavarov — Head of Product в Ozon с 12+ годами опыта в IT. Ранее работал в Яндексе, Мегамаркете и Лаборатории Касперского. С 2021 по 2025 год вел курсы в Яндекс Практикуме. Ведет Telegram-канал «Код Продакта» (https://t.me/pmgen).
+Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the «Код Продакта» Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated.
 
-## Контакты
+## Contacts
 
-- Сайт: https://zavarov.com/
+- Website: https://zavarov.com/
+- Telegram channel: https://t.me/pmgen
+- Email: zavarovkv@gmail.com
+- GitHub: https://github.com/zavarovkv/
+- LinkedIn: https://www.linkedin.com/in/zavarovkv/
 - Telegram: https://t.me/zavarov
-- Telegram-канал: https://t.me/pmgen
-- LinkedIn: https://linkedin.com/in/zavarovkv
-- GitHub: https://github.com/zavarovkv
 
-## Разделы
+## Sections
 
-- Блог: https://zavarov.com/blog/
-- Консультация: https://zavarov.com/consultation/
+- Articles: https://zavarov.com/en/blog/
+- Consultation: https://zavarov.com/en/consultation/
 
-## Статьи
+## Articles
+
 - [The Brand Age, Paul Graham](https://zavarov.com/en/brandage/): Reflections on Paul Graham's essay 'The Brand Age': why technological advantage is finite, and when betting on brand becomes a matter of survival.
 - [Product Strategy ≠ Template](https://zavarov.com/en/product-strategy/): There's no universal product strategy template. On what strategy actually looks like in practice — and why it's a living system, not a document.
 - [Second Brain: PARA × Obsidian × Granola × Claude](https://zavarov.com/en/second-brain/): How to build a knowledge management system from PARA, Obsidian, Granola, and Claude — and why it works like a second brain.
