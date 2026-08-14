@@ -94,6 +94,13 @@ ignoreErrors = ["error-disable-taxonomy"]
   aiTranslatedLang = "en"
   avatar = "images/avatar1.webp"
   avatarHover = "images/avatar2.webp"
+  # Self-hosted Mermaid (static/js/mermaid.min.js, v11.14.0) instead of the
+  # theme's default jsDelivr URL — no third-party requests on any page.
+  # The vendored file is byte-identical to what jsDelivr serves for that
+  # version (sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk).
+  # When bumping, re-vendor from the npm tarball:
+  #   curl -sL https://registry.npmjs.org/mermaid/-/mermaid-<ver>.tgz | tar -xzO package/dist/mermaid.min.js > static/js/mermaid.min.js
+  mermaidSrc = "js/mermaid.min.js"
   consoleArt = '''
                           ____
                        _.' :  `._

@@ -72,8 +72,9 @@ Site-owned (`static/` in the blog repo):
 - `data/` — post-specific datasets referenced from markdown (e.g. `retention-dataset.csv`).
 - `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
 
-Third-party (CDN):
-- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) with an SRI `integrity` hash in `themes/hugo-mini/layouts/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, recompute the hash from the npm tarball (command is in the template comment) and render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. If the CDN script fails to load (offline, SRI mismatch), the raw diagram source is shown instead of a blank hole. To drop the CDN entirely, put `mermaid.min.js` in `static/js/` and set `params.mermaidSrc = "js/mermaid.min.js"` — the theme then emits a local `<script>` with no `integrity`/`crossorigin`.
+Third-party (none in the page):
+- Mermaid is **self-hosted**: `static/js/mermaid.min.js` (v11.14.0, ~3.1 MB) with `params.mermaidSrc = "js/mermaid.min.js"` in `config.toml`. The theme defaults to a pinned, SRI-guarded jsDelivr URL; this param overrides it, so no page makes a third-party request (the only external hit left is the Yandex.Metrika counter, which is opt-in analytics). Loaded only on pages with `mermaid = true` in front matter — currently `blog/second-brain.md`.
+- The vendored file is byte-identical to what jsDelivr serves for that version (verified against the npm tarball, `sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk`). To bump: `curl -sL https://registry.npmjs.org/mermaid/-/mermaid-<ver>.tgz | tar -xzO package/dist/mermaid.min.js > static/js/mermaid.min.js`, then render a page using modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. If the script fails to load, the theme shows the raw diagram source instead of a blank hole.
 
 ## Theme vs Site Overrides
 
