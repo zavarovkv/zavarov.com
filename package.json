@@ -3,11 +3,14 @@
   "private": true,
   "description": "Build-time scripts for the zavarov.com Hugo site (RU→EN translation, Telegram reactions fetch).",
   "scripts": {
+    "postinstall": "node scripts/vendor-mermaid.mjs",
+    "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
     "translate": "node scripts/translate.mjs",
     "translate:force": "node scripts/translate.mjs --force",
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.39.0"
+    "@anthropic-ai/sdk": "^0.39.0",
+    "mermaid": "11.14.0"
   }
 }

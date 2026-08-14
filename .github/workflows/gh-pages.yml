@@ -78,6 +78,17 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Check self-hosted assets
+        # Mermaid is vendored out of node_modules by the postinstall hook
+        # (scripts/vendor-mermaid.mjs) and served from our own domain via
+        # params.mermaidSrc. If the hook is skipped — e.g. an --omit=dev
+        # install — pages with mermaid = true would deploy without their
+        # diagram script and fail silently in the browser, so fail here.
+        run: |
+          set -euo pipefail
+          test -s public/js/mermaid.min.js
+          echo "ok: public/js/mermaid.min.js ($(wc -c < public/js/mermaid.min.js) bytes)"
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
