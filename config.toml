@@ -40,7 +40,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 [languages]
   [languages.ru]
     weight = 1
-    languageCode = "ru"
+    languageCode = "ru-RU"
     languageName = "RU"
     title = "Константин Заваров"
     contentDir = "content/ru"
@@ -72,7 +72,7 @@ ignoreErrors = ["error-disable-taxonomy"]
         codeFences = true
   [languages.en]
     weight = 2
-    languageCode = "en"
+    languageCode = "en-US"
     languageName = "EN"
     title = "Konstantin Zavarov"
     contentDir = "content/en"
@@ -86,6 +86,8 @@ ignoreErrors = ["error-disable-taxonomy"]
 
 [params]
   favicon = "images/favicon.png"
+  favicon192 = "images/favicon-192.png"
+  appleTouchIcon = "images/apple-touch-icon.png"
   authorURL = "https://zavarov.com/"
   telegramChannel = "pmgen"
   yandexMetrikaId = 106247763

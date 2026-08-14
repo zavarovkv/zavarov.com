@@ -47,6 +47,44 @@ function addSourceHash(translated, hash) {
   return `+++\nsource_hash = "${hash}"\n${cleaned}\n+++\n${rest}`;
 }
 
+/**
+ * Front-matter keys the model is told to copy verbatim. Translating any of
+ * these silently changes the published page — `slug` rewrites its URL, `date`
+ * moves it in every listing — so they are verified after the fact rather than
+ * trusted. Prompt compliance is not a guarantee.
+ */
+const PRESERVED_KEYS = ["slug", "date", "categories", "telegram_post", "draft", "hidden", "pinned"];
+
+/** Values of PRESERVED_KEYS as raw strings, read from a TOML front matter block. */
+function readPreserved(content) {
+  const fm = content.match(/^\+\+\+\r?\n([\s\S]*?)\r?\n\+\+\+/);
+  const body = fm ? fm[1] : "";
+  const out = {};
+  for (const key of PRESERVED_KEYS) {
+    const m = body.match(new RegExp(`^${key}\\s*=\\s*(.+)$`, "m"));
+    if (m) out[key] = m[1].trim();
+  }
+  return out;
+}
+
+/** Throws if the translation altered a field that had to be copied verbatim. */
+function assertPreserved(source, translated, file) {
+  const before = readPreserved(source);
+  const after = readPreserved(translated);
+  const changed = [];
+  for (const key of PRESERVED_KEYS) {
+    if ((before[key] ?? null) !== (after[key] ?? null)) {
+      changed.push(`${key}: ${before[key] ?? "(absent)"} -> ${after[key] ?? "(absent)"}`);
+    }
+  }
+  if (changed.length) {
+    throw Object.assign(
+      new Error(`translation changed preserved front matter in ${file}:\n    ${changed.join("\n    ")}`),
+      { permanent: true }
+    );
+  }
+}
+
 const RU_DIR = "content/ru";
 const EN_DIR = "content/en";
 const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-6";
@@ -177,6 +215,7 @@ async function main() {
         }
 
         const translated = addSourceHash(first.text, sourceHash(ruContent));
+        assertPreserved(ruContent, translated, file);
         await writeFile(enPath, translated, "utf-8");
 
         const inputTokens = message.usage.input_tokens;
@@ -208,4 +247,7 @@ async function main() {
   }
 }
 
-main();
+main().catch((e) => {
+  console.error("Fatal:", e);
+  process.exit(1);
+});
