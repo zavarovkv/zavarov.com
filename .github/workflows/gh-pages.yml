@@ -24,7 +24,13 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.145.0'
+          # Must stay >= the theme's [module.hugoVersion] min (0.146.0) — the
+          # theme's layouts use the template system introduced there, and on an
+          # older Hugo the _shortcodes/_partials directories are not found at
+          # all (the build fails on the first shortcode). Pinned to the version
+          # this site is verified against locally; the theme's own CI covers the
+          # 0.146.0 floor.
+          hugo-version: '0.154.5'
           extended: true
 
       - name: Setup Node.js
