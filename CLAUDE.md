@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via Claude API). Content is focused on Product Management topics. The site is intentionally thin: everything that can live in the theme does (layouts, CSS/JS, fonts, KaTeX, Likely). The only site-level layout override is `layouts/partials/extra_head.html` for search-engine verification meta tags.
+Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via Claude API). Content is focused on Product Management topics. The site is intentionally thin: everything that can live in the theme does (layouts, CSS/JS, fonts, KaTeX, Likely). The only site-level layout override is `layouts/_partials/custom_head.html` for search-engine verification meta tags.
 
 ## Build & Development Commands
 
@@ -26,8 +26,8 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 ## Architecture
 
 - **Theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides all base layouts, CSS, JS, fonts, KaTeX, Likely, shortcodes, i18n UI strings, and build scripts (`fetch-telegram-reactions.mjs`). The site does NOT shadow theme assets; fonts/katex/likely are served from the theme directly.
-- **Site overrides** (one file in `layouts/partials/`):
-  - `extra_head.html` — Yandex/Google verification meta tags
+- **Site overrides** (one file in `layouts/_partials/`):
+  - `custom_head.html` — Yandex/Google verification meta tags. The theme's layouts follow Hugo's current template system (0.146+), so partials live under `_partials/` with the underscore; the theme's former `extra_head.html` hook was removed as a duplicate of `custom_head.html`.
 - **Header title split**: the theme's `header.html` auto-splits `.Site.Title` on the first space into `.title-first-name` / `.title-last-name` spans (so `"Константин Заваров"` renders as two styleable pieces). No site override needed.
 - **i18n**: site's `i18n/*.toml` contain only category display name overrides; all UI strings come from theme
 
@@ -73,11 +73,11 @@ Site-owned (`static/` in the blog repo):
 - `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
 
 Third-party (CDN):
-- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) with an SRI `integrity` hash in `themes/hugo-mini/layouts/_default/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, recompute the hash from the npm tarball (command is in the template comment) and render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. If the CDN script fails to load (offline, SRI mismatch), the raw diagram source is shown instead of a blank hole. For full supply-chain safety, self-host under `themes/hugo-mini/static/` (the `static/katex/` layout is the precedent).
+- Mermaid is loaded from jsDelivr pinned to a known-good version (currently `11.14.0`) with an SRI `integrity` hash in `themes/hugo-mini/layouts/baseof.html`, conditional on `mermaid = true` in front matter. When bumping, recompute the hash from the npm tarball (command is in the template comment) and render a page that uses modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these. If the CDN script fails to load (offline, SRI mismatch), the raw diagram source is shown instead of a blank hole. To drop the CDN entirely, put `mermaid.min.js` in `static/js/` and set `params.mermaidSrc = "js/mermaid.min.js"` — the theme then emits a local `<script>` with no `integrity`/`crossorigin`.
 
 ## Theme vs Site Overrides
 
-`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/partials/extra_head.html` or by re-adding shadowed copies of theme assets. Site overrides exist strictly for site-specific concerns; currently the only one is `extra_head.html` for search-engine verification meta tags.
+`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/_partials/custom_head.html` or by re-adding shadowed copies of theme assets. Site overrides exist strictly for site-specific concerns; currently the only one is `custom_head.html` for search-engine verification meta tags.
 
 ## Config Parameters
 
