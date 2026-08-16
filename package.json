@@ -2,6 +2,9 @@
   "name": "zavarov-com",
   "private": true,
   "description": "Build-time scripts for the zavarov.com Hugo site (RU→EN translation, Telegram reactions fetch).",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "postinstall": "node scripts/vendor-mermaid.mjs",
     "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
@@ -10,7 +13,7 @@
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
-    "mermaid": "11.14.0"
+    "mermaid": "11.14.0",
+    "openai": "7.4.0"
   }
 }

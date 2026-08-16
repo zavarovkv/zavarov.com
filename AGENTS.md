@@ -1,10 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via Claude API). Content is focused on Product Management topics. The site is intentionally thin: everything that can live in the theme does (layouts, CSS/JS, fonts, KaTeX, Likely). The only site-level layout override is `layouts/_partials/custom_head.html` for search-engine verification meta tags.
+Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via OpenAI API). Content is focused on Product Management topics. The site is intentionally thin: everything that can live in the theme does (layouts, CSS/JS, fonts, KaTeX, Likely). The only site-level layout override is `layouts/_partials/custom_head.html` for search-engine verification meta tags.
 
 ## Build & Development Commands
 
@@ -17,11 +17,11 @@ npm run translate -- blog/brandage.md    # Translate specific file
 npm run fetch-telegram-reactions         # Pull reaction/view counts from Telegram channel into data/telegram_reactions.json
 ```
 
-Hugo extended version is required. Translation requires `ANTHROPIC_API_KEY` env variable. The Telegram reactions fetch script lives inside the theme (`themes/hugo-mini/scripts/fetch-telegram-reactions.mjs`) and is invoked via the npm alias above — it auto-resolves channel and content dir from Hugo config.
+Hugo extended version is required. Translation requires `OPENAI_API_KEY` env variable. The Telegram reactions fetch script lives inside the theme (`themes/hugo-mini/scripts/fetch-telegram-reactions.mjs`) and is invoked via the npm alias above — it auto-resolves channel and content dir from Hugo config.
 
 ## Deployment
 
-Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm ci` → `npm run translate` (Claude API) → commit EN translations → `npm run fetch-telegram-reactions` → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`ANTHROPIC_API_KEY`). Telegram reactions step uses `continue-on-error: true` so a Telegram outage never blocks the deploy — the fetch script also does its own per-post retry with exponential backoff and 429 Retry-After handling, and the Hugo partials handle missing data gracefully. The "Translate content" and "Commit translations" steps are gated on `github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'` — the author-email check (rather than `github.actor`) is what reliably breaks the auto-translate bot loop, and the branch check keeps CI from touching anything on PRs.
+Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` triggers: `npm ci` → `npm run translate` (OpenAI API) → commit EN translations → `npm run fetch-telegram-reactions` → `hugo --minify` → deploy to GitHub Pages. API key is stored in GitHub Secrets (`OPENAI_API_KEY`). Telegram reactions step uses `continue-on-error: true` so a Telegram outage never blocks the deploy — the fetch script also does its own per-post retry with exponential backoff and 429 Retry-After handling, and the Hugo partials handle missing data gracefully. The "Translate content" and "Commit translations" steps are gated on `github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'` — the author-email check (rather than `github.actor`) is what reliably breaks the auto-translate bot loop, and the branch check keeps CI from touching anything on PRs.
 
 ## Architecture
 
@@ -41,7 +41,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Per-language menus configured in `config.toml` under `[languages.ru.menu]` / `[languages.en.menu]`
 - Language switcher in footer uses Hugo's `.Translations` (server-side links, no JS)
 - hreflang tags in `<head>` for SEO
-- Translation script: `scripts/translate.mjs` — Node.js, uses `@anthropic-ai/sdk` (claude-sonnet-4-6)
+- Translation script: `scripts/translate.mjs` — Node.js, uses the official `openai` SDK and Responses API (`gpt-5.6-luna` by default, configurable via `OPENAI_MODEL`)
 - EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash. Exception: `_index.md` files are skipped by the script, so `content/en/_index.md` is maintained by hand.
 
 ## Content
@@ -101,6 +101,6 @@ Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/
 - Config file: `config.toml` (TOML format)
 - Content front matter: TOML (`+++` delimiters)
 - Markdown renderer: Goldmark with `unsafe: true` and math extensions enabled
-- Primary content language: Russian; English auto-translated via Claude API
+- Primary content language: Russian; English auto-translated via OpenAI API
 - Base URL: `https://zavarov.com/` (custom domain via GitHub Pages CNAME)
 - Content license: CC BY-SA 4.0

@@ -2,10 +2,10 @@
 /**
  * Pre-build translation script.
  * Scans content/ru/ recursively and creates missing or outdated
- * English translations in content/en/ via Claude API.
+ * English translations in content/en/ via OpenAI API.
  *
  * Usage:
- *   ANTHROPIC_API_KEY=sk-... node scripts/translate.mjs
+ *   OPENAI_API_KEY=sk-... node scripts/translate.mjs
  *   node scripts/translate.mjs --force                    # re-translate all
  *   node scripts/translate.mjs blog/brandage.md           # translate specific file(s)
  *   node scripts/translate.mjs consultation.md             # pages too
@@ -14,7 +14,7 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile, stat, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 
 /** Normalized SHA-256: collapse whitespace, trim, then hash. */
 function sourceHash(text) {
@@ -87,7 +87,7 @@ function assertPreserved(source, translated, file) {
 
 const RU_DIR = "content/ru";
 const EN_DIR = "content/en";
-const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-6";
+const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 const MAX_RETRIES = 3;
 
 const SYSTEM_PROMPT = `You are a professional translator from Russian to English.
@@ -166,7 +166,7 @@ async function main() {
 
   console.log(`\nTranslating ${toTranslate.length} file(s)...\n`);
 
-  const client = new Anthropic();
+  const client = new OpenAI();
   let failed = 0;
 
   for (const file of toTranslate) {
@@ -182,44 +182,39 @@ async function main() {
     let success = false;
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
-        const message = await client.messages.create({
+        const response = await client.responses.create({
           model: MODEL,
-          max_tokens: 8192,
-          system: SYSTEM_PROMPT,
-          messages: [
-            {
-              role: "user",
-              content: `Translate this blog post from Russian to English:\n\n${ruContent}`,
-            },
-          ],
+          instructions: SYSTEM_PROMPT,
+          input: `Translate this blog post from Russian to English:\n\n${ruContent}`,
+          max_output_tokens: 8192,
+          reasoning: { effort: "none" },
+          store: false,
         });
 
         // Guard against truncation: saving a partial translation with a
         // valid source_hash would mark it "up to date" forever.
-        if (message.stop_reason !== "end_turn") {
+        if (response.status !== "completed") {
           // Deterministic failure — retrying with the same max_tokens can
           // only truncate again, so skip the retry loop.
+          const reason = response.incomplete_details?.reason || response.error?.message || response.status;
           throw Object.assign(
             new Error(
-              `API returned stop_reason="${message.stop_reason}" — response likely truncated (bump max_tokens)`
+              `API returned status="${response.status}" (${reason}) — response may be truncated`
             ),
             { permanent: true }
           );
         }
 
-        const first = message.content && message.content[0];
-        if (!first || first.type !== "text" || typeof first.text !== "string") {
-          throw new Error(
-            `Expected text content block, got ${first ? first.type : "empty content"}`
-          );
+        if (!response.output_text) {
+          throw new Error("Expected text output, got an empty response");
         }
 
-        const translated = addSourceHash(first.text, sourceHash(ruContent));
+        const translated = addSourceHash(response.output_text, sourceHash(ruContent));
         assertPreserved(ruContent, translated, file);
         await writeFile(enPath, translated, "utf-8");
 
-        const inputTokens = message.usage.input_tokens;
-        const outputTokens = message.usage.output_tokens;
+        const inputTokens = response.usage?.input_tokens ?? 0;
+        const outputTokens = response.usage?.output_tokens ?? 0;
         console.log(`done (${inputTokens}+${outputTokens} tokens)`);
         success = true;
         break;

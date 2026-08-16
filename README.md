@@ -5,8 +5,8 @@ Personal blog by [Konstantin Zavarov](https://zavarov.com) about Product Managem
 ## Prerequisites
 
 - [Hugo extended](https://gohugo.io/installation/) (required — normal Hugo builds will fail on the theme's SCSS/asset pipeline)
-- [Node.js 20+](https://nodejs.org/) (only needed for the translation and Telegram-reactions scripts)
-- `ANTHROPIC_API_KEY` — required for `npm run translate` locally and in CI
+- [Node.js 22+](https://nodejs.org/) (only needed for the translation and Telegram-reactions scripts)
+- `OPENAI_API_KEY` — required for `npm run translate` locally and in CI
 
 ## Quick Start
 
@@ -25,25 +25,25 @@ If you forgot `--recursive`, run `git submodule update --init` to pull the theme
 | `hugo server` | Local dev server with live reload |
 | `hugo --minify` | Production build to `/public` |
 | `npm ci` | Install Node dependencies (use `npm install` only to update `package-lock.json`) |
-| `npm run translate` | Translate new/changed RU content to EN via Claude API |
+| `npm run translate` | Translate new/changed RU content to EN via OpenAI API |
 | `npm run translate:force` | Re-translate all RU content, ignoring the `source_hash` cache |
 | `npm run translate -- blog/brandage.md` | Translate a single file |
 | `npm run fetch-telegram-reactions` | Pull view/reaction counts from Telegram into `data/telegram_reactions.json` |
 
-Translation and Telegram fetch both read an `ANTHROPIC_API_KEY` / `TELEGRAM_*` env var — see the script headers for details.
+Translation and Telegram fetch read `OPENAI_API_KEY` and `TELEGRAM_*` environment variables respectively — see the script headers for details.
 
 ## Deploy
 
 Automated via GitHub Actions (`.github/workflows/gh-pages.yml`) — every push to `main`:
 
 1. `npm ci`
-2. `npm run translate` (Claude API) — only if the pushing commit isn't from the CI bot
+2. `npm run translate` (OpenAI API) — only if the pushing commit isn't from the CI bot
 3. Commit EN translations back to the repo (re-triggers the workflow, but step 2's author-email guard breaks the loop)
 4. `npm run fetch-telegram-reactions` (tolerates failure — has its own retry/backoff, and Hugo partials gracefully degrade)
 5. `hugo --minify`
 6. Deploy to GitHub Pages
 
-Requires `ANTHROPIC_API_KEY` in GitHub Secrets.
+Requires `OPENAI_API_KEY` in GitHub Secrets.
 
 ## Project Structure
 
@@ -60,7 +60,7 @@ content/
 i18n/
   ru.toml, en.toml        Category display-name overrides (all other UI strings come from the theme)
 scripts/
-  translate.mjs           RU → EN translation via Claude API
+  translate.mjs           RU → EN translation via OpenAI API
 static/
   CNAME                   GitHub Pages custom-domain file
   data/                   Post-specific datasets referenced from markdown
