@@ -7,22 +7,67 @@ on:
   pull_request:
 
 concurrency:
-  group: deploy
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          submodules: true
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3
+        with:
+          hugo-version: '0.154.5'
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check scripts/translate.mjs
+          node --check scripts/vendor-mermaid.mjs
+          node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
+          node --check themes/hugo-mini/assets/js/main.js
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
+
+      - name: Build
+        run: hugo --minify --panicOnWarning
+
+      - name: Check content and local links
+        run: npm run check
+
+      - name: Check self-hosted assets
+        run: test -s public/js/mermaid.min.js
+
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
           submodules: true  # Checkout hugo-mini theme
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3
         with:
           # Must stay >= the theme's [module.hugoVersion] min (0.146.0) — the
           # theme's layouts use the template system introduced there, and on an
@@ -34,13 +79,23 @@ jobs:
           extended: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check scripts/translate.mjs
+          node --check scripts/vendor-mermaid.mjs
+          node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
+          node --check themes/hugo-mini/assets/js/main.js
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
 
       # Anti-loop guard: translation produces an auto-commit by the bot.
       # Skip retranslation when we're processing that bot commit, and on PRs
@@ -76,7 +131,10 @@ jobs:
         run: npm run fetch-telegram-reactions
 
       - name: Build
-        run: hugo --minify
+        run: hugo --minify --panicOnWarning
+
+      - name: Check content and local links
+        run: npm run check
 
       - name: Check self-hosted assets
         # Mermaid is vendored out of node_modules by the postinstall hook
@@ -90,8 +148,7 @@ jobs:
           echo "ok: public/js/mermaid.min.js ($(wc -c < public/js/mermaid.min.js) bytes)"
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

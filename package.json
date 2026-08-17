@@ -8,12 +8,13 @@
   "scripts": {
     "postinstall": "node scripts/vendor-mermaid.mjs",
     "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
+    "check": "node scripts/check-site.mjs",
     "translate": "node scripts/translate.mjs",
     "translate:force": "node scripts/translate.mjs --force",
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs"
   },
   "devDependencies": {
-    "mermaid": "11.14.0",
+    "mermaid": "11.16.1",
     "openai": "7.4.0"
   }
 }

@@ -36,6 +36,7 @@ npm run translate:force                  # Re-translate all content
 npm run translate -- blog/brandage.md    # Translate one file
 npm run fetch-telegram-reactions         # Update Telegram statistics
 npm run vendor-mermaid                   # Refresh the local Mermaid bundle
+npm run check                            # Validate content and local links
 ```
 
 Translation requires an `OPENAI_API_KEY`.
@@ -98,4 +99,4 @@ Russian pages use root-level URLs such as `/blog/` and `/:slug/`. English pages 
 
 Original content is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Site and theme code are licensed under [MIT](LICENSE).
+Site-specific content and assets follow the terms in [LICENSE](LICENSE). The hugo-mini theme is licensed separately under [MIT](themes/hugo-mini/LICENSE).
