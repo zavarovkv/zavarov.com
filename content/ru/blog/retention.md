@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Путь к файлу с данными
-dataset_path = 'https://data/retention-dataset.csv'
+dataset_path = 'https://zavarov.com/data/retention-dataset.csv'
 
 # Чтение данных и парсинг даты
 df = pd.read_csv(dataset_path, parse_dates=['date'])

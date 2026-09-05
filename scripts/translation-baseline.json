@@ -1,0 +1,97 @@
+{
+  "description": "Immutable migration snapshot for legacy 12-character hashes, before the September 2026 fixes. Do not refresh after editing RU content.",
+  "files": {
+    "blog/10-evils.md": {
+      "legacy_hash": "c0624803743d",
+      "source_hash": "bcc4cf1d1d3feb720d7ffebd41df288542b9c17ce5647d0b5c5f1d7e8beb7621"
+    },
+    "blog/brandage.md": {
+      "legacy_hash": "55d7021db0df",
+      "source_hash": "9f2f19cd13960d616170ddde7007f38d6c44033fe7a51aa58e46870c0f8d2279"
+    },
+    "blog/cspo.md": {
+      "legacy_hash": "83fe16cbcf45",
+      "source_hash": "3d6b7e02046e7502107011a6c6d0c6271ed590c198f8974d133b35c3e95d8ff2"
+    },
+    "blog/drice.md": {
+      "legacy_hash": "417fb25a9c52",
+      "source_hash": "e468837e90e09d5e849cb405b24e984a2ee622bad42af85f68aaa0138e4bbe06"
+    },
+    "blog/edtech.md": {
+      "legacy_hash": "b09dda5d4c1a",
+      "source_hash": "a6c9ba2371e4ed3b413fde0aeb85e4c44277d0d12e3ff4791dd16bbfb9d69905"
+    },
+    "blog/kotler.md": {
+      "legacy_hash": "8d9c4dd392ee",
+      "source_hash": "f315f75cd1629dfbea476822576c6a8bc2c94d7796a1d3b839224d9fb34a36de"
+    },
+    "blog/leader.md": {
+      "legacy_hash": "ac476f8a28ef",
+      "source_hash": "2020f009ea72c67374370ad98c0672f049960c6aa3afbba18b2938aef76676d5"
+    },
+    "blog/nct.md": {
+      "legacy_hash": "687460d916ea",
+      "source_hash": "1848730eda40a5fd374a30fdab9e6738c8f5fe9d4791bc04b777feedf76eb0a4"
+    },
+    "blog/nps-csi.md": {
+      "legacy_hash": "87ffee29a06c",
+      "source_hash": "649e4ea9b356198d24842e57352f2f64148b626932ce687e2b18fbf50e041c55"
+    },
+    "blog/people.md": {
+      "legacy_hash": "79eec4c63106",
+      "source_hash": "27d09345ac58dac4379e2abf51d38ce9aefcf3340c749a8961dfb3d54da6ae84"
+    },
+    "blog/pm-ceo.md": {
+      "legacy_hash": "a77a714d1bbd",
+      "source_hash": "e3bd9fd2f644746bbaaa271f1240b7fce12fe81b194eb12a04f42311a1fed1a0"
+    },
+    "blog/pm-materials.md": {
+      "legacy_hash": "9a61fac414d0",
+      "source_hash": "d0154cfafa24443209f7e63d6705fd325bf866ca606db17736867641d1c64e5d"
+    },
+    "blog/pm-tools.md": {
+      "legacy_hash": "d05ce44e6bcc",
+      "source_hash": "98b6d91456ddb17ebca47f0ca080df3932a2d6ff8d019b318edcd79723d3aa95"
+    },
+    "blog/product-strategy.md": {
+      "legacy_hash": "06d1203461f2",
+      "source_hash": "9495d34a71843e1ddffac32417706bbdaf27e562ff7d44ffb7a900670f005cb2"
+    },
+    "blog/retention.md": {
+      "legacy_hash": "3fdb6fd78df1",
+      "source_hash": "90e0470dbd3acb479d4658c7d4a94037f17e93ee9ff28c674a02bf72f366d771"
+    },
+    "blog/retrospective.md": {
+      "legacy_hash": "9e6f3a499edc",
+      "source_hash": "57ea4478dfb4ecb5c0f2dd406ab12a818c9688757a1bb286f700cc5b2ca1a4fa"
+    },
+    "blog/second-brain.md": {
+      "legacy_hash": "55be1f2ce44c",
+      "source_hash": "4edc43549e49c8a68700ef939e3c93131f4d5489c5f7f798f67b91ead0b5f009"
+    },
+    "blog/template-abt.md": {
+      "legacy_hash": "e39f2b799d95",
+      "source_hash": "80d2c695321f73cdac39a9d19ae2eefc1c4b1a9d954450c33f48fa4c9f194c35"
+    },
+    "blog/template-diagrams.md": {
+      "legacy_hash": "f6f4211b8a0a",
+      "source_hash": "7003834e54116216c47d4de138d43a9d6a360fa5568bb13d9b45b1b2a3f1dfa0"
+    },
+    "blog/template-rice.md": {
+      "legacy_hash": "68d91a533f7e",
+      "source_hash": "42e6347c09ba2f3b1858ea915f21d8bfdc59202fb007a460205a667a8c61e1d8"
+    },
+    "blog/text.md": {
+      "legacy_hash": "f65bb5ac27fe",
+      "source_hash": "dbd1f9eeebea096b8771c739f9e0fe17eb0230d8e83e48a2f3b86f56199be9d5"
+    },
+    "blog/zettelkasten.md": {
+      "legacy_hash": "6e28b92326ea",
+      "source_hash": "904c0991c9e843a257a8470bd5350e73bab88b1140ab93f94f5e066b1d97739f"
+    },
+    "consultation.md": {
+      "legacy_hash": "bbc4960576f8",
+      "source_hash": "cbc995d7f30e93e4b208ba13cd688c52cb5d909b521f31331dce955f2ee1796f"
+    }
+  }
+}

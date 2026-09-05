@@ -6,6 +6,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "postinstall": "node scripts/vendor-mermaid.mjs",
     "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
     "check": "node scripts/check-site.mjs",
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "mermaid": "11.16.1",
-    "openai": "7.4.0"
+    "openai": "7.4.0",
+    "parse5": "8.0.1",
+    "smol-toml": "1.8.0"
   }
 }

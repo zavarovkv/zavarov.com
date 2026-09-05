@@ -43,6 +43,9 @@ jobs:
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
           node --check themes/hugo-mini/assets/js/main.js
 
+      - name: Regression tests
+        run: npm test
+
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
 
@@ -94,6 +97,9 @@ jobs:
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
           node --check themes/hugo-mini/assets/js/main.js
 
+      - name: Regression tests
+        run: npm test
+
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
 
@@ -108,23 +114,6 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: npm run translate
-
-      - name: Commit translations
-        if: >-
-          github.event_name == 'push'
-          && github.ref == 'refs/heads/main'
-          && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/en/
-          if git diff --cached --quiet; then
-            echo "No translation changes to commit."
-          else
-            git commit -m "Auto-translate EN content [skip ci]"
-            git push
-          fi
 
       - name: Fetch Telegram reactions
         continue-on-error: true
@@ -146,6 +135,23 @@ jobs:
           set -euo pipefail
           test -s public/js/mermaid.min.js
           echo "ok: public/js/mermaid.min.js ($(wc -c < public/js/mermaid.min.js) bytes)"
+
+      - name: Commit translations
+        if: >-
+          github.event_name == 'push'
+          && github.ref == 'refs/heads/main'
+          && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/en/
+          if git diff --cached --quiet; then
+            echo "No translation changes to commit."
+          else
+            git commit -m "Auto-translate EN content [skip ci]"
+            git push
+          fi
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4

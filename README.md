@@ -37,6 +37,8 @@ npm run translate -- blog/brandage.md    # Translate one file
 npm run fetch-telegram-reactions         # Update Telegram statistics
 npm run vendor-mermaid                   # Refresh the local Mermaid bundle
 npm run check                            # Validate content and local links
+npm test                                 # Run regression tests without API calls
+npm run translate -- --dry-run            # Inspect pending translations/deletions
 ```
 
 Translation requires an `OPENAI_API_KEY`.
@@ -46,6 +48,10 @@ Translation requires an `OPENAI_API_KEY`.
 Russian content in `content/ru/` is the source of truth.
 
 English pages in `content/en/` are generated with the OpenAI API. Do not edit them manually: translations are refreshed when the source hash changes. The exception is `content/en/_index.md`, which is maintained by hand.
+
+Translation validates TOML and preserves every front-matter field except `title` and `description`. A failed response leaves the entire batch unchanged and fails the build. Generated EN files whose RU sources were removed are pruned during a full successful run; manual pages and `_index.md` files are preserved.
+
+Source hashes retain Markdown whitespace and normalize only CRLF line endings. `scripts/translation-baseline.json` is a fixed migration snapshot for the previous hashes: it avoids retranslating unchanged posts without rewriting existing EN files. Do not regenerate this snapshot after editing sources.
 
 Posts use Markdown with TOML front matter:
 
@@ -80,6 +86,8 @@ Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and 
 Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/workflows/gh-pages.yml).
 
 The workflow installs dependencies, updates English translations and Telegram statistics, builds the site, verifies self-hosted assets, and publishes `public/`.
+
+Translations are committed only after the build and link checks succeed. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, and HTML/SVG anchors. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
 
 The repository must have an `OPENAI_API_KEY` GitHub Actions secret.
 

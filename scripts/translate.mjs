@@ -1,248 +1,152 @@
 #!/usr/bin/env node
-/**
- * Pre-build translation script.
- * Scans content/ru/ recursively and creates missing or outdated
- * English translations in content/en/ via OpenAI API.
- *
- * Usage:
- *   OPENAI_API_KEY=sk-... node scripts/translate.mjs
- *   node scripts/translate.mjs --force                    # re-translate all
- *   node scripts/translate.mjs blog/brandage.md           # translate specific file(s)
- *   node scripts/translate.mjs consultation.md             # pages too
- */
-
-import { createHash } from "node:crypto";
-import { readdir, readFile, writeFile, stat, mkdir } from "node:fs/promises";
-import { join, dirname } from "node:path";
+// RU -> EN translation. --dry-run inspects changes without API calls or writes.
+import { readFile, writeFile, mkdir, rename, rm } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+import { randomUUID } from "node:crypto";
 import OpenAI from "openai";
+import { listMarkdown, readDocument } from "./lib/content.mjs";
+import { assertPreserved, isCurrent, prepareTranslation } from "./lib/translation.mjs";
 
-/** Normalized SHA-256: collapse whitespace, trim, then hash. */
-function sourceHash(text) {
-  const normalized = text.replace(/\s+/g, " ").trim();
-  return createHash("sha256").update(normalized).digest("hex").slice(0, 12);
-}
-
-/** Read source_hash from EN file's TOML front matter. */
-function readStoredHash(content) {
-  const m = content.match(/^source_hash\s*=\s*"([a-f0-9]+)"/m);
-  return m ? m[1] : null;
-}
-
-/**
- * Add or replace source_hash in translated file's front matter.
- * Operates only on the opening TOML block (everything up to the
- * first closing `+++`), so `+++` sequences inside the body cannot
- * be mistaken for delimiters.
- */
-function addSourceHash(translated, hash) {
-  const match = translated.match(/^\+\+\+\r?\n([\s\S]*?)\r?\n\+\+\+\r?\n/);
-  if (!match) {
-    throw new Error(
-      "Translation is missing TOML front matter (expected +++ delimiters at start)"
-    );
-  }
-  const [fullBlock, fmBody] = match;
-  const rest = translated.slice(fullBlock.length);
-  const cleaned = fmBody.replace(/^source_hash\s*=\s*"[a-f0-9]+"\n?/m, "");
-  return `+++\nsource_hash = "${hash}"\n${cleaned}\n+++\n${rest}`;
-}
-
-/**
- * Front-matter keys the model is told to copy verbatim. Translating any of
- * these silently changes the published page — `slug` rewrites its URL, `date`
- * moves it in every listing — so they are verified after the fact rather than
- * trusted. Prompt compliance is not a guarantee.
- */
-const PRESERVED_KEYS = ["slug", "date", "categories", "telegram_post", "draft", "hidden", "pinned"];
-
-/** Values of PRESERVED_KEYS as raw strings, read from a TOML front matter block. */
-function readPreserved(content) {
-  const fm = content.match(/^\+\+\+\r?\n([\s\S]*?)\r?\n\+\+\+/);
-  const body = fm ? fm[1] : "";
-  const out = {};
-  for (const key of PRESERVED_KEYS) {
-    const m = body.match(new RegExp(`^${key}\\s*=\\s*(.+)$`, "m"));
-    if (m) out[key] = m[1].trim();
-  }
-  return out;
-}
-
-/** Throws if the translation altered a field that had to be copied verbatim. */
-function assertPreserved(source, translated, file) {
-  const before = readPreserved(source);
-  const after = readPreserved(translated);
-  const changed = [];
-  for (const key of PRESERVED_KEYS) {
-    if ((before[key] ?? null) !== (after[key] ?? null)) {
-      changed.push(`${key}: ${before[key] ?? "(absent)"} -> ${after[key] ?? "(absent)"}`);
-    }
-  }
-  if (changed.length) {
-    throw Object.assign(
-      new Error(`translation changed preserved front matter in ${file}:\n    ${changed.join("\n    ")}`),
-      { permanent: true }
-    );
-  }
-}
-
-const RU_DIR = "content/ru";
-const EN_DIR = "content/en";
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 const MAX_RETRIES = 3;
-
 const SYSTEM_PROMPT = `You are a professional translator from Russian to English.
 You translate blog posts about Product Management, strategy, and leadership.
 
 Rules:
 - Translate naturally, not word-for-word. Preserve the author's voice and tone.
 - Keep all Markdown formatting, links, shortcodes ({{< ... >}}), and HTML intact.
-- The front matter is in TOML (+++ delimiters). Translate "title" and "description" fields. Keep all other fields exactly as-is (slug, date, categories, telegram_post, math, mermaid, hidden, draft).
-- Do NOT translate category names in the "categories" field — keep them in Russian as-is.
+- The front matter is TOML (+++ delimiters). Translate only "title" and "description". Keep every other field and its type exactly as-is, including slug, date, categories, telegram_post, math, mermaid, hidden, draft, and pinned.
+- Do NOT translate category names.
 - Preserve paragraph structure and line breaks exactly.
 - If the text references Russian-specific concepts, provide brief context where helpful.
 - Output ONLY the translated document — no commentary, no wrapping.`;
 
-/** Recursively list all .md files under dir, returning paths relative to dir. */
-async function listMd(dir, prefix = "") {
-  const entries = await readdir(dir, { withFileTypes: true });
-  let results = [];
-  for (const e of entries) {
-    const rel = prefix ? `${prefix}/${e.name}` : e.name;
-    if (e.isDirectory()) {
-      results = results.concat(await listMd(join(dir, e.name), rel));
-    } else if (e.name.endsWith(".md") && e.name !== "_index.md") {
-      results.push(rel);
-    }
-  }
-  return results;
+async function readOptional(file) {
+  try { return await readFile(file, "utf8"); }
+  catch (error) { if (error.code === "ENOENT") return null; throw error; }
 }
 
-async function main() {
-  const args = process.argv.slice(2);
-  const forceAll = args.includes("--force");
-  const specificFiles = args.filter((a) => !a.startsWith("--"));
+function contentFile(arg) {
+  const file = arg.endsWith(".md") ? arg : `${arg}.md`;
+  if (file.startsWith("/") || file.includes("\\") || file.split("/").some((part) => !part || part === ".." || part === ".") || file.split("/").at(-1) === "_index.md") {
+    throw new Error(`Invalid translation path: ${arg}`);
+  }
+  return file;
+}
 
-  const files = specificFiles.length
-    ? specificFiles.map((f) => (f.endsWith(".md") ? f : f + ".md"))
-    : await listMd(RU_DIR);
-
-  // Determine which files need translation
+export async function planTranslations({ root, args = [], baseline = {} }) {
+  for (const arg of args) {
+    if (arg.startsWith("--") && !["--force", "--dry-run"].includes(arg)) throw new Error(`Unknown option: ${arg}`);
+  }
+  const ruDir = resolve(root, "content/ru");
+  const enDir = resolve(root, "content/en");
+  const sources = (await listMarkdown(ruDir)).filter((file) => file.split("/").at(-1) !== "_index.md");
+  const selected = [...new Set(args.filter((arg) => !arg.startsWith("--")).map(contentFile))];
+  const files = selected.length ? selected.filter((file) => sources.includes(file)) : sources;
   const toTranslate = [];
   for (const file of files) {
-    const ruPath = join(RU_DIR, file);
-    const enPath = join(EN_DIR, file);
-
-    try {
-      await stat(ruPath);
-    } catch {
-      console.log(`  skip ${file} (not found in ${RU_DIR})`);
-      continue;
-    }
-
-    if (!forceAll) {
-      let enContent;
+    const source = await readFile(resolve(ruDir, file), "utf8");
+    readDocument(source, file);
+    const translated = await readOptional(resolve(enDir, file));
+    if (translated !== null && !args.includes("--force")) {
       try {
-        enContent = await readFile(enPath, "utf-8");
-      } catch (err) {
-        if (err.code !== "ENOENT") throw err;
-        // EN file doesn't exist — falls through to translate
-      }
-      if (enContent !== undefined) {
-        const ruContent = await readFile(ruPath, "utf-8");
-        if (sourceHash(ruContent) === readStoredHash(enContent)) {
-          console.log(`  skip ${file} (unchanged)`);
+        if (isCurrent(source, translated, baseline[file])) {
+          assertPreserved(source, translated, file);
           continue;
         }
+      } catch {
+        // Invalid existing translations must be repairable, even if their old
+        // source_hash claims they are current.
       }
     }
-
-    toTranslate.push(file);
+    toTranslate.push({ file, source });
   }
 
-  if (toTranslate.length === 0) {
-    console.log("Nothing to translate.");
-    return;
+  const orphans = [];
+  let englishFiles = [];
+  try { englishFiles = await listMarkdown(enDir); }
+  catch (error) { if (error.code !== "ENOENT") throw error; }
+  for (const file of englishFiles) {
+    if (file.split("/").at(-1) === "_index.md" || sources.includes(file) || (selected.length && !selected.includes(file))) continue;
+    const translated = await readFile(resolve(enDir, file), "utf8");
+    let hash;
+    try { hash = readDocument(translated, file).data.source_hash; }
+    catch { continue; }
+    // Only generated files belong to this script; hand-maintained pages survive.
+    if (typeof hash === "string" && /^(?:[a-f0-9]{12}|[a-f0-9]{64})$/.test(hash)) orphans.push(file);
   }
+  for (const file of selected) {
+    if (!sources.includes(file) && !orphans.includes(file)) throw new Error(`Source not found: ${file}`);
+  }
+  return { toTranslate, orphans };
+}
 
-  console.log(`\nTranslating ${toTranslate.length} file(s)...\n`);
+async function writeAtomic(file, text) {
+  await mkdir(dirname(file), { recursive: true });
+  const temporary = `${file}.${randomUUID()}.tmp`;
+  try {
+    await writeFile(temporary, text, { encoding: "utf8", flag: "wx" });
+    await rename(temporary, file);
+  } finally {
+    await rm(temporary, { force: true });
+  }
+}
 
-  const client = new OpenAI();
-  let failed = 0;
-
-  for (const file of toTranslate) {
-    const ruPath = join(RU_DIR, file);
-    const enPath = join(EN_DIR, file);
-    const ruContent = await readFile(ruPath, "utf-8");
-
-    // Ensure target directory exists
-    await mkdir(dirname(enPath), { recursive: true });
-
-    process.stdout.write(`  ${file} ... `);
-
+export async function translate({ root = process.cwd(), args = process.argv.slice(2), createClient = () => new OpenAI(), baseline } = {}) {
+  baseline ??= JSON.parse(await readFile(new URL("./translation-baseline.json", import.meta.url), "utf8")).files;
+  const plan = await planTranslations({ root, args, baseline });
+  console.log(`${plan.toTranslate.length} translation(s), ${plan.orphans.length} removed source(s).`);
+  if (args.includes("--dry-run")) {
+    for (const { file } of plan.toTranslate) console.log(`  translate ${file}`);
+    for (const file of plan.orphans) console.log(`  remove generated EN ${file}`);
+    return plan;
+  }
+  const client = plan.toTranslate.length ? createClient() : null;
+  const pending = [];
+  const failed = [];
+  for (const { file, source } of plan.toTranslate) {
     let success = false;
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
         const response = await client.responses.create({
           model: MODEL,
           instructions: SYSTEM_PROMPT,
-          input: `Translate this blog post from Russian to English:\n\n${ruContent}`,
+          input: `Translate this blog post from Russian to English:\n\n${source}`,
           max_output_tokens: 8192,
           reasoning: { effort: "none" },
           store: false,
         });
-
-        // Guard against truncation: saving a partial translation with a
-        // valid source_hash would mark it "up to date" forever.
-        if (response.status !== "completed") {
-          // Deterministic failure — retrying with the same max_tokens can
-          // only truncate again, so skip the retry loop.
-          const reason = response.incomplete_details?.reason || response.error?.message || response.status;
-          throw Object.assign(
-            new Error(
-              `API returned status="${response.status}" (${reason}) — response may be truncated`
-            ),
-            { permanent: true }
-          );
+        if (response.status !== "completed" || !response.output_text) {
+          throw Object.assign(new Error(`Incomplete translation: ${response.incomplete_details?.reason || response.status}`), { permanent: true });
         }
-
-        if (!response.output_text) {
-          throw new Error("Expected text output, got an empty response");
-        }
-
-        const translated = addSourceHash(response.output_text, sourceHash(ruContent));
-        assertPreserved(ruContent, translated, file);
-        await writeFile(enPath, translated, "utf-8");
-
-        const inputTokens = response.usage?.input_tokens ?? 0;
-        const outputTokens = response.usage?.output_tokens ?? 0;
-        console.log(`done (${inputTokens}+${outputTokens} tokens)`);
+        let translated;
+        try { translated = prepareTranslation(source, response.output_text, file); }
+        catch (error) { throw Object.assign(error, { permanent: true }); }
+        pending.push({ file, translated });
+        console.log(`  ${file}: validated (${response.usage?.input_tokens ?? 0}+${response.usage?.output_tokens ?? 0} tokens)`);
         success = true;
         break;
-      } catch (err) {
-        if (err.permanent) {
-          console.log(`FAILED (permanent, no retry): ${err.message}`);
+      } catch (error) {
+        if (error.permanent || attempt === MAX_RETRIES) {
+          console.error(`  ${file}: ${error.message}`);
           break;
         }
-        if (attempt < MAX_RETRIES) {
-          const delay = attempt * 2000;
-          process.stdout.write(`retry ${attempt}/${MAX_RETRIES} in ${delay}ms ... `);
-          await new Promise((r) => setTimeout(r, delay));
-        } else {
-          console.log(`FAILED after ${MAX_RETRIES} attempts: ${err.message}`);
-        }
+        await new Promise((done) => setTimeout(done, attempt * 2000));
       }
     }
-    if (!success) failed++;
+    if (!success) failed.push(file);
   }
-
-  console.log(`\nDone. ${toTranslate.length - failed} translated, ${failed} failed.`);
-  if (failed > toTranslate.length / 2) {
-    console.error("ERROR: More than half of translations failed. Exiting with error.");
-    process.exit(1);
+  // Never publish half of a content update, or prune files after API failure.
+  if (failed.length) throw new Error(`${failed.length} translation(s) failed; no EN files changed`);
+  for (const { file, translated } of pending) await writeAtomic(resolve(root, "content/en", file), translated);
+  for (const file of plan.orphans) {
+    await rm(resolve(root, "content/en", file));
+    console.log(`  removed generated EN ${file}`);
   }
+  return plan;
 }
 
-main().catch((e) => {
-  console.error("Fatal:", e);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  translate().catch((error) => { console.error(`Fatal: ${error.message}`); process.exitCode = 1; });
+}
