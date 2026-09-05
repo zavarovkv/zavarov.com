@@ -12,6 +12,8 @@ description = "Константин Заваров — блог о продук�
 
 Если хотите обсудить партнерство, просто познакомиться или выпить кофе, [пишите](https://telegram.me/zavarov).
 
+{{< latest-posts count="3" >}}
+
 ## Проекты {.posts-group-title .no-anchor}
 
 Сделал минималистичную тему [«Hugo Mini»](https://themes.gohugo.io/themes/hugo-mini/), на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram. Исходный код доступен на [GitHub](https://github.com/zavarovkv/hugo-mini).
