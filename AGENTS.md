@@ -104,3 +104,19 @@ Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/
 - Primary content language: Russian; English auto-translated via OpenAI API
 - Base URL: `https://zavarov.com/` (custom domain via GitHub Pages CNAME)
 - Content license: CC BY-SA 4.0
+
+## Working Preferences
+
+- For this user's own repositories, push small agreed changes directly to `main`; do not create a branch or PR for every commit unless explicitly requested.
+- Keep commits focused and sequential. When a theme change is made, push `themes/hugo-mini` first, then commit and push the updated submodule pointer in this repository.
+- Do not modify or regenerate translations unless the user explicitly asks; in particular, do not manually edit `content/en/`.
+
+## Active Handoff — Hugo Themes Catalog (2026-08-17)
+
+- Theme submission: `gohugoio/hugoThemesSiteBuilder#698`, branch `zavarovkv:add-hugo-mini`, latest head seen `5734b19`. It adds `github.com/zavarovkv/hugo-mini/v3` and is mergeable but its last Netlify run is red.
+- The red #698 run is **not caused by Hugo Mini**. The supplied Netlify log showed stale transferred repositories: `StaticMania/roxo-hugo` has an unavailable pseudo-version, and the old branch also contains `hivickylai/hugo-theme-sam` although that repository declares `github.com/victoriadrake/hugo-theme-sam`.
+- Current upstream `main` already fixes the Sam path. A separate ready-for-review fix, `gohugoio/hugoThemesSiteBuilder#766` (commit `a980180`), moves Roxo to `github.com/sitepins/roxo-hugo`. Its Netlify Preview is fully green and it is `MERGEABLE/CLEAN`.
+- Next action: wait for #766 to merge, then update #698 from upstream `main` (GitHub's **Update branch** or merge `upstream/main` into `add-hugo-mini`) and wait for the new Netlify Preview. Do not retry #698 before #766 lands.
+- Hugo Mini is currently released as `v3.0.2` at commit `2d8df43`. Its Go module path is correctly `github.com/zavarovkv/hugo-mini/v3`; the public Go proxy resolves it, isolated catalog generation succeeds, and the final catalog site was reproduced successfully with Hugo Extended 0.161.1.
+- The main site points to the corrected theme at commit `e3de283`; both theme CI and the site's GitHub Pages deployment were green. Theme README was modernized and detailed guidance moved under `docs/`.
+- Relevant links: https://github.com/gohugoio/hugoThemesSiteBuilder/pull/698 and https://github.com/gohugoio/hugoThemesSiteBuilder/pull/766.
