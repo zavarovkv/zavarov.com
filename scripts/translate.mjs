@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// RU -> EN translation. --dry-run inspects changes without API calls or writes.
+// RU -> EN translation. --allow-stale keeps existing EN on provider failures.
 import { readFile, writeFile, mkdir, rename, rm } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -37,7 +37,7 @@ function contentFile(arg) {
 
 export async function planTranslations({ root, args = [], baseline = {} }) {
   for (const arg of args) {
-    if (arg.startsWith("--") && !["--force", "--dry-run"].includes(arg)) throw new Error(`Unknown option: ${arg}`);
+    if (arg.startsWith("--") && !["--force", "--dry-run", "--allow-stale"].includes(arg)) throw new Error(`Unknown option: ${arg}`);
   }
   const ruDir = resolve(root, "content/ru");
   const enDir = resolve(root, "content/en");
@@ -93,6 +93,12 @@ async function writeAtomic(file, text) {
   }
 }
 
+function deferTranslations(plan) {
+  const message = `Translation update deferred: ${plan.toTranslate.length} pending file(s). All existing EN files and source hashes are unchanged; the next run will retry. Building with available translations.`;
+  console.warn(process.env.GITHUB_ACTIONS === "true" ? `::warning title=English translations deferred::${message}` : `Warning: ${message}`);
+  return { ...plan, deferred: true };
+}
+
 export async function translate({ root = process.cwd(), args = process.argv.slice(2), createClient = () => new OpenAI(), baseline } = {}) {
   baseline ??= JSON.parse(await readFile(new URL("./translation-baseline.json", import.meta.url), "utf8")).files;
   const plan = await planTranslations({ root, args, baseline });
@@ -102,7 +108,13 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
     for (const file of plan.orphans) console.log(`  remove generated EN ${file}`);
     return plan;
   }
-  const client = plan.toTranslate.length ? createClient() : null;
+  let client;
+  try { client = plan.toTranslate.length ? createClient() : null; }
+  catch (error) {
+    if (!args.includes("--allow-stale")) throw error;
+    console.error(`Translation provider unavailable: ${error.message}`);
+    return deferTranslations(plan);
+  }
   const pending = [];
   const failed = [];
   for (const { file, source } of plan.toTranslate) {
@@ -128,7 +140,8 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
         success = true;
         break;
       } catch (error) {
-        if (error.permanent || attempt === MAX_RETRIES) {
+        const rejected = error.status >= 400 && error.status < 500 && ![408, 409, 429].includes(error.status);
+        if (error.permanent || rejected || attempt === MAX_RETRIES) {
           console.error(`  ${file}: ${error.message}`);
           break;
         }
@@ -138,7 +151,10 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
     if (!success) failed.push(file);
   }
   // Never publish half of a content update, or prune files after API failure.
-  if (failed.length) throw new Error(`${failed.length} translation(s) failed; no EN files changed`);
+  if (failed.length) {
+    if (args.includes("--allow-stale")) return deferTranslations(plan);
+    throw new Error(`${failed.length} translation(s) failed; no EN files changed`);
+  }
   for (const { file, translated } of pending) await writeAtomic(resolve(root, "content/en", file), translated);
   for (const file of plan.orphans) {
     await rm(resolve(root, "content/en", file));

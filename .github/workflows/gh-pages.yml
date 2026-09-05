@@ -113,7 +113,9 @@ jobs:
           && github.event.head_commit.author.email != 'github-actions[bot]@users.noreply.github.com'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: npm run translate
+        # API outages preserve the previous EN batch and emit a warning. Local
+        # content, build, and link errors still fail their normal checks.
+        run: npm run translate -- --allow-stale
 
       - name: Fetch Telegram reactions
         continue-on-error: true

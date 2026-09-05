@@ -87,3 +87,39 @@ test("pruning is limited to generated orphans and dry-run is read-only", async (
   await access(manual);
   await access(index);
 });
+
+for (const failure of ["missing credentials", "API rejected", "invalid response"]) {
+  test(`allow-stale preserves the complete EN batch on ${failure}`, async (t) => {
+    const root = await fixture(t);
+    const old = prepareTranslation(source.replace("First paragraph.", "Old paragraph."), translated.replace("First paragraph.", "Old paragraph."), "old.md");
+    for (const file of ["a.md", "b.md"]) {
+      await writeFile(join(root, "content/ru/blog", file), source);
+      await writeFile(join(root, "content/en/blog", file), old);
+    }
+    await writeFile(join(root, "content/ru/blog/new.md"), source);
+    const orphan = join(root, "content/en/blog/orphan.md");
+    await writeFile(orphan, old);
+    let calls = 0;
+    const createClient = () => {
+      if (failure === "missing credentials") throw new Error("Missing credentials");
+      return { responses: { create: async () => {
+        calls++;
+        if (calls === 2 && failure === "API rejected") throw Object.assign(new Error("Invalid API key"), { status: 401 });
+        return { status: "completed", output_text: calls === 2 ? translated.replace("math = true\n", "") : translated };
+      } } };
+    };
+    const plan = await translate({ root, args: ["--allow-stale"], baseline: {}, createClient });
+    assert.equal(plan.deferred, true);
+    for (const file of ["a.md", "b.md", "orphan.md"]) assert.equal(await readFile(join(root, "content/en/blog", file), "utf8"), old);
+    await assert.rejects(access(join(root, "content/en/blog/new.md")), { code: "ENOENT" });
+    assert.equal((await planTranslations({ root })).toTranslate.length, 3, "pending files must be retried later");
+    assert.equal(calls, failure === "missing credentials" ? 0 : 3);
+  });
+}
+
+test("allow-stale does not suppress invalid source content", async (t) => {
+  const root = await fixture(t);
+  await writeFile(join(root, "content/ru/blog/a.md"), '+++\ntitle = "invalid "quote""\n+++\nBody');
+  const createClient = () => { throw new Error("API must not be called"); };
+  await assert.rejects(translate({ root, args: ["--allow-stale"], baseline: {}, createClient }), /invalid TOML/);
+});
