@@ -11,3 +11,9 @@ From 2021 to 2025 I taught project and product management courses at Yandex Prac
 I run the Telegram channel ["Kod Produkta"](https://t.me/pmgen) about product management.
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
+
+## Projects
+
+**Mini** is the minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration.
+
+[GitHub](https://github.com/zavarovkv/hugo-mini) · [Hugo Themes](https://themes.gohugo.io/themes/hugo-mini/)
