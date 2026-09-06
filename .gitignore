@@ -24,5 +24,6 @@ node_modules/
 # Vendored from node_modules by scripts/vendor-mermaid.mjs (postinstall);
 # pinned in package.json, so not versioned here
 /static/js/mermaid.min.js
+/static/js/mermaid/
 
 

@@ -10,6 +10,8 @@ import { assertPreserved, isCurrent, prepareTranslation } from "./lib/translatio
 
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 const MAX_RETRIES = 3;
+const REQUEST_TIMEOUT_MS = 120_000;
+const BATCH_TIMEOUT_MS = 5 * 60_000;
 const SYSTEM_PROMPT = `You are a professional translator from Russian to English.
 You translate blog posts about Product Management, strategy, and leadership.
 
@@ -116,11 +118,14 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
     return deferTranslations(plan);
   }
   const pending = [];
-  const failed = [];
+  // Allow larger healthy batches (including --force) to finish while keeping
+  // small updates from waiting indefinitely on an unavailable provider.
+  const deadline = Date.now() + Math.max(BATCH_TIMEOUT_MS, plan.toTranslate.length * REQUEST_TIMEOUT_MS);
   for (const { file, source } of plan.toTranslate) {
-    let success = false;
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) throw Object.assign(new Error("Translation time budget exceeded"), { permanent: true });
         const response = await client.responses.create({
           model: MODEL,
           instructions: SYSTEM_PROMPT,
@@ -128,6 +133,11 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
           max_output_tokens: 8192,
           reasoning: { effort: "none" },
           store: false,
+        }, {
+          // Retries belong to this loop, not to both the loop and the SDK.
+          maxRetries: 0,
+          timeout: Math.min(REQUEST_TIMEOUT_MS, remaining),
+          signal: AbortSignal.timeout(remaining),
         });
         if (response.status !== "completed" || !response.output_text) {
           throw Object.assign(new Error(`Incomplete translation: ${response.incomplete_details?.reason || response.status}`), { permanent: true });
@@ -137,23 +147,20 @@ export async function translate({ root = process.cwd(), args = process.argv.slic
         catch (error) { throw Object.assign(error, { permanent: true }); }
         pending.push({ file, translated });
         console.log(`  ${file}: validated (${response.usage?.input_tokens ?? 0}+${response.usage?.output_tokens ?? 0} tokens)`);
-        success = true;
         break;
       } catch (error) {
         const rejected = error.status >= 400 && error.status < 500 && ![408, 409, 429].includes(error.status);
-        if (error.permanent || rejected || attempt === MAX_RETRIES) {
+        const quotaExceeded = error.code === "insufficient_quota";
+        if (error.permanent || rejected || quotaExceeded || attempt === MAX_RETRIES || Date.now() >= deadline) {
           console.error(`  ${file}: ${error.message}`);
-          break;
+          // The batch is atomic on provider failure; further paid requests
+          // cannot produce an update we could publish.
+          if (args.includes("--allow-stale")) return deferTranslations(plan);
+          throw new Error(`Translation failed for ${file}; no EN files changed`, { cause: error });
         }
-        await new Promise((done) => setTimeout(done, attempt * 2000));
+        await new Promise((done) => setTimeout(done, Math.min(attempt * 2000, Math.max(0, deadline - Date.now()))));
       }
     }
-    if (!success) failed.push(file);
-  }
-  // Never publish half of a content update, or prune files after API failure.
-  if (failed.length) {
-    if (args.includes("--allow-stale")) return deferTranslations(plan);
-    throw new Error(`${failed.length} translation(s) failed; no EN files changed`);
   }
   for (const { file, translated } of pending) await writeAtomic(resolve(root, "content/en", file), translated);
   for (const file of plan.orphans) {

@@ -44,6 +44,8 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - Translation script: `scripts/translate.mjs` — Node.js, uses the official `openai` SDK and Responses API (`gpt-5.6-luna` by default, configurable via `OPENAI_MODEL`)
 - EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash. Exception: `_index.md` files are skipped by the script, so `content/en/_index.md` is maintained by hand.
 
+The translator uses one retry loop (at most three requests per file), a two-minute request timeout and a batch budget of at least five minutes, scaled to two minutes per pending file for larger batches. It stops on the first terminal failure without publishing validated earlier files or pruning EN content; CI keeps using `--allow-stale`.
+
 ## Content
 
 - Blog posts: `content/ru/blog/*.md` with TOML front matter (`+++`)
@@ -51,6 +53,7 @@ Automated via GitHub Actions (`.github/workflows/gh-pages.yml`). Push to `main` 
 - EN equivalents: `content/en/blog/*.md` (auto-generated), `content/en/_index.md` (manual — the translate script skips `_index.md`)
 - Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`. EN files additionally carry `source_hash` written by the translator (see Multilingual section).
 - `hidden = true` excludes a post from listings, recent-posts sidebar, JSON feed, and `llms.txt` (but the page still renders at its permalink and is crawlable). Use for unlisted/evergreen pages linked only from specific posts.
+- Local Markdown images get intrinsic dimensions from the theme. Existing raw HTML images should carry explicit `width` and `height`; `main img[width][height]` keeps their height responsive.
 - Posts are grouped by `categories` on the blog listing page; existing categories: Маркетинг, Стратегия и фреймворки, Метрики и аналитика, Команда и лидерство, Саморазвитие, Продуктивность, Подборки
 - Both manually maintained homepages place `latest-posts` and Projects inside the theme's `columns` shortcode; `column` groups the project heading and description. They sit side by side on desktop and stack on mobile. The theme selects the three latest visible posts by date in the current language automatically; `archive` / `archiveLabel` add the link to all articles.
 - Projects use the theme's `project` shortcode: a linked name with a ↗ arrow, followed by a Markdown description. Keep title and description links at the same light weight as article-list links.
@@ -75,10 +78,10 @@ Site-owned (`static/` in the blog repo):
 - `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
 
 Third-party runtime behavior:
-- Mermaid is **self-hosted from a pinned npm dependency**, not a CDN and not a committed blob. `mermaid` sits in `devDependencies` at an exact version (`11.16.1`, no caret), and the `postinstall` hook runs `scripts/vendor-mermaid.mjs`, which copies `node_modules/mermaid/dist/mermaid.min.js` to `static/js/mermaid.min.js`. `config.toml` sets `params.mermaidSrc = "js/mermaid.min.js"`, so the theme emits a local `<script>` instead of its default jsDelivr URL. Likely counters are disabled, so sharing makes no automatic third-party requests. Optional Yandex Metrika and Telegram comments still contact their respective services.
-- The vendored file is gitignored (~3 MB — it would land in history on every bump). `npm ci` in CI and `npm install` locally both regenerate it; `npm run vendor-mermaid` does it on demand. A fresh clone that runs `hugo server` **without** installing npm deps first will serve pages fine but diagrams won't draw. The deploy workflow asserts `public/js/mermaid.min.js` is non-empty after the Hugo build, so a skipped hook fails CI instead of shipping a broken diagram page.
-- npm verifies the download against the integrity hash in `package-lock.json`; the bundle is byte-identical to what jsDelivr serves for that version (`sha384-aBQXj4hK6Jm05i7aQAsUV3bLdSUrHX1BGYfMB0166TtWt/RRaw+h0Eelme9OCOvy`, the same hash the theme uses for its SRI attribute).
-- To bump: `npm install -D mermaid@<ver> --save-exact`, then render a page using modern syntax (animated edges `e1@-->`, `S@{ shape: ... }`, `animate: true`) — older 11.x versions silently fail on these, and a newer release can equally break existing diagrams, which is why the version is pinned rather than floating. If the script fails to load, the theme shows the raw diagram source instead of a blank hole.
+- Mermaid is **self-hosted from a pinned npm dependency** (`11.16.1`), not a CDN or committed blob. `scripts/vendor-mermaid.mjs` copies `mermaid.esm.min.mjs` and its `.mjs` chunks into `static/js/mermaid/` during `postinstall`. `params.mermaidModuleSrc` selects that ESM entry. The theme retains `mermaidSrc` and its pinned CDN fallback for other consumers.
+- The browser loads Mermaid near the first diagram and fetches only the required diagram modules. Each diagram renders near the viewport; theme changes are serialized, and loading failures reveal the original source. Test animated edges and modern shapes when bumping the pinned version.
+- Generated modules are gitignored. `npm ci`, `npm install`, or `npm run vendor-mermaid` regenerates them; the workflow checks the entry and the normal site check validates emitted local assets. A fresh clone must install npm dependencies to render diagrams.
+- npm verifies dependencies against `package-lock.json`. Likely counters remain disabled; optional Yandex Metrika and Telegram comments still contact their services.
 - Note: `npm` here is configured against a corporate Artifactory registry (`npm config get registry`), which may be unreachable outside the corporate network. `package-lock.json` resolves everything from `registry.npmjs.org`, and CI uses the public registry; locally, add `--registry https://registry.npmjs.org` if an install hangs.
 
 ## Theme vs Site Overrides

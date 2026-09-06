@@ -19,28 +19,28 @@ G-документ содержит 5 шаблонов:
 
 Гистограмма показывает выручку за последние 5 лет по годам, а график — темпы роста год к году. Самая простая и понятная визуализация объема рынка в динамике.
 
-<img loading="lazy" style="max-width: 512px" src="/images/diagrams-market.png" alt="Диаграмма для визуализации объема рынка">
+<img loading="lazy" style="max-width: 512px" src="/images/diagrams-market.png" alt="Диаграмма для визуализации объема рынка" width="988" height="898">
 
 ## 2. Диаграмма для визуализации TOP ключевых конкурентов
 
 Кольцевая диаграмма показывающая долю выручки ключевых конкурентов.
 
-<img loading="lazy" style="max-width: 512px" src="/images/diagrams-competitors.webp" alt="Диаграмма для визуализации TOP ключевых конкурентов">
+<img loading="lazy" style="max-width: 512px" src="/images/diagrams-competitors.webp" alt="Диаграмма для визуализации TOP ключевых конкурентов" width="1024" height="710">
 
 ## 3. Диаграмма для визуализации роста выручки год к году
 
 Визуализация, которая показывает не только выручку по годам, но и поквартально + изменение выручки год к году.
 
-<img loading="lazy" style="max-width: 512px" src="/images/diagrams-revenue.png" alt="Диаграмма для визуализации роста выручки год к году">
+<img loading="lazy" style="max-width: 512px" src="/images/diagrams-revenue.png" alt="Диаграмма для визуализации роста выручки год к году" width="1024" height="467">
 
 ## 4. Простая диаграмма для визуализации PnL
 
 Комбинированная диаграмма на которой столбцы с положительными значениями показывают Доходы, столбцы с отрицательными значениями показывают Расходы. А пунктирный график показывает Прибыль. Просто и наглядно.
 
-<img loading="lazy" style="max-width: 512px" src="/images/diagrams-pnl-simple.webp" alt="Простая диаграмма для визуализации PnL">
+<img loading="lazy" style="max-width: 512px" src="/images/diagrams-pnl-simple.webp" alt="Простая диаграмма для визуализации PnL" width="1024" height="644">
 
 ## 5. Детализированная диаграмма для визуализации PnL
 
 В отличие от предыдущего шаблона, включает разбивку Расходов по категориям. Для каждой категории указана доля относительно всех расходов. Менее наглядный вариант, чем предыдущий.
 
-<img loading="lazy" style="max-width: 512px" src="/images/diagrams-pnl-detailed.webp" alt="Детализированная диаграмма для визуализации PnL">
+<img loading="lazy" style="max-width: 512px" src="/images/diagrams-pnl-detailed.webp" alt="Детализированная диаграмма для визуализации PnL" width="1024" height="557">

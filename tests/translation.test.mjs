@@ -7,6 +7,7 @@ import { createHash } from "node:crypto";
 import { readDocument } from "../scripts/lib/content.mjs";
 import { sourceHash, isCurrent, prepareTranslation } from "../scripts/lib/translation.mjs";
 import { translate, planTranslations } from "../scripts/translate.mjs";
+import OpenAI from "openai";
 
 const source = '+++\ntitle = "Source"\nslug = "example"\ndate = 2026-01-01\ncategories = [\n "product",\n "team"\n]\nmath = true\nmermaid = true\n[custom]\nvalue = 7\n+++\nFirst paragraph.\n\nSecond paragraph.\n';
 const translated = source.replace('title = "Source"', 'title = "Translation"');
@@ -113,7 +114,7 @@ for (const failure of ["missing credentials", "API rejected", "invalid response"
     for (const file of ["a.md", "b.md", "orphan.md"]) assert.equal(await readFile(join(root, "content/en/blog", file), "utf8"), old);
     await assert.rejects(access(join(root, "content/en/blog/new.md")), { code: "ENOENT" });
     assert.equal((await planTranslations({ root })).toTranslate.length, 3, "pending files must be retried later");
-    assert.equal(calls, failure === "missing credentials" ? 0 : 3);
+    assert.equal(calls, failure === "missing credentials" ? 0 : 2, "stop before making requests for a batch that cannot be published");
   });
 }
 
@@ -122,4 +123,49 @@ test("allow-stale does not suppress invalid source content", async (t) => {
   await writeFile(join(root, "content/ru/blog/a.md"), '+++\ntitle = "invalid "quote""\n+++\nBody');
   const createClient = () => { throw new Error("API must not be called"); };
   await assert.rejects(translate({ root, args: ["--allow-stale"], baseline: {}, createClient }), /invalid TOML/);
+});
+
+for (const [status, code, expectedCalls] of [[503, "server_error", 3], [401, "invalid_api_key", 1], [429, "insufficient_quota", 1]]) {
+  test(`provider ${code} has bounded retries and stops the batch`, async (t) => {
+    const root = await fixture(t);
+    for (const file of ["a.md", "b.md"]) {
+      await writeFile(join(root, "content/ru/blog", file), source);
+      await writeFile(join(root, "content/en/blog", file), "old content");
+    }
+    let calls = 0;
+    const createClient = () => new OpenAI({ apiKey: "test-only", fetch: async () => {
+      calls++;
+      return new Response(JSON.stringify({ error: { message: code, code } }), {
+        status, headers: { "content-type": "application/json", "retry-after-ms": "1" },
+      });
+    } });
+    const result = await translate({ root, args: ["--allow-stale"], baseline: {}, createClient });
+    assert.equal(result.deferred, true);
+    assert.equal(calls, expectedCalls, "SDK retries must not multiply application retries");
+    for (const file of ["a.md", "b.md"]) assert.equal(await readFile(join(root, "content/en/blog", file), "utf8"), "old content");
+  });
+}
+
+test("the batch deadline preserves earlier validated files without publishing them", async (t) => {
+  const root = await fixture(t);
+  for (const file of ["a.md", "b.md"]) {
+    await writeFile(join(root, "content/ru/blog", file), source);
+    await writeFile(join(root, "content/en/blog", file), "old content");
+  }
+  const start = Date.now();
+  let now = start;
+  t.mock.method(Date, "now", () => now);
+  let calls = 0;
+  const createClient = () => ({ responses: { create: async (_, options) => {
+    calls++;
+    assert.equal(options.maxRetries, 0);
+    assert.ok(options.timeout > 0 && options.timeout <= 120_000);
+    assert.ok(options.signal instanceof AbortSignal);
+    now += 6 * 60_000;
+    return { status: "completed", output_text: translated };
+  } } });
+  const result = await translate({ root, args: ["--allow-stale"], baseline: {}, createClient });
+  assert.equal(result.deferred, true);
+  assert.equal(calls, 1);
+  for (const file of ["a.md", "b.md"]) assert.equal(await readFile(join(root, "content/en/blog", file), "utf8"), "old content");
 });

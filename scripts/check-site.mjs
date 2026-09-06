@@ -66,6 +66,11 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
     return errors;
   }
   const documents = new Map();
+  const fileStats = new Map();
+  function cachedStat(path) {
+    if (!fileStats.has(path)) fileStats.set(path, stat(path));
+    return fileStats.get(path);
+  }
   for (const file of files.filter((file) => file.endsWith(".html"))) {
     documents.set(file, inspectHTML(await readFile(file, "utf8")));
   }
@@ -95,8 +100,8 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
         continue;
       }
       try {
-        if ((await stat(target)).isDirectory()) target = join(target, "index.html");
-        if (!(await stat(target)).isFile()) throw Object.assign(new Error(), { code: "ENOENT" });
+        if ((await cachedStat(target)).isDirectory()) target = join(target, "index.html");
+        if (!(await cachedStat(target)).isFile()) throw Object.assign(new Error(), { code: "ENOENT" });
       } catch (error) {
         if (!["ENOENT", "ENOTDIR"].includes(error.code)) throw error;
         report(`${name}: missing output ${link}`);

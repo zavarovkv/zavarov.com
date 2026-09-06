@@ -53,7 +53,7 @@ graph LR
 В 2025 году на GitHub создано [121 миллион новых 
 репозиториев](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) — рекорд за всю историю платформы.
 
- <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub">
+ <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub" width="1400" height="955">
 
 {{< caption >}}Количество репозиториев на GitHub{{< /caption >}} 
 
@@ -65,7 +65,7 @@ graph LR
 
 **Claude Code** — agentic AI с доступом к файловой системе, в нашем случае — к папке Obsidian vault. Он может читать, редактировать, создавать и анализировать любые файлы в этом пространстве. По названию может показаться, что он предназначен только для написания кода, но это не так — он отлично справляется с анализом и работой над любыми текстовыми документами. Интересная особенность, что взаимодействие с Claude Code происходит в терминале. Но, поверьте, он настолько удобен, что не вызывает каких-либо сложностей.
 
-<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI">
+<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI" width="1440" height="900">
 
 {{< caption >}}Obsidian и Claude Code CLI{{< /caption >}} 
 
