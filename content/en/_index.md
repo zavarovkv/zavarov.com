@@ -12,7 +12,7 @@ I run the Telegram channel ["Kod Produkta"](https://t.me/pmgen) about product ma
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 
-{{< latest-posts count="3" >}}
+{{< latest-posts count="3" archive="/en/blog/" archiveLabel="All articles" >}}
 
 ## Projects {.posts-group-title .no-anchor}
 

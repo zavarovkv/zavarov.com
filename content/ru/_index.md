@@ -12,7 +12,7 @@ description = "Константин Заваров — блог о продук�
 
 Если хотите обсудить партнерство, просто познакомиться или выпить кофе, [пишите](https://telegram.me/zavarov).
 
-{{< latest-posts count="3" >}}
+{{< latest-posts count="3" archive="/blog/" archiveLabel="Все статьи" >}}
 
 ## Проекты {.posts-group-title .no-anchor}
 
