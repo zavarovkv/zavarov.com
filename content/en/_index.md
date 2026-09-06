@@ -12,10 +12,15 @@ I run the Telegram channel ["Kod Produkta"](https://t.me/pmgen) about product ma
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 
+{{< columns >}}
 {{< latest-posts count="3" archive="/en/blog/" archiveLabel="All articles" >}}
+
+{{< column >}}
 
 ## Projects {.posts-group-title .no-anchor}
 
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
 A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration. The source code is on [GitHub](https://github.com/zavarovkv/hugo-mini).
 {{< /project >}}
+{{< /column >}}
+{{< /columns >}}
