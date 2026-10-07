@@ -41,6 +41,7 @@ jobs:
           node --check scripts/translate.mjs
           node --check scripts/vendor-mermaid.mjs
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
+          node --check themes/hugo-mini/scripts/fetch-github-stars.mjs
           node --check themes/hugo-mini/assets/js/main.js
 
       - name: Regression tests
@@ -95,6 +96,7 @@ jobs:
           node --check scripts/translate.mjs
           node --check scripts/vendor-mermaid.mjs
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
+          node --check themes/hugo-mini/scripts/fetch-github-stars.mjs
           node --check themes/hugo-mini/assets/js/main.js
 
       - name: Regression tests
@@ -122,7 +124,9 @@ jobs:
         run: npm run fetch-telegram-reactions
 
       - name: Build
-        run: hugo --minify --panicOnWarning
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build
 
       - name: Check content and local links
         run: npm run check
@@ -138,7 +142,7 @@ jobs:
           test -s public/js/mermaid/mermaid.esm.min.mjs
           echo "ok: public/js/mermaid/mermaid.esm.min.mjs ($(wc -c < public/js/mermaid/mermaid.esm.min.mjs) bytes)"
 
-      - name: Commit translations
+      - name: Commit generated updates
         if: >-
           github.event_name == 'push'
           && github.ref == 'refs/heads/main'
@@ -147,11 +151,11 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/en/
+          git add content/en/ data/github_stars.json
           if git diff --cached --quiet; then
-            echo "No translation changes to commit."
+            echo "No translation or GitHub star changes to commit."
           else
-            git commit -m "Auto-translate EN content [skip ci]"
+            git commit -m "Auto-update EN translations and GitHub stars [skip ci]"
             git push
           fi
 

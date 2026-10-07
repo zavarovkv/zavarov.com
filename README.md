@@ -30,11 +30,14 @@ git submodule update --init
 
 ```bash
 hugo server                              # Start the development server
+npm run dev                              # Refresh GitHub stars and start Hugo
+npm run build                            # Refresh GitHub stars and build strictly
 hugo --minify                            # Build the production site
 npm run translate                        # Translate new or changed content
 npm run translate:force                  # Re-translate all content
 npm run translate -- blog/brandage.md    # Translate one file
 npm run fetch-telegram-reactions         # Update Telegram statistics
+npm run fetch-github-stars                # Update project star counts
 npm run vendor-mermaid                   # Refresh the local Mermaid bundle
 npm run check                            # Validate content and local links
 npm test                                 # Run regression tests without API calls
@@ -70,6 +73,8 @@ categories = ["Категория"]
 
 Optional fields include `draft`, `hidden`, `pinned`, `telegram_post`, `math`, and `mermaid`.
 
+The homepage's inline `github-stars` shortcode reads `data/github_stars.json`. `npm run dev` and `npm run build` refresh the count from GitHub first; a GitHub failure preserves the last successful value. Plain Hugo commands use the saved data without a network request.
+
 ## Project structure
 
 ```text
@@ -88,9 +93,9 @@ Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and 
 
 Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/workflows/gh-pages.yml).
 
-The workflow installs dependencies, updates English translations and Telegram statistics, builds the site, verifies self-hosted assets, and publishes `public/`.
+The workflow installs dependencies, updates English translations, Telegram statistics, and GitHub star counts, builds the site, verifies self-hosted assets, and publishes `public/`.
 
-Translations are committed only after the build and link checks succeed. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, and HTML/SVG anchors. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
+Translations and the latest GitHub star snapshot are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, and HTML/SVG anchors. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
 
 Set the `OPENAI_API_KEY` GitHub Actions secret to enable automatic translation. Without it, deployment continues using the committed EN content.
 
