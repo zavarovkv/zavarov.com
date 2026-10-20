@@ -1,0 +1,22 @@
+{{- $p := .page.Params -}}
+{{- $event := partial "events/schedule.html" .page -}}
+{{- $id := .id -}}
+<form class="webinar-signup" data-webinar-registration data-response-id="{{ $id }}-response" data-result-id="{{ $id }}-result" aria-label="Регистрация на вебинар" action="{{ $p.registration_action }}" method="post">
+  <div class="webinar-signup-field">
+    <label for="{{ $id }}-telegram">Ваш Telegram</label>
+    <input id="{{ $id }}-telegram" name="{{ $p.registration_telegram_field }}" type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="@username" maxlength="100" aria-describedby="{{ $id }}-note" required>
+  </div>
+  <button class="webinar-button" type="submit">{{ $p.registration_label }}</button>
+  <input type="hidden" name="fvv" value="1">
+  <input type="hidden" name="pageHistory" value="0">
+  <p class="webinar-note" id="{{ $id }}-note" data-registration-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
+</form>
+<div class="webinar-signup-result" id="{{ $id }}-result" role="status" aria-atomic="true" tabindex="-1" hidden>
+  <div class="webinar-result-heading">
+    <span class="webinar-result-icon" aria-hidden="true">{{ partial "events/icon.html" "check" }}</span>
+    <h3>Заявка отправлена</h3>
+  </div>
+  <p class="webinar-result-text">Приходите {{ $event.shortDate }} в {{ $event.startLabel }} МСК — будем рады вас видеть.</p>
+  <p class="webinar-result-text">{{ $p.registration_note }}</p>
+</div>
+<iframe id="{{ $id }}-response" name="{{ $id }}-response" title="Отправка заявки" hidden></iframe>

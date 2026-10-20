@@ -37,3 +37,32 @@ test("telegram_post is a message ID, not the URL from the former archetype", asy
   assert.equal(errors.length, 1);
   assert.match(errors[0], /positive integer/);
 });
+
+
+test("event bundles receive the same source validation as blog content", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "event-metadata-test-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "events/content/ru/metadata", "events/content/ru/invalid", "public"]) {
+    await mkdir(join(root, dir), { recursive: true });
+  }
+  await writeFile(join(root, "content/ru/_index.md"), '+++\ntitle="Home"\n+++\n');
+  await writeFile(join(root, "events/content/ru/metadata/_index.md"), '+++\ntitle="Ещ\u0451 один вебинар"\ntelegram_post="https://t.me/example/123"\n+++\n');
+  await writeFile(join(root, "events/content/ru/invalid/_index.md"), '+++\ntitle="Unclosed string\n+++\n');
+  await writeFile(join(root, "public/index.html"), "<p>Home</p>");
+
+  const errors = await checkSite({ root, baseURL: "https://example.com/" });
+  assert.equal(errors.length, 3, errors.join("\n"));
+  assert.ok(errors.some((message) => message.includes("events/content/ru/metadata/_index.md: contains a forbidden Russian letter")));
+  assert.ok(errors.some((message) => message.includes("events/content/ru/metadata/_index.md: telegram_post must be a positive integer")));
+  assert.ok(errors.some((message) => message.includes("events/content/ru/invalid/_index.md: invalid TOML")));
+});
+
+test("an invalid events content path is not ignored as an absent optional module", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "event-content-path-test-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "events", "public"]) await mkdir(join(root, dir), { recursive: true });
+  await writeFile(join(root, "content/ru/_index.md"), '+++\ntitle="Home"\n+++\n');
+  await writeFile(join(root, "events/content"), "not a directory");
+  await writeFile(join(root, "public/index.html"), "<p>Home</p>");
+  await assert.rejects(checkSite({ root, baseURL: "https://example.com/" }), { code: "ENOTDIR" });
+});

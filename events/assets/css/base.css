@@ -1,0 +1,78 @@
+/* Event-owned typography and document defaults. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('{{ (resources.Get "events/fonts/inter-300.woff2").RelPermalink }}') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('{{ (resources.Get "events/fonts/inter-500.woff2").RelPermalink }}') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('{{ (resources.Get "events/fonts/inter-600.woff2").RelPermalink }}') format('woff2');
+}
+
+:root {
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --link-color: #0060a0;
+  --link-hover-color: #d04000;
+  --color-primary-border: rgb(0 96 160 / 35%);
+  --link-hover-border: rgb(208 64 0 / 35%);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --link-color: #6ab0e6;
+  --link-hover-color: #ff7a40;
+  --color-primary-border: rgb(106 176 230 / 35%);
+  --link-hover-border: rgb(255 122 64 / 35%);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0 auto;
+  max-width: var(--width);
+  font-family: var(--font-main);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  text-align: left;
+  background: var(--background-color);
+  color: var(--text-color);
+  overflow-wrap: break-word;
+  font-synthesis: weight style;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+h2, h3 { scroll-margin-top: .75rem; }
+strong, b { color: var(--heading-color); font-weight: 600; }
+button { cursor: pointer; }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:link,
+a:active,
+a:visited {
+  color: var(--link-color);
+  border-bottom: .25px solid var(--color-primary-border);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  border-bottom-color: var(--link-hover-border);
+}

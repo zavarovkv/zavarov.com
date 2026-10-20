@@ -4,7 +4,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Project Overview
 
-Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via OpenAI API). Content is focused on Product Management topics. The site is intentionally thin: everything that can live in the theme does (layouts, CSS/JS, fonts, KaTeX, Likely). The only site-level layout override is `layouts/_partials/custom_head.html` for search-engine verification meta tags.
+Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via OpenAI API). Content is focused on Product Management topics. Blog layouts, CSS/JS, fonts, KaTeX, and Likely live in the theme. Event landing pages are a separate site-owned module under `events/`, with their own templates, styles, scripts, fonts, metadata and page bundles.
 
 ## Build & Development Commands
 
@@ -27,9 +27,15 @@ Homepage project stars use the theme's `github-stars` shortcode and `scripts/fet
 
 ## Architecture
 
-- **Theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides all base layouts, CSS, JS, fonts, KaTeX, Likely, shortcodes, i18n UI strings, and build scripts (`fetch-telegram-reactions.mjs`). The site does NOT shadow theme assets; fonts/katex/likely are served from the theme directly.
-- **Site overrides** (one file in `layouts/_partials/`):
-  - `custom_head.html` — Yandex/Google verification meta tags. The theme's layouts follow Hugo's current template system (0.146+), so partials live under `_partials/` with the underscore; the theme's former `extra_head.html` hook was removed as a duplicate of `custom_head.html`.
+- **Blog theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides the blog's base layouts, CSS, JS, fonts, KaTeX, Likely, shortcodes, i18n UI strings, and build scripts (`fetch-telegram-reactions.mjs`). The blog does not shadow theme assets; its fonts/katex/likely are served from the theme directly.
+- **Blog override**: `layouts/_partials/custom_head.html` adds Yandex/Google verification meta tags. The theme uses Hugo's current template system (0.146+), so partials live under `_partials/` with the underscore.
+- **Independent event module**: all event-specific code and content live under `events/`; see `events/README.md` and the `events/new.mjs` generator when creating another webinar.
+  - Hugo mounts `events/layouts` into `layouts`, `events/assets` into the separate `assets/events` namespace, and `events/content/ru` into Russian content. Keep explicit mounts for the blog's normal `layouts`, `assets`, `content/ru` and `content/en`: adding a component mount replaces its default project mount.
+  - `events/layouts/event/landing.html` is a complete HTML document, selected by `type = "event"` and `layout = "landing"`. It does not extend the theme's base template or load theme CSS, JS, fonts, partials, OG hooks or JSON-LD. Event fonts and shared assets belong to `events/assets`; never couple an event to `themes/hugo-mini/`.
+  - Each webinar is a branch bundle at `events/content/ru/<slug>/_index.md`, with its own portraits and cover in the same directory. The existing webinar remains at `/pm-hiring-webinar/`. Read bundle images with the page's `.Resources`, not global `resources.Get`.
+  - The event module owns its share card, canonical/Open Graph/Twitter tags and Event JSON-LD. `event_start` / `event_end` are the only stored schedule values; derive the localized landing, confirmation, title and share-card labels from them. Keep explicit Moscow offsets.
+  - The registration field posts to Google Forms through a hidden iframe. Keep `registration_telegram_field` aligned with Google's `entry.*` question name. An iframe response cannot prove acceptance or storage by Google Forms.
+  - Event `_index.md` files are maintained by hand and remain outside the blog translator's scope. Source validation in `scripts/check-site.mjs` scans both `content/` and `events/content/`; its output checks validate the whole generated site.
 - **Header title split**: the theme's `header.html` auto-splits `.Site.Title` on the first space into `.title-first-name` / `.title-last-name` spans (so `"Константин Заваров"` renders as two styleable pieces). No site override needed.
 - **i18n**: site's `i18n/*.toml` contain only category display name overrides; all UI strings come from theme
 
@@ -52,6 +58,7 @@ The translator uses one retry loop (at most three requests per file), a two-minu
 
 - Blog posts: `content/ru/blog/*.md` with TOML front matter (`+++`)
 - Pages: `content/ru/consultation.md`, `content/ru/_index.md`
+- Event bundles: `events/content/ru/<slug>/_index.md` plus local portraits and cover, rendered independently of the blog theme
 - EN equivalents: `content/en/blog/*.md` (auto-generated), `content/en/_index.md` (manual — the translate script skips `_index.md`)
 - Front matter fields: `title`, `slug`, `date`, `description`, `categories`, optional `draft`, `telegram_post`, `math`, `mermaid`, `hidden`, `pinned`. EN files additionally carry `source_hash` written by the translator (see Multilingual section).
 - `hidden = true` excludes a post from listings, recent-posts sidebar, JSON feed, and `llms.txt` (but the page still renders at its permalink and is crawlable). Use for unlisted/evergreen pages linked only from specific posts.
@@ -67,9 +74,9 @@ The translator uses one retry loop (at most three requests per file), a two-minu
 
 ## Static Assets
 
-Fonts, KaTeX, and Likely live in the theme (`themes/hugo-mini/static/`) and are served directly from there — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS and JS are bundled, minified and fingerprinted via Hugo Pipes (`themes/hugo-mini/assets/css/main.css`, `themes/hugo-mini/assets/js/main.js`). The browser caches one `/css/main.min.<sha>.css` and one `/js/main.min.<sha>.js`; localized JS strings are passed through `body[data-i18n]`, so the bundle is shared across languages.
+Blog fonts, KaTeX, and Likely live in the theme (`themes/hugo-mini/static/`) and are served directly from there — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS and JS are bundled, minified and fingerprinted via Hugo Pipes (`themes/hugo-mini/assets/css/main.css`, `themes/hugo-mini/assets/js/main.js`). The browser caches one `/css/main.min.<sha>.css` and one `/js/main.min.<sha>.js`; localized JS strings are passed through `body[data-i18n]`, so the bundle is shared across languages.
 
-Theme-owned (do not duplicate in site):
+Theme-owned for the blog (do not shadow these paths in the site):
 - Inter font family (WOFF2 for 200/300/300italic/400/500/600/700; `@font-face` declares only the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`.
 - KaTeX math rendering (loaded conditionally on `math = true` in front matter).
 - Ilya Birman's Likely social sharing buttons (loaded only on blog post pages).
@@ -88,7 +95,7 @@ Third-party runtime behavior:
 
 ## Theme vs Site Overrides
 
-`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/_partials/custom_head.html` or by re-adding shadowed copies of theme assets. Site overrides exist strictly for site-specific concerns; currently the only one is `custom_head.html` for search-engine verification meta tags.
+`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/_partials/custom_head.html` or by re-adding shadowed copies of theme assets. Blog overrides exist strictly for site-specific search-engine verification. Event landing pages are a separate site-owned module in `events/`; keep their templates, CSS, JS, fonts and assets there rather than in the theme or root-level blog overrides.
 
 ## Config Parameters
 

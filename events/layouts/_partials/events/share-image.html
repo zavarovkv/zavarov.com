@@ -1,0 +1,24 @@
+{{- /* Every event owns its images; shared composition assets live in events/. */ -}}
+{{- $schedule := partial "events/schedule.html" . -}}
+{{- $base := resources.Get "events/og/base.png" -}}
+{{- $bold := resources.Get "events/fonts/Inter-Bold.ttf" -}}
+{{- $regular := resources.Get "events/fonts/Inter-Regular.ttf" -}}
+{{- $image := $base -}}
+{{- with .Params.cover_image -}}
+  {{- $cover := $.Resources.GetMatch . -}}
+  {{- if not $cover -}}{{- errorf "Event %s: missing cover image %s" $.RelPermalink . -}}{{- end -}}
+  {{- $image = $image.Filter (images.Overlay ($cover.Fill "480x630 Center png") 720 0) -}}
+{{- end -}}
+{{- $label := .Params.event_label | default "Вебинар" -}}
+{{- $image = $image.Filter (images.Text (printf "%s · %s" $label .Params.format) (dict "color" "#b9c8d2" "size" 22 "x" 64 "y" 52 "font" $regular)) -}}
+{{- $title := .Params.share_title | default .Title -}}
+{{- $image = $image.Filter (images.Text $title (dict "color" "#ffffff" "size" 64 "linespacing" 10 "x" 64 "y" 115 "font" $bold)) -}}
+{{- $image = $image.Filter (images.Text $schedule.dateLabel (dict "color" "#ffffff" "size" 28 "x" 64 "y" 340 "font" $regular)) -}}
+{{- $image = $image.Filter (images.Text $schedule.timeLabel (dict "color" "#b9c8d2" "size" 24 "x" 64 "y" 386 "font" $regular)) -}}
+{{- range $i, $speaker := .Params.speakers -}}
+  {{- $image = $image.Filter (images.Text $speaker.name (dict "color" "#ffffff" "size" 24 "x" 64 "y" (add 475 (mul $i 36)) "font" $regular)) -}}
+{{- end -}}
+{{- $image = $image.Filter (images.Text (urls.Parse .Site.BaseURL).Host (dict "color" "#b9c8d2" "size" 18 "x" 64 "y" 576 "font" $regular)) -}}
+{{- $basePath := (urls.Parse .Site.BaseURL).Path -}}
+{{- $pagePath := strings.TrimPrefix $basePath .RelPermalink | strings.TrimPrefix "/" -}}
+{{- return (resources.Copy (path.Join $pagePath "og.png") $image) -}}

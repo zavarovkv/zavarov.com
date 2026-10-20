@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- with resources.Get "events/js/theme.js" }}
+  <script>{{ .Content | safeJS }}</script>
+  {{- end }}
+  {{- partial "events/head.html" . }}
+  {{- partial "events/analytics.html" . }}
+</head>
+<body>
+  {{- with .Site.Params.yandexMetrikaId }}
+  <noscript><img src="https://mc.yandex.ru/watch/{{ . }}" width="1" height="1" alt="" hidden></noscript>
+  {{- end }}
+  <main>{{ partial "events/content.html" . }}</main>
+  {{- with resources.Get "events/js/registration.js" | resources.Minify | resources.Fingerprint "sha256" }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{- end }}
+</body>
+</html>

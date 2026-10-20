@@ -1,0 +1,25 @@
+{{- /* ISO start/end are the only stored schedule values. All human-readable
+     labels use the page language and Moscow time, matching this event. */ -}}
+{{- $start := time.AsTime .Params.event_start -}}
+{{- $end := time.AsTime .Params.event_end -}}
+{{- if not ($end.After $start) -}}
+  {{- errorf "Webinar %s: event_end must be after event_start" .RelPermalink -}}
+{{- end -}}
+{{- if or (ne ($start.Format "Z07:00") "+03:00") (ne ($end.Format "Z07:00") "+03:00") -}}
+  {{- errorf "Webinar %s: event_start and event_end must include the Moscow offset +03:00" .RelPermalink -}}
+{{- end -}}
+{{- if ne ($start.Format "2006-01-02") ($end.Format "2006-01-02") -}}
+  {{- errorf "Webinar %s: event_start and event_end must be on the same Moscow date" .RelPermalink -}}
+{{- end -}}
+{{- $shortDate := time.Format "2 January" $start -}}
+{{- $startLabel := $start.Format "15:04" -}}
+{{- $endLabel := $end.Format "15:04" -}}
+{{- return (dict
+  "startISO" ($start.Format "2006-01-02T15:04:05Z07:00")
+  "endISO" ($end.Format "2006-01-02T15:04:05Z07:00")
+  "dateLabel" (strings.FirstUpper (time.Format "Monday, 2 January" $start))
+  "shortDate" $shortDate
+  "dateWithYear" (printf "%s %d" $shortDate $start.Year)
+  "startLabel" $startLabel
+  "timeLabel" (printf "%s–%s МСК" $startLabel $endLabel)
+) -}}

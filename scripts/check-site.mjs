@@ -41,21 +41,31 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   baseURL ??= parseTOML(await readFile(join(root, "config.toml"), "utf8")).baseURL;
   const siteURL = new URL(baseURL);
   const basePath = siteURL.pathname.replace(/\/?$/, "/");
-  const ruDir = join(root, "content/ru");
-  for (const file of await listMarkdown(join(root, "content"))) {
-    const fullPath = join(root, "content", file);
-    const content = await readFile(fullPath, "utf8");
-    if (fullPath.startsWith(ruDir + sep) && /[\u0451\u0401]/u.test(content)) report(`${file}: contains a forbidden Russian letter`);
-    try {
-      const { data } = readDocument(content, file);
-      if (file.includes("/blog/") && !file.endsWith("/_index.md")) {
-        for (const key of ["title", "slug", "date", "description", "categories"]) {
-          if (!Object.hasOwn(data, key)) report(`${file}: missing front matter field ${key}`);
-        }
-        if (data.categories !== undefined && (!Array.isArray(data.categories) || data.categories.some((item) => typeof item !== "string"))) report(`${file}: categories must be an array of strings`);
+  for (const sourceRoot of ["content", "events/content"]) {
+    const directory = join(root, sourceRoot);
+    if (sourceRoot === "events/content") {
+      try { await stat(directory); }
+      catch (error) {
+        // Minimal test fixtures and blog-only projects may omit this module.
+        if (error.code === "ENOENT") continue;
+        throw error;
       }
-      if (data.telegram_post !== undefined && (!Number.isSafeInteger(data.telegram_post) || data.telegram_post <= 0)) report(`${file}: telegram_post must be a positive integer, not a URL`);
-    } catch (error) { report(error.message); }
+    }
+    for (const sourceFile of await listMarkdown(directory)) {
+      const file = sourceRoot === "content" ? sourceFile : `${sourceRoot}/${sourceFile}`;
+      const content = await readFile(join(directory, sourceFile), "utf8");
+      if (sourceFile.startsWith("ru/") && /[\u0451\u0401]/u.test(content)) report(`${file}: contains a forbidden Russian letter`);
+      try {
+        const { data } = readDocument(content, file);
+        if (sourceFile.includes("/blog/") && !sourceFile.endsWith("/_index.md")) {
+          for (const key of ["title", "slug", "date", "description", "categories"]) {
+            if (!Object.hasOwn(data, key)) report(`${file}: missing front matter field ${key}`);
+          }
+          if (data.categories !== undefined && (!Array.isArray(data.categories) || data.categories.some((item) => typeof item !== "string"))) report(`${file}: categories must be an array of strings`);
+        }
+        if (data.telegram_post !== undefined && (!Number.isSafeInteger(data.telegram_post) || data.telegram_post <= 0)) report(`${file}: telegram_post must be a positive integer, not a URL`);
+      } catch (error) { report(error.message); }
+    }
   }
 
   let files;

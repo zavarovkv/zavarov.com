@@ -1,0 +1,12 @@
+{{- $size := .size | default 72 -}}
+{{- with .speaker.image -}}
+  {{- $image := $.page.Resources.GetMatch . -}}
+  {{- if not $image -}}{{- errorf "Event %s: missing speaker image %s" $.page.RelPermalink . -}}{{- end -}}
+  {{- range $.speaker.image_crop -}}
+    {{- $image = $image.Crop . -}}
+  {{- end -}}
+  {{- $image = $image.Fill (printf "%dx%d Center webp q90" (mul $size 2) (mul $size 2)) -}}
+<img class="webinar-avatar" src="{{ $image.RelPermalink }}" alt="" width="{{ $size }}" height="{{ $size }}" decoding="async">
+{{- else -}}
+<span class="webinar-avatar webinar-avatar-placeholder" aria-hidden="true">{{ partial "events/icon.html" "person" }}</span>
+{{- end -}}

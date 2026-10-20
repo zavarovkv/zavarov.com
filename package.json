@@ -8,14 +8,16 @@
   "scripts": {
     "dev": "npm run fetch-github-stars && hugo server --bind 127.0.0.1",
     "build": "npm run fetch-github-stars && hugo --minify --panicOnWarning",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs events/tests/*.test.mjs",
+    "test:events": "node --test events/tests/*.test.mjs",
     "postinstall": "node scripts/vendor-mermaid.mjs",
     "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
     "check": "node scripts/check-site.mjs",
     "translate": "node scripts/translate.mjs",
     "translate:force": "node scripts/translate.mjs --force",
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs",
-    "fetch-github-stars": "node themes/hugo-mini/scripts/fetch-github-stars.mjs zavarovkv/hugo-mini"
+    "fetch-github-stars": "node themes/hugo-mini/scripts/fetch-github-stars.mjs zavarovkv/hugo-mini",
+    "event:new": "node events/scripts/new.mjs"
   },
   "devDependencies": {
     "mermaid": "11.16.1",

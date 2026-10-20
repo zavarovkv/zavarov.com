@@ -1,0 +1,39 @@
+{{- $schedule := partial "events/schedule.html" . -}}
+{{- $speakers := slice -}}
+{{- range .Params.speakers -}}
+  {{- $channels := slice -}}
+  {{- with .telegram -}}
+    {{- $channels = $channels | append (printf "https://t.me/%s" .) -}}
+  {{- end -}}
+  {{- range .telegram_channels -}}
+    {{- $channels = $channels | append (printf "https://t.me/%s" .) -}}
+  {{- end -}}
+  {{- $speakers = $speakers | append (dict
+    "@type" "Person"
+    "name" .name
+    "sameAs" $channels
+  ) -}}
+{{- end -}}
+{{- $image := partialCached "events/share-image.html" . .Permalink -}}
+{{- $event := dict
+  "@context" "https://schema.org"
+  "@type" "Event"
+  "@id" (printf "%s#event" .Permalink)
+  "name" .Title
+  "description" .Description
+  "url" .Permalink
+  "inLanguage" .Language.Lang
+  "startDate" $schedule.startISO
+  "endDate" $schedule.endISO
+  "eventStatus" "https://schema.org/EventScheduled"
+  "eventAttendanceMode" "https://schema.org/OnlineEventAttendanceMode"
+  "location" (dict "@type" "VirtualLocation" "name" .Params.format "url" .Permalink)
+  "performer" $speakers
+  "organizer" (dict "@type" "Person" "name" (.Params.organizer_name | default (.Site.Params.authorName | default .Site.Title)) "url" (.Params.organizer_url | default .Site.Home.Permalink))
+-}}
+{{- with $image -}}
+  {{- $event = merge $event (dict "image" (dict
+    "@type" "ImageObject" "url" .Permalink "width" .Width "height" .Height
+  )) -}}
+{{- end -}}
+<script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>

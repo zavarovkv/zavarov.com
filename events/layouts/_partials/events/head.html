@@ -1,0 +1,46 @@
+{{- $schedule := partial "events/schedule.html" . -}}
+{{- $image := partialCached "events/share-image.html" . .Permalink -}}
+{{- $label := .Params.event_label | default "Вебинар" -}}
+<title>{{ .Title }} — {{ strings.ToLower $label }} {{ $schedule.dateWithYear }}</title>
+<meta name="description" content="{{ .Description }}">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="robots" content="{{ if .Draft }}noindex, nofollow{{ else if .Params.noindex }}noindex, follow{{ else }}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+{{- with .Site.Params.favicon }}
+<link rel="icon" href="{{ . | relURL }}" sizes="32x32" type="image/png">
+{{- end }}
+{{- with .Site.Params.favicon192 }}
+<link rel="icon" href="{{ . | relURL }}" sizes="192x192" type="image/png">
+{{- end }}
+{{- with .Site.Params.appleTouchIcon }}
+<link rel="apple-touch-icon" href="{{ . | relURL }}" sizes="180x180">
+{{- end }}
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ replace .Language.LanguageCode "-" "_" }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:image" content="{{ $image.Permalink }}">
+<meta property="og:image:width" content="{{ $image.Width }}">
+<meta property="og:image:height" content="{{ $image.Height }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="{{ .Title }} — {{ $schedule.dateLabel }}, {{ $schedule.timeLabel }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ .Description }}">
+<meta name="twitter:image" content="{{ $image.Permalink }}">
+<meta name="twitter:image:alt" content="{{ .Title }} — {{ $schedule.dateLabel }}, {{ $schedule.timeLabel }}">
+{{- range slice "300" "600" }}
+  {{- with resources.Get (printf "events/fonts/inter-%s.woff2" .) }}
+<link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/woff2" crossorigin>
+  {{- end }}
+{{- end }}
+{{- $base := resources.Get "events/css/base.css" | resources.ExecuteAsTemplate "events/css/base.css" . -}}
+{{- $styles := slice $base (resources.Get "events/css/landing.css") | resources.Concat "events/css/landing.css" | resources.Minify | resources.Fingerprint "sha256" -}}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{- partial "events/structured-data.html" . -}}

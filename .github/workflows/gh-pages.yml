@@ -43,6 +43,9 @@ jobs:
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
           node --check themes/hugo-mini/scripts/fetch-github-stars.mjs
           node --check themes/hugo-mini/assets/js/main.js
+          for file in events/assets/js/*.js events/scripts/*.mjs; do
+            node --check "$file"
+          done
 
       - name: Regression tests
         run: npm test
@@ -98,6 +101,9 @@ jobs:
           node --check themes/hugo-mini/scripts/fetch-telegram-reactions.mjs
           node --check themes/hugo-mini/scripts/fetch-github-stars.mjs
           node --check themes/hugo-mini/assets/js/main.js
+          for file in events/assets/js/*.js events/scripts/*.mjs; do
+            node --check "$file"
+          done
 
       - name: Regression tests
         run: npm test

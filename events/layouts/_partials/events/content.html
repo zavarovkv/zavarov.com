@@ -1,0 +1,95 @@
+  {{- $p := .Params -}}
+  {{- $event := partial "events/schedule.html" . -}}
+  <article class="webinar-page" aria-labelledby="webinar-title">
+    <header class="webinar-hero">
+      <h1 id="webinar-title">{{ .Title }}</h1>
+      <p class="webinar-intro">{{ $p.intro }}</p>
+    </header>
+
+    <dl class="webinar-meta">
+      <div>
+        <dt class="webinar-detail-icon">
+          <span class="webinar-sr-only">Когда</span>
+          {{ partial "events/icon.html" "calendar" }}
+        </dt>
+        <dd>
+          <strong><time datetime="{{ $event.startISO }}">{{ $event.dateLabel }}</time></strong>
+          <span>{{ $event.timeLabel }}</span>
+        </dd>
+      </div>
+      <div>
+        <dt class="webinar-detail-icon">
+          <span class="webinar-sr-only">Формат</span>
+          {{ partial "events/icon.html" "video" }}
+        </dt>
+        <dd>
+          <strong>{{ $p.format }}</strong>
+          <span>{{ $p.format_note }}</span>
+        </dd>
+      </div>
+    </dl>
+
+    <section class="webinar-registration" id="registration" aria-labelledby="registration-title" tabindex="-1">
+      <div class="webinar-registration-heading">
+        <h2 id="registration-title">Регистрация</h2>
+        <p class="webinar-registration-note">{{ $p.registration_note }}</p>
+      </div>
+      <div class="webinar-registration-body">
+        {{ if and $p.registration_action $p.registration_telegram_field }}
+        {{ partial "events/registration.html" (dict "page" . "id" "signup") }}
+        {{ else }}
+        <p>Регистрация скоро откроется.</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <aside class="webinar-hosts" aria-labelledby="speakers-title">
+      <h2 id="speakers-title">Ведущие</h2>
+      <div class="webinar-speakers">
+        {{ range $speaker := $p.speakers }}
+        <div class="webinar-speaker-profile">
+          {{ partial "events/avatar.html" (dict "page" $ "speaker" . "size" 72) }}
+          <div>
+            <h3>{{ .name }}</h3>
+            {{ with .role }}<p class="webinar-speaker-role">{{ . }}</p>{{ end }}
+            {{ with .bio }}<p class="webinar-speaker-bio">{{ . }}</p>{{ end }}
+            {{ if or .telegram .telegram_channels }}
+            <p class="webinar-speaker-links">
+              {{ with .telegram }}
+              <a href="{{ printf "https://t.me/%s" . }}" target="_blank" rel="noopener noreferrer" aria-label="Личный Telegram: {{ $speaker.name }}" title="@{{ . }}"><span>Telegram</span><span aria-hidden="true">↗</span></a>
+              {{ end }}
+              {{ range .telegram_channels }}
+              <a href="{{ printf "https://t.me/%s" . }}" target="_blank" rel="noopener noreferrer" aria-label="Telegram-канал @{{ . }}" title="@{{ . }}"><span>Канал</span><span aria-hidden="true">↗</span></a>
+              {{ end }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </aside>
+
+    <section class="webinar-about" aria-labelledby="program-title">
+      <h2 id="program-title">Что разберем</h2>
+      <ol class="webinar-program">
+        {{ range $p.takeaways }}
+        <li>
+          <div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+      <h3 class="webinar-audience-title">Для кого</h3>
+      <p>{{ $p.audience }}</p>
+      <p class="webinar-questions-note">{{ $p.questions_note }}</p>
+    </section>
+
+    {{ if and $p.registration_action $p.registration_telegram_field }}
+    <div class="webinar-cta">
+      <p>{{ $event.shortDate }} · {{ $event.timeLabel }}</p>
+      <a class="webinar-button webinar-button-secondary" href="#registration">Зарегистрироваться</a>
+    </div>
+    {{ end }}
+  </article>

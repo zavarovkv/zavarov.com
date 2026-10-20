@@ -37,6 +37,34 @@ ignoreErrors = ["error-disable-taxonomy"]
 [permalinks]
   blog = "/:slug/"
 
+# Explicit component mounts keep the blog's defaults while adding the
+# site-owned events module. Event assets have their own namespace.
+[module]
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "events/layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "events/assets"
+    target = "assets/events"
+  [[module.mounts]]
+    source = "content/ru"
+    target = "content"
+    lang = "ru"
+  [[module.mounts]]
+    source = "content/en"
+    target = "content"
+    lang = "en"
+  [[module.mounts]]
+    source = "events/content/ru"
+    target = "content"
+    lang = "ru"
+
 [languages]
   [languages.ru]
     weight = 1
