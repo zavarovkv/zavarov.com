@@ -9,11 +9,11 @@ hidden = true
 draft = true
 outputs = ["HTML"]
 
-intro = "Короткое описание пользы. Два взгляда на одну тему."
+intro = "Короткое описание пользы. Два взгляда на одну тему."
 format = "Онлайн"
-format_note = "Диалог и вопросы"
+format_note = "Диалог и вопросы"
 audience = "Кому стоит прийти."
-questions_note = "В конце оставим время на вопросы."
+questions_note = "В конце оставим время на вопросы."
 
 # Review the date before publishing. Times use Moscow's +03:00 offset.
 event_start = "__EVENT_DAY__T19:00:00+03:00"
@@ -23,7 +23,7 @@ event_end = "__EVENT_DAY__T20:30:00+03:00"
 registration_action = ""
 registration_telegram_field = ""
 registration_label = "Зарегистрироваться"
-registration_note = "Ссылку на эфир пришлем лично в Telegram."
+registration_note = "Ссылку на эфир пришлем лично в Telegram."
 
 # Place images beside this file and enter their filenames below.
 # cover_image = "cover.png"
@@ -37,18 +37,18 @@ registration_note = "Ссылку на эфир пришлем лично в Tel
 
 [[takeaways]]
   title = "Вторая тема"
-  text = "Что обсудят ведущие и с чем уйдет участник."
+  text = "Что обсудят ведущие и с чем уйдет участник."
 
 [[speakers]]
   name = "Имя ведущего"
-  role = "Роль и компания"
-  bio = "Почему ему есть что рассказать по теме."
+  role = "Роль и компания"
+  bio = "Почему ему есть что рассказать по теме."
   # image = "speaker.jpg"
   # telegram = "username"
   # telegram_channels = ["channel"]
 
 [[speakers]]
   name = "Имя второго ведущего"
-  role = "Роль и компания"
-  bio = "Какую точку зрения он добавит в разговор."
+  role = "Роль и компания"
+  bio = "Какую точку зрения он добавит в разговор."
 +++

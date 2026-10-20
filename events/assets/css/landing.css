@@ -11,7 +11,7 @@
   --webinar-success-bg: rgb(11 181 82 / 12%);
   --webinar-success-ink: #0bb552;
   --webinar-error: #ac402b;
-  --webinar-card-padding: 22px;
+  --webinar-card-padding: 24px;
   --webinar-avatar-size: 72px;
 }
 
@@ -51,7 +51,7 @@ body {
     "registration hosts"
     "about hosts"
     "cta hosts";
-  gap: 28px 40px;
+  gap: 32px 40px;
   align-items: start;
   padding: 48px 0 64px;
   font-size: 16px;
@@ -86,10 +86,11 @@ body {
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -.04em;
+  text-wrap: balance;
 }
 
 .webinar-page .webinar-intro {
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: 17px;
   line-height: 1.6;
   text-wrap: balance;
@@ -139,6 +140,7 @@ body {
   display: block;
   color: var(--webinar-muted);
   font-size: 14px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Registration: native form, enhanced with pending/error/sent states. */
@@ -155,19 +157,19 @@ body {
 }
 
 .webinar-registration-heading h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .webinar-page .webinar-registration-note {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 14px;
   line-height: 1.6;
 }
 
 .webinar-registration-body {
-  padding: 18px var(--webinar-card-padding) var(--webinar-card-padding);
+  padding: 16px var(--webinar-card-padding) var(--webinar-card-padding);
 }
 
 .webinar-registration:has(.webinar-signup-result:not([hidden])) .webinar-registration-heading {
@@ -182,7 +184,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) max-content;
   align-items: end;
-  gap: 10px 12px;
+  gap: 12px;
   margin: 0;
 }
 
@@ -280,7 +282,7 @@ body {
 }
 
 .webinar-signup-result h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
 }
@@ -294,17 +296,17 @@ body {
 /* Program and speakers share the same section rhythm. */
 .webinar-about > h2,
 .webinar-hosts > h2 {
-  margin-bottom: 20px;
-  padding-bottom: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--webinar-border);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .webinar-program {
   display: grid;
-  gap: 22px;
+  gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -328,28 +330,30 @@ body {
 }
 
 .webinar-program h3 {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: 17px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
 .webinar-page .webinar-audience-title {
-  margin: 28px 0 10px;
+  margin: 32px 0 12px;
   font-size: 17px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .webinar-page .webinar-questions-note {
   margin-top: 16px;
   color: var(--webinar-muted);
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .webinar-speakers {
   display: grid;
-  gap: 28px;
+  gap: 24px;
 }
 
 .webinar-speaker-profile {
@@ -384,10 +388,14 @@ body {
 
 .webinar-page .webinar-speaker-role,
 .webinar-page .webinar-speaker-bio {
-  margin-top: 6px;
+  margin-top: 8px;
   color: var(--webinar-muted);
   font-size: 14px;
   line-height: 1.6;
+}
+
+.webinar-speaker-role {
+  text-wrap: balance;
 }
 
 .webinar-page .webinar-speaker-links {
@@ -489,9 +497,8 @@ body {
 }
 
 @media (max-width: 380px) {
-  :root { --webinar-card-padding: 18px; }
+  :root { --webinar-card-padding: 20px; }
   body { padding: 0 20px; }
-  .webinar-signup-result h3 { font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
