@@ -1,4 +1,5 @@
 {{- $schedule := partial "events/schedule.html" . -}}
+{{- $metadata := partial "events/metadata.html" . -}}
 {{- $speakers := slice -}}
 {{- range .Params.speakers -}}
   {{- $channels := slice -}}
@@ -20,7 +21,7 @@
   "@type" "Event"
   "@id" (printf "%s#event" .Permalink)
   "name" .Title
-  "description" .Description
+  "description" $metadata.description
   "url" .Permalink
   "inLanguage" .Language.Lang
   "startDate" $schedule.startISO

@@ -126,41 +126,52 @@ async function inspectLanding(bundle, config, output) {
   assert.equal(meta("og:url"), url);
   assert.equal(meta("og:type"), "website");
   assert.equal(meta("og:locale"), (config.languages?.[bundle.language]?.languageCode || bundle.language).replace("-", "_"));
-  assert.equal(meta("twitter:card"), "summary_large_image");
-  assert.equal(meta("og:title"), source.title);
-  assert.equal(meta("twitter:title"), source.title);
-  assert.equal(meta("description"), source.description);
-  assert.equal(meta("og:description"), source.description);
-  assert.equal(meta("twitter:description"), source.description);
-  assert.equal(meta("twitter:image"), meta("og:image"));
-  assert.equal(meta("og:image:width"), "1200");
-  assert.equal(meta("og:image:height"), "630");
-  assert.equal(meta("og:image:type"), "image/png");
-  assert.ok(meta("og:image:alt"));
-  assert.equal(meta("twitter:image:alt"), meta("og:image:alt"));
+  const title = `${source.title} — ${(source.event_label || "Вебинар").toLowerCase()} ${schedule.dateWithYear}`;
+  const description = `${schedule.shortDate}, ${schedule.time}. ${source.description}`;
+  assert.equal(meta("og:title"), title);
+  assert.equal(meta("twitter:title"), title);
+  assert.equal(meta("description"), description);
+  assert.equal(meta("og:description"), description);
+  assert.equal(meta("twitter:description"), description);
+  if (source.cover_image) {
+    assert.equal(meta("twitter:card"), "summary_large_image");
+    assert.equal(meta("twitter:image"), meta("og:image"));
+    assert.equal(meta("og:image:width"), "1200");
+    assert.equal(meta("og:image:height"), "630");
+    assert.equal(meta("og:image:type"), "image/png");
+    assert.ok(meta("og:image:alt"));
+    assert.equal(meta("twitter:image:alt"), meta("og:image:alt"));
+    const png = await readFile(await existingAsset(output, meta("og:image"), config.baseURL));
+    assert.equal(png.subarray(1, 4).toString(), "PNG");
+    assert.equal(png.readUInt32BE(16), 1200);
+    assert.equal(png.readUInt32BE(20), 630);
+  } else {
+    assert.equal(meta("twitter:card"), "summary");
+    const imageMeta = nodes.filter(({ tag, attrs }) => tag === "meta" &&
+      ((attrs.property || "").startsWith("og:image") || (attrs.name || "").startsWith("twitter:image")));
+    assert.equal(imageMeta.length, 0, "text-only previews must not advertise an image");
+    await assert.rejects(stat(outputPath(output, new URL("og.png", url).href, config.baseURL)), { code: "ENOENT" }, "text-only events must not generate a share image");
+  }
   if (source.draft || source.noindex) {
     assert.match(meta("robots"), /\bnoindex\b/);
   } else {
     assert.match(meta("robots"), /\bindex\b/);
     assert.doesNotMatch(meta("robots"), /noindex/);
   }
-  const png = await readFile(await existingAsset(output, meta("og:image"), config.baseURL));
-  assert.equal(png.subarray(1, 4).toString(), "PNG");
-  assert.equal(png.readUInt32BE(16), 1200);
-  assert.equal(png.readUInt32BE(20), 630);
 
   const blocks = nodes.filter(({ tag, attrs }) => tag === "script" && attrs.type === "application/ld+json").map(({ text }) => JSON.parse(text));
   assert.equal(blocks.length, 1, "the standalone landing emits only its Event schema");
   const [event] = blocks;
   assert.equal(event["@type"], "Event");
   assert.equal(event.name, source.title);
-  assert.equal(event.description, source.description);
+  assert.equal(event.description, description);
   assert.equal(event.url, url);
   assert.equal(event.startDate, source.event_start);
   assert.equal(event.endDate, source.event_end);
   assert.equal(event.eventAttendanceMode, "https://schema.org/OnlineEventAttendanceMode");
   assert.equal(event.location["@type"], "VirtualLocation");
-  assert.equal(event.image.url, meta("og:image"));
+  if (source.cover_image) assert.equal(event.image.url, meta("og:image"));
+  else assert.equal(event.image, undefined, "text-only events must not reference an image in structured data");
   assert.ok(event.organizer.name, "organizer comes from page/site data");
   assert.deepEqual(event.performer.map(({ name }) => name), source.speakers.map(({ name }) => name));
   for (const [i, speaker] of source.speakers.entries()) {
@@ -179,7 +190,7 @@ async function inspectLanding(bundle, config, output) {
   assert.equal(date.attrs.datetime, event.startDate);
   assert.equal(date.text, schedule.date);
   assert.ok(body.text.includes(schedule.time));
-  assert.equal(nodes.find(({ tag }) => tag === "title").text, `${source.title} — ${(source.event_label || "Вебинар").toLowerCase()} ${schedule.dateWithYear}`);
+  assert.equal(nodes.find(({ tag }) => tag === "title").text, title);
 
   const form = nodes.find(({ tag, attrs }) => tag === "form" && Object.hasOwn(attrs, "data-webinar-registration"));
   if (source.registration_action && source.registration_telegram_field) {

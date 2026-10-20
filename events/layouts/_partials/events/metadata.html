@@ -1,0 +1,6 @@
+{{- $schedule := partial "events/schedule.html" . -}}
+{{- $label := .Params.event_label | default "Вебинар" -}}
+{{- return (dict
+  "title" (printf "%s — %s %s" .Title (strings.ToLower $label) $schedule.dateWithYear)
+  "description" (printf "%s, %s. %s" $schedule.shortDate $schedule.timeLabel (.Description | plainify))
+) -}}

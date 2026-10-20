@@ -26,6 +26,7 @@ The current layout is for Russian-language events within one Moscow calendar day
 
 - **Schedule:** set `event_start` and `event_end` as ISO timestamps with `+03:00`.
   Visible dates, confirmation text and metadata are derived from these values.
+  Keep `description` brief; the metadata adds the date and time automatically.
 - **Registration:** set `registration_action` to the Google Forms submission URL
   and `registration_telegram_field` to the question's `entry.*` name. Both are
   required to show the form. Use `registration_note` to explain how attendees
@@ -33,8 +34,8 @@ The current layout is for Russian-language events within one Moscow calendar day
 - **Images:** place portraits and an optional `cover_image` beside `_index.md`.
   Portraits become 144×144 WebP files displayed at 72px; missing portraits use an
   icon. `image_crop` accepts a sequence of [Hugo crop operations](https://gohugo.io/methods/resource/crop/).
-  The cover appears only in the 1200×630 share card. Use `share_title` with `\n`
-  for explicit line breaks; the card fits two or three speakers.
+  Set `cover_image` to enable a 1200×630 share card; omit it for a text-only preview.
+  Use `share_title` with `\n` for line breaks; the card fits two or three speakers.
 - **Original files:** keep `[build] publishResources = false` to publish only the
   image variants referenced by the templates.
 

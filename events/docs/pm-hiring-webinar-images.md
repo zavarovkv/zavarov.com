@@ -1,7 +1,8 @@
 # PM hiring webinar images
 
 `interview-cover.png` was generated with built-in imagegen on 2026-10-19.
-Hugo uses it only in the 1200×630 share card. The source PNG is not published.
+It was used in an earlier share card. The event now has a text-only preview;
+the source PNG is retained for provenance and is not published.
 
 Speaker JPEGs are supplied originals. The avatar partial applies `image_crop`
 from the speaker data, then exports 144×144 WebP files for 72px avatars.
