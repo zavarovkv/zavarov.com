@@ -38,17 +38,17 @@ test("new events cannot overwrite an event or a blog page at the same address", 
     await mkdir(dirname(file), { recursive: true });
     await writeFile(file, "keep this content");
     const slug = existing.includes("existing") ? "existing" : existing.includes("blog-page") ? "blog-page" : "section";
-    await assert.rejects(createEvent({ root, slug }), /уже занят/);
+    await assert.rejects(createEvent({ root, slug }), /already exists/);
     assert.equal(await readFile(file, "utf8"), "keep this content");
   }
   await createEvent({ root, slug: "new-event" });
-  await assert.rejects(createEvent({ root, slug: "new-event" }), /уже занят/);
+  await assert.rejects(createEvent({ root, slug: "new-event" }), /already exists/);
 });
 
 test("event addresses reject paths and invalid slugs before writing files", async t => {
   const root = await fixture(t);
   for (const slug of [undefined, "", "../escape", "a/b", "/absolute", "UPPER", "two--hyphens", "-prefix", "suffix-", "a".repeat(65)]) {
-    await assert.rejects(createEvent({ root, slug }), /Укажите адрес/);
+    await assert.rejects(createEvent({ root, slug }), /lowercase URL slug/);
   }
 });
 
@@ -59,7 +59,7 @@ test("blog slugs and redirects reserve addresses even with different source name
   await mkdir(dirname(file), { recursive: true });
   await writeFile(file, '+++\nslug = "product-research"\naliases = ["/old-event/"]\nurl = "/custom-address/"\n+++\n');
   for (const slug of ["product-research", "old-event", "custom-address"]) {
-    await assert.rejects(createEvent({ root, slug }), /уже занят в метаданных/);
+    await assert.rejects(createEvent({ root, slug }), /reserved in/);
   }
 });
 
@@ -68,6 +68,6 @@ test("language homepages and the default-language redirect reserve their prefixe
   const root = await fixture(t);
   await writeFile(join(root, "config.toml"), 'defaultContentLanguage = "ru"\n[languages.ru]\nweight = 1\n[languages.en]\nweight = 2\n');
   for (const slug of ["ru", "en"]) {
-    await assert.rejects(createEvent({ root, slug }), /занят языковым разделом/);
+    await assert.rejects(createEvent({ root, slug }), /reserved for a site language/);
   }
 });

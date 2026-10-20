@@ -1,60 +1,47 @@
-# Страницы мероприятий
+# Event landing pages
 
-В этой директории находятся код, стили, шрифты, тесты и контент страниц мероприятий.
-Они подключаются к Hugo через `module.mounts` в корневом `config.toml`.
-Тема `themes/hugo-mini` отвечает только за блог: ее шаблоны, CSS, JavaScript и ресурсы
-для страниц мероприятий не используются. Из общей конфигурации сайта берутся
-адрес сайта, язык, имя организатора, favicon и настроенный счетчик Метрики.
+Standalone Hugo pages with their own layouts, CSS, scripts, fonts and share cards.
+The root [config.toml](../config.toml) mounts this module alongside the blog. Events
+use the site's URL, language, organizer, icons and analytics settings; they do not
+load the blog theme. Event content is maintained manually, outside auto-translation.
 
-```text
-events/
-├── assets/
-│   ├── css/                 # Независимая база и оформление лендингов
-│   ├── js/                  # Регистрация и выбор светлой/темной темы
-│   ├── fonts/               # Inter, включая лицензию OFL
-│   └── og/                  # Основа превью ссылки
-├── content/ru/
-│   └── pm-hiring-webinar/   # Данные и изображения конкретного вебинара
-├── layouts/
-│   ├── event/landing.html   # Самостоятельная HTML-страница
-│   └── _partials/events/    # Контент, форма, расписание, метаданные и изображения
-├── scripts/new.mjs         # Создание нового черновика
-├── templates/webinar/      # Заготовка данных
-├── tests/                  # Поведение формы, сборка и независимость от темы
-└── docs/                   # Происхождение изображений и другие заметки
-```
+## Create an event
 
-## Новый вебинар
-
-Из корня репозитория:
+Run from the repository root:
 
 ```sh
 npm run event:new -- product-interviews
 hugo server --buildDrafts
 ```
 
-Команда создаст `events/content/ru/product-interviews/_index.md`, который доступен
-по адресу `/product-interviews/`. Это черновик: обычная сборка его не публикует.
-Существующие файлы команда не перезаписывает; занятый адрес в обоих деревьях
-контента считается ошибкой. Проверяются также slug и перенаправления статей,
-а языковые адреса вроде `/ru/` и `/en/` зарезервированы Hugo.
+This creates `events/content/ru/product-interviews/_index.md` at
+`/product-interviews/`. The generator rejects existing paths, slugs, aliases and
+language prefixes. It never overwrites content.
 
-В `_index.md` заполните заголовок, описание, темы, ведущих и аудиторию. Дата по
-умолчанию стоит через неделю: обязательно замените ее перед публикацией.
-Расписание задается только в `event_start` / `event_end` с явным `+03:00`.
-Все подписи даты, приглашение и метаданные формируются автоматически. Текущий
-шаблон рассчитан на русскоязычные мероприятия в пределах одного московского дня.
+Edit the title, description, topics, speakers and audience. Review the date: the
+default is one week ahead. Set `draft = false` when the page is ready to publish.
+The current layout is for Russian-language events within one Moscow calendar day.
 
-Чтобы включить регистрацию, заполните `registration_action` и
-`registration_telegram_field` из своей Google Формы. Проверьте
-`registration_note`: способ доставки ссылки должен соответствовать вашему процессу.
-До настройки регистрации показывается «Регистрация скоро откроется».
-Для публикации смените `draft = true` на `draft = false`.
+## Configure
 
-## Временный запрет индексации
+- **Schedule:** set `event_start` and `event_end` as ISO timestamps with `+03:00`.
+  Visible dates, confirmation text and metadata are derived from these values.
+- **Registration:** set `registration_action` to the Google Forms submission URL
+  and `registration_telegram_field` to the question's `entry.*` name. Both are
+  required to show the form. Use `registration_note` to explain how attendees
+  receive the event link.
+- **Images:** place portraits and an optional `cover_image` beside `_index.md`.
+  Portraits become 144×144 WebP files displayed at 72px; missing portraits use an
+  icon. `image_crop` accepts a sequence of [Hugo crop operations](https://gohugo.io/methods/resource/crop/).
+  The cover appears only in the 1200×630 share card. Use `share_title` with `\n`
+  for explicit line breaks; the card fits two or three speakers.
+- **Original files:** keep `[build] publishResources = false` to publish only the
+  image variants referenced by the templates.
 
-Чтобы страница оставалась доступной по прямой ссылке, но не индексировалась,
-задайте в ее `_index.md`:
+Google Forms responses load in a hidden iframe. The page can acknowledge sending
+a request, but cannot verify that Google saved it. Tests never submit real answers.
+
+To keep a page accessible by URL while excluding it from search and the sitemap:
 
 ```toml
 noindex = true
@@ -63,51 +50,28 @@ noindex = true
   disable = true
 ```
 
-Первая настройка добавляет `noindex` в HTML, вторая исключает страницу из карты сайта.
-Для возврата индексации уберите обе настройки. `robots.txt` не должен блокировать
-загрузку страницы: поисковому роботу нужно прочитать метатег `noindex`.
+Remove both settings to restore indexing. Allow crawling in `robots.txt` so search
+engines can read the `noindex` tag.
 
-## Изображения и превью ссылки
+## Structure
 
-Портреты и обложка лежат рядом с `_index.md`:
+| Path | Purpose |
+| --- | --- |
+| `content/ru/<slug>/` | Event data and source images |
+| `layouts/event/landing.html` | Standalone HTML document |
+| `layouts/_partials/events/` | Content, registration, schedule and metadata |
+| `assets/` | Shared CSS, scripts, fonts and share-card background |
+| `scripts/new.mjs`, `templates/webinar/` | Draft generator and starter content |
+| `tests/`, `docs/` | Regression tests and asset provenance |
 
-```toml
-cover_image = "cover.png"
-share_title = "Короткий заголовок\nна две строки"
-
-[[speakers]]
-name = "Имя ведущего"
-image = "speaker.jpg"
-```
-
-Портреты необязательны: без фотографии выводится нейтральная иконка.
-Для выравнивания масштаба лица можно задать `image_crop` — последовательность
-[операций Hugo Crop](https://gohugo.io/methods/resource/crop/). Например:
-
-```toml
-image_crop = ["570x520 TopLeft png", "320x320 Center"]
-```
-
-Hugo экспортирует аватары в WebP 144×144 для показа в 72px. `publishResources = false`
-отключает автоматическую публикацию оригиналов; производные изображения публикуются
-при использовании в шаблоне. Декоративная обложка используется только в превью
-1200×630. Переносы длинного заголовка превью задаются через `share_title`, без условий
-для конкретного вебинара в коде. Текущая композиция превью рассчитана на двух-трех ведущих.
-
-## Проверки и границы
+## Validate
 
 ```sh
 npm run test:events
-npm test
 hugo --minify --panicOnWarning
 npm run check
 ```
 
-Тесты находят все мероприятия автоматически, проверяют форму без реальных отправок,
-расписание, контакты, превью и подключаемые ресурсы. Отдельная сборка без темы и с
-временным вторым мероприятием проверяет независимость компонента. Контент мероприятий
-не входит в автоматический перевод блога; английские файлы эта директория не меняет.
-
-Google Forms остается внешним приемником. Загрузка ответа в скрытом iframe не дает
-странице подтверждения сохранения заявки. Для проверяемого подтверждения нужен
-приемник с доступным ответом сервера; тесты не обходят это ограничение.
+`npm test` also runs the blog's tests. Event tests cover registration behavior,
+schedules, contacts, share cards and assets. An isolated build with a second event
+verifies that the module works without the blog theme.

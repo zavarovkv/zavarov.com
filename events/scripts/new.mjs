@@ -33,7 +33,7 @@ async function assertUnusedMetadataPath(root, slug) {
       // can reserve an address even when its source filename is different.
       const reserved = [data.slug, data.url, ...(data.aliases || [])];
       if (reserved.some(value => typeof value === "string" && value.replace(/^https?:\/\/[^/]+/, "").split(/[?#]/)[0].replace(/^\/+|\/+$/g, "").toLowerCase() === slug)) {
-        throw new Error(`Адрес /${slug}/ уже занят в метаданных: ${file}`);
+        throw new Error(`URL /${slug}/ is reserved in ${file}.`);
       }
     }
   }
@@ -41,18 +41,18 @@ async function assertUnusedMetadataPath(root, slug) {
 
 export async function createEvent({ slug, root = repository, now = new Date() } = {}) {
   if (typeof slug !== "string" || slug.length > 64 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
-    throw new Error("Укажите адрес латиницей, например: npm run event:new -- product-interviews");
+    throw new Error("Use a lowercase URL slug, e.g. npm run event:new -- product-interviews.");
   }
   let config = {};
   try { config = parse(await readFile(join(root, "config.toml"), "utf8")); }
   catch (error) { if (error.code !== "ENOENT") throw error; }
   // Hugo uses every language prefix, including the default-language redirect.
   if (Object.hasOwn(config.languages || {}, slug)) {
-    throw new Error(`Адрес /${slug}/ занят языковым разделом сайта.`);
+    throw new Error(`URL /${slug}/ is reserved for a site language.`);
   }
   for (const source of ["content/ru", "events/content/ru"]) {
     for (const suffix of [slug, `${slug}.md`, `${slug}.html`]) {
-      if (await exists(join(root, source, suffix))) throw new Error(`Адрес /${slug}/ уже занят: ${source}/${suffix}`);
+      if (await exists(join(root, source, suffix))) throw new Error(`URL /${slug}/ already exists: ${source}/${suffix}`);
     }
   }
 
@@ -71,12 +71,12 @@ export async function createEvent({ slug, root = repository, now = new Date() } 
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   if (process.argv.length !== 3) {
-    console.error("Использование: npm run event:new -- product-interviews");
+    console.error("Usage: npm run event:new -- product-interviews");
     process.exitCode = 1;
   } else {
     createEvent({ slug: process.argv[2] }).then(directory => {
-      console.log(`Создан черновик: ${join(directory, "_index.md")}`);
-      console.log("Замените дату, тексты и настройки регистрации. Для предпросмотра: hugo server --buildDrafts");
+      console.log(`Created draft: ${join(directory, "_index.md")}`);
+      console.log("Set the date, content and registration fields. Preview: hugo server --buildDrafts");
     }).catch(error => { console.error(error.message); process.exitCode = 1; });
   }
 }

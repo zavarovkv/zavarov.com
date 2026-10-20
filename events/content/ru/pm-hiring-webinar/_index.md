@@ -10,7 +10,7 @@ noindex = true
 outputs = ["HTML"]
 backToTop = false
 
-# Страница: /pm-hiring-webinar/. Автоперевод пропускает _index.md.
+# URL: /pm-hiring-webinar/. The blog translator skips _index.md.
 intro = "Как выбирать кандидатов и проходить интервью.\nВзгляд с двух сторон."
 format = "Онлайн"
 format_note = "Диалог и вопросы"
@@ -18,8 +18,7 @@ cover_image = "interview-cover.png"
 audience = "Нанимающим менеджерам и продактам, которые ищут работу."
 questions_note = "В конце оставим время на вопросы. Можно прийти со своей ситуацией."
 
-# Нативная форма отправляет ответы в поля Google Формы.
-# При изменении вопросов обновите соответствующие имена entry.*.
+# Native fields post to Google Forms. Update entry.* when the questions change.
 event_start = "2026-11-04T19:00:00+03:00"
 event_end = "2026-11-04T20:30:00+03:00"
 registration_action = "https://docs.google.com/forms/d/e/1FAIpQLSeOSYTPTu906QGDseer3jiuhARQXXZVL7XA75B3Jd00T4d01A/formResponse?embedded=true"

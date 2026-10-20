@@ -15,17 +15,17 @@ format_note = "Диалог и вопросы"
 audience = "Кому стоит прийти."
 questions_note = "В конце оставим время на вопросы."
 
-# Замените дату перед публикацией. Время указано по Москве.
+# Review the date before publishing. Times use Moscow's +03:00 offset.
 event_start = "__EVENT_DAY__T19:00:00+03:00"
 event_end = "__EVENT_DAY__T20:30:00+03:00"
 
-# Пока action и entry.* пустые, форма не отображается.
+# The form stays hidden until both registration settings are filled.
 registration_action = ""
 registration_telegram_field = ""
 registration_label = "Зарегистрироваться"
 registration_note = "Ссылку на эфир пришлем лично в Telegram."
 
-# Картинки положите рядом с этим файлом и укажите их имена.
+# Place images beside this file and enter their filenames below.
 # cover_image = "cover.png"
 
 [build]
