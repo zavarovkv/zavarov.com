@@ -39,8 +39,9 @@ The current layout is for Russian-language events within one Moscow calendar day
 - **Original files:** keep `[build] publishResources = false` to publish only the
   image variants referenced by the templates.
 
-Google Forms responses load in a hidden iframe. The page can acknowledge sending
-a request, but cannot verify that Google saved it. Tests never submit real answers.
+The page shows its registration confirmation after the active iframe responds.
+Cross-origin responses cannot be inspected to verify that Google saved the answer.
+Tests never submit real answers.
 
 To keep a page accessible by URL while excluding it from search and the sitemap:
 
@@ -64,6 +65,10 @@ engines can read the `noindex` tag.
 | `assets/` | Shared CSS, scripts, fonts and share-card background |
 | `scripts/new.mjs`, `templates/webinar/` | Draft generator and starter content |
 | `tests/`, `docs/` | Regression tests and asset provenance |
+
+Colors, fonts and document defaults live in `assets/css/base.css`; layout,
+components and breakpoints live in `assets/css/landing.css`. Web text uses local
+Inter fonts in weights 400, 500 and 600; see `assets/fonts/OFL.txt` for the license.
 
 ## Validate
 

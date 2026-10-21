@@ -56,7 +56,7 @@ registration_note = "Ссылку на эфир пришлем лично в T
 
 [[speakers]]
   name = "Дарья Беглова"
-  role = "Senior Product Manager · ex‑Авито, ex‑Дзен (VK)"
+  role = "Senior Product Manager @ ex‑Авито, ex‑Дзен (VK)"
   bio = "Консультирует продактов по подготовке к интервью."
   image = "daria-beglova.jpg"
   image_crop = ["570x520 TopLeft png", "320x320 Center"]

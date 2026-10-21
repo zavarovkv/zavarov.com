@@ -1,5 +1,6 @@
   {{- $p := .Params -}}
   {{- $event := partial "events/schedule.html" . -}}
+  {{- $hasRegistration := and $p.registration_action $p.registration_telegram_field -}}
   <article class="webinar-page" aria-labelledby="webinar-title">
     <header class="webinar-hero">
       <h1 id="webinar-title">{{ .Title }}</h1>
@@ -35,7 +36,7 @@
         <p class="webinar-registration-note">{{ $p.registration_note }}</p>
       </div>
       <div class="webinar-registration-body">
-        {{ if and $p.registration_action $p.registration_telegram_field }}
+        {{ if $hasRegistration }}
         {{ partial "events/registration.html" (dict "page" . "id" "signup") }}
         {{ else }}
         <p>Регистрация скоро откроется.</p>
@@ -86,10 +87,10 @@
       <p class="webinar-questions-note">{{ $p.questions_note }}</p>
     </section>
 
-    {{ if and $p.registration_action $p.registration_telegram_field }}
+    {{ if $hasRegistration }}
     <div class="webinar-cta">
       <p>{{ $event.shortDate }} · {{ $event.timeLabel }}</p>
-      <a class="webinar-button webinar-button-secondary" href="#registration">Зарегистрироваться</a>
+      <a class="webinar-button" href="#registration">{{ $p.registration_label }}</a>
     </div>
     {{ end }}
   </article>

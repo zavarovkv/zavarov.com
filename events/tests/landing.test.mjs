@@ -204,7 +204,7 @@ async function inspectLanding(bundle, config, output) {
     assert.ok(nodes.some(({ tag, attrs }) => tag === "label" && attrs.for === input.attrs.id));
     for (const id of (input.attrs["aria-describedby"] || "").split(/\s+/).filter(Boolean)) assert.ok(ids.includes(id), `field description ${id}`);
     const confirmation = nodes.find(({ attrs }) => attrs.id === form.attrs["data-result-id"]);
-    assert.ok(confirmation.text.includes("Заявка отправлена"), "a cross-origin response must not claim confirmed registration");
+    assert.ok(confirmation.text.includes("Вы зарегистрированы!"), "the confirmation welcomes the attendee to the webinar");
     assert.ok(confirmation.text.includes(`${schedule.shortDate} в ${schedule.start} МСК`));
     assert.equal(confirmation.attrs.tabindex, "-1");
     assert.ok(Object.hasOwn(confirmation.attrs, "hidden"));

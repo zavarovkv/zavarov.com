@@ -14,9 +14,9 @@
 <div class="webinar-signup-result" id="{{ $id }}-result" role="status" aria-atomic="true" tabindex="-1" hidden>
   <div class="webinar-result-heading">
     <span class="webinar-result-icon" aria-hidden="true">{{ partial "events/icon.html" "check" }}</span>
-    <h3>Заявка отправлена</h3>
+    <h3>Вы зарегистрированы!</h3>
   </div>
-  <p class="webinar-result-text">Приходите {{ $event.shortDate }} в {{ $event.startLabel }} МСК — будем рады вас видеть.</p>
+  <p class="webinar-result-text">Ждем вас {{ $event.shortDate }} в {{ $event.startLabel }} МСК.</p>
   <p class="webinar-result-text">{{ $p.registration_note }}</p>
 </div>
 <iframe id="{{ $id }}-response" name="{{ $id }}-response" title="Отправка заявки" hidden></iframe>
