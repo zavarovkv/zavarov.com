@@ -1,0 +1,1031 @@
+# Shared reading history; display strings and bibliography sources are localized per item.
+[[items]]
+id = "gyui-de-mopassan"
+title = "Гюи де Мопассан"
+author = "Исаак Бабель"
+read = "2025-01"
+
+[items.translations.en]
+title = "Guy de Maupassant"
+author = "Isaac Babel"
+source_url = "https://www.encyclopedia.com/arts/encyclopedias-almanacs-transcripts-and-maps/guy-de-maupassant-giui-de-mopassan-isaak-babel-1932"
+
+[[items]]
+id = "legenda-ob-ulenshpigele"
+title = "Легенда об Уленшпигеле"
+author = "Шарль Де Костер"
+read = "2024-11"
+year = 1867
+
+[items.translations.en]
+title = "The Legend of Ulenspiegel"
+author = "Charles de Coster"
+source_url = "https://www.gutenberg.org/ebooks/38247"
+
+[[items]]
+id = "henry-thoreau"
+title = "О гражданском неповиновении"
+author = "Генри Торо"
+read = "2024-11"
+year = 1849
+review = "/blog/book-henry-thoreau"
+
+[items.translations.en]
+title = "Civil Disobedience"
+author = "Henry David Thoreau"
+source_url = "https://broadviewpress.com/product/civil-disobedience/"
+
+[[items]]
+id = "strakh-prinyatiya-reshenii-kak-naiti-muzhestvo-chtoby-sdelat-vybor"
+title = "Страх принятия решений. Как найти мужество, чтобы сделать выбор"
+author = "Джорджио Нардонэ"
+read = "2024-08"
+year = 2022
+
+[items.translations.en]
+title = "Страх принятия решений. Как найти мужество, чтобы сделать выбор"
+author = "Giorgio Nardone"
+source_url = "https://www.litres.ru/book/dzhordzhio-nardone/strah-prinyatiya-resheniy-kak-nayti-muzhestvo-chtoby-sd-68051702/chitat-onlayn/"
+
+[[items]]
+id = "chelovek-reshayushchii-kak-postroit-organizatsiyu-budushchego-gde-resheniya-prinimaet-kazhdyi"
+title = "Человек решающий. Как построить организацию будущего, где решения принимает каждый"
+author = "Деннис Бакке"
+read = "2024-08"
+year = 2017
+
+[items.translations.en]
+title = "The Decision Maker: Unlock the Potential of Everyone in Your Organization, One Decision at a Time"
+author = "Dennis Bakke"
+source_url = "https://decisionmakerbook.com/buy-the-decision-maker/"
+
+[[items]]
+id = "stek-ili-puteshestvie-tuda-i-obratno"
+title = "Стек, или Путешествие туда и обратно"
+author = "Алексей Вторников"
+read = "2024-01"
+year = 2017
+
+[items.translations.en]
+title = "Стек, или Путешествие туда и обратно"
+author = "Alexey Vtornikov"
+source_url = "https://www.dmkpress.com/catalog/computer/programming/978-5-97060-517-2/"
+
+[[items]]
+id = "eto-ya-edichka"
+title = "Это я – Эдичка"
+author = "Эдуард Лимонов"
+read = "2023-08"
+year = 1976
+
+[items.translations.en]
+title = "It's Me, Eddie: A Fictional Memoir"
+author = "Eduard Limonov"
+source_url = "https://openlibrary.org/books/OL3505616M/It%27s_me_Eddie"
+
+[[items]]
+id = "dnevnik-neudachnika-ili-sekretnaya-tetrad"
+title = "Дневник неудачника, или Секретная тетрадь"
+author = "Эдуард Лимонов"
+read = "2023-08"
+year = 1977
+
+[items.translations.en]
+title = "Дневник неудачника, или Секретная тетрадь"
+author = "Eduard Limonov"
+source_url = "https://www.moscowbooks.ru/book/1077679/"
+
+[[items]]
+id = "nam-zdes-zhit"
+title = "Нам здесь жить"
+author = "Елена Костюченко"
+read = "2023-08"
+year = 2015
+
+[items.translations.en]
+title = "Нам здесь жить"
+author = "Elena Kostyuchenko"
+source_url = "https://novayagazeta.ru/articles/2015/03/05/110602-kniga-eleny-kostyuchenko-171-nam-zdes-zhit-187-postupila-v-roznichnuyu-prodazhu"
+
+[[items]]
+id = "unesi-ty-moe-gore"
+title = "Унеси ты мое горе"
+author = "Екатерина Гордеева"
+read = "2023-08"
+year = 2023
+
+[items.translations.en]
+title = "Take My Grief Away: Voices from the War in Ukraine"
+author = "Katerina Gordeeva"
+source_url = "https://www.penguin.com.au/books/take-my-grief-away-9780753560860"
+
+[[items]]
+id = "uslovno-nenuzhnye"
+title = "Условно ненужные"
+author = "Елена Костюченко"
+read = "2023-08"
+year = 2014
+
+[items.translations.en]
+title = "Условно ненужные"
+author = "Elena Kostyuchenko"
+source_url = "https://novayagazeta.ru/articles/2014/05/26/101140-v-izdatelstve-common-place-vyshel-sbornik-statey-spetskora-171-novoy-187-eleny-kostyuchenko"
+
+[[items]]
+id = "system-design-podgotovka-k-slozhnomu-intervyu"
+title = "System Design. Подготовка к сложному интервью"
+author = "Сюй Алекс"
+read = "2023-08"
+year = 2021
+
+[items.translations.en]
+title = "System Design Interview: An Insider's Guide"
+author = "Alex Xu"
+source_url = "https://books.google.com/books?id=TZWmzQEACAAJ"
+
+[[items]]
+id = "yunit-ekonomika"
+title = "Юнит-экономика"
+author = "Даниил Ханин"
+read = "2023-08"
+year = 2023
+
+[items.translations.en]
+title = "Unit Economics: Data Driven Decisions for Business and Startups"
+author = "Daniel Khanin"
+source_url = "https://khanin.info/en/books"
+
+[[items]]
+id = "sabirov"
+title = "Игра в цифры. Как аналитика позволяет видеоиграм жить лучше"
+author = "Василий Сабиров"
+read = "2023-08"
+year = 2021
+review = "/blog/book-sabirov"
+
+[items.translations.en]
+title = "Игра в цифры. Как аналитика позволяет видеоиграм жить лучше"
+author = "Vasily Sabirov"
+source_url = "https://bombora.ru/books/author/vasiliy_sabirov/"
+
+[[items]]
+id = "diktatory-obmana-novoe-litso-tiranii-v-xxi-veke"
+title = "Диктаторы обмана: новое лицо тирании в XXI веке"
+author = "Сергей Гуриев, Даниел Трейсман"
+read = "2023-07"
+year = 2023
+
+[items.translations.en]
+title = "Spin Dictators: The Changing Face of Tyranny in the 21st Century"
+author = "Sergei Guriev and Daniel Treisman"
+source_url = "https://www.jstor.org/stable/j.ctv2z9g075"
+
+[[items]]
+id = "pochti-serezno"
+title = "Почти серьезно…"
+author = "Юрий Никулин"
+read = "2023-07"
+year = 1979
+
+[items.translations.en]
+title = "Почти серьезно…"
+author = "Yuri Nikulin"
+source_url = "https://search.rsl.ru/ru/record/01000577587"
+
+[[items]]
+id = "gpt-3-programmirovanie-na-python-v-primerakh"
+title = "GPT-3: программирование на Python в примерах"
+author = "Aймен Эль Амри"
+read = "2023-07"
+year = 2023
+
+[items.translations.en]
+title = "OpenAI GPT for Python Developers"
+author = "Aymen El Amri"
+source_url = "https://www.oreilly.com/library/view/openai-gpt-for/9781836202417/"
+
+[[items]]
+id = "head-first-go"
+title = "Head First Go"
+author = "Jay McGavren"
+read = "2023-06"
+year = 2019
+
+[items.translations.en]
+title = "Head First Go"
+author = "Jay McGavren"
+source_url = "https://headfirstgo.com/"
+
+[[items]]
+id = "vvedenie-v-programmirovanie-na-go"
+title = "Введение в программирование на Go"
+author = "Калеб Докси"
+read = "2023-06"
+
+[items.translations.en]
+title = "An Introduction to Programming in Go"
+author = "Caleb Doxsey"
+source_url = "https://golang-book.ru/"
+
+[[items]]
+id = "how-to-defi"
+title = "How to DeFi"
+author = "Darren Lau, Daryl Lau, Teh Sze Jin, Kristian Kho, Erina Azmi, TM Lee, Bobby Ong"
+read = "2023-05"
+year = 2020
+
+[items.translations.en]
+title = "How to DeFi"
+author = "Darren Lau, Daryl Lau, Teh Sze Jin, Kristian Kho, Erina Azmi, TM Lee and Bobby Ong"
+source_url = "https://assets.quizgecko.com/wg7kdLoB9Yk1EbcH9fMIGO3dVMRzTR5v2F43mu1k.pdf"
+
+[[items]]
+id = "bolshe-deneg-chto-takoe-ethereum-i-kak-blokchein-menyaet-mir"
+title = "Больше денег: что такое Ethereum и как блокчейн меняет мир"
+author = "Виталик Бутерин"
+read = "2023-05"
+year = 2023
+
+[items.translations.en]
+title = "Proof of Stake: The Making of Ethereum and the Philosophy of Blockchains"
+author = "Vitalik Buterin"
+source_url = "https://sevenstories.com/books/4443-proof-of-stake"
+
+[[items]]
+id = "kratkaya-istoriya-deneg-ili-vse-chto-nuzhno-znat-o-bitkoine"
+title = "Краткая история денег, или Все, что нужно знать о биткоине"
+author = "Cейфедин Аммус"
+read = "2023-05"
+year = 2019
+
+[items.translations.en]
+title = "The Bitcoin Standard: The Decentralized Alternative to Central Banking"
+author = "Saifedean Ammous"
+source_url = "https://www.wiley.com/en-no/The%2BBitcoin%2BStandard%3A%2BThe%2BDecentralized%2BAlternative%2Bto%2BCentral%2BBanking-p-9781119473862"
+
+[[items]]
+id = "good-strategy-bad-strategy"
+title = "Хорошая стратегия, плохая стратегия"
+author = "Ричард Румельт"
+read = "2023-04"
+year = 2011
+review = "/blog/book-good-strategy-bad-strategy"
+
+[items.translations.en]
+title = "Good Strategy/Bad Strategy"
+author = "Richard Rumelt"
+source_url = "https://profilebooks.com/work/good-strategy-bad-strategy/"
+
+[[items]]
+id = "velikaya-shakhmatnaya-doska"
+title = "Великая шахматная доска"
+author = "Збигнев Бжезинский"
+read = "2023-03"
+year = 1998
+
+[items.translations.en]
+title = "The Grand Chessboard"
+author = "Zbigniew Brzezinski"
+source_url = "https://www.hachettebookgroup.com/titles/zbigniew-brzezinski/the-grand-chessboard/9780465094356/"
+
+[[items]]
+id = "nazarov"
+title = "Системное мышление для менеджеров"
+author = "Алексей Назаров"
+read = "2023-01"
+rating = 2
+review = "/blog/book-nazarov"
+
+[items.translations.en]
+title = "Системное мышление для менеджеров"
+author = "Alexey Nazarov"
+source_url = "https://www.litres.ru/book/aleksey-nazarov-21124901/sistemnoe-myshlenie-dlya-menedzherov-57385388/chitat-onlayn/"
+
+[[items]]
+id = "malevich"
+title = "Черный квадрат"
+author = "Казимир Малевич"
+read = "2022-11"
+year = 2015
+review = "/blog/book-malevich"
+
+[items.translations.en]
+title = "Черный квадрат"
+author = "Kazimir Malevich"
+source_url = "https://ast.ru/book/chernyy-kvadrat-837424/"
+
+[[items]]
+id = "ukrainskii-dnevnik"
+title = "Украинский дневник"
+author = "Илья Барабанов"
+read = "2022-10"
+year = 2015
+
+[items.translations.en]
+title = "Украинский дневник"
+author = "Ilya Barabanov"
+source_url = "https://azon.market/image/catalog/v_1/product/pdf/217/2166710.pdf"
+
+[[items]]
+id = "joseph-kosuth"
+title = "Искусство после философии"
+author = "Джозеф Кошут"
+read = "2022-08"
+review = "/blog/book-joseph-kosuth"
+
+[items.translations.en]
+title = "Art After Philosophy"
+author = "Joseph Kosuth"
+source_url = "https://arteducation.sfu-kras.ru/files/documents/kosuth-artafterphilosophy.pdf"
+
+[[items]]
+id = "realnyi-english-kak-podruzhitsya-s-grammatikoi-raz-i-navsegda"
+title = "Реальный English. Как подружиться с грамматикой раз и навсегда"
+author = "Юрий Дружбинский"
+read = "2022-08"
+year = 2018
+
+[items.translations.en]
+title = "Реальный English. Как подружиться с грамматикой раз и навсегда"
+author = "Yuri Druzhbinsky"
+source_url = "https://www.labirint.ru/books/704508/"
+
+[[items]]
+id = "the-product-book"
+title = "The Product Book: How to Become a Great Product Manager"
+author = "Carlos Gonzalez de Villaumbrosia + Josh Anon"
+read = "2022-03"
+year = 2017
+review = "/blog/book-the-product-book"
+
+[items.translations.en]
+title = "The Product Book: How to Become a Great Product Manager"
+author = "Carlos González de Villaumbrosia and Josh Anon"
+source_url = "https://books.google.com/books/about/The_Product_Book.html?hl=en&id=-XOltAEACAAJ&output=html_text"
+
+[[items]]
+id = "1985"
+title = "1985"
+author = "Энтони Берджесс"
+read = "2022-03"
+year = 1978
+rating = 9.9
+review = "/blog/book-1985"
+
+[items.translations.en]
+title = "1985"
+author = "Anthony Burgess"
+source_url = "https://serpentstail.com/work/1985/"
+
+[[items]]
+id = "inspired"
+title = "INSPIRED: How to Create Tech Products Customers Love"
+author = "Marty Cagan"
+read = "2022-01"
+year = 2008
+review = "/blog/book-inspired"
+
+[items.translations.en]
+title = "INSPIRED: How to Create Tech Products Customers Love"
+author = "Marty Cagan"
+source_url = "https://www.svpg.com/books/inspired-how-to-create-tech-products-customers-love-2nd-edition/"
+
+[[items]]
+id = "fond-dlya-rossii-chto-bylo-chto-budet"
+title = "«Фонд» для России. Что было, что будет"
+author = "Джордж Сорос"
+read = "2022-01"
+year = 2017
+
+[items.translations.en]
+title = "«Фонд» для России. Что было, что будет"
+author = "George Soros"
+source_url = "https://www.litres.ru/book/dzhordzh-soros/fond-dlya-rossii-chto-bylo-chto-budet-11953768/chitat-onlayn/"
+
+[[items]]
+id = "trilogiya-zhelaniya-tom-2-titan"
+title = "Трилогия желания. Том 2: Титан"
+author = "Теодор Драйзер"
+read = "2022-01"
+year = 1914
+
+[items.translations.en]
+title = "The Titan"
+author = "Theodore Dreiser"
+source_url = "https://www.gutenberg.org/ebooks/3629"
+
+[[items]]
+id = "trilogiya-zhelaniya-tom-1-finansist"
+title = "Трилогия желания. Том 1: Финансист"
+author = "Теодор Драйзер"
+read = "2022-01"
+year = 1912
+
+[items.translations.en]
+title = "The Financier"
+author = "Theodore Dreiser"
+source_url = "https://www.gutenberg.org/ebooks/1840"
+
+[[items]]
+id = "brodsky"
+title = "Бродский: поэт в аудитории"
+author = "Розетт Ламонт"
+read = "2021-12"
+year = 2020
+review = "/blog/book-brodsky"
+
+[items.translations.en]
+title = "Joseph Brodsky: A Poet’s Classroom"
+author = "Rosette C. Lamont"
+source_url = "https://massreview.org/issue/volume-15-issue-4/"
+
+[[items]]
+id = "puteshestvie-k-istochniku-ekha-pochemu-pisateli-pyut"
+title = "Путешествие к источнику эха. Почему писатели пьют"
+author = "Оливия Лэнг"
+read = "2021-12"
+year = 2020
+
+[items.translations.en]
+title = "The Trip to Echo Spring: On Writers and Drinking"
+author = "Olivia Laing"
+source_url = "https://canongate.co.uk/books/1212-the-trip-to-echo-spring-on-writers-and-drinking/"
+
+[[items]]
+id = "vlyublennyi-agent"
+title = "Влюбленный агент"
+author = "Виктор Пивоваров"
+read = "2021-12"
+year = 2001
+
+[items.translations.en]
+title = "The Agent in Love"
+author = "Viktor Pivovarov"
+source_url = "https://lib.mmoma.ru/catalog/9445/"
+
+[[items]]
+id = "chto-nam-delat-s-rolanom-bartom"
+title = "Что нам делать с Роланом Бартом?"
+author = "Сергей Зенкин + Сергей Фокин"
+read = "2021-11"
+year = 2018
+
+[items.translations.en]
+title = "Что нам делать с Роланом Бартом?"
+author = "Sergei Zenkin and Sergei Fokin (eds.)"
+source_url = "https://nlobooks.ru/books/nauchnaya_biblioteka/6600/"
+
+[[items]]
+id = "camera-lucida"
+title = "Camera lucida"
+author = "Ролан Барт"
+read = "2021-11"
+year = 1980
+
+[items.translations.en]
+title = "Camera Lucida: Reflections on Photography"
+author = "Roland Barthes"
+source_url = "https://us.macmillan.com/books/9780374532338/cameralucida/"
+
+[[items]]
+id = "arkhitektory-intellekta-vsya-pravda-ob-iskusstvennom-intellekte-ot-ego-sozdatelei"
+title = "Архитекторы интеллекта: вся правда об искусственном интеллекте от его создателей"
+author = "Мартин Форд"
+read = "2021-10"
+year = 2019
+
+[items.translations.en]
+title = "Architects of Intelligence: The Truth About AI from the People Building It"
+author = "Martin Ford"
+source_url = "https://www.oreilly.com/library/view/architects-of-intelligence/9781789131512/"
+
+[[items]]
+id = "proizvodnye-i-integraly"
+title = "Производные и интегралы"
+author = "Огами Такэхико"
+read = "2021-10"
+year = 2020
+
+[items.translations.en]
+title = "Производные и интегралы"
+author = "Takehiko Ogami"
+source_url = "https://rgub.ru/searchopac/book.php?id=RGUB%5CBIBL%5C0000892946"
+
+[[items]]
+id = "posle-trekh-uzhe-pozdno"
+title = "После трех уже поздно"
+author = "Масару Ибука"
+read = "2021-10"
+year = 1971
+
+[items.translations.en]
+title = "Kindergarten Is Too Late!"
+author = "Masaru Ibuka"
+source_url = "https://www.artlebedev.com/baby-club/book/"
+
+[[items]]
+id = "devochka-s-palchik"
+title = "Девочка с пальчик"
+author = "Мишель Серр"
+read = "2021-09"
+year = 2016
+rating = 5
+
+[items.translations.en]
+title = "Thumbelina: The Culture and Technology of Millennials"
+author = "Michel Serres"
+source_url = "https://www.bloomsbury.com/us/thumbelina-9781783480715/"
+
+[[items]]
+id = "kriticheskie-biografii-marsel-dyushan"
+title = "Критические биографии. Марсель Дюшан"
+author = "Каролин Кро"
+read = "2021-09"
+year = 2016
+rating = 5
+
+[items.translations.en]
+title = "Marcel Duchamp"
+author = "Caroline Cros"
+source_url = "https://press.uchicago.edu/ucp/books/book/distributed/M/bo3770861.html"
+
+[[items]]
+id = "duchamp"
+title = "Марсель Дюшан. Беседы с Пьером Кабанном"
+author = "Пьер Кабанн"
+read = "2021-09"
+year = 2019
+rating = 5.1
+review = "/blog/book-duchamp"
+
+[items.translations.en]
+title = "Dialogues with Marcel Duchamp"
+author = "Pierre Cabanne"
+source_url = "https://www.hachettebookgroup.com/titles/pierre-cabanne/dialogues-with-marcel-duchamp/9780306803031/"
+
+[[items]]
+id = "roman-s-data-science-kak-monetizirovat-bolshie-dannye"
+title = "Роман с Data Science. Как монетизировать большие данные"
+author = "Роман Зыков"
+read = "2021-07"
+year = 2021
+rating = 2.1
+
+[items.translations.en]
+title = "Роман с Data Science. Как монетизировать большие данные"
+author = "Roman Zykov"
+source_url = "https://www.piter.com/collection/A33740/product/roman-s-data-science-kak-monetizirovat-bolshie-dannye"
+
+[[items]]
+id = "starik-i-more"
+title = "Старик и море"
+author = "Эрнест Хемингуэй"
+read = "2021-07"
+year = 1952
+rating = 10
+
+[items.translations.en]
+title = "The Old Man and the Sea"
+author = "Ernest Hemingway"
+source_url = "https://www.simonandschuster.com/books/The-Old-Man-and-the-Sea/Ernest-Hemingway/9781668242803"
+
+[[items]]
+id = "nauka-o-dannykh-uchebnyi-kurs"
+title = "Наука о данных. Учебный курс"
+author = "Стивен С. Скиена"
+read = "2021-05"
+year = 2017
+rating = 4.5
+
+[items.translations.en]
+title = "The Data Science Design Manual"
+author = "Steven S. Skiena"
+source_url = "https://link.springer.com/book/10.1007/978-3-319-55444-0"
+
+[[items]]
+id = "thinking-fast-slow"
+title = "Думай медленно. Решай быстро"
+author = "Дениел Канеман"
+read = "2021-01"
+year = 2011
+rating = 7
+review = "/blog/book-thinking-fast-slow"
+
+[items.translations.en]
+title = "Thinking, Fast and Slow"
+author = "Daniel Kahneman"
+source_url = "https://academic.macmillan.com/academictrade/9780374533557/thinkingfastandslow/"
+
+[[items]]
+id = "putevoditel-po-osnovnym-ponyatiyam-i-skhemam-metodologii-organizatsii-rukovodstva-i-upravleniya"
+title = "Путеводитель по основным понятиям и схемам методологии организации, руководства и управления"
+author = "Георгий Щедровицкий"
+read = "2021-01"
+year = 2012
+rating = 5.9
+
+[items.translations.en]
+title = "Путеводитель по основным понятиям и схемам методологии организации, руководства и управления"
+author = "Georgy Schedrovitsky"
+source_url = "https://conflictmanagement.ru/wp-content/uploads/2023/08/putevoditel-metodologiya.pdf"
+
+[[items]]
+id = "yasno-book"
+title = "Ясно, понятно. Как доносить мысли и убеждать людей с помощью слов"
+author = "Максим Ильяхов"
+read = "2021-01"
+year = 2020
+rating = 5
+review = "/blog/book-yasno-book"
+
+[items.translations.en]
+title = "Ясно, понятно. Как доносить мысли и убеждать людей с помощью слов"
+author = "Maxim Ilyahov"
+source_url = "https://www.maximilyahov.com/"
+
+[[items]]
+id = "shchedrovitsky"
+title = "Оргуправленческое мышление: идеология, методология, технология"
+author = "Георгий Щедровицкий"
+read = "2020-12"
+year = 2014
+rating = 8
+review = "/blog/book-shchedrovitsky"
+
+[items.translations.en]
+title = "Organizational Management Thinking: Ideology, Methodology, Technology"
+author = "Georgy Schedrovitsky"
+source_url = "https://www.artlebedev.com/izdal/orgupravlencheskoe-myshlenie/"
+
+[[items]]
+id = "philosophy-of-freedom"
+title = "Философия свободы"
+author = "Ларс Свендсен"
+read = "2020-12"
+year = 2013
+rating = 4.5
+review = "/blog/book-philosophy-of-freedom"
+
+[items.translations.en]
+title = "A Philosophy of Freedom"
+author = "Lars Svendsen"
+source_url = "https://reaktionbooks.co.uk/work/a-philosophy-of-freedom"
+
+[[items]]
+id = "chernyi-lebed-pod-znakom-nepredskazuemosti"
+title = "Черный лебедь. Под знаком непредсказуемости"
+author = "Нассим Николас Талеб"
+read = "2020-11"
+year = 2010
+rating = 5.5
+
+[items.translations.en]
+title = "The Black Swan: The Impact of the Highly Improbable"
+author = "Nassim Nicholas Taleb"
+source_url = "https://www.penguin.co.uk/books/56380/the-black-swan-by-taleb-nassim-nicholas/9780141034591"
+
+[[items]]
+id = "vazhnye-veshchi"
+title = "Важные вещи"
+author = "Елена Макеенко"
+read = "2020-11"
+year = 2020
+rating = 4.5
+
+[items.translations.en]
+title = "Важные вещи"
+author = "Elena Makeenko"
+source_url = "https://bookmate.com/books/SPQkAH0C"
+
+[[items]]
+id = "shkola-dlya-durakov"
+title = "Школа для дураков"
+author = "Саша Соколов"
+read = "2020-11"
+year = 1976
+rating = 5
+
+[items.translations.en]
+title = "A School for Fools"
+author = "Sasha Sokolov"
+source_url = "https://www.nyrb.com/products/a_school_for_fools"
+
+[[items]]
+id = "pishi-sokrashchai-kak-sozdavat-silnyi-tekst"
+title = "Пиши, сокращай: как создавать сильный текст"
+author = "Ильяхов Максим + Сарычева Людмила"
+read = "2020-09"
+year = 2020
+rating = 3.5
+
+[items.translations.en]
+title = "Пиши, сокращай: как создавать сильный текст"
+author = "Maxim Ilyahov and Lyudmila Sarycheva"
+source_url = "https://bureau.ru/books/pishi/166"
+
+[[items]]
+id = "vremya-sekond-khend"
+title = "Время секонд хэнд"
+author = "Светлана Алексиевич"
+read = "2020-09"
+year = 2013
+rating = 6
+
+[items.translations.en]
+title = "Secondhand Time"
+author = "Svetlana Alexievich"
+source_url = "https://www.penguinrandomhouse.com/books/541184/secondhand-time-by-svetlana-alexievich/"
+
+[[items]]
+id = "zanimatelnaya-teoriya-veroyatnosti"
+title = "Занимательная теория вероятности"
+author = "Александр Китайгородский"
+read = "2020-09"
+year = 2020
+rating = 4.1
+
+[items.translations.en]
+title = "Занимательная теория вероятности"
+author = "Alexander Kitaigorodsky"
+source_url = "https://www.labirint.ru/books/698586/"
+
+[[items]]
+id = "imet-i-ne-imet"
+title = "Иметь и не иметь"
+author = "Эрнест Хемингуэй"
+read = "2020-09"
+year = 1932
+rating = 6.1
+
+[items.translations.en]
+title = "To Have and Have Not"
+author = "Ernest Hemingway"
+source_url = "https://www.simonandschuster.com/books/To-Have-and-Have-Not/Ernest-Hemingway/9780684859231"
+
+[[items]]
+id = "o-divnyi-novyi-mir"
+title = "О дивный новый мир"
+author = "Олдос Хаксли"
+read = "2020-03"
+year = 1932
+rating = 6.4
+
+[items.translations.en]
+title = "Brave New World"
+author = "Aldous Huxley"
+source_url = "https://www.harperacademic.com/book/9780061767647/brave-new-world/"
+
+[[items]]
+id = "odurachennye-sluchainostyu"
+title = "Одураченные случайностью"
+author = "Нассим Николас Талеб"
+read = "2020-02"
+year = 2001
+rating = 5.5
+
+[items.translations.en]
+title = "Fooled by Randomness"
+author = "Nassim Nicholas Taleb"
+source_url = "https://www.penguinrandomhouse.com/books/176225/fooled-by-randomness-by-nassim-nicholas-taleb/"
+
+[[items]]
+id = "riskuya-sobstvennoi-shkuroi-skrytaya-asimmetriya-povsednevnoi-zhizni"
+title = "Рискуя собственной шкурой. Скрытая асимметрия повседневной жизни"
+author = "Нассим Николас Талеб"
+read = "2020-02"
+year = 2017
+rating = 5.5
+
+[items.translations.en]
+title = "Skin in the Game: Hidden Asymmetries in Daily Life"
+author = "Nassim Nicholas Taleb"
+source_url = "https://www.penguin.co.uk/books/290669/skin-in-the-game-by-taleb-nassim-nicholas/9780241247488"
+
+[[items]]
+id = "antikhrupkost-kak-izvlech-vygodu-iz-khaosa"
+title = "Антихрупкость. Как извлечь выгоду из хаоса"
+author = "Нассим Николас Талеб"
+read = "2020-02"
+year = 2014
+rating = 5.5
+
+[items.translations.en]
+title = "Antifragile: Things That Gain from Disorder"
+author = "Nassim Nicholas Taleb"
+source_url = "https://www.penguin.co.uk/books/56655/antifragile-by-taleb-nassim-nicholas/9780718197902"
+
+[[items]]
+id = "of-mice-and-men"
+title = "О мышах и людях"
+author = "Джон Стейнбек"
+read = "2019-09"
+year = 1937
+rating = 7.1
+review = "/blog/book-of-mice-and-men"
+
+[items.translations.en]
+title = "Of Mice and Men"
+author = "John Steinbeck"
+source_url = "https://www.foliosociety.com/ca/of-mice-men"
+
+[[items]]
+id = "lyubitel-iskusstvo-delat-to-chto-lyubish"
+title = "Любитель. Искусство делать то, что любишь"
+author = "Энди Мерифилд"
+read = "2019-09"
+year = 2018
+rating = 3.5
+
+[items.translations.en]
+title = "The Amateur: The Pleasures of Doing What You Love"
+author = "Andy Merrifield"
+source_url = "https://www.bloomsbury.com/au/amateur-9781786631077/"
+
+[[items]]
+id = "never-let-me-go"
+title = "Не отпускай меня"
+author = "Кадзуо Исигуро"
+read = "2019-05"
+year = 2005
+rating = 4.5
+review = "/blog/book-never-let-me-go"
+
+[items.translations.en]
+title = "Never Let Me Go"
+author = "Kazuo Ishiguro"
+source_url = "https://www.faber.co.uk/product/9780571258093-never-let-me-go/"
+
+[[items]]
+id = "theatre"
+title = "Театр"
+author = "Уильям Сомерсет Моэм"
+read = "2018-09"
+year = 1937
+rating = 4.1
+review = "/blog/book-theatre"
+
+[items.translations.en]
+title = "Theatre"
+author = "W. Somerset Maugham"
+source_url = "https://www.foyles.co.uk/book/theatre/w-somerset-maugham/9780099286837"
+
+[[items]]
+id = "the-razors-edge"
+title = "Острие бритвы"
+author = "Уильям Сомерсет Моэм"
+read = "2018-07"
+year = 1944
+rating = 3.1
+review = "/blog/book-the-razors-edge"
+
+[items.translations.en]
+title = "The Razor's Edge"
+author = "W. Somerset Maugham"
+source_url = "https://www.penguin.co.uk/books/355365/the-razors-edge-by-maugham-w-somerset/9780099284864"
+
+[[items]]
+id = "moi-vzglyad-na-budushchee-mira"
+title = "Мой взгляд на будущее мира"
+author = "Ли Куан Ю"
+read = "2018-07"
+year = 2017
+
+[items.translations.en]
+title = "One Man's View of the World"
+author = "Lee Kuan Yew"
+source_url = "https://www.stbooks.sg/products/one-mans-view-of-the-world-reissue"
+
+[[items]]
+id = "iz-tretego-mira-v-pervyi-istoriya-singapura-1965-2000"
+title = "Из третьего мира - в первый. История Сингапура. 1965-2000"
+author = "Ли Куан Ю"
+read = "2018-07"
+year = 2000
+
+[items.translations.en]
+title = "From Third World to First: The Singapore Story, 1965–2000"
+author = "Lee Kuan Yew"
+source_url = "https://books.google.com/books/about/From_Third_World_to_First.html?id=AKUMrFCdHl4C"
+
+[[items]]
+id = "ilon-mask-tesla-spacex-i-doroga-v-budushchee"
+title = "Илон Маск: Tesla, SpaceX и дорога в будущее"
+author = "Эшли Вэнс"
+read = "2016-11"
+year = 2015
+rating = 5
+
+[items.translations.en]
+title = "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future"
+author = "Ashlee Vance"
+source_url = "https://books.google.com/books?id=I_ypswEACAAJ"
+
+[[items]]
+id = "crossing-the-shasm"
+title = "Преодоление пропасти. Как вывести технологический продукт на массовый рынок"
+author = "Джеффри Мур"
+read = "2014-05"
+year = 2012
+rating = 5.1
+review = "/blog/book-crossing-the-shasm"
+
+[items.translations.en]
+title = "Crossing the Chasm"
+author = "Geoffrey A. Moore"
+source_url = "https://books.google.com/books/about/Crossing_the_Chasm.html?id=XhK_QgAACAAJ"
+
+[[items]]
+id = "ozon-book"
+title = "OZON.ru: История успешного интернет-бизнеса в России"
+author = "Алекс Экслер"
+read = "2014-04"
+year = 2010
+rating = 2.1
+review = "/blog/book-ozon-book"
+
+[items.translations.en]
+title = "OZON.ru: История успешного интернет-бизнеса в России"
+author = "Alex Exler"
+source_url = "https://exler.es/blog/moya-kniga-ob-quot-ozone-quot.htm"
+
+[[items]]
+id = "management-book-druker"
+title = "Менеджмент. Вызовы XXI века"
+author = "Питер Друкер"
+read = "2014-04"
+year = 2012
+rating = 7.7
+review = "/blog/book-management-book-druker"
+
+[items.translations.en]
+title = "Management Challenges for the 21st Century"
+author = "Peter F. Drucker"
+source_url = "https://www.routledge.com/Management-Challenges-for-the-21st-Century-1st-Edition/Drucker/p/book/9780080942384"
+
+[[items]]
+id = "management-book-druker-2"
+title = "Эффективный руководитель"
+author = "Питер Друкер"
+read = "2014-03"
+year = 2012
+rating = 8.5
+review = "/blog/book-management-book-druker-2"
+
+[items.translations.en]
+title = "The Effective Executive"
+author = "Peter F. Drucker"
+source_url = "https://www.routledge.com/The-Effective-Executive/Drucker/p/book/9781138470101"
+
+[[items]]
+id = "getting-real-by-37signals"
+title = "Getting Real: The Smarter, Faster, Easier Way to Build a Successful Web Application"
+author = "Jason Fried + David Heinemeier Hansson + Matthew Linderman"
+read = "2014-03"
+year = 2006
+rating = 5.9
+review = "/blog/book-getting-real-by-37signals"
+
+[items.translations.en]
+title = "Getting Real: The Smarter, Faster, Easier Way to Build a Successful Web Application"
+author = "Jason Fried, David Heinemeier Hansson and Matthew Linderman"
+source_url = "https://37signals.com/books"
+
+[[items]]
+id = "playing-to-win"
+title = "Игра на победу. Как стратегия работает на самом деле"
+author = "Алан Лафли + Роджер Мартин"
+read = "2014-03"
+year = 2013
+rating = 6
+review = "/blog/book-playing-to-win"
+
+[items.translations.en]
+title = "Playing to Win: How Strategy Really Works"
+author = "A. G. Lafley and Roger L. Martin"
+source_url = "https://rogerlmartin.com/lets-read/playing-to-win"
+
+[[items]]
+id = "pm-from-a-to-z"
+title = "Управление проектами от А до Я"
+author = "Ричард Ньютон"
+read = "2014-03"
+year = 2019
+rating = 6.9
+review = "/blog/book-pm-from-a-to-z"
+
+[items.translations.en]
+title = "The Project Manager: Mastering the Art of Delivery"
+author = "Richard Newton"
+source_url = "https://www.pearson.com/en-ca/subject-catalog/p/project-manager-the-mastering-the-art-of-delivery/P200000005124/9780273747055"
+
+[[items]]
+id = "vy-konechno-shutite-mister-feinman"
+title = "Вы, конечно, шутите, мистер Фейнман!"
+author = "Ричард Фейнман, Ральф Лейтон"
+read = "2011-07"
+year = 1985
+
+[items.translations.en]
+title = "Surely You're Joking, Mr. Feynman!"
+author = "Richard P. Feynman, as told to Ralph Leighton"
+source_url = "https://wwnorton.co.uk/books/9780393316049-surely-you-re-joking-mr-feynman"
