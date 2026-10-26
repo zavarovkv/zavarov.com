@@ -18,11 +18,17 @@ async function walk(dir) {
 
 export function inspectHTML(html) {
   const ids = new Set();
+  const elementIds = new Set();
+  const duplicateIds = new Set();
   const links = [];
   let base;
   function visit(node) {
     const attrs = Object.fromEntries((node.attrs || []).map(({ name, value }) => [name, value]));
-    if (attrs.id) ids.add(attrs.id);
+    if (attrs.id) {
+      if (elementIds.has(attrs.id)) duplicateIds.add(attrs.id);
+      elementIds.add(attrs.id);
+      ids.add(attrs.id);
+    }
     if (node.tagName === "a" && attrs.name) ids.add(attrs.name);
     if (node.tagName === "base" && attrs.href && base === undefined) base = attrs.href;
     if (node.tagName !== "base") {
@@ -32,7 +38,7 @@ export function inspectHTML(html) {
     // Inert template contents do not create page anchors or load resources.
   }
   visit(parseHTML(html));
-  return { ids, links, base };
+  return { ids, duplicateIds, links, base };
 }
 
 export async function checkSite({ root = resolve(dirname(fileURLToPath(import.meta.url)), ".."), publicDir = resolve(root, "public"), baseURL } = {}) {
@@ -84,10 +90,14 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   for (const file of files.filter((file) => file.endsWith(".html"))) {
     documents.set(file, inspectHTML(await readFile(file, "utf8")));
   }
+  if (!documents.size) report("No HTML pages found; run Hugo before this check");
   for (const [file, document] of documents) {
     const name = relative(publicDir, file).split(sep).join("/");
+    for (const id of document.duplicateIds) report(`${name}: duplicate element id ${id}`);
     const pageURL = new URL(name.replace(/index\.html$/, ""), siteURL);
-    const documentURL = document.base ? new URL(document.base, pageURL) : pageURL;
+    let documentURL = pageURL;
+    try { if (document.base) documentURL = new URL(document.base, pageURL); }
+    catch { report(`${name}: malformed base URL ${document.base}`); continue; }
     for (const link of document.links) {
       let url;
       try { url = new URL(link, documentURL); }
@@ -105,7 +115,8 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
         continue;
       }
       let target = resolve(publicDir, pathname.slice(basePath.length));
-      if (relative(publicDir, target).startsWith(".." + sep)) {
+      const targetPath = relative(publicDir, target);
+      if (targetPath === ".." || targetPath.startsWith(".." + sep)) {
         report(`${name}: invalid local path ${link}`);
         continue;
       }

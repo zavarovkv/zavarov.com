@@ -17,7 +17,7 @@ npm run translate -- blog/brandage.md    # Translate specific file
 npm run fetch-telegram-reactions         # Pull reaction/view counts from Telegram channel into data/telegram_reactions.json
 ```
 
-Hugo extended version is required. Translation requires `OPENAI_API_KEY` env variable. The Telegram reactions fetch script lives inside the theme (`themes/hugo-mini/scripts/fetch-telegram-reactions.mjs`) and is invoked via the npm alias above — it auto-resolves channel and content dir from Hugo config.
+The site requires Hugo Extended 0.154.5 or newer; the independent theme retains its 0.146.0 minimum. Translation requires `OPENAI_API_KEY` env variable. The Telegram reactions fetch script lives inside the theme (`themes/hugo-mini/scripts/fetch-telegram-reactions.mjs`) and is invoked via the npm alias above — it auto-resolves channel and content dir from Hugo config, including `module.mounts.sites.matrix`. `npm test` covers site, event, and theme tests; `npm run check:syntax` checks all authored JavaScript.
 
 ## Deployment
 
@@ -30,7 +30,7 @@ Homepage project stars use the theme's `github-stars` shortcode and `scripts/fet
 - **Blog theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides the blog's base layouts, CSS, JS, fonts, KaTeX, Likely, shortcodes, i18n UI strings, and build scripts (`fetch-telegram-reactions.mjs`). The blog does not shadow theme assets; its fonts/katex/likely are served from the theme directly.
 - **Blog override**: `layouts/_partials/custom_head.html` adds Yandex/Google verification meta tags. The theme uses Hugo's current template system (0.146+), so partials live under `_partials/` with the underscore.
 - **Independent event module**: all event-specific code and content live under `events/`; see `events/README.md` and the `events/new.mjs` generator when creating another webinar.
-  - Hugo mounts `events/layouts` into `layouts`, `events/assets` into the separate `assets/events` namespace, and `events/content/ru` into Russian content. Keep explicit mounts for the blog's normal `layouts`, `assets`, `content/ru` and `content/en`: adding a component mount replaces its default project mount.
+  - Hugo mounts `events/layouts` into `layouts`, `events/assets` into the separate `assets/events` namespace, and `events/content/ru` into Russian content. Content mounts select languages through `sites.matrix.languages`; do not restore the removed `mounts.lang` option or duplicate them with language `contentDir` settings. Keep explicit mounts for the blog's normal `layouts`, `assets`, `content/ru` and `content/en`: adding a component mount replaces its default project mount.
   - `events/layouts/event/landing.html` is a complete HTML document, selected by `type = "event"` and `layout = "landing"`. It does not extend the theme's base template or load theme CSS, JS, fonts, partials, OG hooks or JSON-LD. Event fonts and shared assets belong to `events/assets`; never couple an event to `themes/hugo-mini/`.
   - Each webinar is a branch bundle at `events/content/ru/<slug>/_index.md`, with its own portraits and cover in the same directory. The existing webinar remains at `/pm-hiring-webinar/`. Read bundle images with the page's `.Resources`, not global `resources.Get`.
   - The event module owns its share card, canonical/Open Graph/Twitter tags and Event JSON-LD. `event_start` / `event_end` are the only stored schedule values; derive the localized landing, confirmation, title and share-card labels from them. Keep explicit Moscow offsets.

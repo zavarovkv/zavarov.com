@@ -8,7 +8,7 @@ Built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zava
 
 Requirements:
 
-- Hugo Extended 0.146+
+- Hugo Extended 0.154.5+ (CI pins 0.154.5; the standalone theme supports 0.146+)
 - Node.js 22+
 
 ```bash
@@ -40,7 +40,9 @@ npm run fetch-telegram-reactions         # Update Telegram statistics
 npm run fetch-github-stars                # Update project star counts
 npm run vendor-mermaid                   # Refresh the local Mermaid bundle
 npm run check                            # Validate content and local links
-npm test                                 # Run regression tests without API calls
+npm run check:syntax                     # Check all authored JavaScript
+npm test                                 # Test the site, events, and theme without API calls
+npm run test:theme                       # Run only the theme's regression tests
 npm run translate -- --dry-run            # Inspect pending translations/deletions
 npm run translate -- --allow-stale        # Keep existing EN if the API is unavailable
 ```
@@ -98,6 +100,11 @@ config.toml              Hugo and site configuration
 
 Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and social-sharing assets belong to the theme. Site-specific content and configuration remain in this repository.
 
+Language content is selected by explicit `module.mounts.sites.matrix` mounts;
+`locale` and `label` use Hugo's current language configuration. Per-language
+`params.ogLocale` preserves regional Open Graph values on older supported Hugo
+versions. Keep the theme's minimum independent of the consuming site's version.
+
 The reading shelf is documented in [docs/books.md](docs/books.md). Its reading
 history is stored once; localized titles and authors are display overrides on
 the same records. Reviews use ordinary Markdown and the shared article layout.
@@ -108,7 +115,11 @@ Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/w
 
 The workflow installs dependencies, updates English translations, Telegram statistics, and GitHub star counts, builds the site, verifies self-hosted assets, and publishes `public/`.
 
-Translations and the latest GitHub star snapshot are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, and HTML/SVG anchors. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
+Pull requests run the same regression tests against Hugo 0.154.5 and the latest
+release, including isolated builds of the event module. Deployment keeps the
+pinned version so toolchain updates remain explicit.
+
+Translations and the latest GitHub star snapshot are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, HTML/SVG anchors, duplicate IDs, and empty builds. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
 
 Set the `OPENAI_API_KEY` GitHub Actions secret to enable automatic translation. Without it, deployment continues using the committed EN content.
 

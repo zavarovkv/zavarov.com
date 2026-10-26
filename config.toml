@@ -40,6 +40,8 @@ ignoreErrors = ["error-disable-taxonomy"]
 # Explicit component mounts keep the blog's defaults while adding the
 # site-owned events module. Event assets have their own namespace.
 [module]
+  [module.hugoVersion]
+    min = "0.154.5"
   [[module.mounts]]
     source = "layouts"
     target = "layouts"
@@ -55,24 +57,27 @@ ignoreErrors = ["error-disable-taxonomy"]
   [[module.mounts]]
     source = "content/ru"
     target = "content"
-    lang = "ru"
+    [module.mounts.sites.matrix]
+      languages = ["ru"]
   [[module.mounts]]
     source = "content/en"
     target = "content"
-    lang = "en"
+    [module.mounts.sites.matrix]
+      languages = ["en"]
   [[module.mounts]]
     source = "events/content/ru"
     target = "content"
-    lang = "ru"
+    [module.mounts.sites.matrix]
+      languages = ["ru"]
 
 [languages]
   [languages.ru]
     weight = 1
-    languageCode = "ru-RU"
-    languageName = "RU"
+    locale = "ru-RU"
+    label = "RU"
     title = "Константин Заваров"
-    contentDir = "content/ru"
     [languages.ru.params]
+      ogLocale = "ru_RU" # Also available to Hugo versions before locale was introduced.
       description = "Личный блог Константина Заварова"
       title = "Константин Заваров"
       authorName = "Константин Заваров"
@@ -103,17 +108,17 @@ ignoreErrors = ["error-disable-taxonomy"]
         codeFences = true
   [languages.en]
     weight = 2
-    languageCode = "en-US"
-    languageName = "EN"
+    locale = "en-US"
+    label = "EN"
     title = "Konstantin Zavarov"
-    contentDir = "content/en"
     [languages.en.params]
+      ogLocale = "en_US"
       description = "Konstantin Zavarov's blog about product management"
       title = "Konstantin Zavarov"
       authorName = "Konstantin Zavarov"
       # Free-text bio for /en/llms.txt (theme's home.llms.txt output)
       [languages.en.params.llms]
-        about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the «Код Продакта» Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
+        about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the Product Code Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
   favicon = "images/favicon.png"

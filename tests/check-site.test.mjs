@@ -66,3 +66,26 @@ test("an invalid events content path is not ignored as an absent optional module
   await writeFile(join(root, "public/index.html"), "<p>Home</p>");
   await assert.rejects(checkSite({ root, baseURL: "https://example.com/" }), { code: "ENOTDIR" });
 });
+
+test("empty output, duplicate element IDs and malformed base URLs fail validation", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "output-check-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "public"]) await mkdir(join(root, dir), { recursive: true });
+  const options = { root, baseURL: "https://example.com/" };
+  assert.deepEqual(await checkSite(options), ["No HTML pages found; run Hugo before this check"]);
+  await writeFile(join(root, "public/index.html"), '<h2 id="same">One</h2><p id="same">Two</p><base href="http://[invalid"><a href="relative">Link</a>');
+  const errors = await checkSite(options);
+  assert.equal(errors.length, 2, errors.join("\n"));
+  assert.ok(errors.some((message) => message.includes("duplicate element id same")));
+  assert.ok(errors.some((message) => message.includes("malformed base URL")));
+});
+
+test("legacy named anchors remain valid and encoded paths cannot escape the output directory", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "anchor-boundary-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "public"]) await mkdir(join(root, dir), { recursive: true });
+  await writeFile(join(root, "public/index.html"), '<a name="section"></a><h2 id="section">Heading</h2><a href="#section">Jump</a><a href="/%2e%2e%2f">Outside</a>');
+  const errors = await checkSite({ root, baseURL: "https://example.com/" });
+  assert.equal(errors.length, 1, errors.join("\n"));
+  assert.match(errors[0], /invalid local path/);
+});

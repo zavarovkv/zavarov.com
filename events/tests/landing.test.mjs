@@ -125,7 +125,8 @@ async function inspectLanding(bundle, config, output) {
   assert.deepEqual(nodes.filter(({ tag, attrs }) => tag === "link" && attrs.rel === "canonical").map(({ attrs }) => attrs.href), [url]);
   assert.equal(meta("og:url"), url);
   assert.equal(meta("og:type"), "website");
-  assert.equal(meta("og:locale"), (config.languages?.[bundle.language]?.languageCode || bundle.language).replace("-", "_"));
+  const language = config.languages?.[bundle.language];
+  assert.equal(meta("og:locale"), (language?.params?.ogLocale || language?.locale || language?.languageCode || bundle.language).replace("-", "_"));
   const title = `${source.title} — ${(source.event_label || "Вебинар").toLowerCase()} ${schedule.dateWithYear}`;
   const description = `${schedule.shortDate}, ${schedule.time}. ${source.description}`;
   assert.equal(meta("og:title"), title);
@@ -294,7 +295,7 @@ test("a second event builds through mounts without any theme or host assets", as
     await copyFile(join(eventsRoot, "assets/og/base.png"), join(bundleDir, name));
   }
   // Keep a Home object for organizer links without rendering a host homepage.
-  await writeFile(join(work, "content/ru/_index.md"), '+++\ntitle = "Fixture"\n[_build]\nrender = "never"\nlist = "never"\n+++\n');
+  await writeFile(join(work, "content/ru/_index.md"), '+++\ntitle = "Fixture"\n[build]\nrender = "never"\nlist = "never"\n+++\n');
   const starterDirectory = join(work, "content/ru/starter-draft");
   await mkdir(starterDirectory);
   const starterFile = join(starterDirectory, "_index.md");
@@ -304,13 +305,13 @@ test("a second event builds through mounts without any theme or host assets", as
     baseURL: "https://events.example.test/demo/", title: "Проверка модуля мероприятий",
     defaultContentLanguage: "ru", defaultContentLanguageInSubdirectory: false,
     disableKinds: ["taxonomy", "term", "RSS"],
-    languages: { ru: { languageCode: "ru-RU", languageName: "RU", weight: 1 } },
+    languages: { ru: { locale: "ru-RU", label: "RU", weight: 1, params: { ogLocale: "ru_RU" } } },
     params: { authorName: "Другой организатор" },
     module: { mounts: [
       { source: join(eventsRoot, "layouts"), target: "layouts" },
       { source: join(eventsRoot, "assets"), target: "assets/events" },
-      { source: join(eventsRoot, "content/ru"), target: "content", lang: "ru" },
-      { source: join(work, "content/ru"), target: "content", lang: "ru" },
+      { source: join(eventsRoot, "content/ru"), target: "content", sites: { matrix: { languages: ["ru"] } } },
+      { source: join(work, "content/ru"), target: "content", sites: { matrix: { languages: ["ru"] } } },
     ] },
   };
   await writeFile(join(work, "hugo.toml"), stringify(config));

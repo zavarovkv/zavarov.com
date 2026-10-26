@@ -23,7 +23,15 @@
 <meta property="og:description" content="{{ $metadata.description }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="{{ replace .Language.LanguageCode "-" "_" }}">
+{{- $locale := "" -}}
+{{- if .Site.Params.ogLocale -}}
+  {{- $locale = .Site.Params.ogLocale -}}
+{{- else if ge hugo.Version "0.158.0" -}}
+  {{- $locale = .Language.Locale -}}
+{{- else -}}
+  {{- $locale = .Language.LanguageCode -}}
+{{- end }}
+<meta property="og:locale" content="{{ replace $locale "-" "_" }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 {{- with $image }}
 <meta property="og:image" content="{{ .Permalink }}">

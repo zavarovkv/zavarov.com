@@ -8,7 +8,7 @@ I have over 12 years of experience in IT — from software developer to Head of 
 
 From 2021 to 2025 I taught project and product management courses at Yandex Practicum, graduating over 300 students.
 
-I run the Telegram channel ["Kod Produkta"](https://t.me/pmgen) about product management.
+I run the Telegram channel ["Product Code"](https://t.me/pmgen) about product management.
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 
