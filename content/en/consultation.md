@@ -17,7 +17,7 @@ Sessions are held online or in person (if you're in Moscow) — by arrangement. 
 {{< plug >}}
 
 <q>
-Thank you so much for the consultation and scoring — now I understand where my gaps are and exactly what to focus on when preparing for interviews. The feedback on my answers and my experience was very detailed, and I started working on some of it right after our meeting.
+Thank you so much for the consultation and assessment — now I understand where my gaps are and exactly what to focus on when preparing for interviews. The feedback on my answers and my experience was very detailed, and I started working on some of it right after our meeting.
 
 I'm especially grateful for the materials you sent to help reinforce the product management theory. 🤝
 </q>

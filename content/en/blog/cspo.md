@@ -1,6 +1,6 @@
 +++
 source_hash = "83fe16cbcf45"
-title = "On Getting Certified as a Certified Scrum Product Owner"
+title = "Becoming a Certified Scrum Product Owner (CSPO)"
 slug = "cspo"
 date = "2021-02-13T12:00:00+03:00"
 description = "What to expect from CSPO training and certification — beyond just another badge to collect."

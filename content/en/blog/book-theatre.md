@@ -12,7 +12,7 @@ lastmod = "2026-10-25T00:00:00+03:00"
 source_hash = "884472942a37bf25db69ea28c0d3a0c85e88ca3e838f413141ae035426e9fe1a"
 +++
 
-I do not intend to retell the plot, just share my overall impression. The book has no intriguing plot. No original idea. The title is as clear and precise as it could be. There is no drive, though what did I expect from Maugham?
+I do not intend to retell the plot, just share my overall impression. The book has no intriguing plot. No original idea. The title is as clear and precise as it could be. There is no narrative momentum, though what did I expect from Maugham?
 
 The plot revolves around the theater. There is a theater inside the main character too: she is always playing someone. While reading, I felt like a detached spectator, in a theater myself.
 

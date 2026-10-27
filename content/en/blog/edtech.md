@@ -1,6 +1,6 @@
 +++
 source_hash = "b09dda5d4c1a"
-title = "The Growth Dilemma of Online Course Economics"
+title = "Why Online Courses Struggle to Scale"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
 description = "Why the economics of online courses don't scale well, and what the growth dilemma looks like for edTech companies in the Russian internet market."
@@ -42,4 +42,4 @@ They set out to build a product business, even managed to drive variable costs t
 
 It comes down to choosing between path "A" and path "B." Neither one lets you build a true product business around a single course. So companies find their optimal growth strategy elsewhere: launch as many courses as possible, across as many categories as possible. Scale the course catalog, not the course.
 
-If both paths ultimately lead to scaling through more courses — and the profit margins end up roughly the same — the question becomes: why do so many companies choose path "B"? Especially when path "A" builds a strong market reputation, while path "B" leaves you stuck in a shrinking addressable market with rising customer acquisition costs.
+If both paths ultimately lead to scaling through more courses — and profits end up in the same ballpark — the question becomes: why do so many companies choose path "B"? Especially when path "A" builds a strong market reputation, while path "B" leaves you with a limited addressable market and rising customer acquisition costs.

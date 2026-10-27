@@ -38,7 +38,7 @@ And the old Russian proverb — "chase two rabbits and you'll catch neither" —
 
 ## 2. Fear of Making Decisions
 
-A product manager is the driving force behind a product's growth, and experience, decisiveness, boldness, and ambition largely determine how successful that product will be in the market. Yet junior managers are often afraid to make even decisions that have virtually no direct impact on the product strategy.
+A product manager is the driving force behind a product's growth, and experience, decisiveness, boldness, and ambition largely determine how successful that product will be in the market. Yet junior managers are often afraid to make even minor decisions that have virtually no direct impact on the product strategy.
 
 Even mild indecisiveness slows down product development and hurts quality. And if a product manager is afraid to make decisions in high-stakes situations — or keeps deferring them or offloading responsibility to others — this will inevitably lead to the project's failure and, ultimately, to a derailed career [3].
 
@@ -48,7 +48,7 @@ Product management requires specific qualities and knowledge that develop over t
 
 A PM needs to honestly assess their strengths and weaknesses and actively work on the latter, rather than burying the problem. For example, if someone is afraid of public speaking or struggles to hold their own at the negotiating table, they need to overcome that fear through training, self-work — and maybe even therapy.
 
-It's important to remember that experience is built through trial and error. After a bad decision, you'll have to make another important call. And if you get it wrong again — that's okay, because you're accumulating knowledge: the classic principle of quantity turning into quality, and professional skill improving with each iteration.
+It's important to remember that experience is built through trial and error. After a bad decision, you'll have to make another important call. And if you get it wrong again — that's okay, because you're accumulating knowledge: repeated practice builds expertise, and your professional skills improve with each iteration.
 
 **How to fix it:**
 
@@ -81,7 +81,7 @@ And if the answer is yes, then remember: "Your work must have three qualities: i
 1. In one interview, Alexander Gorny talked about how working 80 hours a week at Mail.Ru Group helped him build his career and learn to genuinely love his work. He even recommended that every early-career professional try working at that pace for at least a year. That's the honest truth — so:
 2. Set yourself an ambitious, bold professional goal — one that motivates you to be relentless (especially toward yourself) in pursuit of it. The goal can be anything: earning a new title, making your product a market leader, becoming a head of product. Working 80 hours a week without a goal is hard labor; with a goal, it's just the grind of chasing a dream.
 3. Recognize that the company has more experienced people you can learn from. If that's hard to accept, recall the saying attributed to Confucius: "If you are the smartest person in the room, you are in the wrong room."
-4. Treat work tasks as opportunities to build volume and develop your product skills step by step. That way, your workplace becomes a lab, and tasks become hands-on practice. Solving real problems is far more engaging — and far better for professional development — than working through case studies. But don't try to do it all at once: follow the principle that the journey is walked one step at a time. Building knowledge and skills gradually, little by little, is far more effective for reaching your goals than trying something once, getting burned, and stopping.
+4. Treat work tasks as opportunities to gain experience and develop your product skills step by step. That way, your workplace becomes a lab, and tasks become hands-on practice. Solving real problems is far more engaging — and far better for professional development — than working through case studies. But don't try to do it all at once: follow the principle that the journey is walked one step at a time. Building knowledge and skills gradually, little by little, is far more effective for reaching your goals than trying something once, getting burned, and stopping.
 
 ## 5. Following the Rules Without Question
 
@@ -120,7 +120,7 @@ Understanding users allows you to become their advocate and make decisions groun
 
 ## 8. Not Studying Competitors
 
-When developing a new product, junior specialists often see competitive analysis as unnecessary — studying what competitors have achieved or figured out feels like overkill. This is a serious mistake. You need to "know your competitor by face," as it were — to be ready to compete effectively for users in the market.
+When developing a new product, junior specialists often see competitive analysis as unnecessary — studying what competitors have achieved or figured out feels like overkill. This is a serious mistake. You need to know your competitors well to compete effectively for users.
 
 A PM who isn't watching competitors — who are always there — is taking a significant risk of losing, because users may simply choose a product that serves their needs better.
 
@@ -159,7 +159,7 @@ Refusing to do anything on autopilot — never executing a task without thinking
 **How to fix it:**
 
 1. Don't allow yourself to simply execute tasks handed down by others. "If you ever do great work, it will probably be your own project" [7].
-2. Be independent. Analyze the goals you're given, push yourself to actually solve them, and find your own paths to doing so — even if your early attempts aren't the best.
+2. Be independent. Analyze the goals you're given, work toward achieving them, and find your own ways to do so — even if your early attempts aren't the best.
 3. Never rush into executing a task without thinking it through. Give yourself time to understand it properly, and don't let anyone rush you when you know you haven't fully grasped what's being asked.
 4. Never propose solutions you haven't thought through yourself — even if someone hands you a ready-made answer on a silver platter. Always rely on your own judgment, and don't doubt your ability to get there.
 
@@ -175,7 +175,7 @@ Never lose heart, and always remember: nothing is impossible — because "the im
 
 [2] Maxim Dorofeev. *Jedi Techniques: How to Train Your Monkey, Empty Your Inbox, and Preserve Your Mental Fuel.* (Russian-language productivity book)
 
-[3] Types of decision-making fears drawn from *The Fear of Deciding* by renowned Italian psychotherapist Giorgio Nardone.
+[3] Types of decision-making fears drawn from Giorgio Nardone's *Страх принятия решений. Как найти мужество, чтобы сделать выбор* (the Russian edition of his book on overcoming the fear of making decisions).
 
 [4] Based on Marty Cagan's article on product decision-making, "Coaching – Decisions," published on the SVPG blog.
 

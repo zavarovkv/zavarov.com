@@ -22,7 +22,7 @@ A good product manager knows that every product starts out “wrong,” because 
 
 If your company is large enough to have its own user research team, do whatever it takes to make sure those people spend as much time as possible working with your team.
 
-As the well-known computer scientist Frederick Brooks said: “Plan to throw something away anyway. You will have to.”
+As the well-known computer scientist Frederick Brooks said: “Plan to throw something away — you will have to anyway.”
 
 It may sound a little old-fashioned, and remote collaboration tools keep improving, but the best companies learned an important lesson long ago: bringing a product team together in one place offers enormous advantages.
 

@@ -12,13 +12,13 @@ telegram_post = 35
 
 **Customer Loyalty** is devotion to a brand or product. It means that when faced with comparable alternatives, a user will choose our product. This choice is often emotional — a user who's fallen in love with a product will recommend it to friends and acquaintances.
 
-The standard metric for measuring customer loyalty is the **NPS (Net Promoter Score)**. Its growth positively correlates with sales growth and market share expansion. This relationship, combined with the simplicity of the measurement, is precisely what made NPS so popular worldwide. That said, NPS does have its fair share of pitfalls — here's a good article on them: [«12 подводных камней Net Promoter Score»](https://hardclient.com/nps-pitfalls).
+The standard metric for measuring customer loyalty is **NPS (Net Promoter Score)**. Its growth positively correlates with sales growth and market share expansion. This relationship, combined with the simplicity of the measurement, is precisely what made NPS so popular worldwide. That said, NPS does have its fair share of pitfalls — here's a good article on them: [“12 Pitfalls of Net Promoter Score” (in Russian)](https://hardclient.com/nps-pitfalls).
 
-There's also a notable study, [«The use of Net Promoter Score (NPS) to predict sales growth: insights from an empirical investigation»](https://link.springer.com/article/10.1007/s11747-021-00790-2), in which a group of researchers derived and quantitatively confirmed a positive correlation between NPS growth and sales.
+There's also a notable study, [“The use of Net Promoter Score (NPS) to predict sales growth: insights from an empirical investigation”](https://link.springer.com/article/10.1007/s11747-021-00790-2), in which a group of researchers derived and quantitatively confirmed a positive correlation between NPS growth and sales.
 
 ## Satisfaction
 
-**Customer Satisfaction** is the degree to which a user's expectations of interacting with a product match their actual experience. An important nuance here is that a regular user may encounter problems at some stages of the CJM while having no issues at others.
+**Customer Satisfaction** is the degree to which a user's expectations of interacting with a product match their actual experience. An important nuance here is that a regular user may encounter problems at some stages of the customer journey map (CJM) while having no issues at others.
 
 For example, say you decided to use Yandex Taxi, but the driver was speeding and creating a dangerous situation on the road.
 

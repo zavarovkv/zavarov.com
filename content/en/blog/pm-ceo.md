@@ -39,7 +39,7 @@ A product's value is first and foremost determined by whether it solves a user's
 
 This makes finding and reaching Product-Market Fit for a specific user segment the product manager's foundational goal. To get there, the PM and their team have to do the hard work: study the market, understand users and their problems, test multiple value proposition hypotheses, build an MVP (or MLP — Minimum Lovable Product), observe how users respond, and repeat that cycle as many times as it takes.
 
-Second, the product must also deliver business value. But true value is only achieved when you have both Product-Market Fit and an attractive customer acquisition cost (CAC) — ideally one that's several times lower than the revenue that customer generates.
+Second, the product must also deliver business value. But true value is only achieved when you have both Product-Market Fit and an attractive customer acquisition cost (CAC) — ideally one that's several times lower than the profit that customer generates.
 
 ## Balancing Creativity with Objectivity
 

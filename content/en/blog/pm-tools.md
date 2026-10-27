@@ -10,7 +10,7 @@ telegram_post = 33
 
 I want to share the services and apps I use on a regular basis to get things done at work. Maybe you'll discover something new and make your work a little more enjoyable.
 
-## Product Awareness and UX
+## Product Inspiration and UX
 
 - [ProductHunt](https://www.producthunt.com/) — the go-to resource for staying on top of product trends, keeping up with new product launches and the evolution of existing ones.
 - [UserOnboard](https://www.useronboard.com/) — a library of detailed UX teardowns of popular products like Gmail, Instagram, Apple Music, Netflix, and more.

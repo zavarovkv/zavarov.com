@@ -1,5 +1,5 @@
 +++
-source_hash = "55be1f2ce44c"
+source_hash = "6097ff8c28ea9071ffda3edf892ea833c294b5a1dc4b110f445f893ebf522f1e"
 title = "Second Brain: PARA × Obsidian × Granola × Claude"
 slug = "second-brain"
 date = "2026-03-07T00:00:00+03:00"
@@ -53,19 +53,19 @@ I'll admit, I get a particular kick out of the fact that maximum productivity to
 
 In 2025, [121 million new repositories](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) were created on GitHub — a record in the platform's history.
 
- <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: repository growth on GitHub">
+ <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: repository growth on GitHub" width="1400" height="955">
 
 {{< caption >}}Number of repositories on GitHub{{< /caption >}} 
 
 One more thing worth emphasizing: Markdown is a format that any LLM understands unambiguously, unlike .docx, .pdf, and other document formats. And it's not just headers and lists — here's the full [spec](https://spec.commonmark.org/0.31.2/#introduction). Markdown will outlive any tool. Evernote is dying, Notion will shut down someday, Google Docs is tied to your account — but an .md file will open in any text editor 20 years from now. It's plain text.
 
-**Granola** is a service for recording, transcribing, and generating notes from meetings. It works on both smartphone and computer, supports online and in-person meetings, and handles the English language excellently. Interestingly, [Granola](https://www.granola.ai/) outputs .md files (naturally), and one Obsidian enthusiast built a [Granola-to-Obsidian](https://github.com/dannymcc/Granola-to-Obsidian) plugin that syncs notes directly into your Obsidian workspace.
+**Granola** is a service for recording, transcribing, and generating notes from meetings. It works on both smartphone and computer, supports online and in-person meetings, and handles Russian very well. Interestingly, [Granola](https://www.granola.ai/) outputs .md files (naturally), and one Obsidian enthusiast built a [Granola-to-Obsidian](https://github.com/dannymcc/Granola-to-Obsidian) plugin that syncs notes directly into your Obsidian workspace.
 
 This raises an important question around information security, especially when using the service for work. Transcription in Granola happens locally on your device — audio never leaves it. However, to generate meeting notes, Granola by default sends the transcript to ChatGPT. For that step, I use an internal corporate LLM instead.
 
 **Claude Code** is an agentic AI with access to the file system — in our case, the Obsidian vault folder. It can read, edit, create, and analyze any files in that workspace. The name might suggest it's only for writing code, but that's not the case — it handles analysis and work on any text documents just as well. One interesting quirk: you interact with Claude Code through the terminal. But trust me, it's intuitive enough that it doesn't cause any friction.
 
-<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian and Claude Code CLI">
+<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian and Claude Code CLI" width="1440" height="900">
 
 {{< caption >}}Obsidian and Claude Code CLI{{< /caption >}} 
 
@@ -73,7 +73,7 @@ This raises an important question around information security, especially when u
 
 What tasks you delegate to Claude is entirely up to you. My rule is simple: I only hand off things I can verify. Either I understand how to do it myself and Claude saves me time, or I know exactly what output I want and can evaluate the result.
 
-By the way, I'm writing this article together with Claude — he flags where the text sounds awkward or ambiguous, fixes typos, processes images, tweaks CSS styles, and helps with diagrams. Claude helped me migrate all my posts from an old WordPress blog to a new [Hugo](https://gohugo.io/) site in a single evening — something I'd been putting off for a long time, mostly because before LLMs could write code, the task felt daunting.
+By the way, I'm writing this article together with Claude — it flags where the text sounds awkward or ambiguous, fixes typos, processes images, tweaks CSS styles, and helps with diagrams. Claude helped me migrate all my posts from an old WordPress blog to a new [Hugo](https://gohugo.io/) site in a single evening — something I'd been putting off for a long time, mostly because before LLMs could write code, the task felt daunting.
 
 Worth noting: the files Claude Code accesses are sent to external servers. But for sensitive data there are solutions: an [enterprise version](https://claude.com/product/claude-code/enterprise) where data stays within your infrastructure and is legally protected, or even running it locally with open-source models via [Ollama](https://ollama.com/).
 
@@ -118,4 +118,4 @@ graph LR
 
 Each tool in the stack plays a distinct role: Granola captures the incoming stream (auditory cortex), PARA routes information (hippocampus), Obsidian stores knowledge (memory), and Claude Code analyzes and helps make decisions (prefrontal cortex).
 
-I arrived at this stack after a long series of experiments and an ongoing battle with the chaos of scattered storage — documents spread across a local drive, cloud services, Telegram saved messages, and various to-do apps. So far, the flight is smooth.
+I arrived at this stack after a long series of experiments and an ongoing battle with the chaos of scattered storage — documents spread across a local drive, cloud services, Telegram saved messages, and various to-do apps. So far, it's working well.

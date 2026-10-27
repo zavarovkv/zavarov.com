@@ -23,7 +23,7 @@ Metrics for the period immediately after a game's release, during a soft launch,
 
 - 1-Day Retention
 - 0-Day Retention (a reference range of 60–70%)
-- Tutorial COR (a reference range of 70–80%)
+- Tutorial completion rate (COR; a reference range of 70–80%)
 - Tutorial Skip Rate
 - Time taken to complete the tutorial
 - Share of players who reach level N
@@ -32,7 +32,7 @@ Metrics for the period immediately after a game's release, during a soft launch,
 
 - CARPU N day: cumulative ARPU over N days, also called RPI (Revenue Per Install). “Suppose you acquire users on February 1. Record that date and measure how much money those players generate on their first day, over their first two days, or over their first week in the game, divided by the total number of players who registered on February 1.”
 - Conversion to the first payment within a seven-day window
-- 7-Days Retention
+- 7-Day Retention
 
 ## The 40–20–10 rule
 

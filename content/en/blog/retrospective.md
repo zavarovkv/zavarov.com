@@ -1,5 +1,5 @@
 +++
-source_hash = "9e6f3a499edc"
+source_hash = "db259dfbc10733eaaca60766144e17e64793ce8455c23800ec36e54d77265a7f"
 title = "How to Run a Retrospective for a Large Team"
 slug = "retrospective"
 date = "2022-11-12T12:00:00+03:00"
@@ -14,7 +14,7 @@ We usually hear about "retros" in the context of end-of-sprint ceremonies in ite
 
 Below is a detailed 8-step plan with timings for running an engaging retrospective with a large team (10+ people).
 
-<img loading="lazy" src="/images/retro-cover.webp" alt="Ретроспектива">
+<img loading="lazy" src="/images/retro-cover.webp" alt="Team retrospective" width="1024" height="598">
 
 <!--more-->
 
@@ -34,7 +34,7 @@ In the basic version described below, the session runs for one and a half hours.
 
 Start quickly — don't waste precious time on formalities — but do cover the goals of the retrospective and the time period it spans. Remind everyone of a few ground rules: staying engaged, being thoughtful and respectful in how you phrase things, and any other organizational points you'd like the group to observe in order to get the most out of the session.
 
-<img loading="lazy" src="/images/retro-step-1.webp" alt="Шаг 2 — Вводное слово">
+<img loading="lazy" src="/images/retro-step-1.webp" alt="Step 2 — Opening remarks" width="1024" height="598">
 
 **Step 3 — Setting the Mood**
 
@@ -42,7 +42,7 @@ Start quickly — don't waste precious time on formalities — but do cover the 
 
 The goal of this phase is to warm the team up for the serious work ahead. There are many ways to do it — around 30 different options can be found at [retromat.org](https://retromat.org/ru/?id=1-2-3-18-22-31-32-36-42-43-46-52-59-70-76-81-82-84-85-90-106-107-108-114-122-129-130). One simple approach: ask participants to mark their current mood on the board using weather icons, as shown in the screenshot below.
 
-<img loading="lazy" src="/images/retro-step-2.webp" alt="Шаг 3 — Создание атмосферы">
+<img loading="lazy" src="/images/retro-step-2.webp" alt="Step 3 — Setting the mood" width="1024" height="598">
 
 **Step 4 — Gathering Information**
 
@@ -56,7 +56,7 @@ At the end of this step, briefly scan through the green stickies and read out th
 
 Various approaches to this phase can also be found at [retromat.org](https://retromat.org/ru/?id=4-5-6-7-19-33-35-47-51-54-62-64-65-75-78-79-80-86-87-89-93-97-98-110-116-119-121-123-126-127-128-133&phase=1) — pick whatever fits best.
 
-<img loading="lazy" src="/images/retro-step-3.webp" alt="Шаг 4 — Сбор информации">
+<img loading="lazy" src="/images/retro-step-3.webp" alt="Step 4 — Gathering information" width="1024" height="598">
 
 **Step 5 — Identifying the Most Critical Issues (by Vote)**
 
@@ -66,7 +66,7 @@ In this phase, give each participant ***n*** dot votes to place on the red stick
 
 Once everyone has voted, select the stickies with the most votes. I recommend picking between 3 and 5.
 
-<img loading="lazy" src="/images/retro-step-5.webp" alt="Шаг 5 — Голосование">
+<img loading="lazy" src="/images/retro-step-5.webp" alt="Step 5 — Voting on problems" width="1024" height="598">
 
 **Step 6 — Generating Solution Hypotheses**
 
@@ -74,7 +74,7 @@ Once everyone has voted, select the stickies with the most votes. I recommend pi
 
 By the start of this phase, you have the team's top 3–5 problems. Now it's time to think about possible ways to address them. Proposed solutions are written out in detail on sticky notes — they should be specific and actionable.
 
-<img loading="lazy" src="/images/retro-step-6.webp" alt="Шаг 6 — Генерирование гипотез">
+<img loading="lazy" src="/images/retro-step-6.webp" alt="Step 6 — Generating possible solutions" width="1024" height="598">
 
 **Step 7 — Selecting the Best Hypotheses (by Vote)**
 
@@ -82,7 +82,7 @@ By the start of this phase, you have the team's top 3–5 problems. Now it's tim
 
 In this phase, the team selects the best solution for each problem through discussion and/or voting. The chosen solution is captured on a sticky note and placed to the right, and an owner is assigned — someone who will take responsibility for implementing it.
 
-<img loading="lazy" src="/images/retro-step-7.webp" alt="Шаг 7 — Выбор лучших гипотез">
+<img loading="lazy" src="/images/retro-step-7.webp" alt="Step 7 — Selecting solutions" width="1024" height="598">
 
 **Step 8 — Closing the Retrospective**
 
@@ -92,4 +92,4 @@ One option: ask everyone to write a note of appreciation to a teammate (or even 
 
 Various closing techniques can also be found at [retromat.org](https://retromat.org/ru/?id=14-15-16-17-23-34-40-44-45-53-57-60-67-71-77-83-92-101-102-104-109-112-120&phase=4).
 
-<img loading="lazy" src="/images/retro-step-8.webp" alt="Шаг 8 — Завершение">
+<img loading="lazy" src="/images/retro-step-8.webp" alt="Step 8 — Closing the retrospective" width="1024" height="598">

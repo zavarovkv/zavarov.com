@@ -12,7 +12,7 @@ lastmod = "2026-10-25T00:00:00+03:00"
 source_hash = "cf99a4647f2e867db1df54fb0e6c953016e00e2e474b351ab84733bd8f851431"
 +++
 
-A good introduction to the complicated history of an internet business in a complicated Russia. It covers the difficulties involved in creating the country's first e-commerce brand (am I exaggerating a little? :)). Ozon's history has been long and far from straightforward…
+A good introduction to the difficult journey of an internet business in Russia. It covers the challenges involved in creating the country's first e-commerce brand (am I exaggerating a little? :)). Ozon's history has been long and far from straightforward…
 
 While reading, I often thought of Branson, his gripping stories and his undeniable good fortune. I did not see much luck in Ozon's story. The business was built from scratch, with many factors working against it.
 

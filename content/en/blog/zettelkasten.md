@@ -1,31 +1,31 @@
 +++
-source_hash = "6e28b92326ea"
-title = "The Zettelkästen Note-Taking Method"
+source_hash = "51afd692e99c372a30d17a41990bad8523ba51801ca12510fbf9143360e35c69"
+title = "The Zettelkasten Note-Taking Method"
 slug = "zettelkasten"
 date = "2023-03-12T12:00:00+03:00"
 description = "The increasingly popular note-taking method from the extraordinarily productive German sociologist Niklas Luhmann."
 categories = ["productivity"]
 +++
 
-<span class="underline">Zettelkästen</span> is an increasingly popular method of organizing notes and ideas, developed by the extraordinarily productive German sociologist [Niklas Luhmann](https://ru.wikipedia.org/wiki/Луман,_Никлас) — a man who, over the course of his life, authored more than 70 major academic books and 500 scholarly articles, and received prestigious doctoral honors and prizes for his contributions to sociology.
+<span class="underline">Zettelkasten</span> is an increasingly popular method of organizing notes and ideas, developed by the extraordinarily productive German sociologist [Niklas Luhmann](https://ru.wikipedia.org/wiki/Луман,_Никлас) — a man who, over the course of his life, authored more than 70 major academic books and 500 scholarly articles, and received prestigious doctoral honors and prizes for his contributions to sociology.
 
-The Zettelkästen note-taking method helped Luhmann acquire new knowledge more effectively and engage in deep research. This gives rise to a compelling hypothesis: "If Zettelkästen helped Luhmann absorb new knowledge, it can help us too." All that's left is to put this promising hypothesis to the test.
+The Zettelkasten note-taking method helped Luhmann acquire new knowledge more effectively and engage in deep research. This gives rise to a compelling hypothesis: "If Zettelkasten helped Luhmann absorb new knowledge, it can help us too." All that's left is to put this promising hypothesis to the test.
 
-Online discussions of Zettelkästen — in both English and Russian — only began to gain traction in 2020, following the publication of David Clear's article "[Zettelkasten — How One German Scholar Was So Freakishly Productive](https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125)," which was also translated into Russian and published on [Habr](https://habr.com/en/post/508672/). This is despite the fact that Luhmann never kept his unique knowledge management method a secret — detailed descriptions of it in the original can be found in German academic journals from 1981 to 1987 ([originals in German](https://www.uni-bielefeld.de/soz/luhmann-archiv/pdf/jschmidt_zettelkasten-als-uberraschungsgenerator.pdf)).
+Online discussions of Zettelkasten — in both English and Russian — only began to gain traction in 2020, following the publication of David Clear's article "[Zettelkasten — How One German Scholar Was So Freakishly Productive](https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125)," which was also translated into Russian and published on [Habr](https://habr.com/en/post/508672/). This is despite the fact that Luhmann never kept his unique knowledge management method a secret — detailed descriptions of it in the original can be found in German academic journals from 1981 to 1987 ([originals in German](https://www.uni-bielefeld.de/soz/luhmann-archiv/pdf/jschmidt_zettelkasten-als-uberraschungsgenerator.pdf)).
 
 <!--more-->
 
-<img loading="lazy" src="/images/zettelkasten-luhmann.webp" alt="Никлас Луман">
+<img loading="lazy" src="/images/zettelkasten-luhmann.webp" alt="Niklas Luhmann" width="1024" height="683">
 
  {{< caption >}}Niklas Luhmann{{< /caption >}} 
 
 ## The Core Idea
 
-Zettelkästen is a method of storing ideas in individual cards — physical or digital — with connections established between them. Atomic, self-contained ideas, linked together, form chains of thought and serve as a engine for generating new ones.
+Zettelkasten is a method of storing ideas in individual cards — physical or digital — with connections established between them. Atomic, self-contained ideas, linked together, form chains of thought and serve as an engine for generating new ones.
 
 [Here](https://niklas-luhmann-archiv.de/bestand/zettelkasten/inhaltsuebersicht) you can explore a portion of Niklas Luhmann's digitized idea cards and the connections between them.
 
-<img loading="lazy" src="/images/zettelkasten-card.webp" alt="Карточка идеи Лумана">
+<img loading="lazy" src="/images/zettelkasten-card.webp" alt="One of Luhmann's idea cards" width="1024" height="761">
 
  {{< caption >}}This is what an idea card looked like in the pre-digital era{{< /caption >}}
 
@@ -44,12 +44,12 @@ Zettelkästen is a method of storing ideas in individual cards — physical or d
 
 ## Markdown
 
-The most versatile approach is to store ideas as plain text files in Markdown format, with the file base kept in a decentralized way — in the cloud, locally, or wherever works for you. Free, user-friendly Markdown tools exist for every major platform, and this approach keeps you flexible and free from tool lock-in.
+The most versatile approach is to store ideas as plain text files in Markdown format, with your files stored locally, in the cloud, or wherever works for you. Free, user-friendly Markdown tools exist for every major platform, and this approach keeps you flexible and free from tool lock-in.
 
-That said, a fairly substantial (well, relatively speaking) collection of tools purpose-built for Zettelkästen can be found at [zettelkasten.de](https://zettelkasten.de/tools/).
+That said, a fairly substantial (well, relatively speaking) collection of tools purpose-built for Zettelkasten can be found at [zettelkasten.de](https://zettelkasten.de/tools/).
 
 After spending several days searching for the ideal tool, I settled on [VSCode](https://code.visualstudio.com) as my primary `.md` file editor, along with a set of plugins: [markdown memo](https://marketplace.visualstudio.com/items?itemName=svsool.markdown-memo), [nested tags](https://marketplace.visualstudio.com/items?itemName=vscode-nested-tags.vscode-nested-tags), and [markdown links](https://marketplace.visualstudio.com/items?itemName=tchayen.markdown-links). Together, they let me create tags, edit Markdown files comfortably, and visualize a graph of connections between notes.
 
-<img loading="lazy" src="/images/zettelkasten-vscode.webp" alt="VSCode с настроенными плагинами для Zettelkästen">
+<img loading="lazy" src="/images/zettelkasten-vscode.webp" alt="VS Code configured with Zettelkasten plugins" width="1024" height="600">
 
- {{< caption >}}VSCode configured with plugins for Zettelkästen{{< /caption >}}
+ {{< caption >}}VSCode configured with plugins for Zettelkasten{{< /caption >}}

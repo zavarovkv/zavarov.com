@@ -6,9 +6,9 @@ My name is Konstantin Zavarov. I build digital products and help others learn to
 
 I have over 12 years of experience in IT — from software developer to Head of Product at Ozon. I've worked at Yandex, Megamarket, and Kaspersky Lab across various domains and scales. Currently I focus on product strategy, creating business value, and building product teams.
 
-From 2021 to 2025 I taught project and product management courses at Yandex Practicum, graduating over 300 students.
+From 2021 to 2025 I taught project and product management courses at Yandex Practicum, helping over 300 students graduate. I now offer [one-on-one consultations](/en/consultation/).
 
-I run the Telegram channel ["Product Code"](https://t.me/pmgen) about product management.
+I run the Telegram channel [Product Code](https://t.me/pmgen), where I write about product management without the fluff.
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 

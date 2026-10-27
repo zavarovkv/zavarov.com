@@ -14,9 +14,9 @@ In 1954, Peter Drucker introduced the concept of MBO (Management by Objectives) 
 
 In 1981, George Doran formulated the SMART goal-setting framework and published it in a [journal article](https://community.mis.temple.edu/mis0855002fall2015/files/2015/10/S.M.A.R.T-Way-Management-Review.pdf). My guess is that before SMART gained popularity, goals were described something like: *Person X must complete the following list of tasks by a specific date.*
 
-In 1983, Andrew Grove (Co-founder of Intel) developed the OKR methodology — Objectives and Key Results — using it to improve Intel's production processes. Grove is, in many ways, a legendary figure in management culture and the author of several must-read books, including *High Output Management* ([available in Russian translation](https://www.livelib.ru/book/1000578066-vysokoeffektivnyj-menedzhment-endryu-grouv)), where he first introduced OKR.
+Andy Grove developed the OKR methodology — Objectives and Key Results — at Intel to help focus the company's work. Grove is a legendary figure in management and the author of several influential books, including *High Output Management* ([available in Russian translation](https://www.livelib.ru/book/1000578066-vysokoeffektivnyj-menedzhment-endryu-grouv)), published in 1983, where he described the approach.
 
-In 1999, Andrew Grove helped introduce OKR at Google.
+In 1999, John Doerr introduced OKRs at Google, drawing on what he had learned from Grove at Intel.
 
 In 2017, [Felipe Castro](https://www.linkedin.com/in/meetfelipe/) brought OKR to a broader audience beyond Google and has since become one of the framework's leading advocates — consulting, speaking, and writing books on the subject. One of his books, [*The Beginner's Guide to OKR*](https://scrumtrek.ru/blog/wp-content/uploads/2018/08/the-beginners-guide-to-okr-scrumtrek-ru.pdf), is available in a Russian translation by Scrumtrek.
 
@@ -33,11 +33,11 @@ In his NCT framework, Ravi Mehta proposes the following improvements over OKR [3
 - Make Key Results mandatory commitments. Ravi Mehta calls them **Commitments**, and they can be framed either quantitatively (as prescribed in OKR) or in a project delivery format ("Launch-It").
 - For each commitment, work with the team to develop an execution plan and build a roadmap of **Tasks**. Unlike commitments, the plan and tasks can be adjusted along the way.
 
-I don't think Ravi Mehta invented the wheel here — he's really formalizing an approach that many teams already use intuitively. And it tends to stick much better than OKR. Worth knowing about.
+I don't think Ravi Mehta invented something entirely new here — he's formalizing an approach that many teams already use intuitively. And it tends to stick much better than OKR. Worth knowing about.
 
 ## Notes
 
-[1] The Reforge blog has a detailed [article](https://www.reforge.com/blog/set-better-goals-with-ncts-not-okrs) by [Ravi Mehta](https://www.linkedin.com/in/ravimehta/) (ex-CPO at Tinder and Facebook) on NCT.
+[1] The Reforge blog has a detailed [article](https://www.reforge.com/blog/set-better-goals-with-ncts-not-okrs) by [Ravi Mehta](https://www.linkedin.com/in/ravimehta/), former CPO at Tinder and Product Director at Facebook, on NCT.
 
 [2] *The Practice of Management* is available in Russian, published by [Mann, Ivanov and Ferber](https://www.mann-ivanov-ferber.ru/catalog/product/praktika_menedzhmenta/).
 

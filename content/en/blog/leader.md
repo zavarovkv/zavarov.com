@@ -31,7 +31,7 @@ Which brings me to another definition I use:
 
 — A leader and a manager in an organization are not the same thing. A leader inspires, creates a vision of the future, drives change, and makes decisions that move the organization toward its goals. It's also worth emphasizing that a leader is an expert in a specific domain. A manager, by contrast, follows job descriptions and focuses on optimizing work processes.
 
-So no, you don't have to be a supervisor or hold a management title — though a good leader also tends to be a good manager. Personally, I'm more drawn to the informal leadership role, since it offers more freedom and independence from organizational structures and corporate politics.
+Yes — you don't have to be a supervisor or hold a management title, though a good leader also tends to be a good manager. Personally, I'm more drawn to the informal leadership role, since it offers more freedom and independence from organizational structures and corporate politics.
 
 <br>
 
@@ -39,7 +39,7 @@ So no, you don't have to be a supervisor or hold a management title — though a
 
 — There are many different leadership styles, ranging from authoritarian to laissez-faire (minimal involvement). The communication approach varies depending on the style. But in general, a leader asks open-ended questions to understand a person's perspective and the reasoning behind it. Pushing someone toward a predetermined answer using SPIN questions or similar techniques isn't really done in tech. You want to hear their actual answer, not what you were hoping they'd say.
 
-As for results — a leader has a very clear vision of where things are headed. They get things done by working with individual motivation and by building an effective team united around a shared goal. They operate from an adult mindset — no micromanagement. And frankly, nobody appreciates constant oversight and unsolicited advice anyway. Leaders also don't shy away from conflict or try to avoid it — they treat it as a problem to be solved.
+As for results — a leader has a very clear vision of where things are headed. They get things done by working with individual motivation and by building an effective team united around a shared goal. They treat people as responsible adults — no micromanagement. And frankly, nobody appreciates constant oversight and unsolicited advice anyway. Leaders also don't shy away from conflict or try to avoid it — they treat it as a problem to be solved.
 
 <br>
 
@@ -53,7 +53,7 @@ As for results — a leader has a very clear vision of where things are headed. 
 
 — A leader is proactive and engaged — they don't sit around waiting for their manager to tell them what to do. In today's tech industry, you can't afford to wait anyway. The pay is good precisely because the expectation is that people show up fully switched on. The more rigid the hierarchy, the less creative energy, initiative, and motivation you get.
 
-At Practicum, I work with students transitioning into tech from all kinds of backgrounds, and I see how differently they think about management and leadership. In one workshop, I gave them this scenario: an employee is underperforming, something is clearly going on in their life, but they won't say what — figure it out. Many people coming from traditional industries treated the employee like a resource, an executor whose job is to deliver for the company. They said this outright, cited job responsibilities, came across as very formal and directive. Those who were already closer to the tech world tended to try to start a friendly conversation — to get the person to open up and share what was going on. They asked questions, showed attentiveness, openness, empathy. I think it's a pretty telling example.
+At Practicum, I work with students transitioning into tech from all kinds of backgrounds, and I see how differently they think about management and leadership. In one workshop, I gave them this scenario: an employee is underperforming, something is clearly going on in their life, but they won't say what — figure it out. Many people coming from traditional industries treated the employee like a resource, someone whose sole job was to carry out tasks for the company. They said this outright, cited job responsibilities, and came across as very formal and directive. Those who were already closer to the tech world tended to try to start a friendly conversation — to get the person to open up and share what was going on. They asked questions, showed attentiveness, openness, empathy. I think it's a pretty telling example.
 
 <br>
 
@@ -63,7 +63,7 @@ At Practicum, I work with students transitioning into tech from all kinds of bac
 
 Develop self-organization skills and build your own time management principles to create a productivity system that works for you. When I was younger, I studied books by Gleb Arkhangelsky and David Allen on GTD, and experimented until I found the tools that actually worked for me.
 
-Write a personal development plan as a professional expert — including books, courses, trainings, and conferences. Being a domain expert is a critical and necessary part of leadership. I put together a plan like this every year and keep notes on every training I complete and every book I read.
+Write a plan for developing your professional expertise — including books, courses, training sessions, and conferences. Being a domain expert is a critical and necessary part of leadership. I put together a plan like this every year and keep notes on every training session I complete and every book I read.
 
 Start a blog on any platform to practice the skills of persuasion and communicating your ideas to an audience. I've been running a professional blog and the [Telegram channel "Product Code"](https://t.me/pmgen) for many years now.
 

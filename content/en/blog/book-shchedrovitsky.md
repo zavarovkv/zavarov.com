@@ -27,6 +27,6 @@ The book could be taken apart into quotations and notes to return to. The simple
 
 For anyone interested in Schedrovitsky's other work, the most complete bibliography can be found on the website of the scientific foundation named after G. P. Schedrovitsky.
 
-If you feel like rereading the book, I would recommend returning to the following work after some time. Much of the content is the same, but the structure differs:
+If you feel like revisiting these ideas, I would recommend reading the following work after some time. Much of the content is the same, but the structure differs:
 
 - Путеводитель по основным понятиям и схемам методологии организации, руководства и управления, based on the work of G. P. Schedrovitsky.

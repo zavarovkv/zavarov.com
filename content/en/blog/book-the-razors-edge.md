@@ -12,4 +12,4 @@ lastmod = "2026-10-25T00:00:00+03:00"
 source_hash = "3b2f7d3e8c60195886fa7694a1d7843a7fae4368cbba024e1c0b2ebd7effd18d"
 +++
 
-I like the way Maugham writes and his distinctive voice, but I grow tired of its slow pace. I alternate it with more explosive, emotional books, and that makes it easier to take.
+I like the way Maugham writes and his distinctive voice, but I grow tired of his slow pace. I alternate his work with more intense, emotional books, and that makes it easier to take.

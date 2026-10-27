@@ -7,7 +7,7 @@ description = "A Google Sheets template for prioritizing product initiatives usi
 categories = ["strategy"]
 +++
 
-A Google Sheets template for prioritizing product initiatives using three frameworks: ICE, RICE, and DRICE. For a deeper dive into the methods, check out the article [«ICE, RICE, DRICE Prioritization Methods»](/drice/).
+A Google Sheets template for prioritizing product initiatives using three frameworks: ICE, RICE, and DRICE. For a deeper dive into the methods, check out the article [“ICE, RICE, DRICE Prioritization Frameworks”](/drice/).
 
 <a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Download template</a>
 

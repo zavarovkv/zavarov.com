@@ -1,6 +1,6 @@
 +++
 source_hash = "06d1203461f2"
-title = "Product Strategy ≠ Template"
+title = "Product Strategy ≠ a Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
 description = "There's no universal product strategy template. On what strategy actually looks like in practice — and why it's a living system, not a document."
@@ -14,7 +14,7 @@ As much as we'd like one to exist, there's no universal product strategy templat
 
 That's exactly why there are so many definitions of product strategy, each more abstract than the last. Authors of well-known books articulate elegant principles, but there's a chasm between those principles and actual day-to-day work. Take "Good Strategy, Bad Strategy" — the ideas sound compelling, but try grounding them in a real product process. If you've managed it, reach out — I'd love to discuss.
 
-Read any article about building a product strategy — even ones written by leaders from Avito (I mention them because of their exceptionally well-developed product processes) — and you'll find a common comment in the replies: "Great article. Really enjoyed it, but it feels like a horse in a vacuum."
+Read any article about building a product strategy — even ones written by leaders from Avito (I mention them because of their exceptionally well-developed product processes) — and you'll find a common comment in the replies: "Great article. Really enjoyed it, but it feels too abstract to use in practice."
 
 Product strategy is an ongoing process. Depending on where you are in a product's lifecycle and what context you're operating in, strategy can take very different forms.
 

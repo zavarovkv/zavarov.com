@@ -12,7 +12,7 @@ lastmod = "2026-10-25T00:00:00+03:00"
 source_hash = "02e5b7e477caaa6e35eb3672176b6452aacbd425941f4b66d860cd04c3712f06"
 +++
 
-I am falling well behind the goal I set myself: I need to read twice as much. Before reading Drucker, I did not know how to do that without losing effectiveness, or perhaps even becoming more effective. The picture is clearer now, but more on that another time…
+I am falling well behind the goal I set myself: I need to read twice as much. Before reading Drucker, I did not know how to do that while maintaining or even improving my effectiveness. The picture is clearer now, but more on that another time…
 
 I accumulated an enormous number of notes. This is a book about effectiveness, why it matters, how it relates to time, and how to become more effective. An organization's success depends on the effectiveness of its executives. A person's success depends on carrying out plans effectively. We can always manage ourselves, so each of us is the executive of at least one person.
 

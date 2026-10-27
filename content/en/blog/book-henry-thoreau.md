@@ -18,11 +18,11 @@ Visit a naval port and look at a sailor: this is the kind of person the American
 
 This is how most people serve the state: less as human beings than as machines, with their bodies. They form the standing army, the militia and the jailers; they serve as the sheriff's deputies, and so on. In most cases, they have no need to exercise reason or moral judgment. They are reduced to the level of wood, earth and stones; perhaps wooden people could be made who would be just as useful. They command no more respect than scarecrows or clay idols. They are worth no more than horses and dogs, yet even they are usually considered good citizens. Others, such as most legislators, politicians, lawyers, clergy and officials, serve the state mainly with their heads. Since they are rarely able to discern moral differences, they may unknowingly serve the devil as readily as God. A very few—heroes, patriots, martyrs, reformers in the highest sense, and true human beings—also serve the state with their consciences. They therefore tend to resist it, and it generally regards them as enemies. A wise person agrees to be useful as a human being, refusing to be “clay” or to “plug a hole.”
 
-I cannot for a moment recognize as my government a political organization that is also the government of a slave.
+I cannot for a moment recognize as my government a political organization that upholds slavery.
 
 There is little strength in the actions of human masses. When the majority finally votes to abolish slavery, it will be because it no longer cares about slavery or because there is very little of it left to abolish. Then the majority itself will be the only slave. Only a voter who thereby asserts their own freedom can bring the abolition of slavery closer.
 
-A person cannot do everything, only something. Precisely because they cannot do everything, they need not do that something wrongly.
+A person cannot do everything, only something. Precisely because they cannot do everything, they must not do that something wrongly.
 
 It does not matter if the beginning is modest. What is once done well is done forever.
 

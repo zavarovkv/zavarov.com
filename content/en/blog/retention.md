@@ -1,5 +1,5 @@
 +++
-source_hash = "3fdb6fd78df1"
+source_hash = "74dd5e323ba7fed45c8eb2a45ad5ca3704f7a1b67f3292b570a32af85035cb19"
 title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
@@ -24,7 +24,7 @@ GoPractice has excellent in-depth articles on Retention metrics and even benchma
 
 ## Dataset
 
-For our calculations, we'll use a synthetic dataset with two fields (columns): *«user_id»* — a unique user ID; *«date»* — the date of the product visit. You can find the original dataset [here](/data/retention-dataset.csv). Here are the first 10 rows:
+For our calculations, we'll use a synthetic dataset with two fields (columns): `user_id` — a unique user ID; `date` — the date of the product visit. You can find the original dataset [here](/data/retention-dataset.csv). Here are the first 10 rows:
 
 | user_id | date |
 |---|---|
@@ -47,7 +47,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Path to the data file
-dataset_path = 'https://data/retention-dataset.csv'
+dataset_path = 'https://zavarov.com/data/retention-dataset.csv'
 
 # Read data and parse dates
 df = pd.read_csv(dataset_path, parse_dates=['date'])
@@ -93,7 +93,7 @@ def plt_show(days: list, retention: list, xs: list, title: str):
     plt.plot(days, retention)
     plt.title(title)
     plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1.0))
-    plt.gca().set(xlabel='Days', ylabel='% Retaining Users')
+    plt.gca().set(xlabel='Days', ylabel='% Retained Users')
     plt.ylim(0, 1.05)
     for x in xs:
         plt.vlines(x=days[x], ymin=0, ymax=retention[x], linestyles='dotted')
@@ -212,7 +212,7 @@ We can see that 70% of users returned to the product the day after their first v
 
 ## Takeaways
 
-- Source code is available in [[Google Colab]](https://colab.research.google.com/drive/1jIwW-itIFvCIpIhH6ANaQx5RwtzYDjfL?usp=sharing) and on [[GitHub]](https://github.com/zavarovkv/python-notebooks/blob/main/calculate_retention_rate.ipynb), first of all.
+- Source code is available in [[Google Colab]](https://colab.research.google.com/drive/1jIwW-itIFvCIpIhH6ANaQx5RwtzYDjfL?usp=sharing) and on [[GitHub]](https://github.com/zavarovkv/python-notebooks/blob/main/calculate_retention_rate.ipynb).
 - There are no universal Retention parameters that work for every product. The right metric type, window size, and benchmark values all depend on your product's nature and current goals.
 - That said, Classic Retention is more widely used than Rolling or Full Retention.
 - Calculating these metrics by hand is fairly straightforward, but it takes a bit of practice with product analytics tooling.

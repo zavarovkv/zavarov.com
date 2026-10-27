@@ -16,7 +16,7 @@ As someone who came up through the technical ranks, I long believed that "market
 
 Though it's hard to argue that these are precisely the kinds of tasks handled by specialists at digital companies who are commonly called marketers (Marketing Manager — MM) or even product marketers (Product Marketing Manager — PMM).
 
-The funny thing is that half a century ago, the widely renowned Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book *Principles of Marketing*:
+The funny thing is that half a century ago, Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book *Marketing Essentials*:
 
 <q>What does the term "marketing" really mean? Most people mistakenly equate marketing with selling and advertising. Many are surprised to learn that selling is not even the most important part of marketing. Selling is only the tip of the marketing iceberg — and not the most critical part at that. If the marketer does a good job on other aspects of marketing — identifying consumer needs, developing suitable products, pricing them appropriately, and establishing an effective distribution system — those products will sell easily.</q>
 

@@ -12,7 +12,7 @@ lastmod = "2026-10-25T00:00:00+03:00"
 source_hash = "ee9d28e85396d3066756a9c537eb6f73c539da021f8412ca5aa6e6237936a174"
 +++
 
-Daniel Kahneman was awarded the Nobel Prize in Economics in 2002.
+Daniel Kahneman was a psychologist who was awarded the Nobel Prize in Economics in 2002.
 
 A book the entire digital community seemed to have read a couple of years earlier. It examines the mistakes of intuitive thinking in detail and repeatedly stresses how much luck contributes to most success stories. Kahneman supports his ideas with many experiments and examples.
 
@@ -126,7 +126,7 @@ The sunk-cost fallacy: investing more in a losing position despite better opport
 Further reading:
 
 - Richard H. Thaler and Cass R. Sunstein, Nudge: Improving Decisions About Health, Wealth, and Happiness, also available in Russian.
-- Daniel Kahneman's new book, Noise: A Flaw in Human Judgment, available in English on Kindle.
+- Noise: A Flaw in Human Judgment, by Daniel Kahneman, Olivier Sibony and Cass R. Sunstein, available in English on Kindle.
 - Books by [Max H. Bazerman](https://www.hks.harvard.edu/faculty/max-bazerman), Professor of Business Administration at Harvard Business School.
 - Research papers and books by Howard Wainer.
 - Books by [Phil Rosenzweig](https://www.imd.org/faculty/professors/phil-rosenzweig/), Professor of Strategy and International Management.
