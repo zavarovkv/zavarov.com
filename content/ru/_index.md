@@ -24,7 +24,7 @@ description = "Константин Заваров — блог о продук�
 {{< /project >}}
 
 {{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
-Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML — без обязательного JavaScript. Исходный код доступен на {{< github-stars repo="zavarovkv/beauty-css" >}}.
+Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML. Исходный код доступен на {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}
 {{< /columns >}}

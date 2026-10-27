@@ -24,7 +24,7 @@ A minimal Hugo theme that powers this blog. It supports dark mode, multiple lang
 {{< /project >}}
 
 {{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
-A lightweight CSS library for beautiful, readable websites. Typography, forms, and dark mode for plain HTML, with no required JavaScript. The source code is on {{< github-stars repo="zavarovkv/beauty-css" >}}.
+A lightweight CSS library for beautiful, readable websites. Typography, forms, and dark mode for plain HTML. The source code is on {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}
 {{< /columns >}}
