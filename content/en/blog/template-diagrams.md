@@ -1,5 +1,5 @@
 +++
-source_hash = "09f83417956766357d5fc6557ce218d03646c0f7ad06cdffb1b65de04ad4c00e"
+source_hash = "9743619b021cb90572530a0c9fc05c2a78a63fc746295103c88b3e0e7554f9da"
 title = "Chart Templates for Data Visualization"
 slug = "template-diagrams"
 date = "2023-07-19T12:00:00+03:00"
@@ -12,7 +12,7 @@ Product managers present constantly: they run research → share findings; a new
 
 Data visualization is often the weakest part of these presentations, so I decided to put together a Google Sheets template where I'll collect and update *reference* chart examples covering the most common product, business, and financial data scenarios.
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1y4PhhsZyB9i9ZLPvEZW4tmZXXhODPhuAlUbg9QIFy7Q/edit#gid=2114637130">Download the template</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1y4PhhsZyB9i9ZLPvEZW4tmZXXhODPhuAlUbg9QIFy7Q/edit#gid=2114637130">Download the template</a>
 
 The spreadsheet includes 5 templates:
 

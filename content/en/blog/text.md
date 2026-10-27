@@ -1,5 +1,5 @@
 +++
-source_hash = "f65bb5ac27fe"
+source_hash = "4cde6d91db0d0cc1c33c0a790fe0da1fb8931d31ca478efe073b6a921d0c819b"
 title = "Thinking Through Writing"
 slug = "text"
 date = "2024-09-24T15:17:01+03:00"
@@ -40,4 +40,4 @@ Many interesting people in the industry have written about thinking through writ
 
 This list could go on, but I'll save the rest for a third installment.
 
-And finally, a note to myself: <span class="underline">write down your thoughts and ideas more often. Work through them in writing.</span>
+And finally, a note to myself: <span class="beauty-emphasis">write down your thoughts and ideas more often. Work through them in writing.</span>

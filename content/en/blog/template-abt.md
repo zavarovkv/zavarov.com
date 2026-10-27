@@ -1,5 +1,5 @@
 +++
-source_hash = "7ca3ec1637f0386fe0dc358ca3d2887702ae8dadaab290c60fe2f31dbdd90f9b"
+source_hash = "1d291d53a802612cc1779aa0fbe98902caaba203910911ae8c547073197554fc"
 title = "A/B Test Design Template"
 slug = "template-abt"
 date = "2022-08-22T12:00:00+03:00"
@@ -9,7 +9,7 @@ categories = ["metrics"]
 
 A Google Sheets template for designing A/B tests. It helps you structure an experiment before launch — from writing the hypothesis to calculating how long the test should run.
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Download template</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Download template</a>
 
 <img loading="lazy" src="/images/template-abt.webp" alt="A/B Test Design Template" width="1440" height="916">
 

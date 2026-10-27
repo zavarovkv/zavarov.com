@@ -1,5 +1,5 @@
 +++
-source_hash = "6097ff8c28ea9071ffda3edf892ea833c294b5a1dc4b110f445f893ebf522f1e"
+source_hash = "a8d3acc56b2617c9958953fc010712e9f34be672e3678b21c4185e80b16e7f54"
 title = "Second Brain: PARA × Obsidian × Granola × Claude"
 slug = "second-brain"
 date = "2026-03-07T00:00:00+03:00"
@@ -9,7 +9,7 @@ telegram_post = 69
 mermaid = true
 +++
 
-A few years ago I was [organizing](/zettelkasten/) notes using the Zettelkasten method in VS Code. Since then, everything has changed — largely due to the exponential growth of LLMs and agentic AI. I want to share a fresh tool stack that helps reduce cognitive load and keep information from slipping through the cracks when time is scarce: <span class="underline">PARA × Obsidian × Granola × Claude</span>.
+A few years ago I was [organizing](/zettelkasten/) notes using the Zettelkasten method in VS Code. Since then, everything has changed — largely due to the exponential growth of LLMs and agentic AI. I want to share a fresh tool stack that helps reduce cognitive load and keep information from slipping through the cracks when time is scarce: <span class="beauty-emphasis">PARA × Obsidian × Granola × Claude</span>.
 
 The article is called "Second Brain," which means we're building a system that mirrors the structure of the human brain.
 

@@ -1,5 +1,5 @@
 +++
-source_hash = "68d91a533f7e"
+source_hash = "f2a3b5ab22c03e100bbc65c75d9e1b4cc6661b9bf8c11107b71a28d9d84d2b11"
 title = "ICE, RICE, DRICE Prioritization Framework Template"
 slug = "template-rice"
 date = "2022-07-01T12:00:00+03:00"
@@ -9,7 +9,7 @@ categories = ["strategy"]
 
 A Google Sheets template for prioritizing product initiatives using three frameworks: ICE, RICE, and DRICE. For a deeper dive into the methods, check out the article [“ICE, RICE, DRICE Prioritization Frameworks”](/drice/).
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Download template</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Download template</a>
 
 ## What's inside
 

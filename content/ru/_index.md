@@ -13,7 +13,7 @@ description = "Константин Заваров — блог о продук�
 Если хотите обсудить партнерство, просто познакомиться или выпить кофе, [пишите](https://telegram.me/zavarov).
 
 {{< columns >}}
-{{< latest-posts count="3" archive="/blog/" archiveLabel="Все статьи" >}}
+{{< latest-posts count="5" archive="/blog/" archiveLabel="Все статьи" >}}
 
 {{< column >}}
 
@@ -21,6 +21,10 @@ description = "Константин Заваров — блог о продук�
 
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
 Минималистичная тема для Hugo, на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram. Исходный код доступен на {{< github-stars repo="zavarovkv/hugo-mini" >}}.
+{{< /project >}}
+
+{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
+Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML — без обязательного JavaScript. Исходный код доступен на {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}
 {{< /columns >}}

@@ -8,7 +8,7 @@ categories = ["metrics"]
 
 Шаблон в Google Sheets для проектирования A/B-тестов. Помогает структурировать эксперимент до его запуска — от формулировки гипотезы до расчета продолжительности теста.
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Скачать шаблон</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing">Скачать шаблон</a>
 
 <img loading="lazy" src="/images/template-abt.webp" alt="Шаблон дизайна A/B-теста" width="1440" height="916">
 

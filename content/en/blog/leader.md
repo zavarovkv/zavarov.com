@@ -1,5 +1,5 @@
 +++
-source_hash = "ac476f8a28ef"
+source_hash = "81a469cf36a543d7abb06c45f6ce11f68df159e3a6f08b623d23cfb90c0e3c44"
 title = "On Leadership"
 slug = "leader"
 date = "2024-03-28T15:17:01+03:00"
@@ -23,7 +23,7 @@ I'd actually reframe the question slightly: why is it both interesting *and* cha
 
 Which brings me to another definition I use:
 
-<div style="font-weight: 200; font-size:1.25em; line-height:1.5;">Leadership is part of personal growth and development — an endless process of working on yourself and inspiring the people around you.</div>
+<div class="beauty-lead">Leadership is part of personal growth and development — an endless process of working on yourself and inspiring the people around you.</div>
 
 <br>
 

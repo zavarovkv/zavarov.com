@@ -11,7 +11,7 @@ telegram_post = 31
 
 В презентациях часто страдает визуализация данных, поэтому я решил подготовить шаблон в Google Sheets, в котором буду собирать и обновлять *эталонные* примеры диаграмм визуализирующие наиболее встречающиеся продуктовые / бизнесовые / финансовые данные.
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1y4PhhsZyB9i9ZLPvEZW4tmZXXhODPhuAlUbg9QIFy7Q/edit#gid=2114637130">Скачать шаблон</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1y4PhhsZyB9i9ZLPvEZW4tmZXXhODPhuAlUbg9QIFy7Q/edit#gid=2114637130">Скачать шаблон</a>
 
 G-документ содержит 5 шаблонов:
 

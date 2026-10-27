@@ -1,5 +1,5 @@
 +++
-source_hash = "b09dda5d4c1a"
+source_hash = "0ce787b0cf4dcc1e8d5a6838d47f09e259ec148e72c8937c03b6a7e57f54768a"
 title = "Why Online Courses Struggle to Scale"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
@@ -12,13 +12,17 @@ Comparing the top edTech companies in the Russian internet market, I noticed an 
 
 ## Product EdTech Theorem #1
 
-<q>The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, having deadlines leads to ↓ Revenue and ↑ Completion Rate.</q>
+{{< callout >}}
+The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, having deadlines leads to ↓ Revenue and ↑ Completion Rate.
+{{< /callout >}}
 
 It's a simple theorem, easily derived intuitively and confirmed by edTech managers. The practical takeaway for prospective students: in a self-paced course, you're less likely to finish and earn your certificate — and less likely to get a refund.
 
 Which gives us a direct corollary:
 
-<q>In educational courses without deadlines, the number of refunds → 0.</q>
+{{< callout >}}
+In educational courses without deadlines, the number of refunds → 0.
+{{< /callout >}}
 
 ## Type "A" Companies
 

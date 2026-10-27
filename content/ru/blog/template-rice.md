@@ -8,7 +8,7 @@ categories = ["strategy"]
 
 Шаблон в Google Sheets для приоритизации продуктовых инициатив тремя методами: ICE, RICE и DRICE. Подробнее про методы — в статье [«Методы приоритизации ICE, RICE, DRICE»](/drice/).
 
-<a class="button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Скачать шаблон</a>
+<a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1Dm2fcXwwIR70mm2fGExPU0FbYvs_dknu8W8vclFK9yI/edit#gid=0">Скачать шаблон</a>
 
 ## Что внутри
 

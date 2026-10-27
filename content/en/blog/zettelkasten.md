@@ -1,5 +1,5 @@
 +++
-source_hash = "51afd692e99c372a30d17a41990bad8523ba51801ca12510fbf9143360e35c69"
+source_hash = "51626d3d87e09ee38338f695bd75a2b67ac80391bf6839c32a42b35c48360fab"
 title = "The Zettelkasten Note-Taking Method"
 slug = "zettelkasten"
 date = "2023-03-12T12:00:00+03:00"
@@ -7,7 +7,7 @@ description = "The increasingly popular note-taking method from the extraordinar
 categories = ["productivity"]
 +++
 
-<span class="underline">Zettelkasten</span> is an increasingly popular method of organizing notes and ideas, developed by the extraordinarily productive German sociologist [Niklas Luhmann](https://ru.wikipedia.org/wiki/Луман,_Никлас) — a man who, over the course of his life, authored more than 70 major academic books and 500 scholarly articles, and received prestigious doctoral honors and prizes for his contributions to sociology.
+<span class="beauty-emphasis">Zettelkasten</span> is an increasingly popular method of organizing notes and ideas, developed by the extraordinarily productive German sociologist [Niklas Luhmann](https://ru.wikipedia.org/wiki/Луман,_Никлас) — a man who, over the course of his life, authored more than 70 major academic books and 500 scholarly articles, and received prestigious doctoral honors and prizes for his contributions to sociology.
 
 The Zettelkasten note-taking method helped Luhmann acquire new knowledge more effectively and engage in deep research. This gives rise to a compelling hypothesis: "If Zettelkasten helped Luhmann absorb new knowledge, it can help us too." All that's left is to put this promising hypothesis to the test.
 

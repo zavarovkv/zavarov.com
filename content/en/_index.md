@@ -13,7 +13,7 @@ I run the Telegram channel [Product Code](https://t.me/pmgen), where I write abo
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 
 {{< columns >}}
-{{< latest-posts count="3" archive="/en/blog/" archiveLabel="All articles" >}}
+{{< latest-posts count="5" archive="/en/blog/" archiveLabel="All articles" >}}
 
 {{< column >}}
 
@@ -21,6 +21,10 @@ Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a
 
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
 A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration. The source code is on {{< github-stars repo="zavarovkv/hugo-mini" >}}.
+{{< /project >}}
+
+{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
+A lightweight CSS library for beautiful, readable websites. Typography, forms, and dark mode for plain HTML, with no required JavaScript. The source code is on {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}
 {{< /columns >}}

@@ -1,5 +1,5 @@
 +++
-source_hash = "8d9c4dd392ee"
+source_hash = "a438463fbdf1d3161c3cd6e7144572658d390a54548f5450f3eaff8e5874ef4f"
 title = "Product Management Is Marketing Management"
 slug = "kotler"
 date = "2024-05-24T15:17:01+03:00"
@@ -18,10 +18,14 @@ Though it's hard to argue that these are precisely the kinds of tasks handled by
 
 The funny thing is that half a century ago, Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book *Marketing Essentials*:
 
-<q>What does the term "marketing" really mean? Most people mistakenly equate marketing with selling and advertising. Many are surprised to learn that selling is not even the most important part of marketing. Selling is only the tip of the marketing iceberg — and not the most critical part at that. If the marketer does a good job on other aspects of marketing — identifying consumer needs, developing suitable products, pricing them appropriately, and establishing an effective distribution system — those products will sell easily.</q>
+{{< callout >}}
+What does the term "marketing" really mean? Most people mistakenly equate marketing with selling and advertising. Many are surprised to learn that selling is not even the most important part of marketing. Selling is only the tip of the marketing iceberg — and not the most critical part at that. If the marketer does a good job on other aspects of marketing — identifying consumer needs, developing suitable products, pricing them appropriately, and establishing an effective distribution system — those products will sell easily.
+{{< /callout >}}
 
 And a second quote:
 
-<q>The core activities of marketing include: product development; research; establishing communication; pricing; and providing service to users.</q>
+{{< callout >}}
+The core activities of marketing include: product development; research; establishing communication; pricing; and providing service to users.
+{{< /callout >}}
 
 So, fellow product managers — in Kotler's terminology, we are "marketing specialists," while our colleagues in marketing are "sales (promotion) specialists." Just don't tell them that, though, or they might get upset and take offense — and then you'll be left selling your own product all by yourself.
