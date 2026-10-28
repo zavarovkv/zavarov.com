@@ -76,14 +76,14 @@ The translator uses one retry loop (at most three requests per file), a two-minu
 
 ## Static Assets
 
-Blog fonts, KaTeX, and Likely live in the theme (`themes/hugo-mini/static/`) and are served directly from there — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS combines a pinned Beauty.css foundation with theme-owned `assets/css/main.css`; Hugo Pipes emits one minified, fingerprinted stylesheet. The generated foundation, upstream commit, checksum and license belong to the theme and are refreshed only by its `scripts/vendor-beauty.mjs` helper. The site does not load an npm package or CDN at runtime. The browser caches one `/css/main.min.<sha>.css` and one `/js/main.min.<sha>.js`; localized JS strings are passed through `body[data-i18n]`, so the bundle is shared across languages.
+Blog fonts and KaTeX live in the theme's `static/`; Likely sources live in `assets/likely/` and Hugo minifies and fingerprints them only on pages with social sharing enabled. All these assets are self-hosted — the site used to shadow them with bit-identical copies, which is now removed. Theme CSS combines a pinned Beauty.css foundation with theme-owned `assets/css/main.css`; Hugo Pipes emits one minified, fingerprinted stylesheet. The generated foundation, upstream commit, checksum and license belong to the theme and are refreshed only by its `scripts/vendor-beauty.mjs` helper. The site does not load an npm package or CDN at runtime. The browser caches one `/css/main.min.<sha>.css` and one `/js/main.min.<sha>.js`; localized JS strings are passed through `body[data-i18n]`, so the bundle is shared across languages.
 
 Shared native typography and editorial helpers belong to Beauty.css. The theme configures their `--beauty-*` variables and owns layout, UI components and font loading. Keep article markup free of inline font styling; use the library's editorial helpers or semantic Markdown. Do not copy base text rules into the theme or site. Local development snapshots use the theme helper's `--local` mode and must be replaced with a reviewed upstream pin before a theme release.
 
 Theme-owned for the blog (do not shadow these paths in the site):
-- Inter font family (WOFF2 for 200/300/300italic/400/500/600/700; `@font-face` declares only the weights actually used: 300, 500, 600). 300 and 600 are preloaded in `baseof.html`.
+- Inter font family (WOFF2 for normal 300/500/600 and italic 300, matching the active `@font-face` declarations; unused font files are not shipped). 300 and 600 are preloaded in `baseof.html`.
 - KaTeX math rendering (loaded conditionally on `math = true` in front matter).
-- Ilya Birman's Likely social sharing buttons (loaded only on blog post pages).
+- Ilya Birman's Likely social sharing buttons (`assets/likely/`, minified and fingerprinted by Hugo, loaded only on blog post pages with sharing enabled).
 
 Site-owned (`static/` in the blog repo):
 - `CNAME` — GitHub Pages custom-domain file (`zavarov.com`).

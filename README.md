@@ -109,6 +109,16 @@ The reading shelf is documented in [docs/books.md](docs/books.md). Its reading
 history is stored once; localized titles and authors are display overrides on
 the same records. Reviews use ordinary Markdown and the shared article layout.
 
+The four pinned npm dependencies are build/development tools: Mermaid supplies the local diagram
+modules, OpenAI powers the optional translator, and parse5/smol-toml validate HTML and TOML.
+The theme requires no npm installation, and its Beauty.css foundation has no runtime dependencies.
+Sharing assets are minified and fingerprinted by Hugo only when sharing is enabled.
+
+The 2026-10-28 dependency audit reports no moderate-or-higher npm findings. It retains a low-severity
+KaTeX advisory through Mermaid; npm's automatic fix requires Mermaid 12, so that major upgrade is
+outside the behavior-preserving cleanup. The theme's separate KaTeX pin and the advisory's conditions
+are documented in [the theme's asset maintenance guide](themes/hugo-mini/docs/vendor-assets.md#katex).
+
 ## Deployment
 
 Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/workflows/gh-pages.yml).
