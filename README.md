@@ -115,9 +115,10 @@ The theme requires no npm installation, and its Beauty.css foundation has no run
 Sharing assets are minified and fingerprinted by Hugo only when sharing is enabled.
 
 The 2026-10-28 dependency audit reports no moderate-or-higher npm findings. It retains a low-severity
-KaTeX advisory through Mermaid; npm's automatic fix requires Mermaid 12, so that major upgrade is
-outside the behavior-preserving cleanup. The theme's separate KaTeX pin and the advisory's conditions
-are documented in [the theme's asset maintenance guide](themes/hugo-mini/docs/vendor-assets.md#katex).
+KaTeX advisory through Mermaid; npm's automatic fix requires Mermaid 12, whose geometry and styling
+change in compatibility tests. The theme's standalone KaTeX is updated to 0.18.2 with unchanged formula
+appearance. Details and the regression check are documented in
+[the theme's asset maintenance guide](themes/hugo-mini/docs/vendor-assets.md#katex).
 
 ## Deployment
 

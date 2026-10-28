@@ -129,7 +129,7 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
       }
       for (const asset of ["katex/katex.min.css", "katex/katex.min.js", "katex/auto-render.min.js"]) {
         assert.ok(all(page, (node) => ["link", "script"].includes(node.tagName) &&
-          (attrs(node).href || attrs(node).src || "").endsWith(asset)).length, `existing local math asset: ${asset}`);
+          new URL(attrs(node).href || attrs(node).src || "", "https://example.org/").pathname.endsWith(asset)).length, `existing local math asset: ${asset}`);
       }
       assert.doesNotMatch(review.body, /\\{2,}(?:\[|\]|over|times|frac)/, "archive escaping must not leak into math");
     }
