@@ -40,7 +40,7 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
   const body = all(list, (node) => node.tagName === "tbody")[0];
   const rows = all(body, (node) => node.tagName === "tr");
   assert.equal(rows.length, registry.items.length);
-  assert.equal(all(list, (node) => ["h2", "h3", "br", "time", "strong", "b"].includes(node.tagName)).length, 0,
+  assert.equal(all(list, (node) => ["h2", "h3", "br", "strong", "b"].includes(node.tagName)).length, 0,
     "one continuous table without year groups, forced breaks or bold dates");
   assert.deepEqual(rows.map((row) => attrs(row).id),
     registry.items.toSorted((a, b) => b.read.localeCompare(a.read)).map((book) => `book-${book.id}`));
@@ -53,6 +53,9 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
     assert.ok(text(cells[0]).includes(book.author));
     assert.equal(attrs(cells[1]).class, "reading-date");
     assert.equal(text(cells[1]), book.read.split("-").reverse().join("."));
+    const readingTimes = all(cells[1], (node) => node.tagName === "time");
+    assert.equal(readingTimes.length, 1);
+    assert.equal(attrs(readingTimes[0]).datetime, book.read);
     const details = all(cells[0], (node) => attrs(node).class === "reading-meta")[0];
     assert.ok(text(details).includes(book.author));
     if (book.year) assert.ok(text(details).includes(String(book.year)), "the year belongs with the author");
