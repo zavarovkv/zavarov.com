@@ -4,6 +4,29 @@ import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { checkSite } from "../scripts/check-site.mjs";
+import { createHash } from "node:crypto";
+
+test("local asset integrity checks detect stale files and use the strongest advertised hash", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "integrity-check-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "public/assets"]) await mkdir(join(root, dir), { recursive: true });
+  const content = "body { color: black; }";
+  const hash = (algorithm, text = content) => `${algorithm}-${createHash(algorithm).update(text).digest("base64")}`;
+  await writeFile(join(root, "public/assets/main.css"), content);
+  await writeFile(join(root, "public/index.html"), `
+    <link rel="stylesheet" href="assets/main.css?valid" integrity="${hash('sha256')}">
+    <link rel="stylesheet" href="assets/main.css?stale" integrity="${hash('sha256', 'old file')}">
+    <link rel="preload" as="style" href="assets/main.css?stronger" integrity="${hash('sha256')} ${hash('sha384', 'old file')}">
+    <link rel="stylesheet" href="assets/main.css?alternate" integrity="${hash('sha512', 'old file')} ${hash('sha512')}">
+    <script src="assets/main.css?script" integrity="${hash('sha256', 'old script')}"></script>
+    <link rel="stylesheet" href="https://external.example/style.css" integrity="${hash('sha256')}">
+    <template><script src="missing.js" integrity="${hash('sha256')}"></script></template>`);
+  const errors = await checkSite({ root, baseURL: "https://example.com/sub/" });
+  assert.equal(errors.length, 3, errors.join("\n"));
+  for (const query of ["stale", "stronger", "script"]) {
+    assert.ok(errors.some(message => message.includes(`integrity mismatch assets/main.css?${query}`)));
+  }
+});
 
 test("HTML link checks handle relative URLs, own origin, fragments and query strings", async (t) => {
   const root = await mkdtemp(join(tmpdir(), "link-test-"));

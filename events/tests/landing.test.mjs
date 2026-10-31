@@ -263,7 +263,7 @@ test("every event bundle builds with consistent metadata, assets and registratio
     await t.test(`${bundle.language}/${bundle.route}`, async () => {
       const { url } = await inspectLanding(bundle, config, output);
       const sitemap = await readFile(join(output, bundle.language, "sitemap.xml"), "utf8");
-      assert.equal(sitemap.includes(url), !bundle.data.sitemap?.disable, "sitemap visibility follows the event configuration");
+      assert.equal(sitemap.includes(url), !bundle.data.sitemap?.disable && !bundle.data.noindex && !bundle.data.draft, "sitemap visibility follows indexing and event configuration");
     });
   }
 });

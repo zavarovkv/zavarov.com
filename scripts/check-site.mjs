@@ -2,6 +2,7 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
 import { parse as parseHTML } from "parse5";
 import { parse as parseTOML } from "smol-toml";
 import { listMarkdown, readDocument } from "./lib/content.mjs";
@@ -21,6 +22,7 @@ export function inspectHTML(html) {
   const elementIds = new Set();
   const duplicateIds = new Set();
   const links = [];
+  const integrities = new Map();
   let base;
   function visit(node) {
     const attrs = Object.fromEntries((node.attrs || []).map(({ name, value }) => [name, value]));
@@ -34,11 +36,17 @@ export function inspectHTML(html) {
     if (node.tagName !== "base") {
       for (const key of ["href", "src"]) if (attrs[key]) links.push(attrs[key]);
     }
+    const resource = node.tagName === "script" ? attrs.src :
+      node.tagName === "link" && /(?:^|\s)(?:stylesheet|preload|modulepreload)(?:\s|$)/i.test(attrs.rel || "") ? attrs.href : null;
+    if (resource && attrs.integrity) {
+      if (!integrities.has(resource)) integrities.set(resource, new Set());
+      integrities.get(resource).add(attrs.integrity);
+    }
     for (const child of node.childNodes || []) visit(child);
     // Inert template contents do not create page anchors or load resources.
   }
   visit(parseHTML(html));
-  return { ids, duplicateIds, links, base };
+  return { ids, duplicateIds, links, base, integrities };
 }
 
 export async function checkSite({ root = resolve(dirname(fileURLToPath(import.meta.url)), ".."), publicDir = resolve(root, "public"), baseURL } = {}) {
@@ -83,6 +91,7 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   }
   const documents = new Map();
   const fileStats = new Map();
+  const fileHashes = new Map();
   function cachedStat(path) {
     if (!fileStats.has(path)) fileStats.set(path, stat(path));
     return fileStats.get(path);
@@ -98,7 +107,7 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
     let documentURL = pageURL;
     try { if (document.base) documentURL = new URL(document.base, pageURL); }
     catch { report(`${name}: malformed base URL ${document.base}`); continue; }
-    for (const link of document.links) {
+    for (const link of new Set(document.links)) {
       let url;
       try { url = new URL(link, documentURL); }
       catch { report(`${name}: malformed URL ${link}`); continue; }
@@ -127,6 +136,24 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
         if (!["ENOENT", "ENOTDIR"].includes(error.code)) throw error;
         report(`${name}: missing output ${link}`);
         continue;
+      }
+      for (const integrity of document.integrities.get(link) || []) {
+        const hashes = integrity.split(/\s+/).map(token => token.match(/^(sha256|sha384|sha512)-([A-Za-z0-9+/]+={0,2})$/)).filter(Boolean);
+        if (!hashes.length) {
+          report(`${name}: invalid integrity metadata ${link}`);
+          continue;
+        }
+        // Browsers accept any matching digest of the strongest listed algorithm.
+        // Cache by file and algorithm: the same bundle serves every page/language.
+        const algorithm = hashes.map(match => match[1]).sort().at(-1);
+        const key = `${target}\0${algorithm}`;
+        if (!fileHashes.has(key)) {
+          fileHashes.set(key, readFile(target).then(bytes => createHash(algorithm).update(bytes).digest("base64")));
+        }
+        const actual = await fileHashes.get(key);
+        if (!hashes.some(match => match[1] === algorithm && Buffer.from(match[2], "base64").toString("base64") === actual)) {
+          report(`${name}: integrity mismatch ${link} (${algorithm})`);
+        }
       }
       if (fragment && /\.(?:html|svg)$/.test(target)) {
         if (!documents.has(target)) documents.set(target, inspectHTML(await readFile(target, "utf8")));

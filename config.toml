@@ -14,9 +14,8 @@ defaultContentLanguageInSubdirectory = false
 enableRobotsTXT = true
 
 # Generate "Bearblog"-like URLs !only!, see https://bearblog.dev/.
-# "term" included too: without it Hugo still builds per-category pages
-# (each a duplicate of the full blog listing, since the theme's list.html
-# always renders the whole /blog section).
+# Categories are grouped on the main article listing; separate taxonomy
+# and term pages are not part of this site's navigation.
 disableKinds = ["taxonomy", "term"]
 ignoreErrors = ["error-disable-taxonomy"]
 
