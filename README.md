@@ -9,7 +9,7 @@ Built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zava
 Requirements:
 
 - Hugo Extended 0.154.5+ (CI pins 0.154.5; the standalone theme supports 0.146+)
-- Node.js 22+
+- Node.js 22.12+
 
 ```bash
 git clone --recursive https://github.com/zavarovkv/zavarov.com.git
@@ -114,10 +114,11 @@ modules, OpenAI powers the optional translator, and parse5/smol-toml validate HT
 The theme requires no npm installation, and its Beauty.css foundation has no runtime dependencies.
 Sharing assets are minified and fingerprinted by Hugo only when sharing is enabled.
 
-The 2026-11-01 dependency audit reports no moderate-or-higher npm findings. It retains a low-severity
-KaTeX advisory through Mermaid; npm's automatic fix requires Mermaid 12, whose geometry and styling
-change in compatibility tests. The theme's standalone KaTeX is updated to 0.18.2 with unchanged formula
-appearance. Details and the regression check are documented in
+The 2026-11-01 dependency audit reports no npm vulnerabilities after upgrading Mermaid to 12.2.0.
+The theme explicitly retains Dagre, classic styling and the previous flowchart label widths, preserving
+the existing diagrams' geometry instead of adopting Mermaid 12's ELK/neo defaults. Mermaid 12 requires
+ES2024-capable browsers (including Safari 17.4+); loading failures leave readable diagram source.
+The theme's standalone KaTeX remains at 0.18.2. Details and the regression check are documented in
 [the theme's asset maintenance guide](themes/hugo-mini/docs/vendor-assets.md#katex).
 
 ## Deployment

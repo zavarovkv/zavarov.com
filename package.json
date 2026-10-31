@@ -3,7 +3,7 @@
   "private": true,
   "description": "Build-time scripts for the zavarov.com Hugo site (RU→EN translation, Telegram reactions fetch).",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "npm run fetch-github-stars && hugo server --bind 127.0.0.1",
@@ -22,7 +22,7 @@
     "event:new": "node events/scripts/new.mjs"
   },
   "devDependencies": {
-    "mermaid": "11.16.1",
+    "mermaid": "12.2.0",
     "openai": "7.4.0",
     "parse5": "8.0.1",
     "smol-toml": "1.9.0"
