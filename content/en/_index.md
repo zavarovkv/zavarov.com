@@ -19,6 +19,10 @@ Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a
 
 ## Projects {.posts-group-title .no-anchor}
 
+{{< project name="Agent Council" url="https://council.zavarov.com/" >}}
+A self-hosted platform for managing AI agents, with a web dashboard and Telegram integration. The source code is on {{< github-stars repo="zavarovkv/agent-council" >}}.
+{{< /project >}}
+
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
 A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration. The source code is on {{< github-stars repo="zavarovkv/hugo-mini" >}}.
 {{< /project >}}

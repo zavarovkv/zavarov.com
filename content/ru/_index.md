@@ -19,6 +19,10 @@ description = "Константин Заваров — блог о продук�
 
 ## Проекты {.posts-group-title .no-anchor}
 
+{{< project name="Agent Council" url="https://council.zavarov.com/" >}}
+Платформа для управления ИИ-агентами на своем сервере — с веб-интерфейсом и интеграцией с Telegram. Исходный код доступен на {{< github-stars repo="zavarovkv/agent-council" >}}.
+{{< /project >}}
+
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
 Минималистичная тема для Hugo, на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram. Исходный код доступен на {{< github-stars repo="zavarovkv/hugo-mini" >}}.
 {{< /project >}}
