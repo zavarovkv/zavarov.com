@@ -129,12 +129,8 @@ Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/
 - Keep commits focused and sequential. When a theme change is made, push `themes/hugo-mini` first, then commit and push the updated submodule pointer in this repository.
 - Do not modify or regenerate translations unless the user explicitly asks; in particular, do not manually edit `content/en/`.
 
-## Active Handoff — Hugo Themes Catalog (2026-08-17)
+## Hugo Themes Catalog
 
-- Theme submission: `gohugoio/hugoThemesSiteBuilder#698`, branch `zavarovkv:add-hugo-mini`, latest head seen `5734b19`. It adds `github.com/zavarovkv/hugo-mini/v3` and is mergeable but its last Netlify run is red.
-- The red #698 run is **not caused by Hugo Mini**. The supplied Netlify log showed stale transferred repositories: `StaticMania/roxo-hugo` has an unavailable pseudo-version, and the old branch also contains `hivickylai/hugo-theme-sam` although that repository declares `github.com/victoriadrake/hugo-theme-sam`.
-- Current upstream `main` already fixes the Sam path. A separate ready-for-review fix, `gohugoio/hugoThemesSiteBuilder#766` (commit `a980180`), moves Roxo to `github.com/sitepins/roxo-hugo`. Its Netlify Preview is fully green and it is `MERGEABLE/CLEAN`.
-- Next action: wait for #766 to merge, then update #698 from upstream `main` (GitHub's **Update branch** or merge `upstream/main` into `add-hugo-mini`) and wait for the new Netlify Preview. Do not retry #698 before #766 lands.
-- Hugo Mini is currently released as `v3.0.2` at commit `2d8df43`. Its Go module path is correctly `github.com/zavarovkv/hugo-mini/v3`; the public Go proxy resolves it, isolated catalog generation succeeds, and the final catalog site was reproduced successfully with Hugo Extended 0.161.1.
-- The main site points to the corrected theme at commit `e3de283`; both theme CI and the site's GitHub Pages deployment were green. Theme README was modernized and detailed guidance moved under `docs/`.
-- Relevant links: https://github.com/gohugoio/hugoThemesSiteBuilder/pull/698 and https://github.com/gohugoio/hugoThemesSiteBuilder/pull/766.
+- Hugo Mini's catalog submission, [gohugoio/hugoThemesSiteBuilder#698](https://github.com/gohugoio/hugoThemesSiteBuilder/pull/698), was merged on 2026-09-02. The theme is listed at https://themes.gohugo.io/themes/hugo-mini/.
+- The supporting Roxo repository-path fix, [gohugoio/hugoThemesSiteBuilder#766](https://github.com/gohugoio/hugoThemesSiteBuilder/pull/766), was merged on 2026-08-17. Both catalog tasks are complete; there is no pending branch update or Netlify retry from that submission.
+- The theme's Go module path is `github.com/zavarovkv/hugo-mini/v3`. Check the repository's current releases and this site's submodule pointer when reviewing versions; do not reuse the historical submission's release or commit snapshots.
