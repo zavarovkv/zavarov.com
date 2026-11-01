@@ -25,6 +25,10 @@
   object-fit: contain;
 }
 
+[data-theme="dark"] .council-brand img {
+  filter: invert(1);
+}
+
 @media (min-width: 769px) {
   .council-nav {
     justify-content: flex-end;
