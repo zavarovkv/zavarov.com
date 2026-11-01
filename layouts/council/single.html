@@ -29,25 +29,28 @@
 </section>
 <section aria-labelledby="team-title">
 <h2 id="team-title" class="section-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
-<div class="cards">
+<div class="cards" data-team-cards>
 {{ $members := slice
-(dict "slug" "qui-gon" "name" "Квай-Гон Джинн" "roleRu" "COO и координатор" "roleEn" "COO and coordinator" "ru" "Управляет задачами, делегирует работу и проверяет результаты." "en" "Coordinates tasks, delegates work, and verifies outcomes.")
-(dict "slug" "dexter" "name" "Декстер Джеттстер" "roleRu" "Исследователь" "roleEn" "Researcher" "ru" "Изучает конкурентов, продукты, рынки и потребности клиентов." "en" "Studies competitors, products, markets, and customer needs.")
-(dict "slug" "lando" "name" "Лэндо Калриссиан" "roleRu" "Маркетинг и SEO" "roleEn" "Marketing and SEO" "ru" "Находит возможности продвижения и роста проектов." "en" "Finds marketing and growth opportunities.")
-(dict "slug" "padme" "name" "Падме Амидала" "roleRu" "Главный редактор" "roleEn" "Editor-in-chief" "ru" "Проверяет качество текстов и сохраняет авторский голос." "en" "Reviews writing quality and preserves the author's voice.")
+(dict "slug" "qui-gon" "name" "Квай-Гон Джинн" "roleRu" "Ассистент и координатор" "roleEn" "Assistant and coordinator" "ru" "Личный ассистент и координатор: ведет задачи до результата, распределяет работу между агентами, проверяет результаты и уточняет решения у владельца." "en" "Manages tasks through completion, delegates work, reviews results and clarifies decisions with the owner.")
+(dict "slug" "dexter" "name" "Декстер Джеттстер" "roleRu" "Продуктовый исследователь" "roleEn" "Product researcher" "ru" "Анализирует конкурентов, рынки, продукты, цены и потребности клиентов; проверяет первоисточники и отделяет факты от гипотез." "en" "Studies competitors, markets, products, pricing and customer needs; verifies primary sources and separates facts from hypotheses.")
+(dict "slug" "lando" "name" "Лэндо Калриссиан" "roleRu" "Маркетинг и SEO" "roleEn" "Marketing and SEO" "ru" "Позиционирование, исследование аудитории, SEO, контент, распространение материалов и эксперименты роста с оценкой результатов." "en" "Positioning, audience research, SEO, content, distribution and growth experiments with measured results.")
+(dict "slug" "padme" "name" "Падме Амидала" "roleRu" "Редактор" "roleEn" "Editor" "ru" "Вычитка русскоязычных текстов, естественный язык, сохранение авторского голоса и подготовка материалов для сайтов, публикаций и руководителей." "en" "Edits Russian texts, preserves the author's voice and prepares clear copy for websites, publications and executives.")
 }}
 {{ range $members }}
-<article class="card">
+<article class="card" data-agent="{{ .slug }}">
 <img src="/council/avatars/{{ .slug }}.png" alt="{{ .name }}" width="92" height="92" loading="lazy">
 <h3>{{ .name }}</h3>
 <div class="role">{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</div>
 <p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
+<div class="agent-metrics"><p>{{ if $ru }}Модель{{ else }}Model{{ end }}: <strong data-field="model">—</strong></p><p>{{ if $ru }}Завершено задач{{ else }}Completed tasks{{ end }}: <strong data-field="closed_tasks">—</strong> · {{ if $ru }}Токены{{ else }}Tokens{{ end }}: <strong data-field="tokens">—</strong></p><p class="connection" data-field="connection">{{ if $ru }}Статистика пока недоступна{{ else }}Statistics unavailable{{ end }}</p></div>
 </article>
 {{ end }}
 </div>
+<p class="team-status" data-team-status role="status">{{ if $ru }}Статистика загрузится при подключении к Agent Council.{{ else }}Statistics will load when connected to Agent Council.{{ end }}</p>
 </section>
 </main>
 {{ partial "council/footer.html" . }}
+{{ with resources.Get "council/team.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
 {{ with resources.Get "council/theme.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
 </div>
 </body>
