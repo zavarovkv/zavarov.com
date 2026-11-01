@@ -49,6 +49,9 @@ jobs:
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
 
+      - name: Vendor Council portraits
+        run: python3 scripts/fetch-council-avatars.py
+
       - name: Build
         run: hugo --minify --panicOnWarning
 
@@ -120,6 +123,9 @@ jobs:
       - name: Fetch Telegram reactions
         continue-on-error: true
         run: npm run fetch-telegram-reactions
+
+      - name: Vendor Council portraits
+        run: python3 scripts/fetch-council-avatars.py
 
       - name: Build
         env:
