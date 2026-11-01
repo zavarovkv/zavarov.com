@@ -37,7 +37,7 @@
 }}
 {{ range $members }}
 <article class="card">
-<img src="https://council.zavarov.com/auth/login/council/avatars/{{ .slug }}" alt="{{ .name }}" width="92" height="92" loading="lazy">
+<img src="/council/avatars/{{ .slug }}.png" alt="{{ .name }}" width="92" height="92" loading="lazy">
 <h3>{{ .name }}</h3>
 <div class="role">{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</div>
 <p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
