@@ -22,6 +22,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: council-production
     timeout-minutes: 15
@@ -36,7 +37,7 @@ jobs:
           [[ "$RUN_ID" =~ ^[0-9]+$ ]] || exit 1
           [[ "$ARTIFACT" =~ ^council-landing-[a-f0-9]{40}-deploy$ ]] || exit 1
           run_json=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID")
-          echo "$run_json" | jq -e '.status == "completed" and .conclusion == "success" and .head_branch == "main" and .event == "push"' >/dev/null
+          echo "$run_json" | jq -e '.status == "completed" and .conclusion == "success" and .head_branch == "main" and .event == "push" and .path == ".github/workflows/gh-pages.yml"' >/dev/null
           sha=$(echo "$run_json" | jq -r '.head_sha')
           [[ "$ARTIFACT" == "council-landing-${sha}-deploy" ]] || exit 1
       - name: Download reviewed artifact
@@ -68,14 +69,18 @@ jobs:
           chmod 0600 ~/.ssh/known_hosts
       - name: Deploy via fixed server-side command
         env:
-          HOST: ${{ vars.COUNCIL_DEPLOY_HOST }}
-          USER: ${{ vars.COUNCIL_DEPLOY_USER }}
+          COUNCIL_HOST: ${{ vars.COUNCIL_DEPLOY_HOST }}
+          COUNCIL_USER: ${{ vars.COUNCIL_DEPLOY_USER }}
         run: |
           set -euo pipefail
-          [[ "$HOST" =~ ^[a-zA-Z0-9.-]+$ ]] && [[ "$USER" =~ ^[a-z_][a-z0-9_-]*$ ]]
+          [[ "$COUNCIL_HOST" =~ ^[a-zA-Z0-9.-]+$ ]] && [[ "$COUNCIL_USER" =~ ^[a-z_][a-z0-9_-]*$ ]]
           digest=$(cut -d' ' -f1 release/sha256.txt)
           # Restricted SSH authorized_keys forced-command should accept only this operation.
           # No root password, no agent forwarding, no remote arbitrary shell.
           ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ForwardAgent=no \
-            -i ~/.ssh/id_ed25519 "$USER@$HOST" "council-landing-deploy $digest" \
+            -o IdentitiesOnly=yes -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
+            -i ~/.ssh/id_ed25519 "$COUNCIL_USER@$COUNCIL_HOST" "council-landing-deploy $digest" \
             < release/council-landing.tar.gz
+      - name: Remove temporary deployment identity
+        if: always()
+        run: rm -f ~/.ssh/id_ed25519 ~/.ssh/known_hosts
