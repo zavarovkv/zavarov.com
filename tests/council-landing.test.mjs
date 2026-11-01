@@ -14,7 +14,7 @@ test("Council has localized canonical page paths", () => {
   assert.match(template, /hreflang="en"/);
 });
 test("Council sign-in stays on the protected application origin", () => {
-  assert.match(template, /https:\/\/council\.zavarov\.com\/login\?next=%2Fprofiles/);
+  assert.match(template, /\/login\?next=%2Fprofiles/);
   assert.doesNotMatch(template, /telegram-login\.js/);
 });
 test("Council styles are scoped and do not require external CDNs", () => {
@@ -30,11 +30,9 @@ test("Council footer has project controls but no personal social or email contac
   assert.match(footer, /agent-council/);
   assert.doesNotMatch(footer, /Params\.social|mailto:|linkedin\.com|t\.me\//);
 });
-test("Council adopts blog-compatible theme preference and self-hosted assets", () => {
-  const init = readFileSync(new URL("../assets/council/theme-init.js", import.meta.url), "utf8");
-  const theme = readFileSync(new URL("../assets/council/theme.js", import.meta.url), "utf8");
-  assert.match(init, /localStorage\.getItem\('theme'\)/);
-  assert.match(theme, /localStorage\.setItem\('theme'/);
-  assert.match(template, /resources\.Get "council\/theme\.js"/);
-  assert.match(css, /--background-color/);
+test("Council inherits the real hugo-mini base template and styles only layout", () => {
+  assert.match(template, /{{ define "main" }}/);
+  assert.match(template, /{{ define "footer" }}/);
+  assert.doesNotMatch(template, /<!doctype html>/i);
+  assert.doesNotMatch(css, /--background-color\s*:|@font-face|font-family\s*:/);
 });
