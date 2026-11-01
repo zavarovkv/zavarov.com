@@ -1,0 +1,1 @@
+document.querySelectorAll(".beauty-catalog [data-example-form]").forEach(function(e){var t=e.querySelector('[role="status"]');e.addEventListener("submit",function(e){e.preventDefault(),t.hidden=!1,t.textContent=document.documentElement.lang==="ru"?"Все верно. Данные никуда не отправлены.":"Looks good. Nothing was sent."}),e.addEventListener("reset",function(){t.hidden=!0})})

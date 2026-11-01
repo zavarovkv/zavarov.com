@@ -1,80 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <title>Beauty.css — beautiful websites, ordinary HTML</title>
-  <meta name="description" content="A lightweight CSS library for readable websites. Live typography, form, table, statistic and workflow examples with ready-to-use HTML.">
-  <link rel="icon" href="data:,">
-  <link rel="canonical" href="https://zavarov.com/beauty/en/">
-  <link rel="alternate" hreflang="en" href="https://zavarov.com/beauty/en/">
-  <link rel="alternate" hreflang="ru" href="https://zavarov.com/beauty/">
-  <link rel="alternate" hreflang="x-default" href="https://zavarov.com/beauty/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Beauty.css — beautiful websites, ordinary HTML">
-  <meta property="og:description" content="A lightweight CSS library for readable websites. Live typography, form, table, statistic and workflow examples with ready-to-use HTML.">
-  <meta property="og:url" content="https://zavarov.com/beauty/en/">
-  <meta name="twitter:card" content="summary">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Beauty.css","description":"A lightweight CSS library for readable websites. Live typography, form, table, statistic and workflow examples with ready-to-use HTML.","url":"https://zavarov.com/beauty/en/","codeRepository":"https://github.com/zavarovkv/beauty-css","programmingLanguage":"CSS","license":"https://opensource.org/license/mit","version":"0.5.0-dev.0"}</script>
-  <link rel="stylesheet" href="../dist/beauty.min.css?v=c4648b748d06">
-  <link rel="stylesheet" href="../assets/site.css?v=1e62e9ad1c2f">
-  <script src="../assets/theme.js?v=fdd4a53903d8"></script>
-</head>
-<body>
-
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="site-nav" aria-label="Main navigation">
-    <a class="wordmark" href="./"><strong>Beauty.css</strong></a>
-    <a href="#examples">Examples</a>
-    <a href="#start">Get started</a>
-    <div class="site-tools beauty-nav-end">
-      <a href=".././" lang="ru" hreflang="ru">RU</a>
-      <label class="theme-control"><span class="visually-hidden">Color scheme</span><select id="theme" disabled><option value="auto">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
-    </div>
-  </nav>
-</header>
-<main id="main">
-  <section class="hero" aria-labelledby="product-title">
-    <p class="beauty-note">v0.5.0-dev.0 · 3.8 KiB gzip · MIT</p>
-    <h1 id="product-title">Beautiful websites.
-Ordinary HTML.</h1>
-    <p class="beauty-lead">Typography, forms and details that make a page feel right. Add one stylesheet, then start writing.</p>
-    <p class="actions"><a class="beauty-button" href="../dist/beauty.min.css" download>Download CSS</a><a href="https://github.com/zavarovkv/beauty-css"><span class="beauty-link-label">GitHub</span><span class="beauty-link-icon" aria-hidden="true">↗</span></a><a href="https://www.npmjs.com/package/beauty-css">npm</a></p>
-    <p class="beauty-note">No dependencies or bundled fonts. Light and dark themes.</p>
-  </section>
-  <div class="documentation" id="examples">
-    <aside class="contents">
-      <details id="contents-disclosure"><summary>On this page</summary>
-      <nav aria-label="Example contents">
-        <ul><li><a href="#start">Get started</a></li><li><a href="#typography">Typography</a></li><li><a href="#links">Links and buttons</a></li><li><a href="#quotes">Quotes and lists</a></li><li><a href="#statistics">Numbers and steps</a></li><li><a href="#tables">Tables and code</a></li><li><a href="#forms">Forms</a></li><li><a href="#media">Media and disclosures</a></li><li><a href="#integration">Scope and navigation</a></li><li><a href="#palette">Palette</a></li><li><a href="#customize">Customization</a></li></ul>
-        <p class="beauty-note">17 live HTML examples</p>
-      </nav></details>
-    </aside>
-    <div class="catalog">
-      <section id="start" class="catalog-section" aria-labelledby="start-title">
-        <h2 id="start-title">One file. Ready to go.</h2>
-        <p>For a new page, use the classless version. Download the file and add this line to <code>&lt;head&gt;</code>:</p>
-        <pre tabindex="0"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;beauty.min.css&quot;&gt;</code></pre>
-        <p>For an existing website, use only prose and a container <code>.beauty</code>:</p>
-        <pre tabindex="0"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;beauty.prose.min.css&quot;&gt;
-
-&lt;article class=&quot;beauty&quot;&gt;
-  &lt;h1&gt;Your heading&lt;/h1&gt;
-  &lt;p&gt;Your words.&lt;/p&gt;
-&lt;/article&gt;</code></pre>
-        <p><a href="../dist/beauty.prose.min.css" download>Download prose</a> · <a href="../examples/prose.html">See scoped styles</a></p>
-        <details><summary>Install with npm</summary><pre tabindex="0"><code>npm install beauty-css</code></pre><pre tabindex="0"><code>import &quot;beauty-css&quot;;
-// Or just a container:
-import &quot;beauty-css/prose&quot;;</code></pre></details>
-        <p class="beauty-note">These examples show version 0.5.0-dev.0. Download CSS from this page to get the exact same styles. The npm version may differ.</p>
-      </section>
-      <section id="typography" class="catalog-section" aria-labelledby="typography-title">
-    <h2 id="typography-title">Typography</h2><p class="beauty-note">Ordinary HTML already looks good. Classes are only needed for optional treatments.</p>
-    <div class="example" data-example="typography-0">
-      <p class="example-label beauty-note">Headings and paragraphs</p>
-      <div class="sample"><hgroup>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><script>(function(){var e;try{e=localStorage.getItem("theme")}catch{}e!=="light"&&e!=="dark"&&(e=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"),document.documentElement.setAttribute("data-theme",e)})()</script><script>window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)},window.ym.l=+new Date,window.addEventListener("load",function(){var e=document.createElement("script");e.async=!0,e.src="https://mc.yandex.ru/metrika/tag.js?id=106247763",document.head.appendChild(e)}),ym(106247763,"init",{ssr:!0,clickmap:!0,ecommerce:"dataLayer",accurateTrackBounce:!0,trackLinks:!0})</script><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><link rel=preload href=/fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-300.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/inter-v20-cyrillic_cyrillic-ext_latin_latin-ext-600.woff2 as=font type=font/woff2 crossorigin><link rel=icon type=image/png sizes=32x32 href=https://zavarov.com/images/favicon.png><link rel=icon type=image/png sizes=192x192 href=https://zavarov.com/images/favicon-192.png><link rel=apple-touch-icon sizes=180x180 href=https://zavarov.com/images/apple-touch-icon.png><title>Beauty.css | Konstantin Zavarov</title><meta name=description content="Live typography, form, table, statistic and workflow examples with ready-to-use HTML."><link rel=canonical href=https://zavarov.com/beauty/en/><meta property="og:title" content="Beauty.css"><meta property="og:description" content="Live typography, form, table, statistic and workflow examples with ready-to-use HTML."><meta property="og:url" content="https://zavarov.com/beauty/en/"><meta property="og:site_name" content="Konstantin Zavarov"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ru_RU"><meta property="og:image" content="https://zavarov.com/beauty/en/og.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Beauty.css"><meta name=twitter:image content="https://zavarov.com/beauty/en/og.png"><meta name=twitter:image:alt content="Beauty.css"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Beauty.css"><meta name=twitter:description content="Live typography, form, table, statistic and workflow examples with ready-to-use HTML."><meta name=robots content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Konstantin Zavarov","url":"https://zavarov.com/"},"description":"Live typography, form, table, statistic and workflow examples with ready-to-use HTML.","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Konstantin Zavarov","url":"https://zavarov.com/en/"},"name":"Beauty.css","url":"https://zavarov.com/beauty/en/"}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://zavarov.com/en/","name":"Home","position":1},{"@type":"ListItem","item":"https://zavarov.com/beauty/en/","name":"Beauty.css","position":2}]}</script><link rel=alternate hreflang=en href=https://zavarov.com/beauty/en/><link rel=alternate hreflang=ru href=https://zavarov.com/beauty/><link rel=alternate hreflang=x-default href=https://zavarov.com/beauty/><meta name=referrer content="no-referrer-when-downgrade"><link rel=stylesheet href=/css/main.min.bf6ba61f95f83732607a6012d3e1003600441448680d9e952d73692c92c248a3.css integrity="sha256-v2umH5X4NzJgemAS0+EANgBEFEhoDZ6VLXNpLJLCSKM="><meta name=yandex-verification content="10c4739e6b63e3ba"><meta name=google-site-verification content="RWjxPyaNQADInCj6PX17TNfV3Wuxorv_rEaf4pWpV4s"></head><body data-i18n='{"copied":"Copied","copy":"Copy","goUp":"Go up","toDark":"Switch to dark theme","toLight":"Switch to light theme"}'><noscript><div><img src=https://mc.yandex.ru/watch/106247763 class=analytics-noscript alt></div></noscript><header><div class=header-container><a href=/en/ class=title><div class="title-avatar-container has-hover-avatar"><img src=/images/avatar1.webp alt="Konstantin Zavarov" class="title-avatar title-avatar-default" loading=eager decoding=sync width=45 height=45>
+<img src=/images/avatar2.webp alt class="title-avatar title-avatar-hover" loading=lazy decoding=async width=45 height=45></div><span class="title-text beauty-link-label"><span class=title-first-name>Konstantin </span><span class=title-last-name>Zavarov</span></span>
+</a><button class=mobile-menu-toggle type=button aria-label="Toggle menu" aria-expanded=false aria-controls=main-navigation>
+<span></span>
+<span></span>
+<span></span></button><nav class=main-nav id=main-navigation><a href=/en/blog/><span class="nav-label beauty-link-label">Articles</span></a><a href=/en/consultation/><span class="nav-label beauty-link-label">Consultation</span></a><a href=https://t.me/pmgen target=_blank rel="noopener noreferrer"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46.0.663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>
+<span class="nav-label beauty-link-label">Subscribe</span></a></nav></div></header><main><h1>Beauty.css</h1><article class="beauty-reading beauty-catalog" lang=en><p>A lightweight CSS library for beautiful, readable websites. Typography, forms and dark mode for plain HTML. This page demonstrates all its features.</p><p><a href=https://github.com/zavarovkv/beauty-css>GitHub ↗</a> · <a href=https://www.npmjs.com/package/beauty-css>npm ↗</a> · <a href=/beauty/dist/beauty.min.css download>Download CSS</a></p><details><summary>On this page</summary><ul><li><a href=#start>Get started</a></li><li><a href=#typography>Typography</a></li><li><a href=#links>Links and buttons</a></li><li><a href=#quotes>Quotes and lists</a></li><li><a href=#statistics>Numbers and steps</a></li><li><a href=#tables>Tables and code</a></li><li><a href=#forms>Forms</a></li><li><a href=#media>Media and disclosures</a></li><li><a href=#integration>Prose</a></li><li><a href=#palette>Palette</a></li><li><a href=#customize>Customization</a></li></ul></details><section aria-labelledby=start><h2 id=start>Get started</h2><p>Download the stylesheet and add it to <code>&lt;head></code>:</p><div class=code-block data-code='<link rel="stylesheet" href="beauty.min.css">'><div class=highlight><pre tabindex=0><code>&lt;link rel=&#34;stylesheet&#34; href=&#34;beauty.min.css&#34;&gt;</code></pre></div></div><p>Or install the package for a project with a bundler:</p><div class=code-block data-code="npm install beauty-css"><div class=highlight><pre tabindex=0><code>npm install beauty-css</code></pre></div></div><div class=code-block data-code='import "beauty-css";'><div class=highlight><pre tabindex=0><code>import &#34;beauty-css&#34;;</code></pre></div></div><p class=beauty-note>Examples and downloads use version 0.5.0-dev.0. It may be ahead of npm.</p></section><section aria-labelledby=typography><h2 id=typography>Typography</h2><p>Ordinary HTML already looks good. Classes are only needed for optional treatments.</p><section data-example><h3>Headings and paragraphs</h3><div class=beauty-example><hgroup><h2>Make room for the words</h2><p>A good page starts with a clear idea.</p></hgroup><p>Headings help us find our place, and paragraphs give an idea room to develop. A comfortable measure and generous leading make reading easier on any screen.</p><h3>A third-level heading</h3><h4>A fourth-level heading</h4><h5>A fifth-level heading</h5><h6>A sixth-level heading</h6></div><details><summary>Example HTML</summary><div class=code-block data-code="<hgroup>
   <h2>Make room for the words</h2>
   <p>A good page starts with a clear idea.</p>
 </hgroup>
@@ -82,7 +12,7 @@ import &quot;beauty-css/prose&quot;;</code></pre></details>
 <h3>A third-level heading</h3>
 <h4>A fourth-level heading</h4>
 <h5>A fifth-level heading</h5>
-<h6>A sixth-level heading</h6></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;hgroup&gt;
+<h6>A sixth-level heading</h6>"><div class=highlight><pre tabindex=0><code>&lt;hgroup&gt;
   &lt;h2&gt;Make room for the words&lt;/h2&gt;
   &lt;p&gt;A good page starts with a clear idea.&lt;/p&gt;
 &lt;/hgroup&gt;
@@ -90,52 +20,40 @@ import &quot;beauty-css/prose&quot;;</code></pre></details>
 &lt;h3&gt;A third-level heading&lt;/h3&gt;
 &lt;h4&gt;A fourth-level heading&lt;/h4&gt;
 &lt;h5&gt;A fifth-level heading&lt;/h5&gt;
-&lt;h6&gt;A sixth-level heading&lt;/h6&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="typography-1">
-      <p class="example-label beauty-note">Inline emphasis</p>
-      <div class="sample"><p><strong>An important idea</strong>, <em>a little emphasis</em>, <mark>a highlighted phrase</mark>.
+&lt;h6&gt;A sixth-level heading&lt;/h6&gt;</code></pre></div></div></details></section><section data-example><h3>Inline emphasis</h3><div class=beauty-example><p><strong>An important idea</strong>, <em>a little emphasis</em>, <mark>a highlighted phrase</mark>.
+<abbr title="Cascading Style Sheets">CSS</abbr>, <code>line-height</code>, <kbd>Ctrl</kbd> + <kbd>C</kbd>, <samp>OK</samp>.</p><p><b>Bold</b>, <i>italic</i>, <u>underlined</u>, <s>outdated</s>, <del>deleted</del>, <ins>inserted</ins>.
+H<sub>2</sub>O · x<sup>2</sup> · <small>a small clarification</small>.</p><p>Meet us on <time datetime=2026-11-01>1 November 2026</time>. <span class=beauty-nowrap>24 MB</span>.</p></div><details><summary>Example HTML</summary><div class=code-block data-code='<p><strong>An important idea</strong>, <em>a little emphasis</em>, <mark>a highlighted phrase</mark>.
 <abbr title="Cascading Style Sheets">CSS</abbr>, <code>line-height</code>, <kbd>Ctrl</kbd> + <kbd>C</kbd>, <samp>OK</samp>.</p>
 <p><b>Bold</b>, <i>italic</i>, <u>underlined</u>, <s>outdated</s>, <del>deleted</del>, <ins>inserted</ins>.
 H<sub>2</sub>O · x<sup>2</sup> · <small>a small clarification</small>.</p>
-<p>Meet us on <time datetime="2026-11-01">1 November 2026</time>. <span class="beauty-nowrap">24 MB</span>.</p></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;p&gt;&lt;strong&gt;An important idea&lt;/strong&gt;, &lt;em&gt;a little emphasis&lt;/em&gt;, &lt;mark&gt;a highlighted phrase&lt;/mark&gt;.
-&lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt;, &lt;code&gt;line-height&lt;/code&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;, &lt;samp&gt;OK&lt;/samp&gt;.&lt;/p&gt;
+<p>Meet us on <time datetime="2026-11-01">1 November 2026</time>. <span class="beauty-nowrap">24 MB</span>.</p>'><div class=highlight><pre tabindex=0><code>&lt;p&gt;&lt;strong&gt;An important idea&lt;/strong&gt;, &lt;em&gt;a little emphasis&lt;/em&gt;, &lt;mark&gt;a highlighted phrase&lt;/mark&gt;.
+&lt;abbr title=&#34;Cascading Style Sheets&#34;&gt;CSS&lt;/abbr&gt;, &lt;code&gt;line-height&lt;/code&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt; &#43; &lt;kbd&gt;C&lt;/kbd&gt;, &lt;samp&gt;OK&lt;/samp&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;u&gt;underlined&lt;/u&gt;, &lt;s&gt;outdated&lt;/s&gt;, &lt;del&gt;deleted&lt;/del&gt;, &lt;ins&gt;inserted&lt;/ins&gt;.
 H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small clarification&lt;/small&gt;.&lt;/p&gt;
-&lt;p&gt;Meet us on &lt;time datetime=&quot;2026-11-01&quot;&gt;1 November 2026&lt;/time&gt;. &lt;span class=&quot;beauty-nowrap&quot;&gt;24 MB&lt;/span&gt;.&lt;/p&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="typography-2">
-      <p class="example-label beauty-note">Editorial treatments</p>
-      <div class="sample"><article class="beauty-reading">
+&lt;p&gt;Meet us on &lt;time datetime=&#34;2026-11-01&#34;&gt;1 November 2026&lt;/time&gt;. &lt;span class=&#34;beauty-nowrap&#34;&gt;24 MB&lt;/span&gt;.&lt;/p&gt;</code></pre></div></div></details></section><section data-example><h3>Editorial treatments</h3><div class=beauty-example><article class=beauty-reading><p class=beauty-lead>An opening paragraph invites the reader into the story.</p><h3 class=beauty-heading-compact>A short heading with a compact rhythm</h3><p>One <span class=beauty-emphasis>important detail</span> can change how a whole page feels.</p><p class=beauty-note>For more information, <a href=#start>read the guide</a>.</p><p class=beauty-fine-print>A small attribution or source.</p></article></div><details><summary>Example HTML</summary><div class=code-block data-code='<article class="beauty-reading">
   <p class="beauty-lead">An opening paragraph invites the reader into the story.</p>
   <h3 class="beauty-heading-compact">A short heading with a compact rhythm</h3>
   <p>One <span class="beauty-emphasis">important detail</span> can change how a whole page feels.</p>
   <p class="beauty-note">For more information, <a href="#start">read the guide</a>.</p>
   <p class="beauty-fine-print">A small attribution or source.</p>
-</article></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;article class=&quot;beauty-reading&quot;&gt;
-  &lt;p class=&quot;beauty-lead&quot;&gt;An opening paragraph invites the reader into the story.&lt;/p&gt;
-  &lt;h3 class=&quot;beauty-heading-compact&quot;&gt;A short heading with a compact rhythm&lt;/h3&gt;
-  &lt;p&gt;One &lt;span class=&quot;beauty-emphasis&quot;&gt;important detail&lt;/span&gt; can change how a whole page feels.&lt;/p&gt;
-  &lt;p class=&quot;beauty-note&quot;&gt;For more information, &lt;a href=&quot;#start&quot;&gt;read the guide&lt;/a&gt;.&lt;/p&gt;
-  &lt;p class=&quot;beauty-fine-print&quot;&gt;A small attribution or source.&lt;/p&gt;
-&lt;/article&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="links" class="catalog-section" aria-labelledby="links-title">
-    <h2 id="links-title">Links and buttons</h2><p class="beauty-note">Links navigate. Buttons perform actions. Keyboard focus stays visible.</p>
-    <div class="example" data-example="links-0">
-      <p class="example-label beauty-note">Ordinary and compound links</p>
-      <div class="sample"><p><a href="#start">Get started</a></p>
+</article>'><div class=highlight><pre tabindex=0><code>&lt;article class=&#34;beauty-reading&#34;&gt;
+  &lt;p class=&#34;beauty-lead&#34;&gt;An opening paragraph invites the reader into the story.&lt;/p&gt;
+  &lt;h3 class=&#34;beauty-heading-compact&#34;&gt;A short heading with a compact rhythm&lt;/h3&gt;
+  &lt;p&gt;One &lt;span class=&#34;beauty-emphasis&#34;&gt;important detail&lt;/span&gt; can change how a whole page feels.&lt;/p&gt;
+  &lt;p class=&#34;beauty-note&#34;&gt;For more information, &lt;a href=&#34;#start&#34;&gt;read the guide&lt;/a&gt;.&lt;/p&gt;
+  &lt;p class=&#34;beauty-fine-print&#34;&gt;A small attribution or source.&lt;/p&gt;
+&lt;/article&gt;</code></pre></div></div></details></section></section><section aria-labelledby=links><h2 id=links>Links and buttons</h2><p>Links navigate. Buttons perform actions. Keyboard focus stays visible.</p><section data-example><h3>Ordinary and compound links</h3><div class=beauty-example><p><a href=#start>Get started</a></p><p><a href=https://github.com/zavarovkv/beauty-css><span class=beauty-link-label>GitHub</span><span class=beauty-link-icon aria-hidden=true>↗</span></a></p></div><details><summary>Example HTML</summary><div class=code-block data-code='<p><a href="#start">Get started</a></p>
 <p><a href="https://github.com/zavarovkv/beauty-css">
   <span class="beauty-link-label">GitHub</span><span class="beauty-link-icon" aria-hidden="true">↗</span>
-</a></p></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;p&gt;&lt;a href=&quot;#start&quot;&gt;Get started&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zavarovkv/beauty-css&quot;&gt;
-  &lt;span class=&quot;beauty-link-label&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;beauty-link-icon&quot; aria-hidden=&quot;true&quot;&gt;↗&lt;/span&gt;
-&lt;/a&gt;&lt;/p&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="links-1">
-      <p class="example-label beauty-note">Actions and states</p>
-      <div class="sample"><p><a class="beauty-button" href="../dist/beauty.min.css" download>Download CSS</a>
+</a></p>'><div class=highlight><pre tabindex=0><code>&lt;p&gt;&lt;a href=&#34;#start&#34;&gt;Get started&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/zavarovkv/beauty-css&#34;&gt;
+  &lt;span class=&#34;beauty-link-label&#34;&gt;GitHub&lt;/span&gt;&lt;span class=&#34;beauty-link-icon&#34; aria-hidden=&#34;true&#34;&gt;↗&lt;/span&gt;
+&lt;/a&gt;&lt;/p&gt;</code></pre></div></div></details></section><section data-example><h3>Actions and states</h3><div class=beauty-example><p><a class=beauty-button href=/beauty/dist/beauty.min.css download>Download CSS</a>
+<button type=button disabled>Unavailable</button></p><form data-example-form><label for=button-email>Email</label>
+<input id=button-email type=email placeholder=you@example.com required>
+<input type=submit value=Validate>
+<input type=reset value=Reset>
+<input type=button value="Example action" disabled><p class=beauty-note>Demo only: nothing is sent.</p><p role=status hidden></p></form></div><details><summary>Example HTML</summary><div class=code-block data-code='<p><a class="beauty-button" href="/beauty/dist/beauty.min.css" download>Download CSS</a>
 <button type="button" disabled>Unavailable</button></p>
 <form data-example-form>
   <label for="button-email">Email</label>
@@ -145,42 +63,31 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
   <input type="button" value="Example action" disabled>
   <p class="beauty-note">Demo only: nothing is sent.</p>
   <p role="status" hidden></p>
-</form></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;p&gt;&lt;a class=&quot;beauty-button&quot; href=&quot;../dist/beauty.min.css&quot; download&gt;Download CSS&lt;/a&gt;
-&lt;button type=&quot;button&quot; disabled&gt;Unavailable&lt;/button&gt;&lt;/p&gt;
+</form>'><div class=highlight><pre tabindex=0><code>&lt;p&gt;&lt;a class=&#34;beauty-button&#34; href=&#34;/beauty/dist/beauty.min.css&#34; download&gt;Download CSS&lt;/a&gt;
+&lt;button type=&#34;button&#34; disabled&gt;Unavailable&lt;/button&gt;&lt;/p&gt;
 &lt;form data-example-form&gt;
-  &lt;label for=&quot;button-email&quot;&gt;Email&lt;/label&gt;
-  &lt;input id=&quot;button-email&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; required&gt;
-  &lt;input type=&quot;submit&quot; value=&quot;Validate&quot;&gt;
-  &lt;input type=&quot;reset&quot; value=&quot;Reset&quot;&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Example action&quot; disabled&gt;
-  &lt;p class=&quot;beauty-note&quot;&gt;Demo only: nothing is sent.&lt;/p&gt;
-  &lt;p role=&quot;status&quot; hidden&gt;&lt;/p&gt;
-&lt;/form&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="quotes" class="catalog-section" aria-labelledby="quotes-title">
-    <h2 id="quotes-title">Quotes and lists</h2><p class="beauty-note">Block and inline quotes, nested lists and definitions retain native semantics.</p>
-    <div class="example" data-example="quotes-0">
-      <p class="example-label beauty-note">Quotations</p>
-      <div class="sample"><blockquote>
+  &lt;label for=&#34;button-email&#34;&gt;Email&lt;/label&gt;
+  &lt;input id=&#34;button-email&#34; type=&#34;email&#34; placeholder=&#34;you@example.com&#34; required&gt;
+  &lt;input type=&#34;submit&#34; value=&#34;Validate&#34;&gt;
+  &lt;input type=&#34;reset&#34; value=&#34;Reset&#34;&gt;
+  &lt;input type=&#34;button&#34; value=&#34;Example action&#34; disabled&gt;
+  &lt;p class=&#34;beauty-note&#34;&gt;Demo only: nothing is sent.&lt;/p&gt;
+  &lt;p role=&#34;status&#34; hidden&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre></div></div></details></section></section><section aria-labelledby=quotes><h2 id=quotes>Quotes and lists</h2><p>Block and inline quotes, nested lists and definitions retain native semantics.</p><section data-example><h3>Quotations</h3><div class=beauty-example><blockquote><p>Good typography helps the reader focus on the meaning.</p><footer>A note on design</footer></blockquote><p>This is <q>an inline quotation</q>.</p><blockquote class=beauty-callout><p>A quotation on a quiet surface for extra emphasis.</p></blockquote></div><details><summary>Example HTML</summary><div class=code-block data-code='<blockquote>
   <p>Good typography helps the reader focus on the meaning.</p>
   <footer>A note on design</footer>
 </blockquote>
 <p>This is <q>an inline quotation</q>.</p>
 <blockquote class="beauty-callout">
   <p>A quotation on a quiet surface for extra emphasis.</p>
-</blockquote></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;blockquote&gt;
+</blockquote>'><div class=highlight><pre tabindex=0><code>&lt;blockquote&gt;
   &lt;p&gt;Good typography helps the reader focus on the meaning.&lt;/p&gt;
   &lt;footer&gt;A note on design&lt;/footer&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This is &lt;q&gt;an inline quotation&lt;/q&gt;.&lt;/p&gt;
-&lt;blockquote class=&quot;beauty-callout&quot;&gt;
+&lt;blockquote class=&#34;beauty-callout&#34;&gt;
   &lt;p&gt;A quotation on a quiet surface for extra emphasis.&lt;/p&gt;
-&lt;/blockquote&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="quotes-1">
-      <p class="example-label beauty-note">Three kinds of list</p>
-      <div class="sample"><ul>
+&lt;/blockquote&gt;</code></pre></div></div></details></section><section data-example><h3>Three kinds of list</h3><div class=beauty-example><ul><li>A clear idea<ul><li>A useful detail</li></ul></li><li>A logical sequence</li></ul><ol><li>Write</li><li>Edit</li><li>Publish</li></ol><dl><dt>Classless</dt><dd>Styles for an entire HTML page.</dd><dt>Prose</dt><dd>Styles inside a .beauty container.</dd></dl></div><details><summary>Example HTML</summary><div class=code-block data-code="<ul>
   <li>A clear idea
     <ul><li>A useful detail</li></ul>
   </li>
@@ -190,7 +97,7 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
 <dl>
   <dt>Classless</dt><dd>Styles for an entire HTML page.</dd>
   <dt>Prose</dt><dd>Styles inside a .beauty container.</dd>
-</dl></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;ul&gt;
+</dl>"><div class=highlight><pre tabindex=0><code>&lt;ul&gt;
   &lt;li&gt;A clear idea
     &lt;ul&gt;&lt;li&gt;A useful detail&lt;/li&gt;&lt;/ul&gt;
   &lt;/li&gt;
@@ -200,28 +107,17 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
 &lt;dl&gt;
   &lt;dt&gt;Classless&lt;/dt&gt;&lt;dd&gt;Styles for an entire HTML page.&lt;/dd&gt;
   &lt;dt&gt;Prose&lt;/dt&gt;&lt;dd&gt;Styles inside a .beauty container.&lt;/dd&gt;
-&lt;/dl&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="statistics" class="catalog-section" aria-labelledby="statistics-title">
-    <h2 id="statistics-title">Numbers and steps</h2><p class="beauty-note">Prominent values and a clear sequence of actions. No charts, animation or extra libraries.</p>
-    <div class="example" data-example="statistics-0">
-      <p class="example-label beauty-note">A value and its label</p>
-      <div class="sample"><dl>
+&lt;/dl&gt;</code></pre></div></div></details></section></section><section aria-labelledby=statistics><h2 id=statistics>Numbers and steps</h2><p>Prominent values and a clear sequence of actions. No charts, animation or extra libraries.</p><section data-example><h3>A value and its label</h3><div class=beauty-example><dl><dt class=beauty-stat-label>Tasks completed</dt><dd class=beauty-stat-value>120</dd><dt class=beauty-stat-label>Tokens processed</dt><dd class=beauty-stat-value><data value=1900000 title="1 900 000">1.9<small class=beauty-stat-unit>&nbsp;M</small></data></dd></dl></div><details><summary>Example HTML</summary><div class=code-block data-code='<dl>
   <dt class="beauty-stat-label">Tasks completed</dt>
   <dd class="beauty-stat-value">120</dd>
   <dt class="beauty-stat-label">Tokens processed</dt>
-  <dd class="beauty-stat-value"><data value="1900000" title="1 900 000">1.9<small class="beauty-stat-unit">&nbsp;M</small></data></dd>
-</dl></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;dl&gt;
-  &lt;dt class=&quot;beauty-stat-label&quot;&gt;Tasks completed&lt;/dt&gt;
-  &lt;dd class=&quot;beauty-stat-value&quot;&gt;120&lt;/dd&gt;
-  &lt;dt class=&quot;beauty-stat-label&quot;&gt;Tokens processed&lt;/dt&gt;
-  &lt;dd class=&quot;beauty-stat-value&quot;&gt;&lt;data value=&quot;1900000&quot; title=&quot;1 900 000&quot;&gt;1.9&lt;small class=&quot;beauty-stat-unit&quot;&gt;&amp;nbsp;M&lt;/small&gt;&lt;/data&gt;&lt;/dd&gt;
-&lt;/dl&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="statistics-1">
-      <p class="example-label beauty-note">Connected steps</p>
-      <div class="sample"><ol class="beauty-steps" role="list">
+  <dd class="beauty-stat-value"><data value="1900000" title="1 900 000">1.9<small class="beauty-stat-unit">&amp;nbsp;M</small></data></dd>
+</dl>'><div class=highlight><pre tabindex=0><code>&lt;dl&gt;
+  &lt;dt class=&#34;beauty-stat-label&#34;&gt;Tasks completed&lt;/dt&gt;
+  &lt;dd class=&#34;beauty-stat-value&#34;&gt;120&lt;/dd&gt;
+  &lt;dt class=&#34;beauty-stat-label&#34;&gt;Tokens processed&lt;/dt&gt;
+  &lt;dd class=&#34;beauty-stat-value&#34;&gt;&lt;data value=&#34;1900000&#34; title=&#34;1 900 000&#34;&gt;1.9&lt;small class=&#34;beauty-stat-unit&#34;&gt;&amp;nbsp;M&lt;/small&gt;&lt;/data&gt;&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></div></div></details></section><section data-example><h3>Connected steps</h3><div class=beauty-example><ol class=beauty-steps role=list><li><small class=beauty-step-marker aria-hidden=true>1</small><div><h3>Make a plan</h3><p>Agree on the goal and choose the next step.</p></div></li><li><small class=beauty-step-marker aria-hidden=true>2</small><div><h3>Do the work</h3><p>Focus on what matters and review the result.</p></div></li><li><small class=beauty-step-marker aria-hidden=true>3</small><div><h3>Share the outcome</h3><p>Explain what changed and what comes next.</p></div></li></ol></div><details><summary>Example HTML</summary><div class=code-block data-code='<ol class="beauty-steps" role="list">
   <li><small class="beauty-step-marker" aria-hidden="true">1</small><div>
     <h3>Make a plan</h3>
     <p>Agree on the goal and choose the next step.</p>
@@ -234,27 +130,20 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
     <h3>Share the outcome</h3>
     <p>Explain what changed and what comes next.</p>
   </div></li>
-</ol></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;ol class=&quot;beauty-steps&quot; role=&quot;list&quot;&gt;
-  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;1&lt;/small&gt;&lt;div&gt;
+</ol>'><div class=highlight><pre tabindex=0><code>&lt;ol class=&#34;beauty-steps&#34; role=&#34;list&#34;&gt;
+  &lt;li&gt;&lt;small class=&#34;beauty-step-marker&#34; aria-hidden=&#34;true&#34;&gt;1&lt;/small&gt;&lt;div&gt;
     &lt;h3&gt;Make a plan&lt;/h3&gt;
     &lt;p&gt;Agree on the goal and choose the next step.&lt;/p&gt;
   &lt;/div&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/small&gt;&lt;div&gt;
+  &lt;li&gt;&lt;small class=&#34;beauty-step-marker&#34; aria-hidden=&#34;true&#34;&gt;2&lt;/small&gt;&lt;div&gt;
     &lt;h3&gt;Do the work&lt;/h3&gt;
     &lt;p&gt;Focus on what matters and review the result.&lt;/p&gt;
   &lt;/div&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;3&lt;/small&gt;&lt;div&gt;
+  &lt;li&gt;&lt;small class=&#34;beauty-step-marker&#34; aria-hidden=&#34;true&#34;&gt;3&lt;/small&gt;&lt;div&gt;
     &lt;h3&gt;Share the outcome&lt;/h3&gt;
     &lt;p&gt;Explain what changed and what comes next.&lt;/p&gt;
   &lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="tables" class="catalog-section" aria-labelledby="tables-title">
-    <h2 id="tables-title">Tables and code</h2><p class="beauty-note">Wide content scrolls within its own region, including with a keyboard.</p>
-    <div class="example" data-example="tables-0">
-      <p class="example-label beauty-note">Table</p>
-      <div class="sample"><div class="beauty-scroll" role="region" aria-label="Library files" tabindex="0">
+&lt;/ol&gt;</code></pre></div></div></details></section></section><section aria-labelledby=tables><h2 id=tables>Tables and code</h2><p>Wide content scrolls within its own region, including with a keyboard.</p><section data-example><h3>Table</h3><div class=beauty-example><div class=beauty-scroll role=region aria-label="Library files" tabindex=0><table><caption>Two ways to add Beauty</caption><thead><tr><th scope=col>File</th><th scope=col>Scope</th><th scope=col>Class</th></tr></thead><tbody><tr><th scope=row>beauty.min.css</th><td>Whole page</td><td>—</td></tr><tr><th scope=row>beauty.prose.min.css</th><td>Container</td><td>.beauty</td></tr></tbody></table></div></div><details><summary>Example HTML</summary><div class=code-block data-code='<div class="beauty-scroll" role="region" aria-label="Library files" tabindex="0">
   <table>
     <caption>Two ways to add Beauty</caption>
     <thead><tr><th scope="col">File</th><th scope="col">Scope</th><th scope="col">Class</th></tr></thead>
@@ -263,35 +152,35 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
       <tr><th scope="row">beauty.prose.min.css</th><td>Container</td><td>.beauty</td></tr>
     </tbody>
   </table>
-</div></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;div class=&quot;beauty-scroll&quot; role=&quot;region&quot; aria-label=&quot;Library files&quot; tabindex=&quot;0&quot;&gt;
+</div>'><div class=highlight><pre tabindex=0><code>&lt;div class=&#34;beauty-scroll&#34; role=&#34;region&#34; aria-label=&#34;Library files&#34; tabindex=&#34;0&#34;&gt;
   &lt;table&gt;
     &lt;caption&gt;Two ways to add Beauty&lt;/caption&gt;
-    &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;File&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Scope&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Class&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope=&#34;col&#34;&gt;File&lt;/th&gt;&lt;th scope=&#34;col&#34;&gt;Scope&lt;/th&gt;&lt;th scope=&#34;col&#34;&gt;Class&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;beauty.min.css&lt;/th&gt;&lt;td&gt;Whole page&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;beauty.prose.min.css&lt;/th&gt;&lt;td&gt;Container&lt;/td&gt;&lt;td&gt;.beauty&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&#34;row&#34;&gt;beauty.min.css&lt;/th&gt;&lt;td&gt;Whole page&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&#34;row&#34;&gt;beauty.prose.min.css&lt;/th&gt;&lt;td&gt;Container&lt;/td&gt;&lt;td&gt;.beauty&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/div&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="tables-1">
-      <p class="example-label beauty-note">Code block</p>
-      <div class="sample"><pre tabindex="0"><code>:root {
+&lt;/div&gt;</code></pre></div></div></details></section><section data-example><h3>Code block</h3><div class=beauty-example><pre tabindex=0><code>:root {
+  --beauty-link: #7250a5;
+  --beauty-reading-width: 42.5rem;
+}</code></pre><pre tabindex=0><samp>Build complete. Ready to publish.</samp></pre></div><details><summary>Example HTML</summary><div class=code-block data-code='<pre tabindex="0"><code>:root {
   --beauty-link: #7250a5;
   --beauty-reading-width: 42.5rem;
 }</code></pre>
-<pre tabindex="0"><samp>Build complete. Ready to publish.</samp></pre></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;:root {
+<pre tabindex="0"><samp>Build complete. Ready to publish.</samp></pre>'><div class=highlight><pre tabindex=0><code>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:root {
   --beauty-link: #7250a5;
   --beauty-reading-width: 42.5rem;
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;pre tabindex=&quot;0&quot;&gt;&lt;samp&gt;Build complete. Ready to publish.&lt;/samp&gt;&lt;/pre&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="forms" class="catalog-section" aria-labelledby="forms-title">
-    <h2 id="forms-title">Forms</h2><p class="beauty-note">Native fields, labels and states. Examples run locally and never submit data.</p>
-    <div class="example" data-example="forms-0">
-      <p class="example-label beauty-note">Text and selection</p>
-      <div class="sample"><fieldset>
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;samp&gt;Build complete. Ready to publish.&lt;/samp&gt;&lt;/pre&gt;</code></pre></div></div></details></section></section><section aria-labelledby=forms><h2 id=forms>Forms</h2><p>Native fields, labels and states. Examples run locally and never submit data.</p><section data-example><h3>Text and selection</h3><div class=beauty-example><fieldset><legend>Your preferences</legend><label for=demo-name>Name</label>
+<input id=demo-name autocomplete=name placeholder="What should we call you?">
+<label for=demo-select>Format</label>
+<select id=demo-select><option>Article</option><option>Documentation</option></select>
+<label for=demo-message>Message</label>
+<textarea id=demo-message placeholder="Tell us about your idea"></textarea>
+<label><input type=checkbox checked>Receive updates</label>
+<label><input type=radio name=frequency checked>Weekly</label>
+<label><input type=radio name=frequency>Monthly</label></fieldset></div><details><summary>Example HTML</summary><div class=code-block data-code='<fieldset>
   <legend>Your preferences</legend>
   <label for="demo-name">Name</label>
   <input id="demo-name" autocomplete="name" placeholder="What should we call you?">
@@ -302,38 +191,43 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
   <label><input type="checkbox" checked>Receive updates</label>
   <label><input type="radio" name="frequency" checked>Weekly</label>
   <label><input type="radio" name="frequency">Monthly</label>
-</fieldset></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;fieldset&gt;
+</fieldset>'><div class=highlight><pre tabindex=0><code>&lt;fieldset&gt;
   &lt;legend&gt;Your preferences&lt;/legend&gt;
-  &lt;label for=&quot;demo-name&quot;&gt;Name&lt;/label&gt;
-  &lt;input id=&quot;demo-name&quot; autocomplete=&quot;name&quot; placeholder=&quot;What should we call you?&quot;&gt;
-  &lt;label for=&quot;demo-select&quot;&gt;Format&lt;/label&gt;
-  &lt;select id=&quot;demo-select&quot;&gt;&lt;option&gt;Article&lt;/option&gt;&lt;option&gt;Documentation&lt;/option&gt;&lt;/select&gt;
-  &lt;label for=&quot;demo-message&quot;&gt;Message&lt;/label&gt;
-  &lt;textarea id=&quot;demo-message&quot; placeholder=&quot;Tell us about your idea&quot;&gt;&lt;/textarea&gt;
-  &lt;label&gt;&lt;input type=&quot;checkbox&quot; checked&gt;Receive updates&lt;/label&gt;
-  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;frequency&quot; checked&gt;Weekly&lt;/label&gt;
-  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;frequency&quot;&gt;Monthly&lt;/label&gt;
-&lt;/fieldset&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="forms-1">
-      <p class="example-label beauty-note">Field states</p>
-      <div class="sample"><label for="demo-readonly">Read only</label>
+  &lt;label for=&#34;demo-name&#34;&gt;Name&lt;/label&gt;
+  &lt;input id=&#34;demo-name&#34; autocomplete=&#34;name&#34; placeholder=&#34;What should we call you?&#34;&gt;
+  &lt;label for=&#34;demo-select&#34;&gt;Format&lt;/label&gt;
+  &lt;select id=&#34;demo-select&#34;&gt;&lt;option&gt;Article&lt;/option&gt;&lt;option&gt;Documentation&lt;/option&gt;&lt;/select&gt;
+  &lt;label for=&#34;demo-message&#34;&gt;Message&lt;/label&gt;
+  &lt;textarea id=&#34;demo-message&#34; placeholder=&#34;Tell us about your idea&#34;&gt;&lt;/textarea&gt;
+  &lt;label&gt;&lt;input type=&#34;checkbox&#34; checked&gt;Receive updates&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&#34;radio&#34; name=&#34;frequency&#34; checked&gt;Weekly&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&#34;radio&#34; name=&#34;frequency&#34;&gt;Monthly&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre></div></div></details></section><section data-example><h3>Field states</h3><div class=beauty-example><label for=demo-readonly>Read only</label>
+<input id=demo-readonly value=Beauty.css readonly>
+<label for=demo-disabled>Disabled field</label>
+<input id=demo-disabled value=Unavailable disabled>
+<label for=demo-invalid>Email</label>
+<input id=demo-invalid type=email value=example aria-invalid=true aria-describedby=demo-error><p id=demo-error>Enter a complete address, such as you@example.com.</p></div><details><summary>Example HTML</summary><div class=code-block data-code='<label for="demo-readonly">Read only</label>
 <input id="demo-readonly" value="Beauty.css" readonly>
 <label for="demo-disabled">Disabled field</label>
 <input id="demo-disabled" value="Unavailable" disabled>
 <label for="demo-invalid">Email</label>
 <input id="demo-invalid" type="email" value="example" aria-invalid="true" aria-describedby="demo-error">
-<p id="demo-error">Enter a complete address, such as you@example.com.</p></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;label for=&quot;demo-readonly&quot;&gt;Read only&lt;/label&gt;
-&lt;input id=&quot;demo-readonly&quot; value=&quot;Beauty.css&quot; readonly&gt;
-&lt;label for=&quot;demo-disabled&quot;&gt;Disabled field&lt;/label&gt;
-&lt;input id=&quot;demo-disabled&quot; value=&quot;Unavailable&quot; disabled&gt;
-&lt;label for=&quot;demo-invalid&quot;&gt;Email&lt;/label&gt;
-&lt;input id=&quot;demo-invalid&quot; type=&quot;email&quot; value=&quot;example&quot; aria-invalid=&quot;true&quot; aria-describedby=&quot;demo-error&quot;&gt;
-&lt;p id=&quot;demo-error&quot;&gt;Enter a complete address, such as you@example.com.&lt;/p&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="forms-2">
-      <p class="example-label beauty-note">More native controls</p>
-      <div class="sample"><label for="demo-number">Quantity</label><input id="demo-number" type="number" min="1" max="10" value="3">
+<p id="demo-error">Enter a complete address, such as you@example.com.</p>'><div class=highlight><pre tabindex=0><code>&lt;label for=&#34;demo-readonly&#34;&gt;Read only&lt;/label&gt;
+&lt;input id=&#34;demo-readonly&#34; value=&#34;Beauty.css&#34; readonly&gt;
+&lt;label for=&#34;demo-disabled&#34;&gt;Disabled field&lt;/label&gt;
+&lt;input id=&#34;demo-disabled&#34; value=&#34;Unavailable&#34; disabled&gt;
+&lt;label for=&#34;demo-invalid&#34;&gt;Email&lt;/label&gt;
+&lt;input id=&#34;demo-invalid&#34; type=&#34;email&#34; value=&#34;example&#34; aria-invalid=&#34;true&#34; aria-describedby=&#34;demo-error&#34;&gt;
+&lt;p id=&#34;demo-error&#34;&gt;Enter a complete address, such as you@example.com.&lt;/p&gt;</code></pre></div></div></details></section><section data-example><h3>More native controls</h3><div class=beauty-example><label for=demo-number>Quantity</label><input id=demo-number type=number min=1 max=10 value=3>
+<label for=demo-date>Date</label><input id=demo-date type=date value=2026-11-01>
+<label for=demo-search>Search</label><input id=demo-search type=search placeholder="Search the text">
+<label for=demo-password>Password</label><input id=demo-password type=password autocomplete=new-password placeholder=••••••••>
+<label for=demo-file>File</label><input id=demo-file type=file>
+<label for=demo-color>Color</label><input id=demo-color type=color value=#0060a0>
+<label for=demo-range>Level</label><input id=demo-range type=range min=0 max=100 value=60>
+<label for=demo-progress>Progress</label><progress id=demo-progress value=60 max=100>60%</progress>
+<label for=demo-meter>Storage used</label><meter id=demo-meter value=0.35>35%</meter></div><details><summary>Example HTML</summary><div class=code-block data-code='<label for="demo-number">Quantity</label><input id="demo-number" type="number" min="1" max="10" value="3">
 <label for="demo-date">Date</label><input id="demo-date" type="date" value="2026-11-01">
 <label for="demo-search">Search</label><input id="demo-search" type="search" placeholder="Search the text">
 <label for="demo-password">Password</label><input id="demo-password" type="password" autocomplete="new-password" placeholder="••••••••">
@@ -341,98 +235,80 @@ H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;a small 
 <label for="demo-color">Color</label><input id="demo-color" type="color" value="#0060a0">
 <label for="demo-range">Level</label><input id="demo-range" type="range" min="0" max="100" value="60">
 <label for="demo-progress">Progress</label><progress id="demo-progress" value="60" max="100">60%</progress>
-<label for="demo-meter">Storage used</label><meter id="demo-meter" value="0.35">35%</meter></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;label for=&quot;demo-number&quot;&gt;Quantity&lt;/label&gt;&lt;input id=&quot;demo-number&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;10&quot; value=&quot;3&quot;&gt;
-&lt;label for=&quot;demo-date&quot;&gt;Date&lt;/label&gt;&lt;input id=&quot;demo-date&quot; type=&quot;date&quot; value=&quot;2026-11-01&quot;&gt;
-&lt;label for=&quot;demo-search&quot;&gt;Search&lt;/label&gt;&lt;input id=&quot;demo-search&quot; type=&quot;search&quot; placeholder=&quot;Search the text&quot;&gt;
-&lt;label for=&quot;demo-password&quot;&gt;Password&lt;/label&gt;&lt;input id=&quot;demo-password&quot; type=&quot;password&quot; autocomplete=&quot;new-password&quot; placeholder=&quot;••••••••&quot;&gt;
-&lt;label for=&quot;demo-file&quot;&gt;File&lt;/label&gt;&lt;input id=&quot;demo-file&quot; type=&quot;file&quot;&gt;
-&lt;label for=&quot;demo-color&quot;&gt;Color&lt;/label&gt;&lt;input id=&quot;demo-color&quot; type=&quot;color&quot; value=&quot;#0060a0&quot;&gt;
-&lt;label for=&quot;demo-range&quot;&gt;Level&lt;/label&gt;&lt;input id=&quot;demo-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot;&gt;
-&lt;label for=&quot;demo-progress&quot;&gt;Progress&lt;/label&gt;&lt;progress id=&quot;demo-progress&quot; value=&quot;60&quot; max=&quot;100&quot;&gt;60%&lt;/progress&gt;
-&lt;label for=&quot;demo-meter&quot;&gt;Storage used&lt;/label&gt;&lt;meter id=&quot;demo-meter&quot; value=&quot;0.35&quot;&gt;35%&lt;/meter&gt;</code></pre></details>
-    </div>
-  </section>
-<section id="media" class="catalog-section" aria-labelledby="media-title">
-    <h2 id="media-title">Media and disclosures</h2><p class="beauty-note">Images keep their proportions. Captions stay close, and details works without scripts.</p>
-    <div class="example" data-example="media-0">
-      <p class="example-label beauty-note">An image and its caption</p>
-      <div class="sample"><figure>
-  <img src="../assets/specimen.svg" width="960" height="360" loading="lazy" alt="Three lines of different lengths on a quiet background">
+<label for="demo-meter">Storage used</label><meter id="demo-meter" value="0.35">35%</meter>'><div class=highlight><pre tabindex=0><code>&lt;label for=&#34;demo-number&#34;&gt;Quantity&lt;/label&gt;&lt;input id=&#34;demo-number&#34; type=&#34;number&#34; min=&#34;1&#34; max=&#34;10&#34; value=&#34;3&#34;&gt;
+&lt;label for=&#34;demo-date&#34;&gt;Date&lt;/label&gt;&lt;input id=&#34;demo-date&#34; type=&#34;date&#34; value=&#34;2026-11-01&#34;&gt;
+&lt;label for=&#34;demo-search&#34;&gt;Search&lt;/label&gt;&lt;input id=&#34;demo-search&#34; type=&#34;search&#34; placeholder=&#34;Search the text&#34;&gt;
+&lt;label for=&#34;demo-password&#34;&gt;Password&lt;/label&gt;&lt;input id=&#34;demo-password&#34; type=&#34;password&#34; autocomplete=&#34;new-password&#34; placeholder=&#34;••••••••&#34;&gt;
+&lt;label for=&#34;demo-file&#34;&gt;File&lt;/label&gt;&lt;input id=&#34;demo-file&#34; type=&#34;file&#34;&gt;
+&lt;label for=&#34;demo-color&#34;&gt;Color&lt;/label&gt;&lt;input id=&#34;demo-color&#34; type=&#34;color&#34; value=&#34;#0060a0&#34;&gt;
+&lt;label for=&#34;demo-range&#34;&gt;Level&lt;/label&gt;&lt;input id=&#34;demo-range&#34; type=&#34;range&#34; min=&#34;0&#34; max=&#34;100&#34; value=&#34;60&#34;&gt;
+&lt;label for=&#34;demo-progress&#34;&gt;Progress&lt;/label&gt;&lt;progress id=&#34;demo-progress&#34; value=&#34;60&#34; max=&#34;100&#34;&gt;60%&lt;/progress&gt;
+&lt;label for=&#34;demo-meter&#34;&gt;Storage used&lt;/label&gt;&lt;meter id=&#34;demo-meter&#34; value=&#34;0.35&#34;&gt;35%&lt;/meter&gt;</code></pre></div></div></details></section></section><section aria-labelledby=media><h2 id=media>Media and disclosures</h2><p>Images keep their proportions. Captions stay close, and details works without scripts.</p><section data-example><h3>An image and its caption</h3><div class=beauty-example><figure><img src=/beauty/assets/specimen.svg width=960 height=360 loading=lazy alt="Three lines of different lengths on a quiet background"><figcaption>An ordinary figcaption inside a figure.</figcaption></figure><p class=beauty-caption>For a separate caption, use beauty-caption.</p><hr></div><details><summary>Example HTML</summary><div class=code-block data-code='<figure>
+  <img src="/beauty/assets/specimen.svg" width="960" height="360" loading="lazy" alt="Three lines of different lengths on a quiet background">
   <figcaption>An ordinary figcaption inside a figure.</figcaption>
 </figure>
 <p class="beauty-caption">For a separate caption, use beauty-caption.</p>
-<hr></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;figure&gt;
-  &lt;img src=&quot;../assets/specimen.svg&quot; width=&quot;960&quot; height=&quot;360&quot; loading=&quot;lazy&quot; alt=&quot;Three lines of different lengths on a quiet background&quot;&gt;
+<hr>'><div class=highlight><pre tabindex=0><code>&lt;figure&gt;
+  &lt;img src=&#34;/beauty/assets/specimen.svg&#34; width=&#34;960&#34; height=&#34;360&#34; loading=&#34;lazy&#34; alt=&#34;Three lines of different lengths on a quiet background&#34;&gt;
   &lt;figcaption&gt;An ordinary figcaption inside a figure.&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p class=&quot;beauty-caption&quot;&gt;For a separate caption, use beauty-caption.&lt;/p&gt;
-&lt;hr&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="media-1">
-      <p class="example-label beauty-note">A little more detail</p>
-      <div class="sample"><details>
+&lt;p class=&#34;beauty-caption&#34;&gt;For a separate caption, use beauty-caption.&lt;/p&gt;
+&lt;hr&gt;</code></pre></div></div></details></section><section data-example><h3>A little more detail</h3><div class=beauty-example><details><summary>What works without JavaScript?</summary><p>Typography, the system palette, forms, focus and this disclosure. This page uses a small script for the theme control and copying examples.</p></details></div><details><summary>Example HTML</summary><div class=code-block data-code="<details>
   <summary>What works without JavaScript?</summary>
   <p>Typography, the system palette, forms, focus and this disclosure. This page uses a small script for the theme control and copying examples.</p>
-</details></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;details&gt;
+</details>"><div class=highlight><pre tabindex=0><code>&lt;details&gt;
   &lt;summary&gt;What works without JavaScript?&lt;/summary&gt;
   &lt;p&gt;Typography, the system palette, forms, focus and this disclosure. This page uses a small script for the theme control and copying examples.&lt;/p&gt;
-&lt;/details&gt;</code></pre></details>
-    </div>
-<div class="example" data-example="media-2">
-      <p class="example-label beauty-note">Right-to-left text</p>
-      <div class="sample"><div dir="rtl" lang="ar">
+&lt;/details&gt;</code></pre></div></div></details></section><section data-example><h3>Right-to-left text</h3><div class=beauty-example><div dir=rtl lang=ar><blockquote><p>التصميم الجيد يمنح النص مساحة.</p></blockquote><ol><li>الفكرة الأولى</li><li>الفكرة الثانية</li></ol></div></div><details><summary>Example HTML</summary><div class=code-block data-code='<div dir="rtl" lang="ar">
   <blockquote><p>التصميم الجيد يمنح النص مساحة.</p></blockquote>
   <ol><li>الفكرة الأولى</li><li>الفكرة الثانية</li></ol>
-</div></div><details class="source"><summary>Example HTML</summary><pre tabindex="0"><code>&lt;div dir=&quot;rtl&quot; lang=&quot;ar&quot;&gt;
+</div>'><div class=highlight><pre tabindex=0><code>&lt;div dir=&#34;rtl&#34; lang=&#34;ar&#34;&gt;
   &lt;blockquote&gt;&lt;p&gt;التصميم الجيد يمنح النص مساحة.&lt;/p&gt;&lt;/blockquote&gt;
   &lt;ol&gt;&lt;li&gt;الفكرة الأولى&lt;/li&gt;&lt;li&gt;الفكرة الثانية&lt;/li&gt;&lt;/ol&gt;
-&lt;/div&gt;</code></pre></details>
-    </div>
-  </section>
-      <section id="integration" class="catalog-section" aria-labelledby="integration-title">
-        <h2 id="integration-title">Inside your website</h2>
-        <p>Prose styles only the contents of .beauty. Exclude an embedded widget with .not-beauty; ordinary font and color inheritance still applies.</p>
-        <pre tabindex="0"><code>&lt;article class=&quot;beauty&quot; data-theme=&quot;light&quot;&gt;
-  &lt;p&gt;Styled text.&lt;/p&gt;
-  &lt;div class=&quot;not-beauty&quot;&gt;Independent component&lt;/div&gt;
-&lt;/article&gt;</code></pre>
-        <p><a href="../examples/prose.html">Open the live prose example</a> · <a href="../examples/classless.html">Classless HTML</a> · <a href="../examples/rtl.html">RTL</a></p>
-        <h3>Simple navigation</h3>
-        <p>The classless entry gives header, nav and footer their basic layout. beauty-nav-end aligns a trailing item to the inline end. This page uses it in its own navigation.</p>
-        <pre tabindex="0"><code>&lt;header&gt;
+&lt;/div&gt;</code></pre></div></div></details></section></section><section aria-labelledby=integration><h2 id=integration>Prose</h2><p>To style a single block on an existing site, use prose instead of the whole-page version. Styles apply inside .beauty. The .not-beauty class excludes an embedded component; ordinary font and color inheritance remains.</p><div class=code-block data-code='<link rel="stylesheet" href="beauty.prose.min.css">
+
+<article class="beauty">
+  <h1>Heading</h1>
+  <p>Text.</p>
+  <div class="not-beauty">Your widget</div>
+</article>'><div class=highlight><pre tabindex=0><code>&lt;link rel=&#34;stylesheet&#34; href=&#34;beauty.prose.min.css&#34;&gt;
+
+&lt;article class=&#34;beauty&#34;&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Text.&lt;/p&gt;
+  &lt;div class=&#34;not-beauty&#34;&gt;Your widget&lt;/div&gt;
+&lt;/article&gt;</code></pre></div></div><p><a href=/beauty/dist/beauty.prose.min.css download>Download prose</a></p><h3>Navigation</h3><p>The beauty-nav-end class aligns the final menu item to the inline end.</p><div class=code-block data-code='<header>
+  <nav>
+    <strong>Project</strong>
+    <a href="#about">About</a>
+    <a class="beauty-nav-end" href="/login">Log in</a>
+  </nav>
+</header>'><div class=highlight><pre tabindex=0><code>&lt;header&gt;
   &lt;nav&gt;
     &lt;strong&gt;Project&lt;/strong&gt;
-    &lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;
-    &lt;a class=&quot;beauty-nav-end&quot; href=&quot;/login&quot;&gt;Log in&lt;/a&gt;
+    &lt;a href=&#34;#about&#34;&gt;About&lt;/a&gt;
+    &lt;a class=&#34;beauty-nav-end&#34; href=&#34;/login&#34;&gt;Log in&lt;/a&gt;
   &lt;/nav&gt;
-&lt;/header&gt;</code></pre>
-      </section>
-      <section id="palette" class="catalog-section" aria-labelledby="palette-title">
-        <h2 id="palette-title">Two palettes. One system.</h2>
-        <p>By default, the palette follows your device. Use the control at the top to try both schemes.</p>
-        <div class="beauty-scroll" role="region" aria-labelledby="palette-title" tabindex="0"><table class="palette-table"><thead><tr><th scope="col">Purpose / variable</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead><tbody><tr><th scope="row">Background<br><code>--beauty-background</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#ffffff" aria-hidden="true"></span><code>#ffffff</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#1a1a1a" aria-hidden="true"></span><code>#1a1a1a</code></span></td></tr><tr><th scope="row">Text<br><code>--beauty-text</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#444444" aria-hidden="true"></span><code>#444444</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#c7ccd1" aria-hidden="true"></span><code>#c7ccd1</code></span></td></tr><tr><th scope="row">Headings<br><code>--beauty-heading</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#222222" aria-hidden="true"></span><code>#222222</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#e8e8e8" aria-hidden="true"></span><code>#e8e8e8</code></span></td></tr><tr><th scope="row">Secondary text<br><code>--beauty-muted</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#556677" aria-hidden="true"></span><code>#556677</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#a7b2bc" aria-hidden="true"></span><code>#a7b2bc</code></span></td></tr><tr><th scope="row">Links and focus<br><code>--beauty-link</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#0060a0" aria-hidden="true"></span><code>#0060a0</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#6ab0e6" aria-hidden="true"></span><code>#6ab0e6</code></span></td></tr><tr><th scope="row">Hover<br><code>--beauty-hover</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#b73700" aria-hidden="true"></span><code>#b73700</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#ff986c" aria-hidden="true"></span><code>#ff986c</code></span></td></tr><tr><th scope="row">Content borders<br><code>--beauty-border</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#d5dadd" aria-hidden="true"></span><code>#d5dadd</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#454b51" aria-hidden="true"></span><code>#454b51</code></span></td></tr><tr><th scope="row">Control borders<br><code>--beauty-control-border</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#7d8892" aria-hidden="true"></span><code>#7d8892</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#737e88" aria-hidden="true"></span><code>#737e88</code></span></td></tr><tr><th scope="row">Invalid field<br><code>--beauty-danger</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#b42318" aria-hidden="true"></span><code>#b42318</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#ff8c85" aria-hidden="true"></span><code>#ff8c85</code></span></td></tr><tr><th scope="row">Surface<br><code>--beauty-surface</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#f5f6f7" aria-hidden="true"></span><code>#f5f6f7</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#25292d" aria-hidden="true"></span><code>#25292d</code></span></td></tr><tr><th scope="row">Highlight<br><code>--beauty-mark</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#fff0b3" aria-hidden="true"></span><code>#fff0b3</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#514513" aria-hidden="true"></span><code>#514513</code></span></td></tr></tbody></table></div>
-        <pre tabindex="0"><code>&lt;html data-theme=&quot;dark&quot;&gt;
-
-&lt;!-- Or on a prose container: --&gt;
-&lt;article class=&quot;beauty&quot; data-theme=&quot;light&quot;&gt;...&lt;/article&gt;</code></pre>
-      </section>
-      <section id="customize" class="catalog-section" aria-labelledby="customize-title">
-        <h2 id="customize-title">Make it yours</h2>
-        <p>Override public variables. Your normal styles take priority over the beauty layer, so ordinary customization needs no !important.</p>
-        <pre tabindex="0"><code>:root {
+&lt;/header&gt;</code></pre></div></div></section><section aria-labelledby=palette><h2 id=palette>Palette</h2><p>The main colors for the light and dark schemes. Change this page's scheme using the blog's footer control.</p><div class=beauty-scroll role=region aria-labelledby=palette tabindex=0><table><thead><tr><th scope=col>Variable</th><th scope=col>Light</th><th scope=col>Dark</th></tr></thead><tbody><tr><th scope=row><code>--beauty-background</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#fff" stroke="gray" stroke-opacity=".5"/></svg> <code>#ffffff</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#1a1a1a" stroke="gray" stroke-opacity=".5"/></svg> <code>#1a1a1a</code></span></td></tr><tr><th scope=row><code>--beauty-text</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#444" stroke="gray" stroke-opacity=".5"/></svg> <code>#444444</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#c7ccd1" stroke="gray" stroke-opacity=".5"/></svg> <code>#c7ccd1</code></span></td></tr><tr><th scope=row><code>--beauty-heading</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#222" stroke="gray" stroke-opacity=".5"/></svg> <code>#222222</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#e8e8e8" stroke="gray" stroke-opacity=".5"/></svg> <code>#e8e8e8</code></span></td></tr><tr><th scope=row><code>--beauty-muted</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#567" stroke="gray" stroke-opacity=".5"/></svg> <code>#556677</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#a7b2bc" stroke="gray" stroke-opacity=".5"/></svg> <code>#a7b2bc</code></span></td></tr><tr><th scope=row><code>--beauty-link</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#0060a0" stroke="gray" stroke-opacity=".5"/></svg> <code>#0060a0</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#6ab0e6" stroke="gray" stroke-opacity=".5"/></svg> <code>#6ab0e6</code></span></td></tr><tr><th scope=row><code>--beauty-hover</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#b73700" stroke="gray" stroke-opacity=".5"/></svg> <code>#b73700</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#ff986c" stroke="gray" stroke-opacity=".5"/></svg> <code>#ff986c</code></span></td></tr><tr><th scope=row><code>--beauty-border</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#d5dadd" stroke="gray" stroke-opacity=".5"/></svg> <code>#d5dadd</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#454b51" stroke="gray" stroke-opacity=".5"/></svg> <code>#454b51</code></span></td></tr><tr><th scope=row><code>--beauty-control-border</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#7d8892" stroke="gray" stroke-opacity=".5"/></svg> <code>#7d8892</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#737e88" stroke="gray" stroke-opacity=".5"/></svg> <code>#737e88</code></span></td></tr><tr><th scope=row><code>--beauty-danger</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#b42318" stroke="gray" stroke-opacity=".5"/></svg> <code>#b42318</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#ff8c85" stroke="gray" stroke-opacity=".5"/></svg> <code>#ff8c85</code></span></td></tr><tr><th scope=row><code>--beauty-surface</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#f5f6f7" stroke="gray" stroke-opacity=".5"/></svg> <code>#f5f6f7</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#25292d" stroke="gray" stroke-opacity=".5"/></svg> <code>#25292d</code></span></td></tr><tr><th scope=row><code>--beauty-mark</code></th><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#fff0b3" stroke="gray" stroke-opacity=".5"/></svg> <code>#fff0b3</code></span></td><td><span class=beauty-nowrap><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="13" height="13" rx="2" fill="#514513" stroke="gray" stroke-opacity=".5"/></svg> <code>#514513</code></span></td></tr></tbody></table></div></section><section aria-labelledby=customize><h2 id=customize>Customization</h2><p>Override the CSS variables. Your styles take priority over the beauty layer, so ordinary customization needs no !important.</p><div class=code-block data-code=":root {
   --beauty-link: #7250a5;
   --beauty-reading-width: 42.5rem;
 }
 
-/* For prose, set variables on the container. */
-.beauty { --beauty-line-height: 1.7; }</code></pre>
-        <details><summary>All variables and their defaults (84)</summary><div class="beauty-scroll" role="region" aria-label="Public variables" tabindex="0"><table><thead><tr><th scope="col">Variable</th><th scope="col">Default</th></tr></thead><tbody><tr><th scope="row"><code>--beauty-font</code></th><td><code>system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif</code></td></tr><tr><th scope="row"><code>--beauty-font-mono</code></th><td><code>ui-monospace, &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace</code></td></tr><tr><th scope="row"><code>--beauty-font-size</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-font-weight</code></th><td><code>400</code></td></tr><tr><th scope="row"><code>--beauty-line-height</code></th><td><code>1.65</code></td></tr><tr><th scope="row"><code>--beauty-reading-size</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-size-small</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-width</code></th><td><code>42.5rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-line-height</code></th><td><code>1.6</code></td></tr><tr><th scope="row"><code>--beauty-heading-wrap</code></th><td><code>balance</code></td></tr><tr><th scope="row"><code>--beauty-text-wrap</code></th><td><code>pretty</code></td></tr><tr><th scope="row"><code>--beauty-h3-margin</code></th><td><code>1em</code></td></tr><tr><th scope="row"><code>--beauty-width</code></th><td><code>45rem</code></td></tr><tr><th scope="row"><code>--beauty-space</code></th><td><code>1.25em</code></td></tr><tr><th scope="row"><code>--beauty-radius</code></th><td><code>0.35rem</code></td></tr><tr><th scope="row"><code>--beauty-background</code></th><td><code>#ffffff</code></td></tr><tr><th scope="row"><code>--beauty-text</code></th><td><code>#444444</code></td></tr><tr><th scope="row"><code>--beauty-heading</code></th><td><code>#222222</code></td></tr><tr><th scope="row"><code>--beauty-muted</code></th><td><code>#556677</code></td></tr><tr><th scope="row"><code>--beauty-link</code></th><td><code>#0060a0</code></td></tr><tr><th scope="row"><code>--beauty-hover</code></th><td><code>#b73700</code></td></tr><tr><th scope="row"><code>--beauty-border</code></th><td><code>#d5dadd</code></td></tr><tr><th scope="row"><code>--beauty-control-border</code></th><td><code>#7d8892</code></td></tr><tr><th scope="row"><code>--beauty-danger</code></th><td><code>#b42318</code></td></tr><tr><th scope="row"><code>--beauty-surface</code></th><td><code>#f5f6f7</code></td></tr><tr><th scope="row"><code>--beauty-mark</code></th><td><code>#fff0b3</code></td></tr><tr><th scope="row"><code>--beauty-heading-font</code></th><td><code>var(--beauty-font)</code></td></tr><tr><th scope="row"><code>--beauty-heading-weight</code></th><td><code>600</code></td></tr><tr><th scope="row"><code>--beauty-h1-size</code></th><td><code>2.75em</code></td></tr><tr><th scope="row"><code>--beauty-h1-size-small</code></th><td><code>2em</code></td></tr><tr><th scope="row"><code>--beauty-h1-font</code></th><td><code>600 var(--beauty-h1-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope="row"><code>--beauty-h1-margin</code></th><td><code>0 0.55em</code></td></tr><tr><th scope="row"><code>--beauty-h1-tracking</code></th><td><code>-0.035em</code></td></tr><tr><th scope="row"><code>--beauty-h1-transform</code></th><td><code>none</code></td></tr><tr><th scope="row"><code>--beauty-h2-size</code></th><td><code>1.65em</code></td></tr><tr><th scope="row"><code>--beauty-h2-size-small</code></th><td><code>1.4em</code></td></tr><tr><th scope="row"><code>--beauty-h2-font</code></th><td><code>600 var(--beauty-h2-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope="row"><code>--beauty-h2-margin</code></th><td><code>1.8em 0.55em</code></td></tr><tr><th scope="row"><code>--beauty-h2-tracking</code></th><td><code>-0.02em</code></td></tr><tr><th scope="row"><code>--beauty-h2-transform</code></th><td><code>none</code></td></tr><tr><th scope="row"><code>--beauty-content-line-height</code></th><td><code>var(--beauty-line-height)</code></td></tr><tr><th scope="row"><code>--beauty-block-start</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-list-indent</code></th><td><code>1.5em</code></td></tr><tr><th scope="row"><code>--beauty-list-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope="row"><code>--beauty-link-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration</code></th><td><code>underline</code></td></tr><tr><th scope="row"><code>--beauty-link-thickness</code></th><td><code>0.06em</code></td></tr><tr><th scope="row"><code>--beauty-link-offset</code></th><td><code>0.18em</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration-color</code></th><td><code>currentColor</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration-hover</code></th><td><code>currentColor</code></td></tr><tr><th scope="row"><code>--beauty-link-icon-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope="row"><code>--beauty-link-border</code></th><td><code>0 solid transparent</code></td></tr><tr><th scope="row"><code>--beauty-link-border-hover</code></th><td><code>var(--beauty-hover)</code></td></tr><tr><th scope="row"><code>--beauty-focus-offset</code></th><td><code>3px</code></td></tr><tr><th scope="row"><code>--beauty-quote-border</code></th><td><code>2px solid var(--beauty-border)</code></td></tr><tr><th scope="row"><code>--beauty-quote-inset</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding</code></th><td><code>var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding-block</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding-end</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-margin-block</code></th><td><code>var(--beauty-block-start) var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-quote-background</code></th><td><code>transparent</code></td></tr><tr><th scope="row"><code>--beauty-quote-style</code></th><td><code>normal</code></td></tr><tr><th scope="row"><code>--beauty-quote-text</code></th><td><code>var(--beauty-heading)</code></td></tr><tr><th scope="row"><code>--beauty-code-size</code></th><td><code>0.875em</code></td></tr><tr><th scope="row"><code>--beauty-code-padding</code></th><td><code>0.12em 0.3em</code></td></tr><tr><th scope="row"><code>--beauty-code-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope="row"><code>--beauty-pre-padding</code></th><td><code>1.1em 1.25em</code></td></tr><tr><th scope="row"><code>--beauty-pre-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope="row"><code>--beauty-rule-margin</code></th><td><code>2.5em</code></td></tr><tr><th scope="row"><code>--beauty-rule-border</code></th><td><code>1px solid var(--beauty-border)</code></td></tr><tr><th scope="row"><code>--beauty-callout-background</code></th><td><code>var(--beauty-surface)</code></td></tr><tr><th scope="row"><code>--beauty-callout-border</code></th><td><code>1px solid var(--beauty-heading)</code></td></tr><tr><th scope="row"><code>--beauty-lead-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope="row"><code>--beauty-stat-size</code></th><td><code>clamp(2.5rem, 12vw, 3.5rem)</code></td></tr><tr><th scope="row"><code>--beauty-stat-color</code></th><td><code>var(--beauty-link)</code></td></tr><tr><th scope="row"><code>--beauty-steps-gap</code></th><td><code>1.5rem</code></td></tr><tr><th scope="row"><code>--beauty-step-size</code></th><td><code>1.5rem</code></td></tr><tr><th scope="row"><code>--beauty-step-gap</code></th><td><code>0.75rem</code></td></tr><tr><th scope="row"><code>--beauty-caption-align</code></th><td><code>start</code></td></tr><tr><th scope="row"><code>--beauty-caption-style</code></th><td><code>normal</code></td></tr><tr><th scope="row"><code>--beauty-caption-margin</code></th><td><code>0.6em 0 var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-caption-gap</code></th><td><code>0.5em</code></td></tr><tr><th scope="row"><code>--beauty-button-font</code></th><td><code>600 1em/1.4 var(--beauty-font)</code></td></tr><tr><th scope="row"><code>--beauty-emphasis-color</code></th><td><code>currentColor</code></td></tr></tbody></table></div></details>
-        <p class="beauty-note">Visible focus, native validation, RTL and print styles are built in. Printing restores a light palette and wraps long code. Field labels and meaningful link text remain the page author's responsibility.</p>
-        <p><a href="https://github.com/zavarovkv/beauty-css#readme">Documentation on GitHub</a></p>
-      </section>
-    </div>
-  </div>
-</main>
-<footer class="site-footer"><p><a href="https://zavarov.com/">Konstantin Zavarov</a> · <a href="../LICENSE">MIT</a></p><p>This page is styled with Beauty.css.</p></footer>
-</body>
-</html>
+.beauty { --beauty-line-height: 1.7; }"><div class=highlight><pre tabindex=0><code>:root {
+  --beauty-link: #7250a5;
+  --beauty-reading-width: 42.5rem;
+}
+
+.beauty { --beauty-line-height: 1.7; }</code></pre></div></div><div class=code-block data-code='<html data-theme="dark">
+
+<article class="beauty" data-theme="light">...</article>'><div class=highlight><pre tabindex=0><code>&lt;html data-theme=&#34;dark&#34;&gt;
+
+&lt;article class=&#34;beauty&#34; data-theme=&#34;light&#34;&gt;...&lt;/article&gt;</code></pre></div></div><details><summary>All variables and defaults (84)</summary><div class=beauty-scroll role=region aria-labelledby=customize tabindex=0><table><thead><tr><th scope=col>Variable</th><th scope=col>Default</th></tr></thead><tbody><tr><th scope=row><code>--beauty-font</code></th><td><code>system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif</code></td></tr><tr><th scope=row><code>--beauty-font-mono</code></th><td><code>ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace</code></td></tr><tr><th scope=row><code>--beauty-font-size</code></th><td><code>1rem</code></td></tr><tr><th scope=row><code>--beauty-font-weight</code></th><td><code>400</code></td></tr><tr><th scope=row><code>--beauty-line-height</code></th><td><code>1.65</code></td></tr><tr><th scope=row><code>--beauty-reading-size</code></th><td><code>1rem</code></td></tr><tr><th scope=row><code>--beauty-reading-size-small</code></th><td><code>1rem</code></td></tr><tr><th scope=row><code>--beauty-reading-width</code></th><td><code>42.5rem</code></td></tr><tr><th scope=row><code>--beauty-reading-line-height</code></th><td><code>1.6</code></td></tr><tr><th scope=row><code>--beauty-heading-wrap</code></th><td><code>balance</code></td></tr><tr><th scope=row><code>--beauty-text-wrap</code></th><td><code>pretty</code></td></tr><tr><th scope=row><code>--beauty-h3-margin</code></th><td><code>1em</code></td></tr><tr><th scope=row><code>--beauty-width</code></th><td><code>45rem</code></td></tr><tr><th scope=row><code>--beauty-space</code></th><td><code>1.25em</code></td></tr><tr><th scope=row><code>--beauty-radius</code></th><td><code>0.35rem</code></td></tr><tr><th scope=row><code>--beauty-background</code></th><td><code>#ffffff</code></td></tr><tr><th scope=row><code>--beauty-text</code></th><td><code>#444444</code></td></tr><tr><th scope=row><code>--beauty-heading</code></th><td><code>#222222</code></td></tr><tr><th scope=row><code>--beauty-muted</code></th><td><code>#556677</code></td></tr><tr><th scope=row><code>--beauty-link</code></th><td><code>#0060a0</code></td></tr><tr><th scope=row><code>--beauty-hover</code></th><td><code>#b73700</code></td></tr><tr><th scope=row><code>--beauty-border</code></th><td><code>#d5dadd</code></td></tr><tr><th scope=row><code>--beauty-control-border</code></th><td><code>#7d8892</code></td></tr><tr><th scope=row><code>--beauty-danger</code></th><td><code>#b42318</code></td></tr><tr><th scope=row><code>--beauty-surface</code></th><td><code>#f5f6f7</code></td></tr><tr><th scope=row><code>--beauty-mark</code></th><td><code>#fff0b3</code></td></tr><tr><th scope=row><code>--beauty-heading-font</code></th><td><code>var(--beauty-font)</code></td></tr><tr><th scope=row><code>--beauty-heading-weight</code></th><td><code>600</code></td></tr><tr><th scope=row><code>--beauty-h1-size</code></th><td><code>2.75em</code></td></tr><tr><th scope=row><code>--beauty-h1-size-small</code></th><td><code>2em</code></td></tr><tr><th scope=row><code>--beauty-h1-font</code></th><td><code>600 var(--beauty-h1-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope=row><code>--beauty-h1-margin</code></th><td><code>0 0.55em</code></td></tr><tr><th scope=row><code>--beauty-h1-tracking</code></th><td><code>-0.035em</code></td></tr><tr><th scope=row><code>--beauty-h1-transform</code></th><td><code>none</code></td></tr><tr><th scope=row><code>--beauty-h2-size</code></th><td><code>1.65em</code></td></tr><tr><th scope=row><code>--beauty-h2-size-small</code></th><td><code>1.4em</code></td></tr><tr><th scope=row><code>--beauty-h2-font</code></th><td><code>600 var(--beauty-h2-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope=row><code>--beauty-h2-margin</code></th><td><code>1.8em 0.55em</code></td></tr><tr><th scope=row><code>--beauty-h2-tracking</code></th><td><code>-0.02em</code></td></tr><tr><th scope=row><code>--beauty-h2-transform</code></th><td><code>none</code></td></tr><tr><th scope=row><code>--beauty-content-line-height</code></th><td><code>var(--beauty-line-height)</code></td></tr><tr><th scope=row><code>--beauty-block-start</code></th><td><code>0</code></td></tr><tr><th scope=row><code>--beauty-list-indent</code></th><td><code>1.5em</code></td></tr><tr><th scope=row><code>--beauty-list-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope=row><code>--beauty-link-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope=row><code>--beauty-link-decoration</code></th><td><code>underline</code></td></tr><tr><th scope=row><code>--beauty-link-thickness</code></th><td><code>0.06em</code></td></tr><tr><th scope=row><code>--beauty-link-offset</code></th><td><code>0.18em</code></td></tr><tr><th scope=row><code>--beauty-link-decoration-color</code></th><td><code>currentColor</code></td></tr><tr><th scope=row><code>--beauty-link-decoration-hover</code></th><td><code>currentColor</code></td></tr><tr><th scope=row><code>--beauty-link-icon-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope=row><code>--beauty-link-border</code></th><td><code>0 solid transparent</code></td></tr><tr><th scope=row><code>--beauty-link-border-hover</code></th><td><code>var(--beauty-hover)</code></td></tr><tr><th scope=row><code>--beauty-focus-offset</code></th><td><code>3px</code></td></tr><tr><th scope=row><code>--beauty-quote-border</code></th><td><code>2px solid var(--beauty-border)</code></td></tr><tr><th scope=row><code>--beauty-quote-inset</code></th><td><code>0</code></td></tr><tr><th scope=row><code>--beauty-quote-padding</code></th><td><code>var(--beauty-space)</code></td></tr><tr><th scope=row><code>--beauty-quote-padding-block</code></th><td><code>0</code></td></tr><tr><th scope=row><code>--beauty-quote-padding-end</code></th><td><code>0</code></td></tr><tr><th scope=row><code>--beauty-quote-margin-block</code></th><td><code>var(--beauty-block-start) var(--beauty-space)</code></td></tr><tr><th scope=row><code>--beauty-quote-background</code></th><td><code>transparent</code></td></tr><tr><th scope=row><code>--beauty-quote-style</code></th><td><code>normal</code></td></tr><tr><th scope=row><code>--beauty-quote-text</code></th><td><code>var(--beauty-heading)</code></td></tr><tr><th scope=row><code>--beauty-code-size</code></th><td><code>0.875em</code></td></tr><tr><th scope=row><code>--beauty-code-padding</code></th><td><code>0.12em 0.3em</code></td></tr><tr><th scope=row><code>--beauty-code-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope=row><code>--beauty-pre-padding</code></th><td><code>1.1em 1.25em</code></td></tr><tr><th scope=row><code>--beauty-pre-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope=row><code>--beauty-rule-margin</code></th><td><code>2.5em</code></td></tr><tr><th scope=row><code>--beauty-rule-border</code></th><td><code>1px solid var(--beauty-border)</code></td></tr><tr><th scope=row><code>--beauty-callout-background</code></th><td><code>var(--beauty-surface)</code></td></tr><tr><th scope=row><code>--beauty-callout-border</code></th><td><code>1px solid var(--beauty-heading)</code></td></tr><tr><th scope=row><code>--beauty-lead-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope=row><code>--beauty-stat-size</code></th><td><code>clamp(2.5rem, 12vw, 3.5rem)</code></td></tr><tr><th scope=row><code>--beauty-stat-color</code></th><td><code>var(--beauty-link)</code></td></tr><tr><th scope=row><code>--beauty-steps-gap</code></th><td><code>1.5rem</code></td></tr><tr><th scope=row><code>--beauty-step-size</code></th><td><code>1.5rem</code></td></tr><tr><th scope=row><code>--beauty-step-gap</code></th><td><code>0.75rem</code></td></tr><tr><th scope=row><code>--beauty-caption-align</code></th><td><code>start</code></td></tr><tr><th scope=row><code>--beauty-caption-style</code></th><td><code>normal</code></td></tr><tr><th scope=row><code>--beauty-caption-margin</code></th><td><code>0.6em 0 var(--beauty-space)</code></td></tr><tr><th scope=row><code>--beauty-caption-gap</code></th><td><code>0.5em</code></td></tr><tr><th scope=row><code>--beauty-button-font</code></th><td><code>600 1em/1.4 var(--beauty-font)</code></td></tr><tr><th scope=row><code>--beauty-emphasis-color</code></th><td><code>currentColor</code></td></tr></tbody></table></div></details><p>The library supports keyboard navigation, RTL and printing. Printed pages use a light palette and wrap long lines of code.</p><p>License <a href=/beauty/LICENSE>MIT</a>.</p></section></article></main><footer><div class=footer-bar><div class=social-icons><a href=https://t.me/zavarov target=_blank rel="noopener noreferrer" class="social-icon social-telegram" aria-label=Telegram><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M11.944.0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056.0zm4.962 7.224c.1-.002.321.023.465.14a.506.506.0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+<a href=https://www.linkedin.com/in/zavarovkv/ target=_blank rel="noopener noreferrer" class="social-icon social-linkedin" aria-label=LinkedIn><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853.0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601.0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144.0-2.063-.926-2.063-2.065.0-1.138.92-2.063 2.063-2.063 1.14.0 2.064.925 2.064 2.063.0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225.0H1.771C.792.0.0.774.0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2.0 22.222.0h.003z"/></svg></a>
+<a href=https://github.com/zavarovkv/ target=_blank rel="noopener noreferrer" class="social-icon social-github" aria-label=GitHub><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+<a href=mailto:zavarovkv@gmail.com class="social-icon social-email" aria-label=Email><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35.0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425.0.8.162 1.069.432.27.268.431.643.431 1.068z"/></svg></a>
+<a href=https://zavarov.com/en/index.xml target=_blank rel="noopener noreferrer" class="social-icon social-rss" aria-label=RSS><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=footer-controls><a href=https://zavarov.com/beauty/ class=lang-toggle data-lang=ru aria-label="Switch language"><span class="lang-label lang-label-ru">RU</span>
+<span class="lang-label lang-label-en"><svg class="lang-sparkle" viewBox="0 0 16 16" width="9" height="9" fill="currentColor" aria-hidden="true"><path d="M8 0l1.5 4.5L14 6 9.5 7.5 8 12 6.5 7.5 2 6l4.5-1.5z"/><path d="M12.5 9l.75 2.25L15.5 12l-2.25.75L12.5 15l-.75-2.25L9.5 12l2.25-.75z" opacity=".6"/></svg>EN</span>
+</a><button type=button class=theme-toggle aria-label="Toggle theme" title="Toggle theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button></div></div><div class=footer-copy>© 2023–2026</div></footer><script defer src=/js/main.min.c9e51b8ec5338faea640f040edc2e345c76dcf4688cb9b3d9dbaff4656fad355.js integrity="sha256-yeUbjsUzj66mQPBA7cLjRcdtz0aIy5s9nbr/Rlb601U="></script><script defer src=/beauty/examples.min.06a360682ebcbc6b2c434d485c69dd8bea518ea4a0911830a8ca9ce2dc5ee2de.js integrity="sha256-BqNgaC68vGssQ01IXGndi+pRjqSgkRgwqMqc4txe4t4="></script></body></html>
