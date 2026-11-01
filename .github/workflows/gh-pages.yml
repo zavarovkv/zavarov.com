@@ -49,8 +49,23 @@ jobs:
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
 
+      - name: Vendor Council portraits
+        run: python3 scripts/fetch-council-avatars.py
+
       - name: Build
         run: hugo --minify --panicOnWarning
+
+      - name: Verify Council rendered pages
+        run: |
+          test -s public/council/index.html
+          test -s public/en/council/index.html
+          test -s public/council/avatars/qui-gon.png
+          test -s public/council/avatars/dexter.png
+          test -s public/council/avatars/lando.png
+          test -s public/council/avatars/padme.png
+          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'hreflang' public/council/index.html
+          grep -q 'hreflang' public/en/council/index.html
 
       - name: Check content and local links
         run: npm run check
@@ -113,10 +128,25 @@ jobs:
         continue-on-error: true
         run: npm run fetch-telegram-reactions
 
+      - name: Vendor Council portraits
+        run: python3 scripts/fetch-council-avatars.py
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
+
+      - name: Verify Council rendered pages
+        run: |
+          test -s public/council/index.html
+          test -s public/en/council/index.html
+          test -s public/council/avatars/qui-gon.png
+          test -s public/council/avatars/dexter.png
+          test -s public/council/avatars/lando.png
+          test -s public/council/avatars/padme.png
+          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'hreflang' public/council/index.html
+          grep -q 'hreflang' public/en/council/index.html
 
       - name: Check content and local links
         run: npm run check

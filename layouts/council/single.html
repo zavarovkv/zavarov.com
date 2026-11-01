@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ .Language.Lang }}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ .Title }}</title><meta name="description" content="{{ .Description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{- $ru := eq .Language.Lang "ru" -}}
+<link rel="alternate" hreflang="ru" href="{{ .Site.BaseURL }}council/">
+<link rel="alternate" hreflang="en" href="{{ .Site.BaseURL }}en/council/">
+<meta property="og:type" content="website"><meta property="og:title" content="{{ .Title }}"><meta property="og:description" content="{{ .Description }}"><meta property="og:url" content="{{ .Permalink }}">
+{{ with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
+</head>
+<body>
+<div class="wrap">
+<header class="nav">
+<a class="brand" href="{{ .Site.BaseURL }}">Zavarov.com</a>
+<nav class="actions" aria-label="{{ if $ru }}Навигация{{ else }}Navigation{{ end }}">
+<a href="{{ if $ru }}/en/council/{{ else }}/council/{{ end }}" lang="{{ if $ru }}en{{ else }}ru{{ end }}">{{ if $ru }}EN{{ else }}RU{{ end }}</a>
+<a class="login" href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if $ru }}Войти{{ else }}Sign in{{ end }}</a>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="eyebrow">Agent Council</div>
+<h1>{{ if $ru }}Моя команда ИИ-агентов.{{ else }}My team of AI agents.{{ end }}</h1>
+<p class="lead">{{ if $ru }}Самостоятельные специалисты исследуют рынок, находят возможности роста, редактируют материалы и помогают развивать проекты. Квай-Гон координирует их работу через Linear.{{ else }}Specialized AI agents research markets, find growth opportunities, edit content, and help build projects. Qui-Gon coordinates their work through Linear.{{ end }}</p>
+<a class="cta" href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if $ru }}Открыть Agent Council{{ else }}Open Agent Council{{ end }}</a>
+</section>
+<section aria-labelledby="team-title">
+<h2 id="team-title" class="section-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
+<div class="cards">
+{{ $members := slice
+(dict "slug" "qui-gon" "name" "Квай-Гон Джинн" "roleRu" "COO и координатор" "roleEn" "COO and coordinator" "ru" "Управляет задачами, делегирует работу и проверяет результаты." "en" "Coordinates tasks, delegates work, and verifies outcomes.")
+(dict "slug" "dexter" "name" "Декстер Джеттстер" "roleRu" "Исследователь" "roleEn" "Researcher" "ru" "Изучает конкурентов, продукты, рынки и потребности клиентов." "en" "Studies competitors, products, markets, and customer needs.")
+(dict "slug" "lando" "name" "Лэндо Калриссиан" "roleRu" "Маркетинг и SEO" "roleEn" "Marketing and SEO" "ru" "Находит возможности продвижения и роста проектов." "en" "Finds marketing and growth opportunities.")
+(dict "slug" "padme" "name" "Падме Амидала" "roleRu" "Главный редактор" "roleEn" "Editor-in-chief" "ru" "Проверяет качество текстов и сохраняет авторский голос." "en" "Reviews writing quality and preserves the author's voice.")
+}}
+{{ range $members }}
+<article class="card">
+<img src="/council/avatars/{{ .slug }}.png" alt="{{ .name }}" width="92" height="92" loading="lazy">
+<h3>{{ .name }}</h3>
+<div class="role">{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</div>
+<p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
+</article>
+{{ end }}
+</div>
+</section>
+</main>
+<footer class="foot">
+<a href="{{ .Site.BaseURL }}">{{ if $ru }}Блог{{ else }}Blog{{ end }}</a>
+<a href="https://github.com/zavarovkv/agent-council">GitHub</a>
+<span>© 2026 Agent Council</span>
+</footer>
+</div>
+</body>
+</html>
