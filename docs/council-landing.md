@@ -146,4 +146,4 @@ For an isolated build, pass `--public-dir /path/to/public --output /path/to/coun
 Portraits and the generated archive are ignored by Git. The protected application routes and
 its deployment remain outside this static artifact.
 
-The project symbol in `assets/council/brand/` supplies the favicon links; the header uses the project name alone. Hugo emits small PNGs and an adaptive SVG favicon. The workflow uses Beauty.css's `beauty-steps` component, including its marker placement, connecting line and text rhythm. Council CSS does not duplicate those rules.
+The header uses the project name alone. The favicon block explicitly selects an empty icon so the landing does not inherit the blog icon or request a default `/favicon.ico`. The workflow uses Beauty.css's `beauty-steps` component, including its marker placement, connecting line and text rhythm. Council CSS does not duplicate those rules.

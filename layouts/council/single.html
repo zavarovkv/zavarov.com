@@ -7,16 +7,7 @@
 {{ define "title" }}{{ .Title }}{{ end }}
 
 {{ define "favicon" }}
-  {{- $symbol := resources.Get "council/brand/symbol.png" -}}
-  {{- range slice 32 192 -}}
-    {{- $icon := $symbol.Resize (printf "%dx%d png" . .) -}}
-    <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href="{{ $icon.RelPermalink }}">
-  {{- end -}}
-  {{- $faviconPNG := $symbol.Resize "64x64 png" -}}
-  {{- $faviconSVG := printf `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><style>@media(prefers-color-scheme:dark){image{filter:invert(1)}}</style><image href="data:image/png;base64,%s" width="64" height="64"/></svg>` ($faviconPNG.Content | base64Encode) | resources.FromString "council/brand/favicon.svg" | resources.Fingerprint "sha256" -}}
-  <link rel="icon" type="image/svg+xml" sizes="any" href="{{ $faviconSVG.RelPermalink }}">
-  {{- $touch := $symbol.Resize "180x180 png" -}}
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ $touch.RelPermalink }}">
+  <link rel="icon" href="data:,">
 {{ end }}
 
 {{ define "header" }}
