@@ -1,24 +1,15 @@
 {
   "repository": "https://github.com/zavarovkv/beauty-css",
-  "revision": "0201a8a20ffb15434880b668b8681ef6a040b45e",
+  "revision": "74530b7ee933137a6416c74ed33c0bfe027fb98a",
   "version": "0.5.0-dev.0",
-  "baseURL": "https://zavarov.com/beauty/",
-  "defaultLanguage": "ru",
   "files": {
-    "assets/site.css": "1e62e9ad1c2f807e24125e961a250b80ade57fb91c04215a9814830e24192ca3",
-    "assets/specimen.svg": "45989af96de5c32dbbc255a630a3e275a676d3d7847142a6a70aa59a83b6a25c",
-    "assets/theme.js": "fdd4a53903d86b6da28c8566af74825c07fa1e7422da0a20a8737c3b14f7d449",
-    "dist/beauty.css": "2797fc04541dc03d3815a6d588618acce7dc9856e9785ca9d1e9a263d495e9ba",
-    "dist/beauty.min.css": "c4648b748d069a544dc0622c581037dbd2acd89eee683543418a6b0b7283df99",
-    "dist/beauty.prose.css": "f73e6e9917820f81c71feefba776313d031669c141b2a6269d7620a4ec42a67b",
-    "dist/beauty.prose.min.css": "b30503454c451da7e64405a8f6a613f7be85cbef4d40b13196e178f0a3bb104b",
-    "dist/manifest.json": "6957929e14eb3732296f9357c791be88f1e468966a278bed9f5a151c6c9ec11a",
-    "en/index.html": "8082a9fe48a8118879297bd868dda2d2d14bf2b5fd989732f1851e5cb30f4bf6",
-    "examples/classless.html": "38ce15faf1dc024c11cda7a7ddfea5be76432a0dd17d50117bc8813673e659eb",
-    "examples/prose.html": "7a46ce0113ad7cbd44c4eae3371f7d3b99938cd041bc5186065c006164bec47d",
-    "examples/rtl.html": "afda6d8cf165af6d8a75c15495fc9f4d455a760ba6fca3c5528cffa9a2d09809",
-    "index.html": "2f83ffd0a15e27f0456ebfe5fe60e10b773b392a1e6ae33795de3d53a8c8f6f4",
-    "LICENSE": "25f490298223784608fa05786ea4e625aa81e371a98903537f89f6c940a05180",
-    "sitemap.xml": "9618203b913f3599d39148c10f6e89c6aebbe50dffc3024ca894416b4fad1d69"
+    "data/catalog.json": "84088fed3278844befcd117b96310e4fed12daa8dd47ba3743bb0f4bb45578f1",
+    "public/assets/specimen.svg": "45989af96de5c32dbbc255a630a3e275a676d3d7847142a6a70aa59a83b6a25c",
+    "public/dist/beauty.css": "2797fc04541dc03d3815a6d588618acce7dc9856e9785ca9d1e9a263d495e9ba",
+    "public/dist/beauty.min.css": "c4648b748d069a544dc0622c581037dbd2acd89eee683543418a6b0b7283df99",
+    "public/dist/beauty.prose.css": "f73e6e9917820f81c71feefba776313d031669c141b2a6269d7620a4ec42a67b",
+    "public/dist/beauty.prose.min.css": "b30503454c451da7e64405a8f6a613f7be85cbef4d40b13196e178f0a3bb104b",
+    "public/dist/manifest.json": "6957929e14eb3732296f9357c791be88f1e468966a278bed9f5a151c6c9ec11a",
+    "public/LICENSE": "25f490298223784608fa05786ea4e625aa81e371a98903537f89f6c940a05180"
   }
 }

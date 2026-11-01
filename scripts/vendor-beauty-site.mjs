@@ -1,9 +1,8 @@
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
-import { cp, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const local = process.argv[2] === "--local" ? process.argv[3] : null;
@@ -16,8 +15,7 @@ const source = `https://raw.githubusercontent.com/zavarovkv/beauty-css/${revisio
 const inputs = [
   "package.json", "LICENSE", "dist/manifest.json", "dist/beauty.css", "dist/beauty.min.css",
   "dist/beauty.prose.css", "dist/beauty.prose.min.css", "src/tokens.css",
-  "scripts/build-site.mjs", "site/catalog.mjs", "site/assets/site.css",
-  "site/assets/theme.js", "site/assets/specimen.svg",
+  "site/catalog.mjs", "site/assets/specimen.svg",
 ];
 const temporary = await mkdtemp(join(tmpdir(), "beauty-site-"));
 const hash = bytes => createHash("sha256").update(bytes).digest("hex");
@@ -40,12 +38,31 @@ try {
   for (const file of inputs.filter(file => file.endsWith(".css") && file.startsWith("dist/"))) {
     if (hash(await readFile(join(temporary, file))) !== manifest.files[file.slice(5)]?.sha256) throw new Error(`CSS checksum mismatch: ${file}`);
   }
-  // Reviewed upstream builder uses Node built-ins only; no npm install or CSS rebuild.
-  execFileSync(process.execPath, [join(temporary, "scripts/build-site.mjs")], {
-    cwd: temporary,
-    env: { ...process.env, SITE_BASE_URL: "https://zavarov.com/beauty/", SITE_DEFAULT_LANGUAGE: "ru" },
-    stdio: "inherit",
-  });
+  // Import only reviewed specimens, not the independent demo's page shell or builder.
+  const { catalog } = await import(pathToFileURL(join(temporary, "site/catalog.mjs")));
+  const tokens = new Map();
+  const colors = new Map();
+  const tokenCSS = await readFile(join(temporary, "src/tokens.css"), "utf8");
+  for (const [, name, declaration] of tokenCSS.matchAll(/(--beauty-[\w-]+):\s*([^;]+);/g)) {
+    const value = declaration.trim();
+    if (!tokens.has(name)) tokens.set(name, value);
+    if (/^#[a-f0-9]{6}$/.test(value)) {
+      if (!colors.has(name)) colors.set(name, [value, value]);
+      else colors.get(name)[1] = value;
+    }
+  }
+  const generated = join(temporary, "generated");
+  await mkdir(join(generated, "data"), { recursive: true });
+  await mkdir(join(generated, "public/assets"), { recursive: true });
+  await cp(join(temporary, "dist"), join(generated, "public/dist"), { recursive: true });
+  await cp(join(temporary, "LICENSE"), join(generated, "public/LICENSE"));
+  await cp(join(temporary, "site/assets/specimen.svg"), join(generated, "public/assets/specimen.svg"));
+  await writeFile(join(generated, "data/catalog.json"), JSON.stringify({
+    version: pkg.version, gzip: manifest.files["beauty.min.css"].gzip,
+    sections: Object.fromEntries(["ru", "en"].map(lang => [lang, catalog(lang, "/beauty/")])),
+    colors: [...colors].map(([name, [light, dark]]) => ({ name, light, dark })),
+    tokens: [...tokens].map(([name, value]) => ({ name, value })),
+  }, null, 2) + "\n");
   const files = {};
   async function inventory(directory, prefix = "") {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -55,27 +72,23 @@ try {
       else throw new Error(`Unsupported generated entry: ${path}`);
     }
   }
-  await inventory(join(temporary, "_site"));
-  for (const required of ["index.html", "en/index.html", "LICENSE", "sitemap.xml"]) {
+  await inventory(generated);
+  for (const required of ["data/catalog.json", "public/dist/beauty.min.css", "public/LICENSE"]) {
     if (!files[required]) throw new Error(`Missing generated file: ${required}`);
   }
   const moduleRoot = join(root, "beauty");
   await mkdir(moduleRoot, { recursive: true });
-  // Only generated files in this dedicated module are replaced.
-  const staged = await mkdtemp(join(moduleRoot, ".staging-"));
-  try {
-    await cp(join(temporary, "_site"), staged, { recursive: true });
-    await rm(join(moduleRoot, "public"), { recursive: true, force: true });
-    await rename(staged, join(moduleRoot, "public"));
-  } finally {
-    await rm(staged, { recursive: true, force: true });
+  // Only generated specimens and downloads are replaced; Hugo owns page rendering.
+  for (const directory of ["public", "data"]) {
+    await rm(join(moduleRoot, directory), { recursive: true, force: true });
+    await cp(join(generated, directory), join(moduleRoot, directory), { recursive: true });
   }
   await writeFile(join(moduleRoot, "upstream.json"), JSON.stringify({
     repository, revision, ...(local ? { source: "local-development" } : {}),
-    version: pkg.version, baseURL: "https://zavarov.com/beauty/", defaultLanguage: "ru",
+    version: pkg.version,
     files: Object.fromEntries(Object.entries(files).sort(([a], [b]) => a.localeCompare(b))),
   }, null, 2) + "\n");
-  console.log(`Vendored Beauty site ${pkg.version}: ${Object.keys(files).length} files`);
+  console.log(`Vendored Beauty specimens and downloads ${pkg.version}: ${Object.keys(files).length} files`);
 } finally {
   await rm(temporary, { recursive: true, force: true });
 }

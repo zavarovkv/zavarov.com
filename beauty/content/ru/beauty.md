@@ -1,9 +1,8 @@
 +++
-title = "Beauty.css — красивые сайты на обычном HTML"
+title = "Beauty.css"
 description = "Живые примеры типографики, форм, таблиц, счетчиков и шагов с готовым HTML."
 url = "/beauty/"
 hidden = true
-
-[build]
-  render = "link"
+type = "beauty"
+typography = false
 +++

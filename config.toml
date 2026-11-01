@@ -60,6 +60,15 @@ ignoreErrors = ["error-disable-taxonomy"]
     source = "beauty/public"
     target = "static/beauty"
   [[module.mounts]]
+    source = "beauty/layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+  [[module.mounts]]
+    source = "beauty/data"
+    target = "data/beauty"
+  [[module.mounts]]
     source = "content/ru"
     target = "content"
     [module.mounts.sites.matrix]

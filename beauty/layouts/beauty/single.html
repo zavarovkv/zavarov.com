@@ -1,0 +1,76 @@
+{{ define "main" }}
+{{- $ru := eq .Language.Lang "ru" -}}
+{{- $catalog := site.Data.beauty.catalog -}}
+{{- $sections := index $catalog.sections .Language.Lang -}}
+<h1>{{ .Title }}</h1>
+<article class="beauty-reading beauty-catalog" lang="{{ .Language.Lang }}">
+  <p>{{ if $ru }}Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML. На этой странице — примеры всех ее возможностей.{{ else }}A lightweight CSS library for beautiful, readable websites. Typography, forms and dark mode for plain HTML. This page demonstrates all its features.{{ end }}</p>
+  <p><a href="https://github.com/zavarovkv/beauty-css">GitHub ↗</a> · <a href="https://www.npmjs.com/package/beauty-css">npm ↗</a> · <a href="/beauty/dist/beauty.min.css" download>{{ if $ru }}Скачать CSS{{ else }}Download CSS{{ end }}</a></p>
+  <details>
+    <summary>{{ if $ru }}На этой странице{{ else }}On this page{{ end }}</summary>
+    <ul>
+      <li><a href="#start">{{ if $ru }}Подключение{{ else }}Get started{{ end }}</a></li>
+      {{ range $sections }}<li><a href="#{{ .id }}">{{ .title }}</a></li>{{ end }}
+      <li><a href="#integration">Prose</a></li>
+      <li><a href="#palette">{{ if $ru }}Палитра{{ else }}Palette{{ end }}</a></li>
+      <li><a href="#customize">{{ if $ru }}Настройка{{ else }}Customization{{ end }}</a></li>
+    </ul>
+  </details>
+  <section aria-labelledby="start">
+    <h2 id="start">{{ if $ru }}Подключение{{ else }}Get started{{ end }}</h2>
+    <p>{{ if $ru }}Скачайте CSS-файл и подключите его в{{ else }}Download the stylesheet and add it to{{ end }} <code>&lt;head&gt;</code>:</p>
+    {{ partial "beauty/code.html" `<link rel="stylesheet" href="beauty.min.css">` }}
+    <p>{{ if $ru }}Или установите пакет для проекта со сборщиком:{{ else }}Or install the package for a project with a bundler:{{ end }}</p>
+    {{ partial "beauty/code.html" "npm install beauty-css" }}
+    {{ partial "beauty/code.html" `import "beauty-css";` }}
+    <p class="beauty-note">{{ if $ru }}Примеры и файлы для скачивания — из версии{{ else }}Examples and downloads use version{{ end }} {{ $catalog.version }}. {{ if $ru }}Она может быть новее версии в npm. На этой странице используются шрифты и настройки блога; сама библиотека не содержит шрифтов или JavaScript.{{ else }}It may be ahead of npm.{{ end }}</p>
+  </section>
+  {{ range $sections }}
+  <section aria-labelledby="{{ .id }}">
+    <h2 id="{{ .id }}">{{ .title }}</h2>
+    <p>{{ .text }}</p>
+    {{ range .examples }}
+    <section data-example>
+      <h3>{{ .title }}</h3>
+      <div class="beauty-example">{{ .html | safeHTML }}</div>
+      <details><summary>{{ if $ru }}HTML примера{{ else }}Example HTML{{ end }}</summary>{{ partial "beauty/code.html" .html }}</details>
+    </section>
+    {{ end }}
+  </section>
+  {{ end }}
+  <section aria-labelledby="integration">
+    <h2 id="integration">Prose</h2>
+    <p>{{ if $ru }}Для отдельного блока на существующем сайте используйте prose вместо версии для всей страницы. Стили действуют внутри .beauty. Класс .not-beauty исключает встроенный компонент; обычное наследование шрифтов и цветов сохраняется.{{ else }}To style a single block on an existing site, use prose instead of the whole-page version. Styles apply inside .beauty. The .not-beauty class excludes an embedded component; ordinary font and color inheritance remains.{{ end }}</p>
+    {{ partial "beauty/code.html" (printf "<link rel=\"stylesheet\" href=\"beauty.prose.min.css\">\n\n<article class=\"beauty\">\n  <h1>%s</h1>\n  <p>%s</p>\n  <div class=\"not-beauty\">%s</div>\n</article>" (cond $ru "Заголовок" "Heading") (cond $ru "Текст." "Text.") (cond $ru "Ваш виджет" "Your widget")) }}
+    <p><a href="/beauty/dist/beauty.prose.min.css" download>{{ if $ru }}Скачать prose{{ else }}Download prose{{ end }}</a></p>
+    <h3>{{ if $ru }}Навигация{{ else }}Navigation{{ end }}</h3>
+    <p>{{ if $ru }}Класс beauty-nav-end прижимает последний пункт меню к краю.{{ else }}The beauty-nav-end class aligns the final menu item to the inline end.{{ end }}</p>
+    {{ partial "beauty/code.html" (printf "<header>\n  <nav>\n    <strong>%s</strong>\n    <a href=\"#about\">%s</a>\n    <a class=\"beauty-nav-end\" href=\"/login\">%s</a>\n  </nav>\n</header>" (cond $ru "Проект" "Project") (cond $ru "О проекте" "About") (cond $ru "Войти" "Log in")) }}
+  </section>
+  <section aria-labelledby="palette">
+    <h2 id="palette">{{ if $ru }}Палитра{{ else }}Palette{{ end }}</h2>
+    <p>{{ if $ru }}Основные цвета светлой и темной тем. Тему страницы можно переключить в футере блога.{{ else }}The main colors for the light and dark schemes. Change this page's scheme using the blog's footer control.{{ end }}</p>
+    <div class="beauty-scroll" role="region" aria-labelledby="palette" tabindex="0">
+      <table><thead><tr><th scope="col">{{ if $ru }}Переменная{{ else }}Variable{{ end }}</th><th scope="col">{{ if $ru }}Светлая{{ else }}Light{{ end }}</th><th scope="col">{{ if $ru }}Темная{{ else }}Dark{{ end }}</th></tr></thead>
+      <tbody>{{ range $catalog.colors }}<tr><th scope="row"><code>{{ .name }}</code></th>{{ range slice .light .dark }}<td><span class="beauty-nowrap"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="13" height="13" rx="2" fill="{{ . }}" stroke="#808080" stroke-opacity="0.5"/></svg> <code>{{ . }}</code></span></td>{{ end }}</tr>{{ end }}</tbody></table>
+    </div>
+  </section>
+  <section aria-labelledby="customize">
+    <h2 id="customize">{{ if $ru }}Настройка{{ else }}Customization{{ end }}</h2>
+    <p>{{ if $ru }}Меняйте CSS-переменные. Ваши стили имеют приоритет над слоем beauty, поэтому для обычной настройки !important не нужен.{{ else }}Override the CSS variables. Your styles take priority over the beauty layer, so ordinary customization needs no !important.{{ end }}</p>
+    {{ partial "beauty/code.html" ":root {\n  --beauty-link: #7250a5;\n  --beauty-reading-width: 42.5rem;\n}\n\n.beauty { --beauty-line-height: 1.7; }" }}
+    {{ partial "beauty/code.html" "<html data-theme=\"dark\">\n\n<article class=\"beauty\" data-theme=\"light\">...</article>" }}
+    <details><summary>{{ if $ru }}Все переменные и значения по умолчанию{{ else }}All variables and defaults{{ end }} ({{ len $catalog.tokens }})</summary>
+      <div class="beauty-scroll" role="region" aria-labelledby="customize" tabindex="0"><table><thead><tr><th scope="col">{{ if $ru }}Переменная{{ else }}Variable{{ end }}</th><th scope="col">{{ if $ru }}Значение{{ else }}Default{{ end }}</th></tr></thead><tbody>{{ range $catalog.tokens }}<tr><th scope="row"><code>{{ .name }}</code></th><td><code>{{ .value }}</code></td></tr>{{ end }}</tbody></table></div>
+    </details>
+    <p>{{ if $ru }}Библиотека поддерживает клавиатурную навигацию, RTL и печать. При печати используется светлая палитра, длинные строки кода переносятся.{{ else }}The library supports keyboard navigation, RTL and printing. Printed pages use a light palette and wrap long lines of code.{{ end }}</p>
+    <p>{{ if $ru }}Лицензия{{ else }}License{{ end }} <a href="/beauty/LICENSE">MIT</a>.</p>
+  </section>
+</article>
+{{ end }}
+
+{{ define "scripts" }}
+  {{- with resources.Get "beauty/examples.js" | resources.Minify | resources.Fingerprint "sha256" }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{- end }}
+{{ end }}
