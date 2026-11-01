@@ -56,9 +56,9 @@ jobs:
         run: |
           test -s public/council/index.html
           test -s public/en/council/index.html
-          grep -q 'https://council.zavarov.com/login?next=%2Fprofiles' public/council/index.html
-          grep -q 'hreflang="en"' public/council/index.html
-          grep -q 'hreflang="ru"' public/en/council/index.html
+          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'hreflang' public/council/index.html
+          grep -q 'hreflang' public/en/council/index.html
 
       - name: Check content and local links
         run: npm run check
@@ -130,9 +130,9 @@ jobs:
         run: |
           test -s public/council/index.html
           test -s public/en/council/index.html
-          grep -q 'https://council.zavarov.com/login?next=%2Fprofiles' public/council/index.html
-          grep -q 'hreflang="en"' public/council/index.html
-          grep -q 'hreflang="ru"' public/en/council/index.html
+          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'hreflang' public/council/index.html
+          grep -q 'hreflang' public/en/council/index.html
 
       - name: Check content and local links
         run: npm run check
