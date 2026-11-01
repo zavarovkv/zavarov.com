@@ -52,6 +52,14 @@ jobs:
       - name: Build
         run: hugo --minify --panicOnWarning
 
+      - name: Verify Council rendered pages
+        run: |
+          test -s public/council/index.html
+          test -s public/en/council/index.html
+          grep -q 'https://council.zavarov.com/login?next=%2Fprofiles' public/council/index.html
+          grep -q 'hreflang="en"' public/council/index.html
+          grep -q 'hreflang="ru"' public/en/council/index.html
+
       - name: Check content and local links
         run: npm run check
 
@@ -117,6 +125,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
+
+      - name: Verify Council rendered pages
+        run: |
+          test -s public/council/index.html
+          test -s public/en/council/index.html
+          grep -q 'https://council.zavarov.com/login?next=%2Fprofiles' public/council/index.html
+          grep -q 'hreflang="en"' public/council/index.html
+          grep -q 'hreflang="ru"' public/en/council/index.html
 
       - name: Check content and local links
         run: npm run check
