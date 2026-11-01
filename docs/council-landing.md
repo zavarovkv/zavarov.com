@@ -145,3 +145,5 @@ is written. Unused per-agent metrics and duplicate theme scripts are not shipped
 For an isolated build, pass `--public-dir /path/to/public --output /path/to/council-landing.tar.gz`.
 Portraits and the generated archive are ignored by Git. The protected application routes and
 its deployment remain outside this static artifact.
+
+The project symbol is the user-supplied transparent source in `assets/council/brand/`; Hugo emits small PNGs for the header and the project favicon links. The workflow uses Beauty.css's `beauty-steps` component, including its marker placement, connecting line and text rhythm. Council CSS does not duplicate those rules.

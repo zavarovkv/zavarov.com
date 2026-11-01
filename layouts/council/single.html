@@ -6,10 +6,21 @@
 
 {{ define "title" }}{{ .Title }}{{ end }}
 
+{{ define "favicon" }}
+  {{- $symbol := resources.Get "council/brand/symbol.png" -}}
+  {{- range slice 32 192 -}}
+    {{- $icon := $symbol.Resize (printf "%dx%d png" . .) -}}
+    <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href="{{ $icon.RelPermalink }}">
+  {{- end -}}
+  {{- $touch := $symbol.Resize "180x180 png" -}}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ $touch.RelPermalink }}">
+{{ end }}
+
 {{ define "header" }}
   {{- $ru := eq .Language.Lang "ru" -}}
+  {{- $symbol := (resources.Get "council/brand/symbol.png").Resize "64x64 png" -}}
   <div class="council-header">
-    <a class="brand-link beauty-nowrap" href="{{ .RelPermalink }}" aria-current="page"><strong>Agent Council</strong></a>
+    <a class="brand-link council-brand beauty-nowrap" href="{{ .RelPermalink }}" aria-current="page"><img src="{{ $symbol.RelPermalink }}" alt="" width="32" height="32"><strong>Agent Council</strong></a>
     {{ partial "menu-toggle.html" . }}
     <nav class="main-nav council-nav" id="main-navigation" aria-label="{{ if $ru }}Разделы страницы{{ else }}Page sections{{ end }}">
       <a class="beauty-nowrap" href="#council-team-title">{{ if $ru }}Команда{{ else }}Team{{ end }}</a>

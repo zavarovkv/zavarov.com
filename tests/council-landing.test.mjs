@@ -63,7 +63,7 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     const team = all(page, node => hasClass(node, "council-team"))[0];
     const rosterTotal = all(page, node => Object.hasOwn(attrs(node), "data-roster-total"))[0];
     assert.equal(Number(rosterTotal.childNodes.map(node => node.value || "").join("")), all(team, node => node.tagName === "h3").length);
-    const workflow = all(page, node => hasClass(node, "council-workflow"))[0];
+    const workflow = all(page, node => hasClass(node, "beauty-steps"))[0];
     assert.equal(workflow.tagName, "ol");
     assert.equal(all(workflow, node => node.tagName === "li").length, 3);
     assert.deepEqual(all(team, node => node.tagName === "h3").map(node => attrs(node).id),

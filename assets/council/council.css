@@ -12,6 +12,19 @@
   margin: 0;
 }
 
+.council-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.council-brand img {
+  flex: none;
+  inline-size: 2rem;
+  block-size: 2rem;
+  object-fit: contain;
+}
+
 @media (min-width: 769px) {
   .council-nav {
     justify-content: flex-end;
@@ -73,47 +86,6 @@
 
 .council-section > h2 + * {
   margin-block: clamp(1.75rem, 4vw, 2.25rem) 0;
-}
-
-.council-workflow {
-  display: grid;
-  gap: 1.5rem;
-  max-inline-size: 40rem;
-  padding: 0;
-  list-style: none;
-}
-
-.council-workflow > li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.5rem minmax(0, 1fr);
-  gap: 0.75rem;
-  min-inline-size: 0;
-  margin: 0;
-}
-
-.council-workflow > li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  inset-inline-start: calc(0.75rem - 0.5px);
-  inset-block: 1.5rem -1.5rem;
-  border-inline-start: 1px solid var(--beauty-border);
-  pointer-events: none;
-}
-
-.council-workflow-marker {
-  display: grid;
-  place-items: center;
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
-}
-
-.council-workflow h3 {
-  margin-block: 0 0.25rem;
-}
-
-.council-workflow p {
-  margin: 0;
 }
 
 .council-counters {
