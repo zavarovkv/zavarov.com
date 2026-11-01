@@ -67,6 +67,16 @@ jobs:
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
 
+      - name: Package Council subdomain
+        run: python3 scripts/package-council-landing.py
+
+      - name: Upload Council artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version || 'deploy' }}
+          path: council-landing.tar.gz
+          retention-days: 14
+
       - name: Check content and local links
         run: npm run check
 
@@ -147,6 +157,16 @@ jobs:
           grep -q 'council.zavarov.com/login' public/council/index.html
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
+
+      - name: Package Council subdomain
+        run: python3 scripts/package-council-landing.py
+
+      - name: Upload Council artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version || 'deploy' }}
+          path: council-landing.tar.gz
+          retention-days: 14
 
       - name: Check content and local links
         run: npm run check
