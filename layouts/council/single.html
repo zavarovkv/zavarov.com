@@ -2,11 +2,12 @@
 <html lang="{{ .Language.Lang }}">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ .Title }}</title><meta name="description" content="{{ .Description }}">
-<link rel="canonical" href="{{ .Permalink }}">
 {{- $ru := eq .Language.Lang "ru" -}}
-<link rel="alternate" hreflang="ru" href="{{ .Site.BaseURL }}council/">
-<link rel="alternate" hreflang="en" href="{{ .Site.BaseURL }}en/council/">
+<title>{{ .Title }}</title><meta name="description" content="{{ .Description }}">
+<link rel="canonical" href="{{ if $ru }}https://council.zavarov.com/{{ else }}https://council.zavarov.com/en/{{ end }}">
+<link rel="alternate" hreflang="ru" href="https://council.zavarov.com/">
+<link rel="alternate" hreflang="en" href="https://council.zavarov.com/en/">
+<script>{{ with resources.Get "council/theme-init.js" }}{{ .Content | safeJS }}{{ end }}</script>
 <meta property="og:type" content="website"><meta property="og:title" content="{{ .Title }}"><meta property="og:description" content="{{ .Description }}"><meta property="og:url" content="{{ .Permalink }}">
 {{ with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
 </head>
@@ -15,7 +16,7 @@
 <header class="nav">
 <a class="brand" href="{{ .Site.BaseURL }}">Zavarov.com</a>
 <nav class="actions" aria-label="{{ if $ru }}Навигация{{ else }}Navigation{{ end }}">
-<a href="{{ if $ru }}/en/council/{{ else }}/council/{{ end }}" lang="{{ if $ru }}en{{ else }}ru{{ end }}">{{ if $ru }}EN{{ else }}RU{{ end }}</a>
+<a href="{{ if $ru }}/en/{{ else }}/{{ end }}" lang="{{ if $ru }}en{{ else }}ru{{ end }}">{{ if $ru }}EN{{ else }}RU{{ end }}</a>
 <a class="login" href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if $ru }}Войти{{ else }}Sign in{{ end }}</a>
 </nav>
 </header>
@@ -46,11 +47,8 @@
 </div>
 </section>
 </main>
-<footer class="foot">
-<a href="{{ .Site.BaseURL }}">{{ if $ru }}Блог{{ else }}Blog{{ end }}</a>
-<a href="https://github.com/zavarovkv/agent-council">GitHub</a>
-<span>© 2026 Agent Council</span>
-</footer>
+{{ partial "council/footer.html" . }}
+{{ with resources.Get "council/theme.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
 </div>
 </body>
 </html>
