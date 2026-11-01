@@ -21,3 +21,20 @@ test("Council styles are scoped and do not require external CDNs", () => {
   assert.match(template, /resources\.Get "council\/council\.css"/);
   assert.doesNotMatch(css, /@import|https:\/\//);
 });
+
+test("Council footer has project controls but no personal social or email contacts", () => {
+  const footer = readFileSync(new URL("../layouts/partials/council/footer.html", import.meta.url), "utf8");
+  assert.match(template, /partial "council\/footer.html"/);
+  assert.match(footer, /theme-toggle/);
+  assert.match(footer, /lang-toggle/);
+  assert.match(footer, /agent-council/);
+  assert.doesNotMatch(footer, /Params\.social|mailto:|linkedin\.com|t\.me\//);
+});
+test("Council adopts blog-compatible theme preference and self-hosted assets", () => {
+  const init = readFileSync(new URL("../assets/council/theme-init.js", import.meta.url), "utf8");
+  const theme = readFileSync(new URL("../assets/council/theme.js", import.meta.url), "utf8");
+  assert.match(init, /localStorage\.getItem\('theme'\)/);
+  assert.match(theme, /localStorage\.setItem\('theme'/);
+  assert.match(template, /resources\.Get "council\/theme\.js"/);
+  assert.match(css, /--background-color/);
+});
