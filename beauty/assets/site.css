@@ -1,0 +1,251 @@
+/* Documentation layout only. Specimen typography and controls come from Beauty. */
+body {
+  --beauty-width: 64.5rem;
+}
+.site-header {
+  padding-block: 0.75rem;
+}
+.site-nav {
+  gap: 0.75rem 1.5rem;
+}
+.wordmark {
+  --beauty-link-decoration: none;
+  --beauty-link: var(--beauty-heading);
+  --beauty-hover: var(--beauty-heading);
+}
+.site-tools {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.theme-control {
+  margin: 0;
+}
+.theme-control select {
+  inline-size: auto;
+  margin: 0;
+  padding: 0.35em 0.55em;
+}
+.hero {
+  max-inline-size: 43rem;
+  margin-block: 3.5rem 5rem;
+  margin-inline-start: 17rem;
+}
+.hero h1 {
+  white-space: pre-line;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-block: 1.75rem;
+}
+.documentation {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+.contents > details {
+  position: sticky;
+  inset-block-start: 1.5rem;
+}
+.contents {
+  align-self: stretch;
+}
+.contents ul {
+  list-style: none;
+  padding: 0;
+}
+.contents li {
+  margin-block: 0 0.65rem;
+}
+.contents a {
+  --beauty-link: var(--beauty-muted);
+  --beauty-link-decoration: none;
+}
+.contents a:hover {
+  text-decoration: underline;
+}
+.catalog {
+  min-inline-size: 0;
+}
+.catalog-section {
+  margin-block-end: 4.5rem;
+  scroll-margin-block-start: 1.5rem;
+}
+.catalog-section > h2 {
+  margin-block-start: 0;
+}
+.example {
+  margin-block: 2rem;
+}
+.example-label {
+  margin-block-end: 0.75rem;
+}
+.sample {
+  padding-block: 1.25rem 0.5rem;
+  border-block-start: 1px solid var(--beauty-border);
+  min-inline-size: 0;
+}
+.sample > :first-child {
+  margin-block-start: 0;
+}
+.sample > :last-child {
+  margin-block-end: 0;
+}
+.source {
+  margin-block: 0.75rem 0;
+  border: 0;
+  padding: 0.25rem 0;
+}
+.source summary {
+  font-weight: var(--beauty-font-weight);
+  color: var(--beauty-muted);
+  font-size: 0.875rem;
+}
+.source pre {
+  margin-block-start: 0.75rem;
+}
+.copy-button {
+  display: block;
+  margin-block: 0.5rem;
+  margin-inline-start: auto;
+  padding: 0.25em 0.5em;
+  min-block-size: 2em;
+  font-size: 0.875rem;
+  background: transparent;
+  color: var(--beauty-link);
+  border-color: transparent;
+}
+.copy-button:hover {
+  background: var(--beauty-surface);
+  color: var(--beauty-hover);
+  border-color: transparent;
+}
+.sample dl:has(.beauty-stat-value) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+}
+.sample .beauty-stat-label {
+  grid-row: 2;
+}
+.sample .beauty-stat-value {
+  grid-row: 1;
+  margin: 0;
+}
+.swatch {
+  display: inline-block;
+  flex: none;
+  inline-size: 1rem;
+  block-size: 1rem;
+  border: 1px solid var(--beauty-border);
+  border-radius: 0.2rem;
+  background: var(--swatch);
+}
+.color-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.palette-table th code {
+  font-weight: var(--beauty-font-weight);
+}
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+.site-footer p {
+  margin: 0;
+}
+.skip-link {
+  position: fixed;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--beauty-background);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 62rem) {
+  .hero {
+    margin-inline-start: 0;
+  }
+  .documentation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .contents > details {
+    position: static;
+  }
+  .contents ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+  }
+  .contents li {
+    margin: 0;
+  }
+}
+@media (max-width: 30rem) {
+  .site-nav {
+    gap: 0.75rem 1rem;
+  }
+  .site-tools {
+    inline-size: 100%;
+    justify-content: space-between;
+  }
+  .hero {
+    margin-block: 2rem 3rem;
+  }
+  .contents ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sample dl:has(.beauty-stat-value) {
+    --beauty-stat-size: 2.5rem;
+  }
+}
+@media print {
+  .site-header,
+  .contents,
+  .actions,
+  .source,
+  .skip-link,
+  .copy-button {
+    display: none;
+  }
+  .hero {
+    margin: 0 0 2rem;
+  }
+  .documentation {
+    display: block;
+  }
+  .catalog-section {
+    margin-block-end: 2rem;
+  }
+}
+
+.contents > details {
+  border: 0;
+  padding: 0;
+}
+.contents > details[open] > summary {
+  margin-block-end: 1rem;
+}
