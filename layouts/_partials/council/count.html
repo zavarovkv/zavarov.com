@@ -1,0 +1,18 @@
+{{- $amount := .value -}}
+{{- $suffix := "" -}}
+{{- $precision := 0 -}}
+{{- if ne $amount nil -}}
+  {{- range $index, $scale := .scales -}}
+    {{- if ge $amount $scale.divisor -}}
+      {{- $amount = div (math.Round (mul (div (float $amount) $scale.divisor) 10)) 10 -}}
+      {{- $suffix = $scale.suffix -}}
+      {{- if and (ge $amount 1000) (gt $index 0) -}}
+        {{- $amount = 1 -}}
+        {{- $suffix = (index $.scales (sub $index 1)).suffix -}}
+      {{- end -}}
+      {{- break -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if ne (float $amount) (math.Floor $amount) -}}{{- $precision = 1 -}}{{- end -}}
+{{- end -}}
+<span data-total-number>{{ if eq $amount nil }}—{{ else }}{{ lang.FormatNumber $precision $amount }}{{ end }}</span><small class="beauty-stat-unit" data-total-unit{{ if not $suffix }} hidden{{ end }}>{{ if $suffix }}&nbsp;{{ $suffix }}{{ end }}</small>

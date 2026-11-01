@@ -1,0 +1,11 @@
+{{- $ru := eq .Language.Lang "ru" -}}
+{{- $message := cond $ru "Хочу попасть в список раннего доступа к Agent Council." "I'd like to join the early access list for Agent Council." -}}
+{{- $requestURL := printf "https://t.me/Qui_Gon_Jinn_ai?%s" (querify "text" $message) -}}
+<section class="council-section" aria-labelledby="council-access-title">
+  <h2 id="council-access-title">{{ if $ru }}Ранний доступ{{ else }}Early access{{ end }}</h2>
+  <div>
+    <p>{{ if $ru }}Пока доступ открыт по приглашениям. Если хотите попробовать, напишите Квай‑Гону в Telegram.{{ else }}Access is currently by invitation. If you’d like to try it, send Qui‑Gon a message on Telegram.{{ end }}</p>
+    <p class="council-access-action"><a class="beauty-button" href="{{ $requestURL }}">{{ if $ru }}Запросить приглашение{{ else }}Request an invite{{ end }}<span class="beauty-link-icon" aria-hidden="true">↗</span></a></p>
+    <p class="beauty-note">{{ if $ru }}Или <a href="https://council.zavarov.com/auth/login?provider=telegram-owner&amp;next=%2Fprofiles">войдите</a>, если получили приглашение{{ else }}Or <a href="https://council.zavarov.com/auth/login?provider=telegram-owner&amp;next=%2Fprofiles">log in</a> if you have an invitation{{ end }}</p>
+  </div>
+</section>

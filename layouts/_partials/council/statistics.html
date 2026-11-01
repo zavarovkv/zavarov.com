@@ -1,0 +1,29 @@
+{{- $ru := eq .page.Language.Lang "ru" -}}
+{{- $snapshot := .page.Site.Data.council_statistics -}}
+{{- $scales := slice
+  (dict "divisor" 1000000000000 "suffix" (cond $ru "трлн" "T"))
+  (dict "divisor" 1000000000 "suffix" (cond $ru "млрд" "B"))
+  (dict "divisor" 1000000 "suffix" (cond $ru "млн" "M"))
+  (dict "divisor" 1000 "suffix" (cond $ru "тыс." "K"))
+-}}
+{{- $messages := dict
+  "updated" (cond $ru "Данные на" "Data retrieved")
+  "unknown" (cond $ru "Данные недоступны" "Data unavailable")
+  "stale" (cond $ru "Не удалось обновить данные." "Could not refresh the data.")
+-}}
+<section class="council-section council-statistics" aria-labelledby="council-statistics-title">
+<h2 id="council-statistics-title">{{ if $ru }}Аналитика{{ else }}Analytics{{ end }}</h2>
+<dl class="council-counters" data-council-statistics data-messages="{{ $messages | jsonify }}" data-scales="{{ $scales | jsonify }}" data-updated="{{ $snapshot.fetched_at }}" aria-label="{{ if $ru }}Итоги работы команды{{ else }}Team totals{{ end }}" data-typography="off">
+  <div>
+    <dt class="beauty-stat-label">{{ if $ru }}Агентов в команде{{ else }}Agents on the team{{ end }}</dt>
+    <dd class="beauty-stat-value"><span class="beauty-nowrap" data-roster-total>{{ .agentCount }}</span></dd>
+  </div>
+  {{- range slice (dict "key" "closed_tasks" "ru" "Выполнено задач" "en" "Tasks completed") (dict "key" "tokens" "ru" "Потрачено токенов" "en" "Tokens used") -}}
+    {{- $total := index $snapshot.totals .key -}}
+    <div data-metric="{{ .key }}">
+      <dt class="beauty-stat-label">{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</dt>
+      <dd class="beauty-stat-value"><data class="beauty-nowrap" data-total value="{{ if ne $total nil }}{{ printf "%.0f" (float $total) }}{{ end }}" title="{{ if eq $total nil }}{{ $messages.unknown }}{{ else }}{{ lang.FormatNumber 0 $total }}{{ end }}. {{ $messages.updated }} {{ time.Format "2 Jan 2006, 15:04" $snapshot.fetched_at }} UTC">{{ partial "council/count.html" (dict "value" $total "scales" $scales) }}</data></dd>
+    </div>
+  {{- end }}
+</dl>
+</section>

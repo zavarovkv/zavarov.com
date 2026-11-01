@@ -63,7 +63,7 @@ jobs:
           test -s public/council/avatars/dexter.png
           test -s public/council/avatars/lando.png
           test -s public/council/avatars/padme.png
-          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'council.zavarov.com/auth/login' public/council/index.html
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
 
@@ -154,7 +154,7 @@ jobs:
           test -s public/council/avatars/dexter.png
           test -s public/council/avatars/lando.png
           test -s public/council/avatars/padme.png
-          grep -q 'council.zavarov.com/login' public/council/index.html
+          grep -q 'council.zavarov.com/auth/login' public/council/index.html
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
 
@@ -191,11 +191,11 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/en/ data/github_stars.json
+          git add content/en/ data/github_stars.json data/council_statistics.json
           if git diff --cached --quiet; then
-            echo "No translation or GitHub star changes to commit."
+            echo "No translation or public counter changes to commit."
           else
-            git commit -m "Auto-update EN translations and GitHub stars [skip ci]"
+            git commit -m "Auto-update EN translations and public counters [skip ci]"
             git push
           fi
 

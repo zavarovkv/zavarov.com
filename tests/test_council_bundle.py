@@ -33,10 +33,10 @@ class BundleTests(unittest.TestCase):
             page = """<!doctype html><html lang=ru><head><title>Agent Council</title>
 <link rel=canonical href=https://zavarov.com/council/>
 <link rel=alternate hreflang=en href=https://zavarov.com/en/council/>
-<meta name=description content="Team"><meta property=og:type content=article>
-<meta property=article:published_time content=0001><meta property=og:image content=https://zavarov.com/images/card.png>
+<meta name=description content="Team"><meta property=og:type content=website>
+<meta property=og:image content=https://zavarov.com/images/card.png>
 <link rel=stylesheet href=/css/main.css integrity=old><script src=/js/team.js integrity=old></script>
-<script type=application/ld+json>{"@type":"BlogPosting"}</script></head>
+<script type=application/ld+json>{"@type":"WebPage","url":"https://zavarov.com/council/","author":{"url":"https://zavarov.com/"}}</script></head>
 <body><svg><path d="M0"/></svg><a href="https://council.zavarov.com/login?next=%2Fprofiles">Login</a></body></html>"""
             files = {
                 "council/index.html": page.encode(),
@@ -88,7 +88,8 @@ class BundleTests(unittest.TestCase):
             self.assertIn('property="og:type" content="website"', text)
             self.assertNotIn("article:published_time", text)
             self.assertNotIn("BlogPosting", text)
-            self.assertIn('"@type": "WebPage"', text)
+            self.assertIn('"@type":"WebPage"', text)
+            self.assertIn('"author":{"url":"https://zavarov.com/"}', text)
             self.assertIn('<path d="M0"/>', text)
 
     def test_missing_and_symlinked_assets_fail_the_build(self):

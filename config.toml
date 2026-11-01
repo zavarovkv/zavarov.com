@@ -209,3 +209,29 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 3
     [languages.en.menu.main.params]
       icon = "telegram"
+
+# Council is published primarily on its own origin. Keep its blog copies
+# crawlable with matching canonical/hreflang, but out of the blog sitemap.
+[[cascade]]
+  [cascade.params]
+    canonicalURL = "https://council.zavarov.com/"
+    seoSiteName = "Agent Council"
+    seoSiteURL = "https://council.zavarov.com/"
+  [cascade.sitemap]
+    disable = true
+  [cascade.target]
+    path = "/council"
+    [cascade.target.sites.matrix]
+      languages = ["ru"]
+
+[[cascade]]
+  [cascade.params]
+    canonicalURL = "https://council.zavarov.com/en/"
+    seoSiteName = "Agent Council"
+    seoSiteURL = "https://council.zavarov.com/"
+  [cascade.sitemap]
+    disable = true
+  [cascade.target]
+    path = "/council"
+    [cascade.target.sites.matrix]
+      languages = ["en"]

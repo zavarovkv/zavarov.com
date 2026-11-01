@@ -1,52 +1,147 @@
 # Agent Council landing
 
-This Hugo repository owns the public RU/EN Council pages at `/council/` and
-`/en/council/`. The same build produces a standalone artifact for
-`https://council.zavarov.com/` and `/en/`. There is no redirect from the Council
-subdomain to the blog. Login, Telegram OAuth, sessions and all private API routes
-remain in the Agent Council application.
+The public RU/EN landing is owned by this Hugo repository:
+- `/council/` — Russian
+- `/en/council/` — English
 
-## Editing and preview
+The authenticated app remains on `https://council.zavarov.com`. The landing uses the app's existing Telegram Login endpoints; callbacks, token verification, sessions and secrets remain in the application.
 
-- `content/{ru,en}/council.md`: page metadata; normal translation rules apply.
-- `layouts/council/single.html`: team markup using the real theme base template.
-- `layouts/partials/council/footer.html`: project links, RU/EN, theme control, © 2026.
-- `assets/council/council.css`: Council layout; typography/colors come from the theme.
-- `assets/council/team.js`: public aggregate statistics, updated every five minutes.
-- `scripts/fetch-council-avatars.py`: reviewed, pinned 256×256 PNG portraits.
+## Source files
 
-Run `npm ci`, `python3 scripts/fetch-council-avatars.py`, then `hugo server`.
-Use `hugo --minify --panicOnWarning` and `python3 scripts/package-council-landing.py`
-for the standalone archive. Generated portraits and the archive are ignored by Git.
-No translation regeneration or access credentials are needed for a local build.
+- `content/{ru,en}/council.md`: page metadata
+- `layouts/council/single.html`: title, head, header, main, footer and script blocks extending Hugo Mini's shared page shell
+- `layouts/_partials/council/content.html`: bilingual landing content and agent profiles
+- `assets/council/council.css`: scoped layout for the team grid, portrait rows and counters
+- `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-## Public data and packaging
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. The header contains the project name, links to Team, Analytics, How it works and Early access, and a localized “Войти” / “Log in” text link. Navigation wraps below the brand and login link on narrow screens. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
 
-On the Council origin, cards read `/auth/login/council/team`, the existing public
-allowlist of agent names, models, completed-task counts and token totals. The
-endpoint contains no messages, task text or credentials. Requests omit cookies;
-failures show unavailable values rather than inventing counters. On the blog origin,
-that endpoint is absent, so the informational cards remain visible without metrics.
-Do not introduce cross-origin access to private application endpoints.
+Card and step headings use `beauty-heading-compact` for close multiline spacing.
+Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
+conjunctions use nonbreaking spaces in the maintained copy. Section heading gaps are
+shared. The header and portrait rows can wrap with enlarged text, and the
+statistics grid reduces its columns only when the available text measure requires it.
 
-The packager collects page assets and transitive CSS font/image references under
-`/council/`. It rewrites local paths and recomputes stylesheet integrity after URL
-changes. Both deployed pages keep their localized canonical, hreflang and social
-metadata; the deployed structured data describes a WebPage, not a dated blog post.
-All four portraits, theme controls, the Qui-Gon Telegram link and login remain present.
+The footer calls the theme's `footer-content.html` with project-specific links: the [Agent Council repository](https://github.com/zavarovkv/agent-council) and [Qui-Gon on Telegram](https://t.me/Qui_Gon_Jinn_ai). It retains the shared language and color-scheme controls, without the blog's personal contacts or RSS link.
 
-## Deployment
+Portraits are fetched at build time, not by browsers from the application origin. The pinned source revision must be reviewed when portraits change. To preview locally, run `python3 scripts/fetch-council-avatars.py` before `hugo server`. The build fails if an image is unavailable or malformed rather than silently deploying broken cards.
 
-1. Run tests and build checks; inspect RU/EN at mobile/desktop widths and both themes.
-2. Merge the reviewed build, then select its exact successful main workflow artifact
-   `council-landing-<sha>-deploy`. Record the run, commit and archive SHA-256.
-3. Follow Agent Council's `docs/council-static-deploy.md` to stage the artifact and
-   perform the guarded Nginx cutover. All assets use `/council/*`; app/auth routes stay
-   proxied. Do not switch the root before a complete artifact is installed.
-4. Verify exact candidate bytes over direct-origin TLS, all resources, statistics,
-   login and unauthorized API rejection. Retain the previous static release and
-   Council Nginx configuration for rollback.
+The team order is Qui-Gon, Galen Erso (CTO), Dexter, Lando, Padmé and K-2SO
+(technical auditor). Galen and K-2SO have owner-selected character identities and
+generated portraits in `assets/council/portraits/`; prompts and provenance live in
+that directory's README. Hugo emits 256×256 PNGs with alpha for the page, retaining
+the full originals only in source control. The two upcoming agents have no visible
+status label, at the owner's request; their cards do not claim runtime statistics.
 
-The optional manual deployment workflow is inactive until a separately authorized
-restricted SSH identity, protected GitHub environment and origin rollback check are
-configured. This repository never stores application or OAuth secrets.
+The “How the team works” section follows one vertical sequence at all
+viewport widths: planning, specialist work, coordinator review. Action-based
+headings carry the meaning; each has one short explanation. Compact numbered
+circles connected by a thin line show the sequence, with no interactive behavior
+or completion status. The semantic ordered list retains
+`role="list"`; decorative markers are hidden from assistive technology. Both
+languages are maintained in the Council content partial. Typography comes from
+Beauty, including the `beauty-step-marker` accent treatment; the page owns
+only layout and connecting lines using shared tokens.
+
+The design was informed by the concrete workflows on [Dust](https://dust.tt/),
+[Lindy](https://www.lindy.ai/), and [Relevance AI](https://relevanceai.com/), and
+NN/g's guidance on [visual hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/)
+and [descriptive headings](https://www.nngroup.com/articles/layer-cake-pattern-scanning/).
+The vertical treatment is a design choice for this narrow, editorial page, not
+a claim that one layout is universally best.
+
+## Early access
+
+The final section invites visitors to request early access through Qui-Gon's
+Telegram chat. `layouts/_partials/council/early-access.html` uses Beauty's existing
+button and the landing's shared section spacing. The localized message is encoded
+in Telegram's documented `text` query parameter; the visitor sends it in Telegram.
+Opening the link does not enroll anyone or grant dashboard access. This is a
+conversation-based request flow, with no form endpoint or on-page success claim.
+An understated text link below the button lets invited visitors log in through
+the same application endpoint used in the header. Its `beauty-note` treatment
+belongs to Beauty.css; the landing only sets the short gap below the primary action.
+The Agent Council server captures explicit requests from the verified Telegram
+queues and saves them to the connected Notion register once per minute, with
+durable receipts and deduplication by Telegram ID. The maintained backend
+[setup guide](https://github.com/zavarovkv/agent-council/blob/main/docs/waitlist.md)
+describes matching, retries and operation. The existing invitation policy is
+unchanged; collecting a request does not grant access.
+
+## Public statistics
+
+The “Analytics” block contains three totals: agents on the team, tasks completed
+and tokens used. The agent count comes from the same roster that renders the
+team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
+block. Counter tooltips retain the retrieval time and indicate a failed refresh.
+Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
+labels quiet. Three equal columns keep all counters on one row, including
+mobile. Large totals use localized compact notation and `beauty-stat-unit` for
+the suffix. Exact values remain in semantic `data` elements and their tooltips.
+The template supplies the same unit scales to the live formatter; unknown counts
+remain distinct from zero. The shared library owns sizing, weight and color.
+
+`npm run fetch-council-statistics` reads the existing public
+`https://council.zavarov.com/auth/login/council/team` endpoint, validates its
+allowlisted agent IDs and counters, and saves summed totals and the retrieval time in `data/council_statistics.json`.
+`npm run dev` and `npm run build` refresh
+this snapshot; a failed refresh preserves saved values and timestamp. CI commits
+it with other generated updates. Plain Hugo builds use the saved snapshot.
+
+`layouts/_partials/council/statistics.html` renders all three counters without
+JavaScript. On the application origin only, `assets/council/statistics.js`
+refreshes the two activity counters on load and every five minutes while the page is visible, without
+cookies or credentials. Blog/local copies use saved HTML and need no CORS changes.
+Missing counters produce an unknown total for that metric, never a partial total
+or invented zero. Model names, configuration and other agent details are discarded. Token totals
+use the source's input/output sum without adding cache/reasoning subsets again.
+The app caches its source for five minutes; retrieval time is not collection time.
+No chart dependency or history collector is needed.
+
+## Telegram login
+
+The header uses an ordinary text link to
+`https://council.zavarov.com/auth/login?provider=telegram-owner&next=%2Fprofiles`.
+It works without JavaScript on every origin. The landing loads no Telegram SDK
+and performs no nonce or session requests; the existing application owns the
+Telegram sign-in flow, token verification and session creation.
+
+## SEO
+
+Shared theme partials render localized title/description, canonical, Open Graph,
+Twitter, `hreflang` and JSON-LD. Council uses `WebPage` and `WebSite`, not article
+dates. `config.toml` cascades canonical URLs for the two languages to the subdomain
+and supplies the Agent Council site identity without editing translated content.
+Blog copies stay crawlable but are excluded from the blog sitemap. The Council
+virtual host owns `robots.txt` and the sitemap containing `/` and `/en/`; reciprocal
+language alternates remain in each page. The page content and login link are
+complete in HTML. The packager preserves the theme's JSON-LD and author identity.
+
+## Deployment order
+
+1. Complete blog CI and visual RU/EN/mobile review, with all six portraits present.
+2. Use the artifact from the successful main build; verify both URLs and the sign-in link.
+3. Follow [Council deployment automation](council-deploy-automation.md) to install the
+   reviewed static archive through the restricted receiver and protected environment.
+4. Verify exact RU/EN hashes at the origin and the existing login/API checks. The
+   server installer restores the previous static release if verification fails.
+
+The server accepts only `index.html`, `en/index.html` and assets under `/council/`.
+Keep that contract when changing the packager; application routes remain proxied
+to Hermes. Publishing the blog artifact does not automatically deploy the Council host.
+
+## Subdomain artifact
+
+`python3 scripts/package-council-landing.py` packages the two rendered pages as `/` and `/en/`.
+It keeps login on the application origin and maps only
+Council page links and metadata to `council.zavarov.com`. HTML is parsed so minified, unquoted
+attributes are handled correctly. CSS, JavaScript, portraits, header avatars, favicons, share
+images and fonts referenced by stylesheets are included. Assets are relocated to
+content-addressed `/council/assets/` paths, with the four runtime portrait paths
+retained. CSS URLs and their SRI hashes are updated together; script bytes remain
+unchanged. Missing, symlinked or oversized assets stop packaging before the archive
+is written. Unused per-agent metrics and duplicate theme scripts are not shipped.
+
+For an isolated build, pass `--public-dir /path/to/public --output /path/to/council-landing.tar.gz`.
+Portraits and the generated archive are ignored by Git. The protected application routes and
+its deployment remain outside this static artifact.

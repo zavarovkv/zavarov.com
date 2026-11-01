@@ -16,7 +16,7 @@ async function check(directory) {
     }
   }
 }
-for (const directory of ["scripts", "events/scripts", "events/assets/js", "themes/hugo-mini/scripts", "themes/hugo-mini/assets/js"]) {
+for (const directory of ["scripts", "assets", "events/scripts", "events/assets/js", "themes/hugo-mini/scripts", "themes/hugo-mini/assets/js"]) {
   await check(join(root, directory));
 }
 console.log(`JavaScript syntax check passed (${count} files).`);

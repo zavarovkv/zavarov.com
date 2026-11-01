@@ -1,0 +1,66 @@
+{{- $ru := eq .Language.Lang "ru" -}}
+<header class="council-intro">
+  <h1>{{ if $ru }}Команда ИИ‑агентов{{ else }}AI agent team{{ end }}</h1>
+  <p>{{ if $ru }}Самостоятельно исследуют рынки, развивают проекты и готовят материалы, совершенствуясь с каждой задачей. Квай‑Гон координирует работу и проверяет результаты.{{ else }}The agents independently research markets, develop projects, and prepare content, improving with each task. Qui‑Gon coordinates their work and reviews the results.{{ end }}</p>
+</header>
+
+{{- $members := slice
+      (dict "slug" "qui-gon" "nameRu" "Квай‑Гон Джинн" "nameEn" "Qui‑Gon Jinn" "roleRu" "COO и координатор" "roleEn" "COO and coordinator" "ru" "Управляет задачами, делегирует работу и проверяет результаты." "en" "Coordinates tasks, delegates work, and verifies outcomes." "telegram" "https://t.me/Qui_Gon_Jinn_ai")
+      (dict "slug" "galen-erso" "nameRu" "Гален Эрсо" "nameEn" "Galen Erso" "roleRu" "CTO" "roleEn" "CTO" "ru" "Техническая стратегия, архитектура и выбор технологий." "en" "Technical strategy, architecture, and technology choices.")
+      (dict "slug" "dexter" "nameRu" "Декстер Джеттстер" "nameEn" "Dexter Jettster" "roleRu" "Исследователь" "roleEn" "Researcher" "ru" "Изучает конкурентов, продукты, рынки и потребности клиентов." "en" "Studies competitors, products, markets, and customer needs.")
+      (dict "slug" "lando" "nameRu" "Лэндо Калриссиан" "nameEn" "Lando Calrissian" "roleRu" "Маркетинг и SEO" "roleEn" "Marketing and SEO" "ru" "Находит возможности продвижения и роста проектов." "en" "Finds marketing and growth opportunities.")
+      (dict "slug" "padme" "nameRu" "Падме Амидала" "nameEn" "Padmé Amidala" "roleRu" "Главный редактор" "roleEn" "Editor-in-chief" "ru" "Проверяет качество текстов и сохраняет авторский голос." "en" "Reviews writing quality and preserves the author's voice.")
+      (dict "slug" "k-2so" "nameRu" "K‑2SO" "nameEn" "K‑2SO" "roleRu" "Технический аудитор" "roleEn" "Technical auditor" "ru" "Ревью кода и архитектуры, оценка рисков и технического долга." "en" "Code and architecture reviews, risk assessment, and technical debt analysis.")
+    -}}
+<section class="council-section" aria-labelledby="council-team-title">
+  <h2 id="council-team-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
+  <div class="content-columns council-team">
+    {{- range $members }}
+    {{- $portraitURL := printf "council/avatars/%s.png" .slug | relURL -}}
+    {{- with resources.Get (printf "council/portraits/%s.png" .slug) -}}
+      {{- $portraitURL = (.Resize "256x256 png").RelPermalink -}}
+    {{- end -}}
+    <section aria-labelledby="council-{{ .slug }}">
+      <div class="council-member-heading">
+        <img src="{{ $portraitURL }}" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <div>
+          <h3 class="beauty-heading-compact" id="council-{{ .slug }}">{{ if $ru }}{{ .nameRu }}{{ else }}{{ .nameEn }}{{ end }}</h3>
+          <p><small>{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</small></p>
+        </div>
+      </div>
+      <p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}{{ with .telegram }} <a href="{{ . }}"><span class="beauty-link-label">Telegram</span><span class="beauty-link-icon" aria-hidden="true">↗</span></a>.{{ end }}</p>
+    </section>
+    {{- end }}
+  </div>
+</section>
+
+{{ partial "council/statistics.html" (dict "page" . "agentCount" (len $members)) }}
+
+<section class="council-section" aria-labelledby="council-workflow-title">
+  <h2 id="council-workflow-title">{{ if $ru }}Как работает команда{{ else }}How the team works{{ end }}</h2>
+  <ol class="council-workflow" role="list">
+    <li>
+      <small class="beauty-step-marker council-workflow-marker" aria-hidden="true">1</small>
+      <div>
+        <h3 class="beauty-heading-compact">{{ if $ru }}Квай‑Гон составляет план{{ else }}Qui‑Gon makes a plan{{ end }}</h3>
+        <p>{{ if $ru }}Обсуждает задачу в Telegram и там же задает уточняющие вопросы. Определяет ожидаемый результат, выбирает исполнителей и составляет план.{{ else }}He discusses the task in Telegram and asks follow-up questions there. He defines the expected outcome, chooses the specialists, and makes a plan.{{ end }}</p>
+      </div>
+    </li>
+    <li>
+      <small class="beauty-step-marker council-workflow-marker" aria-hidden="true">2</small>
+      <div>
+        <h3 class="beauty-heading-compact">{{ if $ru }}Агенты выполняют работу{{ else }}The agents do the work{{ end }}</h3>
+        <p>{{ if $ru }}У каждого агента своя память и специализированные навыки. Они выполняют поручения и могут сами находить и реализовывать улучшения в проектах, не дожидаясь новых задач.{{ else }}Each agent has its own memory and specialized skills. They handle assigned work and can also identify and implement project improvements on their own, without waiting for a new task.{{ end }}</p>
+      </div>
+    </li>
+    <li>
+      <small class="beauty-step-marker council-workflow-marker" aria-hidden="true">3</small>
+      <div>
+        <h3 class="beauty-heading-compact">{{ if $ru }}Квай‑Гон проверяет и представляет результат{{ else }}Qui‑Gon reviews and presents the result{{ end }}</h3>
+        <p>{{ if $ru }}Сверяет результаты с исходной задачей и при необходимости возвращает на доработку. Объединяет работу специалистов и представляет итог.{{ else }}He checks the results against the original brief and requests revisions when needed. He brings the specialists' work together and presents the outcome.{{ end }}</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+{{ partial "council/early-access.html" . }}

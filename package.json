@@ -6,8 +6,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run fetch-github-stars && hugo server --bind 127.0.0.1",
-    "build": "npm run fetch-github-stars && hugo --minify --panicOnWarning",
+    "dev": "npm run fetch-github-stars && npm run fetch-council-statistics && hugo server --bind 127.0.0.1",
+    "build": "npm run fetch-github-stars && npm run fetch-council-statistics && hugo --minify --panicOnWarning",
     "test": "node --test tests/*.test.mjs events/tests/*.test.mjs themes/hugo-mini/tests/*.test.mjs",
     "test:theme": "node --test themes/hugo-mini/tests/*.test.mjs",
     "test:events": "node --test events/tests/*.test.mjs",
@@ -19,6 +19,7 @@
     "translate:force": "node scripts/translate.mjs --force",
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs",
     "fetch-github-stars": "node themes/hugo-mini/scripts/fetch-github-stars.mjs zavarovkv/agent-council zavarovkv/hugo-mini zavarovkv/beauty-css",
+    "fetch-council-statistics": "node scripts/fetch-council-statistics.mjs",
     "event:new": "node events/scripts/new.mjs"
   },
   "devDependencies": {

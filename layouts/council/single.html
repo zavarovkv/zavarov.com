@@ -1,48 +1,47 @@
-{{ define "title" }}{{ .Title }}{{ end }}
 {{ define "head" }}
-{{ with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
+  {{- with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{- end }}
 {{ end }}
-{{ define "header" }}
-<div class="header-container">
-  <a class="title" href="https://council.zavarov.com/"><span class="title-text beauty-link-label">Agent Council</span></a>
-  <nav class="main-nav" aria-label="Council">
-    <a href="https://zavarov.com/">{{ if eq .Language.Lang "ru" }}Блог{{ else }}Blog{{ end }}</a>
-    <a href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if eq .Language.Lang "ru" }}Войти{{ else }}Sign in{{ end }}</a>
-  </nav>
-</div>
-{{ end }}
-{{ define "main" }}
-{{- $ru := eq .Language.Lang "ru" -}}
-<div class="council-content">
-<h1>{{ if $ru }}Совет агентов.{{ else }}Agent Council.{{ end }}</h1>
-<p>{{ if $ru }}ИИ-ассистенты для исследований, продвижения, редактуры и работы с задачами.{{ else }}AI assistants for research, marketing, editing and task management.{{ end }}</p>
-<p>{{ if $ru }}Квай-Гон координирует работу Декстера, Лэндо и Падме. Каждый отвечает за свою специализацию.{{ else }}Qui-Gon coordinates Dexter, Lando and Padmé. Each brings a distinct specialty.{{ end }}</p>
-<section aria-labelledby="team-title">
-<h2 id="team-title" class="section-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
-<div class="cards" data-team-cards>
-{{ $members := slice
-(dict "slug" "qui-gon" "name" "Квай-Гон Джинн" "roleRu" "Ассистент и координатор" "roleEn" "Assistant and coordinator" "ru" "Личный ассистент и координатор: ведет задачи до результата, распределяет работу между агентами, проверяет результаты и уточняет решения у владельца." "en" "Manages tasks through completion, delegates work, reviews results and clarifies decisions with the owner.")
-(dict "slug" "dexter" "name" "Декстер Джеттстер" "roleRu" "Продуктовый исследователь" "roleEn" "Product researcher" "ru" "Анализирует конкурентов, рынки, продукты, цены и потребности клиентов; проверяет первоисточники и отделяет факты от гипотез." "en" "Studies competitors, markets, products, pricing and customer needs; verifies primary sources and separates facts from hypotheses.")
-(dict "slug" "lando" "name" "Лэндо Калриссиан" "roleRu" "Маркетинг и SEO" "roleEn" "Marketing and SEO" "ru" "Позиционирование, исследование аудитории, SEO, контент, распространение материалов и эксперименты роста с оценкой результатов." "en" "Positioning, audience research, SEO, content, distribution and growth experiments with measured results.")
-(dict "slug" "padme" "name" "Падме Амидала" "roleRu" "Редактор" "roleEn" "Editor" "ru" "Вычитка русскоязычных текстов, естественный язык, сохранение авторского голоса и подготовка материалов для сайтов, публикаций и руководителей." "en" "Edits Russian texts, preserves the author's voice and prepares clear copy for websites, publications and executives.")
-}}
-{{ range $members }}
-<article class="card" data-agent="{{ .slug }}">
-<img src="/council/avatars/{{ .slug }}.png" alt="{{ .name }}" width="92" height="92" loading="lazy">
-<h3>{{ .name }}</h3>
-{{ if eq .slug "qui-gon" }}<p><a href="https://t.me/Qui_Gon_Jinn_ai" rel="noopener noreferrer">Telegram ↗</a></p>{{ end }}
-<div class="role">{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</div>
-<p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
-<div class="agent-metrics"><p>{{ if $ru }}Модель{{ else }}Model{{ end }}: <strong data-field="model">—</strong></p><p>{{ if $ru }}Завершено задач{{ else }}Completed tasks{{ end }}: <strong data-field="closed_tasks">—</strong> · {{ if $ru }}Токены{{ else }}Tokens{{ end }}: <strong data-field="tokens">—</strong></p><p class="connection" data-field="connection">{{ if $ru }}Статистика пока недоступна{{ else }}Statistics unavailable{{ end }}</p></div>
-</article>
-{{ end }}
-</div>
-<p class="team-status" data-team-status role="status">{{ if $ru }}Статистика загрузится при подключении к Agent Council.{{ else }}Statistics will load when connected to Agent Council.{{ end }}</p>
-</section>
 
-</div>
+{{ define "title" }}{{ .Title }}{{ end }}
+
+{{ define "header" }}
+  {{- $ru := eq .Language.Lang "ru" -}}
+  <div class="council-header">
+    <a class="brand-link beauty-nowrap" href="{{ .RelPermalink }}" aria-current="page"><strong>Agent Council</strong></a>
+    <nav class="council-nav" aria-label="{{ if $ru }}Разделы страницы{{ else }}Page sections{{ end }}">
+      <a class="beauty-nowrap" href="#council-team-title">{{ if $ru }}Команда{{ else }}Team{{ end }}</a>
+      <a class="beauty-nowrap" href="#council-statistics-title">{{ if $ru }}Аналитика{{ else }}Analytics{{ end }}</a>
+      <a class="beauty-nowrap" href="#council-workflow-title">{{ if $ru }}Как работает{{ else }}How it works{{ end }}</a>
+      <a class="beauty-nowrap" href="#council-access-title">{{ if $ru }}Ранний доступ{{ else }}Early access{{ end }}</a>
+    </nav>
+    <nav class="council-auth" aria-label="{{ if $ru }}Вход{{ else }}Account{{ end }}">
+      <a class="council-login beauty-nowrap" href="https://council.zavarov.com/auth/login?provider=telegram-owner&amp;next=%2Fprofiles">{{ if $ru }}Войти{{ else }}Log in{{ end }}</a>
+    </nav>
+  </div>
 {{ end }}
-{{ define "footer" }}{{ partial "council/footer.html" . }}{{ end }}
+
 {{ define "scripts" }}
-{{ with resources.Get "council/team.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
+  {{- with resources.Get "council/statistics.js" | js.Build (dict "minify" true "targetPath" "council/statistics.js") | resources.Fingerprint "sha256" }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{- end }}
+{{ end }}
+
+{{ define "footer" }}
+  {{- $ru := eq .Language.Lang "ru" -}}
+  {{- partial "footer-content.html" (dict
+    "page" .
+    "social" (dict "github" "https://github.com/zavarovkv/agent-council" "telegram" "https://t.me/Qui_Gon_Jinn_ai")
+    "labels" (dict "github" "Agent Council on GitHub" "telegram" (cond $ru "Квай-Гон в Telegram" "Qui-Gon on Telegram"))
+    "copyright" (printf "© %s" (now.Format "2006"))
+  ) -}}
+{{ end }}
+
+{{ define "main" }}
+  {{- $content := partial "council/content.html" . -}}
+  {{- if not (eq (.Param "typography") false) -}}
+    {{- $content = partial "typography/html.html" (dict "html" $content "lang" .Language.Lang) -}}
+  {{- end -}}
+  <article class="beauty-reading" lang="{{ .Language.Lang }}">{{ $content }}</article>
 {{ end }}
