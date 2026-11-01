@@ -59,6 +59,10 @@ jobs:
         run: |
           test -s public/council/index.html
           test -s public/en/council/index.html
+          test -s public/council/avatars/qui-gon.png
+          test -s public/council/avatars/dexter.png
+          test -s public/council/avatars/lando.png
+          test -s public/council/avatars/padme.png
           grep -q 'council.zavarov.com/login' public/council/index.html
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
@@ -136,6 +140,10 @@ jobs:
         run: |
           test -s public/council/index.html
           test -s public/en/council/index.html
+          test -s public/council/avatars/qui-gon.png
+          test -s public/council/avatars/dexter.png
+          test -s public/council/avatars/lando.png
+          test -s public/council/avatars/padme.png
           grep -q 'council.zavarov.com/login' public/council/index.html
           grep -q 'hreflang' public/council/index.html
           grep -q 'hreflang' public/en/council/index.html
