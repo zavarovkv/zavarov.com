@@ -1,32 +1,26 @@
-<!doctype html>
-<html lang="{{ .Language.Lang }}">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+{{ define "title" }}{{ .Title }}{{ end }}
+{{ define "head" }}
 {{- $ru := eq .Language.Lang "ru" -}}
-<title>{{ .Title }}</title><meta name="description" content="{{ .Description }}">
 <link rel="canonical" href="{{ if $ru }}https://council.zavarov.com/{{ else }}https://council.zavarov.com/en/{{ end }}">
 <link rel="alternate" hreflang="ru" href="https://council.zavarov.com/">
 <link rel="alternate" hreflang="en" href="https://council.zavarov.com/en/">
-<script>{{ with resources.Get "council/theme-init.js" }}{{ .Content | safeJS }}{{ end }}</script>
-<meta property="og:type" content="website"><meta property="og:title" content="{{ .Title }}"><meta property="og:description" content="{{ .Description }}"><meta property="og:url" content="{{ .Permalink }}">
 {{ with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
-</head>
-<body>
-<div class="wrap">
-<header class="nav">
-<a class="brand" href="{{ .Site.BaseURL }}">Zavarov.com</a>
-<nav class="actions" aria-label="{{ if $ru }}Навигация{{ else }}Navigation{{ end }}">
-<a href="{{ if $ru }}/en/{{ else }}/{{ end }}" lang="{{ if $ru }}en{{ else }}ru{{ end }}">{{ if $ru }}EN{{ else }}RU{{ end }}</a>
-<a class="login" href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if $ru }}Войти{{ else }}Sign in{{ end }}</a>
-</nav>
-</header>
-<main>
-<section class="hero">
-<div class="eyebrow">Agent Council</div>
-<h1>{{ if $ru }}Моя команда ИИ-агентов.{{ else }}My team of AI agents.{{ end }}</h1>
-<p class="lead">{{ if $ru }}Самостоятельные специалисты исследуют рынок, находят возможности роста, редактируют материалы и помогают развивать проекты. Квай-Гон координирует их работу через Linear.{{ else }}Specialized AI agents research markets, find growth opportunities, edit content, and help build projects. Qui-Gon coordinates their work through Linear.{{ end }}</p>
-<a class="cta" href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if $ru }}Открыть Agent Council{{ else }}Open Agent Council{{ end }}</a>
-</section>
+{{ end }}
+{{ define "header" }}
+<div class="header-container">
+  <a class="title" href="https://council.zavarov.com/"><span class="title-text beauty-link-label">Agent Council</span></a>
+  <nav class="main-nav" aria-label="Council">
+    <a href="https://zavarov.com/">{{ if eq .Language.Lang "ru" }}Блог{{ else }}Blog{{ end }}</a>
+    <a href="/login?next=%2Fprofiles">{{ if eq .Language.Lang "ru" }}Войти{{ else }}Sign in{{ end }}</a>
+  </nav>
+</div>
+{{ end }}
+{{ define "main" }}
+{{- $ru := eq .Language.Lang "ru" -}}
+<div class="council-content">
+<h1>{{ if $ru }}Совет агентов.{{ else }}Agent Council.{{ end }}</h1>
+<p>{{ if $ru }}ИИ-ассистенты для исследований, продвижения, редактуры и работы с задачами.{{ else }}AI assistants for research, marketing, editing and task management.{{ end }}</p>
+<p>{{ if $ru }}Квай-Гон координирует работу Декстера, Лэндо и Падме. Каждый отвечает за свою специализацию.{{ else }}Qui-Gon coordinates Dexter, Lando and Padmé. Each brings a distinct specialty.{{ end }}</p>
 <section aria-labelledby="team-title">
 <h2 id="team-title" class="section-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
 <div class="cards" data-team-cards>
@@ -48,10 +42,10 @@
 </div>
 <p class="team-status" data-team-status role="status">{{ if $ru }}Статистика загрузится при подключении к Agent Council.{{ else }}Statistics will load when connected to Agent Council.{{ end }}</p>
 </section>
-</main>
-{{ partial "council/footer.html" . }}
-{{ with resources.Get "council/team.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
-{{ with resources.Get "council/theme.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
+
 </div>
-</body>
-</html>
+{{ end }}
+{{ define "footer" }}{{ partial "council/footer.html" . }}{{ end }}
+{{ define "scripts" }}
+{{ with resources.Get "council/team.js" | resources.Minify | resources.Fingerprint "sha256" }}<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
+{{ end }}
