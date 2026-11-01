@@ -27,3 +27,9 @@ node_modules/
 /static/js/mermaid/
 
 
+
+# Reproducible Council deployment artifacts
+/council-landing.tar.gz
+/static/council/avatars/
+__pycache__/
+.ruff_cache/

@@ -10,8 +10,9 @@ const css = readFileSync(new URL("../assets/council/council.css", import.meta.ur
 test("Council has localized canonical page paths", () => {
   assert.match(ru, /url = "\/council\/"/);
   assert.match(en, /url = "\/en\/council\/"/);
-  assert.match(template, /hreflang="ru"/);
-  assert.match(template, /hreflang="en"/);
+  const base = readFileSync(new URL("../themes/hugo-mini/layouts/baseof.html", import.meta.url), "utf8");
+  assert.match(base, /hreflang=/);
+  assert.doesNotMatch(template, /rel="canonical"/);
 });
 test("Council sign-in stays on the protected application origin", () => {
   assert.match(template, /\/login\?next=%2Fprofiles/);

@@ -1,9 +1,5 @@
 {{ define "title" }}{{ .Title }}{{ end }}
 {{ define "head" }}
-{{- $ru := eq .Language.Lang "ru" -}}
-<link rel="canonical" href="{{ if $ru }}https://council.zavarov.com/{{ else }}https://council.zavarov.com/en/{{ end }}">
-<link rel="alternate" hreflang="ru" href="https://council.zavarov.com/">
-<link rel="alternate" hreflang="en" href="https://council.zavarov.com/en/">
 {{ with resources.Get "council/council.css" | resources.Minify | resources.Fingerprint "sha256" }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
 {{ end }}
 {{ define "header" }}
@@ -11,7 +7,7 @@
   <a class="title" href="https://council.zavarov.com/"><span class="title-text beauty-link-label">Agent Council</span></a>
   <nav class="main-nav" aria-label="Council">
     <a href="https://zavarov.com/">{{ if eq .Language.Lang "ru" }}Блог{{ else }}Blog{{ end }}</a>
-    <a href="/login?next=%2Fprofiles">{{ if eq .Language.Lang "ru" }}Войти{{ else }}Sign in{{ end }}</a>
+    <a href="https://council.zavarov.com/login?next=%2Fprofiles">{{ if eq .Language.Lang "ru" }}Войти{{ else }}Sign in{{ end }}</a>
   </nav>
 </div>
 {{ end }}
@@ -34,6 +30,7 @@
 <article class="card" data-agent="{{ .slug }}">
 <img src="/council/avatars/{{ .slug }}.png" alt="{{ .name }}" width="92" height="92" loading="lazy">
 <h3>{{ .name }}</h3>
+{{ if eq .slug "qui-gon" }}<p><a href="https://t.me/Qui_Gon_Jinn_ai" rel="noopener noreferrer">Telegram ↗</a></p>{{ end }}
 <div class="role">{{ if $ru }}{{ .roleRu }}{{ else }}{{ .roleEn }}{{ end }}</div>
 <p>{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
 <div class="agent-metrics"><p>{{ if $ru }}Модель{{ else }}Model{{ end }}: <strong data-field="model">—</strong></p><p>{{ if $ru }}Завершено задач{{ else }}Completed tasks{{ end }}: <strong data-field="closed_tasks">—</strong> · {{ if $ru }}Токены{{ else }}Tokens{{ end }}: <strong data-field="tokens">—</strong></p><p class="connection" data-field="connection">{{ if $ru }}Статистика пока недоступна{{ else }}Statistics unavailable{{ end }}</p></div>

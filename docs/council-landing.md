@@ -1,25 +1,52 @@
 # Agent Council landing
 
-The public RU/EN landing is owned by this Hugo repository:
-- `/council/` — Russian
-- `/en/council/` — English
+This Hugo repository owns the public RU/EN Council pages at `/council/` and
+`/en/council/`. The same build produces a standalone artifact for
+`https://council.zavarov.com/` and `/en/`. There is no redirect from the Council
+subdomain to the blog. Login, Telegram OAuth, sessions and all private API routes
+remain in the Agent Council application.
 
-The authenticated app remains on `https://council.zavarov.com`. The landing links to `/login?next=%2Fprofiles` on that origin; Telegram/OAuth callbacks, sessions and secrets must never move into the static site.
+## Editing and preview
 
-## Source files
+- `content/{ru,en}/council.md`: page metadata; normal translation rules apply.
+- `layouts/council/single.html`: team markup using the real theme base template.
+- `layouts/partials/council/footer.html`: project links, RU/EN, theme control, © 2026.
+- `assets/council/council.css`: Council layout; typography/colors come from the theme.
+- `assets/council/team.js`: public aggregate statistics, updated every five minutes.
+- `scripts/fetch-council-avatars.py`: reviewed, pinned 256×256 PNG portraits.
 
-- `content/{ru,en}/council.md`: page metadata
-- `layouts/council/single.html`: bilingual standalone page
-- `assets/council/council.css`: scoped styling
-- `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
+Run `npm ci`, `python3 scripts/fetch-council-avatars.py`, then `hugo server`.
+Use `hugo --minify --panicOnWarning` and `python3 scripts/package-council-landing.py`
+for the standalone archive. Generated portraits and the archive are ignored by Git.
+No translation regeneration or access credentials are needed for a local build.
 
-Portraits are fetched at build time, not by browsers from the application origin. The pinned source revision must be reviewed when portraits change. To preview locally, run `python3 scripts/fetch-council-avatars.py` before `hugo server`. The build fails if an image is unavailable or malformed rather than silently deploying broken cards.
+## Public data and packaging
 
-The old application's live model/task/token counters are intentionally not displayed. Do not add unauthenticated cross-origin access to private telemetry. A future public snapshot would require a sanitized schema, explicit authorization and caching.
+On the Council origin, cards read `/auth/login/council/team`, the existing public
+allowlist of agent names, models, completed-task counts and token totals. The
+endpoint contains no messages, task text or credentials. Requests omit cookies;
+failures show unavailable values rather than inventing counters. On the blog origin,
+that endpoint is absent, so the informational cards remain visible without metrics.
+Do not introduce cross-origin access to private application endpoints.
 
-## Deployment order
+The packager collects page assets and transitive CSS font/image references under
+`/council/`. It rewrites local paths and recomputes stylesheet integrity after URL
+changes. Both deployed pages keep their localized canonical, hreflang and social
+metadata; the deployed structured data describes a WebPage, not a dated blog post.
+All four portraits, theme controls, the Qui-Gon Telegram link and login remain present.
 
-1. Blog PR CI green, visual RU/EN/mobile review, all four images present.
-2. Merge and deploy blog PR; verify both URLs and sign-in link.
-3. Only then deploy Agent Council Nginx redirect PR. Keep 302 until verified.
-4. Smoke-test `/login`, Telegram login callback, `/auth/*`, `/api/*`, `/integrations/linear/*` and the dashboard. Roll back the app redirect if any protected route breaks.
+## Deployment
+
+1. Run tests and build checks; inspect RU/EN at mobile/desktop widths and both themes.
+2. Merge the reviewed build, then select its exact successful main workflow artifact
+   `council-landing-<sha>-deploy`. Record the run, commit and archive SHA-256.
+3. Follow Agent Council's `docs/council-static-deploy.md` to stage the artifact and
+   perform the guarded Nginx cutover. All assets use `/council/*`; app/auth routes stay
+   proxied. Do not switch the root before a complete artifact is installed.
+4. Verify exact candidate bytes over direct-origin TLS, all resources, statistics,
+   login and unauthorized API rejection. Retain the previous static release and
+   Council Nginx configuration for rollback.
+
+The optional manual deployment workflow is inactive until a separately authorized
+restricted SSH identity, protected GitHub environment and origin rollback check are
+configured. This repository never stores application or OAuth secrets.
