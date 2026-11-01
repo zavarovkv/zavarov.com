@@ -40,7 +40,6 @@ npm run fetch-telegram-reactions         # Update Telegram statistics
 npm run fetch-github-stars                # Update project star counts
 npm run fetch-council-statistics          # Update Council task and token totals
 npm run vendor-mermaid                   # Refresh the local Mermaid bundle
-npm run vendor-beauty-site -- <sha>       # Update pinned Beauty examples and downloads
 npm run check                            # Validate content and local links
 npm run check:syntax                     # Check all authored JavaScript
 npm test                                 # Test the site, events, and theme without API calls
@@ -90,7 +89,6 @@ The homepage's inline `github-stars` shortcode reads `data/github_stars.json`. `
 content/                 Russian sources and English translations
 data/                    Shared book records and saved public counters
 assets/council/          Council layout, live statistics and source portraits
-beauty/                  Beauty.css examples within the shared blog shell
 events/                  Independent event content, layouts, assets and generator
 static/                  Images, datasets, favicons, and CNAME
 scripts/                 Translation and asset-vendoring scripts
@@ -107,11 +105,6 @@ Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and 
 The [Council landing](docs/council-landing.md) reuses the theme's page shell and
 Beauty.css typography. Its content, statistics and layout stay site-owned; the
 authenticated application is maintained separately.
-
-The [Beauty.css catalog](https://zavarov.com/beauty/) uses the same header, footer,
-fonts, navigation and stylesheet as the blog. Its live examples, palette and tokens
-come from a pinned upstream snapshot; the host renders ordinary Hugo pages. See
-[maintenance](beauty/README.md) for ownership, updates and the Russian/English routes.
 
 Language content is selected by explicit `module.mounts.sites.matrix` mounts;
 `locale` and `label` use Hugo's current language configuration. Per-language

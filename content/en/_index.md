@@ -27,7 +27,7 @@ A self-hosted platform for managing AI agents, with a web dashboard and Telegram
 A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration. The source code is on {{< github-stars repo="zavarovkv/hugo-mini" >}}.
 {{< /project >}}
 
-{{< project name="Beauty.css" url="/beauty/en/" >}}
+{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
 A lightweight CSS library for beautiful, readable websites. Typography, forms, and dark mode for plain HTML. The source code is on {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}

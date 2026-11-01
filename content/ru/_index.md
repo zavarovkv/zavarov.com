@@ -27,7 +27,7 @@ description = "Константин Заваров — блог о продук�
 Минималистичная тема для Hugo, на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram. Исходный код доступен на {{< github-stars repo="zavarovkv/hugo-mini" >}}.
 {{< /project >}}
 
-{{< project name="Beauty.css" url="/beauty/" >}}
+{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
 Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML. Исходный код доступен на {{< github-stars repo="zavarovkv/beauty-css" >}}.
 {{< /project >}}
 {{< /column >}}

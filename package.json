@@ -13,7 +13,6 @@
     "test:events": "node --test events/tests/*.test.mjs",
     "postinstall": "node scripts/vendor-mermaid.mjs",
     "vendor-mermaid": "node scripts/vendor-mermaid.mjs",
-    "vendor-beauty-site": "node scripts/vendor-beauty-site.mjs",
     "check": "node scripts/check-site.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "translate": "node scripts/translate.mjs",
