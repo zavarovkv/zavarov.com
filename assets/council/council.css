@@ -1,1 +1,17 @@
-:root{color-scheme:light dark;--bg:#fafaf8;--fg:#1e2424;--muted:#586267;--line:#dce2e0;--panel:#fff;--accent:#167c70} @media(prefers-color-scheme:dark){:root{--bg:#11191b;--fg:#eef3f1;--muted:#a8b6b2;--line:#32413f;--panel:#1a2628;--accent:#6bd5be}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,sans-serif}a{color:inherit}a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.wrap{max-width:1060px;margin:auto;padding:0 24px}.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:20px}.nav a{text-decoration:none}.nav .brand{font-weight:800;letter-spacing:-.03em}.nav .actions{display:flex;gap:18px;align-items:center}.login,.cta{display:inline-block;background:var(--fg);color:var(--bg);border-radius:12px;padding:10px 18px;text-decoration:none;font-weight:650}.hero{padding:72px 0 52px;max-width:800px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:800}.hero h1{font-size:clamp(40px,6vw,76px);line-height:1.05;letter-spacing:-.06em;margin:14px 0 24px}.lead{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:700px}.hero .cta{margin-top:16px}.section-title{font-size:30px;letter-spacing:-.04em;margin:20px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 70px}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px}.card img{width:92px;height:92px;object-fit:contain}.card h3{font-size:23px;letter-spacing:-.03em;margin:12px 0 2px}.role{font-weight:700;color:var(--accent)}.card p{color:var(--muted);margin:8px 0}.foot{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted)}.foot a{margin-right:18px}@media(max-width:680px){.cards{grid-template-columns:1fr}.nav{align-items:flex-start}.nav .actions{gap:10px}.hero{padding-top:44px}.card{padding:22px}}
+/* Layout only. Typography, colors, dark mode, links and controls are
+   inherited from hugo-mini's real Beauty.css + main.css bundle. */
+.council-content{max-width:var(--width);margin:0 auto}
+.council-content>p{margin-block:1em}
+.council-content h1{margin-bottom:.5em}
+.council-content .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:1.5rem 0 3rem}
+.council-content .card{border:1px solid var(--color-divider);border-radius:8px;padding:1.2rem;min-width:0}
+.council-content .card img{width:96px;height:96px;object-fit:contain}
+.council-content .card h3{font-size:1.2rem;margin:.75rem 0 .2rem}
+.council-content .card .role{font-weight:600;color:var(--heading-color)}
+.council-content .card p{margin:.6em 0}
+.council-content .agent-metrics{border-top:1px solid var(--color-divider);margin-top:1rem;padding-top:.75rem;font-size:.875rem}
+.council-content .agent-metrics p{margin:.4em 0}
+.council-content .connection,.council-content .team-status{color:var(--color-secondary);font-size:.875rem}
+.council-footer-links{display:flex;align-items:center;gap:1rem}
+.council-footer-links a{display:inline-flex;align-items:center;gap:.4rem}
+@media(max-width:650px){.council-content .cards{grid-template-columns:1fr}}
