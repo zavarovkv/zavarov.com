@@ -14,7 +14,7 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `assets/council/council.css`: scoped layout for the team grid, portrait rows and counters
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. The header contains the project name, links to Team, Analytics, How it works and Early access, and a localized “Войти” / “Log in” text link. Navigation wraps below the brand and login link on narrow screens. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. The header contains the project name and links to Team, Analytics, How it works and Early access. Navigation wraps below the brand on narrow screens. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
 
 Card and step headings use `beauty-heading-compact` for close multiline spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and

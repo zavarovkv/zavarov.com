@@ -80,10 +80,10 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     assert.ok(all(page, node => node.tagName === "link").some(node => attrs(node).href === sharedCSS));
     assert.ok(links(page).some(a => a.href === "https://council.zavarov.com/auth/login?provider=telegram-owner&next=%2Fprofiles"));
     assert.equal(all(page, node => hasClass(node, "main-nav") || hasClass(node, "mobile-menu-toggle") || hasClass(node, "title-avatar")).length, 0);
-    const login = all(page, node => hasClass(node, "council-login"))[0];
-    assert.equal(login.tagName, "a");
-    assert.ok(!hasClass(login, "beauty-button"));
-    assert.equal(login.childNodes.map(node => node.value || "").join(""), prefix ? "Log in" : "Войти");
+    const header = all(page, node => hasClass(node, "council-header"))[0];
+    assert.ok(links(header).every(a => !a.href.includes("/auth/login")), "login stays outside the top menu");
+    const note = all(page, node => hasClass(node, "beauty-note"))[0];
+    assert.equal(links(note)[0].href, "https://council.zavarov.com/auth/login?provider=telegram-owner&next=%2Fprofiles");
     assert.equal(all(page, node => hasClass(node, "tg-auth-button")).length, 0);
     const navigation = all(page, node => hasClass(node, "council-nav"))[0];
     assert.deepEqual(links(navigation).map(a => a.href), [
