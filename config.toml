@@ -54,6 +54,12 @@ ignoreErrors = ["error-disable-taxonomy"]
     source = "events/assets"
     target = "assets/events"
   [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "beauty/public"
+    target = "static/beauty"
+  [[module.mounts]]
     source = "content/ru"
     target = "content"
     [module.mounts.sites.matrix]
@@ -68,6 +74,16 @@ ignoreErrors = ["error-disable-taxonomy"]
     target = "content"
     [module.mounts.sites.matrix]
       languages = ["ru"]
+  [[module.mounts]]
+    source = "beauty/content/ru"
+    target = "content"
+    [module.mounts.sites.matrix]
+      languages = ["ru"]
+  [[module.mounts]]
+    source = "beauty/content/en"
+    target = "content"
+    [module.mounts.sites.matrix]
+      languages = ["en"]
 
 [languages]
   [languages.ru]

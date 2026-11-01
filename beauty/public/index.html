@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Beauty.css — красивые сайты на обычном HTML</title>
+  <meta name="description" content="Легкая CSS-библиотека для красивых сайтов. Живые примеры типографики, форм, таблиц, счетчиков и шагов с готовым HTML.">
+  <link rel="icon" href="data:,">
+  <link rel="canonical" href="https://zavarov.com/beauty/">
+  <link rel="alternate" hreflang="en" href="https://zavarov.com/beauty/en/">
+  <link rel="alternate" hreflang="ru" href="https://zavarov.com/beauty/">
+  <link rel="alternate" hreflang="x-default" href="https://zavarov.com/beauty/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Beauty.css — красивые сайты на обычном HTML">
+  <meta property="og:description" content="Легкая CSS-библиотека для красивых сайтов. Живые примеры типографики, форм, таблиц, счетчиков и шагов с готовым HTML.">
+  <meta property="og:url" content="https://zavarov.com/beauty/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Beauty.css","description":"Легкая CSS-библиотека для красивых сайтов. Живые примеры типографики, форм, таблиц, счетчиков и шагов с готовым HTML.","url":"https://zavarov.com/beauty/","codeRepository":"https://github.com/zavarovkv/beauty-css","programmingLanguage":"CSS","license":"https://opensource.org/license/mit","version":"0.5.0-dev.0"}</script>
+  <link rel="stylesheet" href="dist/beauty.min.css?v=c4648b748d06">
+  <link rel="stylesheet" href="assets/site.css?v=1e62e9ad1c2f">
+  <script src="assets/theme.js?v=fdd4a53903d8"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">К содержимому</a>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Основная навигация">
+    <a class="wordmark" href="./"><strong>Beauty.css</strong></a>
+    <a href="#examples">Примеры</a>
+    <a href="#start">Подключение</a>
+    <div class="site-tools beauty-nav-end">
+      <a href="en/" lang="en" hreflang="en">EN</a>
+      <label class="theme-control"><span class="visually-hidden">Цветовая тема</span><select id="theme" disabled><option value="auto">Системная</option><option value="light">Светлая</option><option value="dark">Темная</option></select></label>
+    </div>
+  </nav>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="product-title">
+    <p class="beauty-note">v0.5.0-dev.0 · 3,8 КиБ gzip · MIT</p>
+    <h1 id="product-title">Красивые сайты.
+Обычный HTML.</h1>
+    <p class="beauty-lead">Типографика, формы и детали, которые делают страницу удобной. Подключите один CSS-файл — и пишите.</p>
+    <p class="actions"><a class="beauty-button" href="dist/beauty.min.css" download>Скачать CSS</a><a href="https://github.com/zavarovkv/beauty-css"><span class="beauty-link-label">GitHub</span><span class="beauty-link-icon" aria-hidden="true">↗</span></a><a href="https://www.npmjs.com/package/beauty-css">npm</a></p>
+    <p class="beauty-note">Без зависимостей и встроенных шрифтов. Светлая и темная темы.</p>
+  </section>
+  <div class="documentation" id="examples">
+    <aside class="contents">
+      <details id="contents-disclosure"><summary>На этой странице</summary>
+      <nav aria-label="Содержание примеров">
+        <ul><li><a href="#start">Подключение</a></li><li><a href="#typography">Типографика</a></li><li><a href="#links">Ссылки и кнопки</a></li><li><a href="#quotes">Цитаты и списки</a></li><li><a href="#statistics">Цифры и шаги</a></li><li><a href="#tables">Таблицы и код</a></li><li><a href="#forms">Формы</a></li><li><a href="#media">Медиа и раскрывающиеся блоки</a></li><li><a href="#integration">Контейнер и навигация</a></li><li><a href="#palette">Палитра</a></li><li><a href="#customize">Настройка</a></li></ul>
+        <p class="beauty-note">17 живых примеров с HTML</p>
+      </nav></details>
+    </aside>
+    <div class="catalog">
+      <section id="start" class="catalog-section" aria-labelledby="start-title">
+        <h2 id="start-title">Один файл — и готово</h2>
+        <p>Для новой страницы используйте версию без классов. Скачайте файл и добавьте эту строку в <code>&lt;head&gt;</code>:</p>
+        <pre tabindex="0"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;beauty.min.css&quot;&gt;</code></pre>
+        <p>Для существующего сайта — только prose и контейнер <code>.beauty</code>:</p>
+        <pre tabindex="0"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;beauty.prose.min.css&quot;&gt;
+
+&lt;article class=&quot;beauty&quot;&gt;
+  &lt;h1&gt;Ваш заголовок&lt;/h1&gt;
+  &lt;p&gt;Ваш текст.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+        <p><a href="dist/beauty.prose.min.css" download>Скачать prose</a> · <a href="examples/prose.html">Посмотреть изоляцию стилей</a></p>
+        <details><summary>Установка через npm</summary><pre tabindex="0"><code>npm install beauty-css</code></pre><pre tabindex="0"><code>import &quot;beauty-css&quot;;
+// Или только контейнер:
+import &quot;beauty-css/prose&quot;;</code></pre></details>
+        <p class="beauty-note">Примеры показывают версию 0.5.0-dev.0. Чтобы получить точно такие же стили, скачайте CSS с этой страницы. Версия в npm может отличаться.</p>
+      </section>
+      <section id="typography" class="catalog-section" aria-labelledby="typography-title">
+    <h2 id="typography-title">Типографика</h2><p class="beauty-note">Обычный HTML уже выглядит хорошо. Классы нужны только для дополнительных акцентов.</p>
+    <div class="example" data-example="typography-0">
+      <p class="example-label beauty-note">Заголовки и абзацы</p>
+      <div class="sample"><hgroup>
+  <h2>Дайте тексту пространство</h2>
+  <p>Хорошая страница начинается с ясной мысли.</p>
+</hgroup>
+<p>Заголовки помогают найти нужное, абзацы — раскрыть мысль. Умеренная длина строки и свободный интерлиньяж делают чтение удобным на любом экране.</p>
+<h3>Заголовок третьего уровня</h3>
+<h4>Заголовок четвертого уровня</h4>
+<h5>Заголовок пятого уровня</h5>
+<h6>Заголовок шестого уровня</h6></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;hgroup&gt;
+  &lt;h2&gt;Дайте тексту пространство&lt;/h2&gt;
+  &lt;p&gt;Хорошая страница начинается с ясной мысли.&lt;/p&gt;
+&lt;/hgroup&gt;
+&lt;p&gt;Заголовки помогают найти нужное, абзацы — раскрыть мысль. Умеренная длина строки и свободный интерлиньяж делают чтение удобным на любом экране.&lt;/p&gt;
+&lt;h3&gt;Заголовок третьего уровня&lt;/h3&gt;
+&lt;h4&gt;Заголовок четвертого уровня&lt;/h4&gt;
+&lt;h5&gt;Заголовок пятого уровня&lt;/h5&gt;
+&lt;h6&gt;Заголовок шестого уровня&lt;/h6&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="typography-1">
+      <p class="example-label beauty-note">Акценты внутри строки</p>
+      <div class="sample"><p><strong>Важная мысль</strong>, <em>легкий акцент</em>, <mark>выделенный фрагмент</mark>.
+<abbr title="Cascading Style Sheets">CSS</abbr>, <code>line-height</code>, <kbd>Ctrl</kbd> + <kbd>C</kbd>, <samp>OK</samp>.</p>
+<p><b>Жирный</b>, <i>курсив</i>, <u>подчеркнутый</u>, <s>неактуальный</s>, <del>удаленный</del>, <ins>добавленный</ins>.
+H<sub>2</sub>O · x<sup>2</sup> · <small>небольшое уточнение</small>.</p>
+<p>Встречаемся <time datetime="2026-11-01">1 ноября 2026</time>. <span class="beauty-nowrap">24 МБ</span>.</p></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;p&gt;&lt;strong&gt;Важная мысль&lt;/strong&gt;, &lt;em&gt;легкий акцент&lt;/em&gt;, &lt;mark&gt;выделенный фрагмент&lt;/mark&gt;.
+&lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt;, &lt;code&gt;line-height&lt;/code&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;, &lt;samp&gt;OK&lt;/samp&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Жирный&lt;/b&gt;, &lt;i&gt;курсив&lt;/i&gt;, &lt;u&gt;подчеркнутый&lt;/u&gt;, &lt;s&gt;неактуальный&lt;/s&gt;, &lt;del&gt;удаленный&lt;/del&gt;, &lt;ins&gt;добавленный&lt;/ins&gt;.
+H&lt;sub&gt;2&lt;/sub&gt;O · x&lt;sup&gt;2&lt;/sup&gt; · &lt;small&gt;небольшое уточнение&lt;/small&gt;.&lt;/p&gt;
+&lt;p&gt;Встречаемся &lt;time datetime=&quot;2026-11-01&quot;&gt;1 ноября 2026&lt;/time&gt;. &lt;span class=&quot;beauty-nowrap&quot;&gt;24 МБ&lt;/span&gt;.&lt;/p&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="typography-2">
+      <p class="example-label beauty-note">Редакторские акценты</p>
+      <div class="sample"><article class="beauty-reading">
+  <p class="beauty-lead">Первый абзац помогает войти в историю.</p>
+  <h3 class="beauty-heading-compact">Короткий заголовок с плотным ритмом</h3>
+  <p>Одна <span class="beauty-emphasis">важная деталь</span> может изменить впечатление от целой страницы.</p>
+  <p class="beauty-note">Дополнительные сведения — <a href="#start">в инструкции</a>.</p>
+  <p class="beauty-fine-print">Небольшая подпись или источник.</p>
+</article></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;article class=&quot;beauty-reading&quot;&gt;
+  &lt;p class=&quot;beauty-lead&quot;&gt;Первый абзац помогает войти в историю.&lt;/p&gt;
+  &lt;h3 class=&quot;beauty-heading-compact&quot;&gt;Короткий заголовок с плотным ритмом&lt;/h3&gt;
+  &lt;p&gt;Одна &lt;span class=&quot;beauty-emphasis&quot;&gt;важная деталь&lt;/span&gt; может изменить впечатление от целой страницы.&lt;/p&gt;
+  &lt;p class=&quot;beauty-note&quot;&gt;Дополнительные сведения — &lt;a href=&quot;#start&quot;&gt;в инструкции&lt;/a&gt;.&lt;/p&gt;
+  &lt;p class=&quot;beauty-fine-print&quot;&gt;Небольшая подпись или источник.&lt;/p&gt;
+&lt;/article&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="links" class="catalog-section" aria-labelledby="links-title">
+    <h2 id="links-title">Ссылки и кнопки</h2><p class="beauty-note">Ссылки ведут на страницы. Кнопки выполняют действия. Фокус с клавиатуры остается заметным.</p>
+    <div class="example" data-example="links-0">
+      <p class="example-label beauty-note">Обычная и составная ссылка</p>
+      <div class="sample"><p><a href="#start">Подключить библиотеку</a></p>
+<p><a href="https://github.com/zavarovkv/beauty-css">
+  <span class="beauty-link-label">GitHub</span><span class="beauty-link-icon" aria-hidden="true">↗</span>
+</a></p></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;p&gt;&lt;a href=&quot;#start&quot;&gt;Подключить библиотеку&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zavarovkv/beauty-css&quot;&gt;
+  &lt;span class=&quot;beauty-link-label&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;beauty-link-icon&quot; aria-hidden=&quot;true&quot;&gt;↗&lt;/span&gt;
+&lt;/a&gt;&lt;/p&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="links-1">
+      <p class="example-label beauty-note">Действия и состояния</p>
+      <div class="sample"><p><a class="beauty-button" href="dist/beauty.min.css" download>Скачать CSS</a>
+<button type="button" disabled>Недоступно</button></p>
+<form data-example-form>
+  <label for="button-email">Email</label>
+  <input id="button-email" type="email" placeholder="you@example.com" required>
+  <input type="submit" value="Проверить">
+  <input type="reset" value="Сбросить">
+  <input type="button" value="Открыть пример" disabled>
+  <p class="beauty-note">Демонстрация: данные никуда не отправляются.</p>
+  <p role="status" hidden></p>
+</form></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;p&gt;&lt;a class=&quot;beauty-button&quot; href=&quot;dist/beauty.min.css&quot; download&gt;Скачать CSS&lt;/a&gt;
+&lt;button type=&quot;button&quot; disabled&gt;Недоступно&lt;/button&gt;&lt;/p&gt;
+&lt;form data-example-form&gt;
+  &lt;label for=&quot;button-email&quot;&gt;Email&lt;/label&gt;
+  &lt;input id=&quot;button-email&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; required&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Проверить&quot;&gt;
+  &lt;input type=&quot;reset&quot; value=&quot;Сбросить&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Открыть пример&quot; disabled&gt;
+  &lt;p class=&quot;beauty-note&quot;&gt;Демонстрация: данные никуда не отправляются.&lt;/p&gt;
+  &lt;p role=&quot;status&quot; hidden&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="quotes" class="catalog-section" aria-labelledby="quotes-title">
+    <h2 id="quotes-title">Цитаты и списки</h2><p class="beauty-note">Блочные и строчные цитаты, вложенные списки и определения сохраняют нативную семантику.</p>
+    <div class="example" data-example="quotes-0">
+      <p class="example-label beauty-note">Цитаты</p>
+      <div class="sample"><blockquote>
+  <p>Хорошая типографика помогает сосредоточиться на смысле.</p>
+  <footer>Заметка о дизайне</footer>
+</blockquote>
+<p>А это <q>цитата внутри строки</q>.</p>
+<blockquote class="beauty-callout">
+  <p>Цитата с мягким фоном для отдельного акцента.</p>
+</blockquote></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;blockquote&gt;
+  &lt;p&gt;Хорошая типографика помогает сосредоточиться на смысле.&lt;/p&gt;
+  &lt;footer&gt;Заметка о дизайне&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;А это &lt;q&gt;цитата внутри строки&lt;/q&gt;.&lt;/p&gt;
+&lt;blockquote class=&quot;beauty-callout&quot;&gt;
+  &lt;p&gt;Цитата с мягким фоном для отдельного акцента.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="quotes-1">
+      <p class="example-label beauty-note">Три вида списков</p>
+      <div class="sample"><ul>
+  <li>Ясная мысль
+    <ul><li>Полезное уточнение</li></ul>
+  </li>
+  <li>Логичная последовательность</li>
+</ul>
+<ol><li>Написать</li><li>Отредактировать</li><li>Опубликовать</li></ol>
+<dl>
+  <dt>Classless</dt><dd>Стили для всей HTML-страницы.</dd>
+  <dt>Prose</dt><dd>Стили только внутри контейнера .beauty.</dd>
+</dl></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;ul&gt;
+  &lt;li&gt;Ясная мысль
+    &lt;ul&gt;&lt;li&gt;Полезное уточнение&lt;/li&gt;&lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Логичная последовательность&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;Написать&lt;/li&gt;&lt;li&gt;Отредактировать&lt;/li&gt;&lt;li&gt;Опубликовать&lt;/li&gt;&lt;/ol&gt;
+&lt;dl&gt;
+  &lt;dt&gt;Classless&lt;/dt&gt;&lt;dd&gt;Стили для всей HTML-страницы.&lt;/dd&gt;
+  &lt;dt&gt;Prose&lt;/dt&gt;&lt;dd&gt;Стили только внутри контейнера .beauty.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="statistics" class="catalog-section" aria-labelledby="statistics-title">
+    <h2 id="statistics-title">Цифры и шаги</h2><p class="beauty-note">Крупные значения и последовательности действий. Без графиков, анимации и дополнительных библиотек.</p>
+    <div class="example" data-example="statistics-0">
+      <p class="example-label beauty-note">Число с подписью</p>
+      <div class="sample"><dl>
+  <dt class="beauty-stat-label">Выполнено задач</dt>
+  <dd class="beauty-stat-value">120</dd>
+  <dt class="beauty-stat-label">Обработано токенов</dt>
+  <dd class="beauty-stat-value"><data value="1900000" title="1 900 000">1,9<small class="beauty-stat-unit">&nbsp;млн</small></data></dd>
+</dl></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;dl&gt;
+  &lt;dt class=&quot;beauty-stat-label&quot;&gt;Выполнено задач&lt;/dt&gt;
+  &lt;dd class=&quot;beauty-stat-value&quot;&gt;120&lt;/dd&gt;
+  &lt;dt class=&quot;beauty-stat-label&quot;&gt;Обработано токенов&lt;/dt&gt;
+  &lt;dd class=&quot;beauty-stat-value&quot;&gt;&lt;data value=&quot;1900000&quot; title=&quot;1 900 000&quot;&gt;1,9&lt;small class=&quot;beauty-stat-unit&quot;&gt;&amp;nbsp;млн&lt;/small&gt;&lt;/data&gt;&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="statistics-1">
+      <p class="example-label beauty-note">Связанные шаги</p>
+      <div class="sample"><ol class="beauty-steps" role="list">
+  <li><small class="beauty-step-marker" aria-hidden="true">1</small><div>
+    <h3>Составьте план</h3>
+    <p>Определите цель и выберите следующий шаг.</p>
+  </div></li>
+  <li><small class="beauty-step-marker" aria-hidden="true">2</small><div>
+    <h3>Выполните работу</h3>
+    <p>Сосредоточьтесь на главном и проверьте результат.</p>
+  </div></li>
+  <li><small class="beauty-step-marker" aria-hidden="true">3</small><div>
+    <h3>Поделитесь итогом</h3>
+    <p>Расскажите, что изменилось и что будет дальше.</p>
+  </div></li>
+</ol></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;ol class=&quot;beauty-steps&quot; role=&quot;list&quot;&gt;
+  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;1&lt;/small&gt;&lt;div&gt;
+    &lt;h3&gt;Составьте план&lt;/h3&gt;
+    &lt;p&gt;Определите цель и выберите следующий шаг.&lt;/p&gt;
+  &lt;/div&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/small&gt;&lt;div&gt;
+    &lt;h3&gt;Выполните работу&lt;/h3&gt;
+    &lt;p&gt;Сосредоточьтесь на главном и проверьте результат.&lt;/p&gt;
+  &lt;/div&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;small class=&quot;beauty-step-marker&quot; aria-hidden=&quot;true&quot;&gt;3&lt;/small&gt;&lt;div&gt;
+    &lt;h3&gt;Поделитесь итогом&lt;/h3&gt;
+    &lt;p&gt;Расскажите, что изменилось и что будет дальше.&lt;/p&gt;
+  &lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="tables" class="catalog-section" aria-labelledby="tables-title">
+    <h2 id="tables-title">Таблицы и код</h2><p class="beauty-note">Широкий контент прокручивается внутри своего блока. Его можно читать и с клавиатуры.</p>
+    <div class="example" data-example="tables-0">
+      <p class="example-label beauty-note">Таблица</p>
+      <div class="sample"><div class="beauty-scroll" role="region" aria-label="Файлы библиотеки" tabindex="0">
+  <table>
+    <caption>Два способа подключения</caption>
+    <thead><tr><th scope="col">Файл</th><th scope="col">Область действия</th><th scope="col">Класс</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">beauty.min.css</th><td>Вся страница</td><td>—</td></tr>
+      <tr><th scope="row">beauty.prose.min.css</th><td>Контейнер</td><td>.beauty</td></tr>
+    </tbody>
+  </table>
+</div></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;div class=&quot;beauty-scroll&quot; role=&quot;region&quot; aria-label=&quot;Файлы библиотеки&quot; tabindex=&quot;0&quot;&gt;
+  &lt;table&gt;
+    &lt;caption&gt;Два способа подключения&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Файл&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Область действия&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Класс&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;beauty.min.css&lt;/th&gt;&lt;td&gt;Вся страница&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;beauty.prose.min.css&lt;/th&gt;&lt;td&gt;Контейнер&lt;/td&gt;&lt;td&gt;.beauty&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="tables-1">
+      <p class="example-label beauty-note">Блок кода</p>
+      <div class="sample"><pre tabindex="0"><code>:root {
+  --beauty-link: #7250a5;
+  --beauty-reading-width: 42.5rem;
+}</code></pre>
+<pre tabindex="0"><samp>Сборка завершена. Все готово к публикации.</samp></pre></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;pre tabindex=&quot;0&quot;&gt;&lt;code&gt;:root {
+  --beauty-link: #7250a5;
+  --beauty-reading-width: 42.5rem;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre tabindex=&quot;0&quot;&gt;&lt;samp&gt;Сборка завершена. Все готово к публикации.&lt;/samp&gt;&lt;/pre&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="forms" class="catalog-section" aria-labelledby="forms-title">
+    <h2 id="forms-title">Формы</h2><p class="beauty-note">Нативные поля, подписи и состояния. Примеры работают локально и ничего не отправляют.</p>
+    <div class="example" data-example="forms-0">
+      <p class="example-label beauty-note">Текст и выбор</p>
+      <div class="sample"><fieldset>
+  <legend>Ваши предпочтения</legend>
+  <label for="demo-name">Имя</label>
+  <input id="demo-name" autocomplete="name" placeholder="Как к вам обращаться">
+  <label for="demo-select">Формат</label>
+  <select id="demo-select"><option>Статья</option><option>Документация</option></select>
+  <label for="demo-message">Сообщение</label>
+  <textarea id="demo-message" placeholder="Расскажите о своей идее"></textarea>
+  <label><input type="checkbox" checked>Получать обновления</label>
+  <label><input type="radio" name="frequency" checked>Раз в неделю</label>
+  <label><input type="radio" name="frequency">Раз в месяц</label>
+</fieldset></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Ваши предпочтения&lt;/legend&gt;
+  &lt;label for=&quot;demo-name&quot;&gt;Имя&lt;/label&gt;
+  &lt;input id=&quot;demo-name&quot; autocomplete=&quot;name&quot; placeholder=&quot;Как к вам обращаться&quot;&gt;
+  &lt;label for=&quot;demo-select&quot;&gt;Формат&lt;/label&gt;
+  &lt;select id=&quot;demo-select&quot;&gt;&lt;option&gt;Статья&lt;/option&gt;&lt;option&gt;Документация&lt;/option&gt;&lt;/select&gt;
+  &lt;label for=&quot;demo-message&quot;&gt;Сообщение&lt;/label&gt;
+  &lt;textarea id=&quot;demo-message&quot; placeholder=&quot;Расскажите о своей идее&quot;&gt;&lt;/textarea&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot; checked&gt;Получать обновления&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;frequency&quot; checked&gt;Раз в неделю&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;frequency&quot;&gt;Раз в месяц&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="forms-1">
+      <p class="example-label beauty-note">Состояния полей</p>
+      <div class="sample"><label for="demo-readonly">Только чтение</label>
+<input id="demo-readonly" value="Beauty.css" readonly>
+<label for="demo-disabled">Недоступное поле</label>
+<input id="demo-disabled" value="Недоступно" disabled>
+<label for="demo-invalid">Email</label>
+<input id="demo-invalid" type="email" value="example" aria-invalid="true" aria-describedby="demo-error">
+<p id="demo-error">Укажите полный адрес, например you@example.com.</p></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;label for=&quot;demo-readonly&quot;&gt;Только чтение&lt;/label&gt;
+&lt;input id=&quot;demo-readonly&quot; value=&quot;Beauty.css&quot; readonly&gt;
+&lt;label for=&quot;demo-disabled&quot;&gt;Недоступное поле&lt;/label&gt;
+&lt;input id=&quot;demo-disabled&quot; value=&quot;Недоступно&quot; disabled&gt;
+&lt;label for=&quot;demo-invalid&quot;&gt;Email&lt;/label&gt;
+&lt;input id=&quot;demo-invalid&quot; type=&quot;email&quot; value=&quot;example&quot; aria-invalid=&quot;true&quot; aria-describedby=&quot;demo-error&quot;&gt;
+&lt;p id=&quot;demo-error&quot;&gt;Укажите полный адрес, например you@example.com.&lt;/p&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="forms-2">
+      <p class="example-label beauty-note">Другие нативные поля</p>
+      <div class="sample"><label for="demo-number">Количество</label><input id="demo-number" type="number" min="1" max="10" value="3">
+<label for="demo-date">Дата</label><input id="demo-date" type="date" value="2026-11-01">
+<label for="demo-search">Поиск</label><input id="demo-search" type="search" placeholder="Найти в тексте">
+<label for="demo-password">Пароль</label><input id="demo-password" type="password" autocomplete="new-password" placeholder="••••••••">
+<label for="demo-file">Файл</label><input id="demo-file" type="file">
+<label for="demo-color">Цвет</label><input id="demo-color" type="color" value="#0060a0">
+<label for="demo-range">Уровень</label><input id="demo-range" type="range" min="0" max="100" value="60">
+<label for="demo-progress">Загрузка</label><progress id="demo-progress" value="60" max="100">60%</progress>
+<label for="demo-meter">Использовано места</label><meter id="demo-meter" value="0.35">35%</meter></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;label for=&quot;demo-number&quot;&gt;Количество&lt;/label&gt;&lt;input id=&quot;demo-number&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;10&quot; value=&quot;3&quot;&gt;
+&lt;label for=&quot;demo-date&quot;&gt;Дата&lt;/label&gt;&lt;input id=&quot;demo-date&quot; type=&quot;date&quot; value=&quot;2026-11-01&quot;&gt;
+&lt;label for=&quot;demo-search&quot;&gt;Поиск&lt;/label&gt;&lt;input id=&quot;demo-search&quot; type=&quot;search&quot; placeholder=&quot;Найти в тексте&quot;&gt;
+&lt;label for=&quot;demo-password&quot;&gt;Пароль&lt;/label&gt;&lt;input id=&quot;demo-password&quot; type=&quot;password&quot; autocomplete=&quot;new-password&quot; placeholder=&quot;••••••••&quot;&gt;
+&lt;label for=&quot;demo-file&quot;&gt;Файл&lt;/label&gt;&lt;input id=&quot;demo-file&quot; type=&quot;file&quot;&gt;
+&lt;label for=&quot;demo-color&quot;&gt;Цвет&lt;/label&gt;&lt;input id=&quot;demo-color&quot; type=&quot;color&quot; value=&quot;#0060a0&quot;&gt;
+&lt;label for=&quot;demo-range&quot;&gt;Уровень&lt;/label&gt;&lt;input id=&quot;demo-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot;&gt;
+&lt;label for=&quot;demo-progress&quot;&gt;Загрузка&lt;/label&gt;&lt;progress id=&quot;demo-progress&quot; value=&quot;60&quot; max=&quot;100&quot;&gt;60%&lt;/progress&gt;
+&lt;label for=&quot;demo-meter&quot;&gt;Использовано места&lt;/label&gt;&lt;meter id=&quot;demo-meter&quot; value=&quot;0.35&quot;&gt;35%&lt;/meter&gt;</code></pre></details>
+    </div>
+  </section>
+<section id="media" class="catalog-section" aria-labelledby="media-title">
+    <h2 id="media-title">Медиа и раскрывающиеся блоки</h2><p class="beauty-note">Изображения сохраняют пропорции. Подписи остаются рядом, а details работает без скриптов.</p>
+    <div class="example" data-example="media-0">
+      <p class="example-label beauty-note">Изображение с подписью</p>
+      <div class="sample"><figure>
+  <img src="assets/specimen.svg" width="960" height="360" loading="lazy" alt="Три строки разной длины на светлом фоне">
+  <figcaption>Обычный figcaption внутри figure.</figcaption>
+</figure>
+<p class="beauty-caption">Отдельная подпись — класс beauty-caption.</p>
+<hr></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;figure&gt;
+  &lt;img src=&quot;assets/specimen.svg&quot; width=&quot;960&quot; height=&quot;360&quot; loading=&quot;lazy&quot; alt=&quot;Три строки разной длины на светлом фоне&quot;&gt;
+  &lt;figcaption&gt;Обычный figcaption внутри figure.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p class=&quot;beauty-caption&quot;&gt;Отдельная подпись — класс beauty-caption.&lt;/p&gt;
+&lt;hr&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="media-1">
+      <p class="example-label beauty-note">Дополнительные подробности</p>
+      <div class="sample"><details>
+  <summary>Что работает без JavaScript?</summary>
+  <p>Типографика, системная тема, формы, фокус и этот блок. Скрипт на странице только переключает тему и помогает копировать примеры.</p>
+</details></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;details&gt;
+  &lt;summary&gt;Что работает без JavaScript?&lt;/summary&gt;
+  &lt;p&gt;Типографика, системная тема, формы, фокус и этот блок. Скрипт на странице только переключает тему и помогает копировать примеры.&lt;/p&gt;
+&lt;/details&gt;</code></pre></details>
+    </div>
+<div class="example" data-example="media-2">
+      <p class="example-label beauty-note">Текст справа налево</p>
+      <div class="sample"><div dir="rtl" lang="ar">
+  <blockquote><p>التصميم الجيد يمنح النص مساحة.</p></blockquote>
+  <ol><li>الفكرة الأولى</li><li>الفكرة الثانية</li></ol>
+</div></div><details class="source"><summary>HTML примера</summary><pre tabindex="0"><code>&lt;div dir=&quot;rtl&quot; lang=&quot;ar&quot;&gt;
+  &lt;blockquote&gt;&lt;p&gt;التصميم الجيد يمنح النص مساحة.&lt;/p&gt;&lt;/blockquote&gt;
+  &lt;ol&gt;&lt;li&gt;الفكرة الأولى&lt;/li&gt;&lt;li&gt;الفكرة الثانية&lt;/li&gt;&lt;/ol&gt;
+&lt;/div&gt;</code></pre></details>
+    </div>
+  </section>
+      <section id="integration" class="catalog-section" aria-labelledby="integration-title">
+        <h2 id="integration-title">Внутри вашего сайта</h2>
+        <p>Prose оформляет только содержимое .beauty. Встроенный виджет можно исключить классом .not-beauty; обычное наследование шрифтов и цветов сохраняется.</p>
+        <pre tabindex="0"><code>&lt;article class=&quot;beauty&quot; data-theme=&quot;light&quot;&gt;
+  &lt;p&gt;Стилизованный текст.&lt;/p&gt;
+  &lt;div class=&quot;not-beauty&quot;&gt;Независимый компонент&lt;/div&gt;
+&lt;/article&gt;</code></pre>
+        <p><a href="examples/prose.html">Открыть живой пример prose</a> · <a href="examples/classless.html">HTML без классов</a> · <a href="examples/rtl.html">RTL</a></p>
+        <h3>Навигация без лишней разметки</h3>
+        <p>В версии без классов header, nav и footer получают базовую компоновку. beauty-nav-end прижимает последний элемент к краю. Верхнее меню этой страницы использует тот же класс.</p>
+        <pre tabindex="0"><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;strong&gt;Проект&lt;/strong&gt;
+    &lt;a href=&quot;#about&quot;&gt;О проекте&lt;/a&gt;
+    &lt;a class=&quot;beauty-nav-end&quot; href=&quot;/login&quot;&gt;Войти&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+      </section>
+      <section id="palette" class="catalog-section" aria-labelledby="palette-title">
+        <h2 id="palette-title">Две палитры. Одна система.</h2>
+        <p>По умолчанию тема следует настройке устройства. Переключатель вверху позволяет примерить обе палитры.</p>
+        <div class="beauty-scroll" role="region" aria-labelledby="palette-title" tabindex="0"><table class="palette-table"><thead><tr><th scope="col">Назначение / переменная</th><th scope="col">Светлая</th><th scope="col">Темная</th></tr></thead><tbody><tr><th scope="row">Фон<br><code>--beauty-background</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#ffffff" aria-hidden="true"></span><code>#ffffff</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#1a1a1a" aria-hidden="true"></span><code>#1a1a1a</code></span></td></tr><tr><th scope="row">Текст<br><code>--beauty-text</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#444444" aria-hidden="true"></span><code>#444444</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#c7ccd1" aria-hidden="true"></span><code>#c7ccd1</code></span></td></tr><tr><th scope="row">Заголовки<br><code>--beauty-heading</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#222222" aria-hidden="true"></span><code>#222222</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#e8e8e8" aria-hidden="true"></span><code>#e8e8e8</code></span></td></tr><tr><th scope="row">Второстепенный текст<br><code>--beauty-muted</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#556677" aria-hidden="true"></span><code>#556677</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#a7b2bc" aria-hidden="true"></span><code>#a7b2bc</code></span></td></tr><tr><th scope="row">Ссылки и фокус<br><code>--beauty-link</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#0060a0" aria-hidden="true"></span><code>#0060a0</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#6ab0e6" aria-hidden="true"></span><code>#6ab0e6</code></span></td></tr><tr><th scope="row">Наведение<br><code>--beauty-hover</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#b73700" aria-hidden="true"></span><code>#b73700</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#ff986c" aria-hidden="true"></span><code>#ff986c</code></span></td></tr><tr><th scope="row">Разделители<br><code>--beauty-border</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#d5dadd" aria-hidden="true"></span><code>#d5dadd</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#454b51" aria-hidden="true"></span><code>#454b51</code></span></td></tr><tr><th scope="row">Границы полей<br><code>--beauty-control-border</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#7d8892" aria-hidden="true"></span><code>#7d8892</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#737e88" aria-hidden="true"></span><code>#737e88</code></span></td></tr><tr><th scope="row">Ошибка<br><code>--beauty-danger</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#b42318" aria-hidden="true"></span><code>#b42318</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#ff8c85" aria-hidden="true"></span><code>#ff8c85</code></span></td></tr><tr><th scope="row">Поверхность<br><code>--beauty-surface</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#f5f6f7" aria-hidden="true"></span><code>#f5f6f7</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#25292d" aria-hidden="true"></span><code>#25292d</code></span></td></tr><tr><th scope="row">Выделение<br><code>--beauty-mark</code></th><td><span class="color-value"><span class="swatch" style="--swatch:#fff0b3" aria-hidden="true"></span><code>#fff0b3</code></span></td><td><span class="color-value"><span class="swatch" style="--swatch:#514513" aria-hidden="true"></span><code>#514513</code></span></td></tr></tbody></table></div>
+        <pre tabindex="0"><code>&lt;html data-theme=&quot;dark&quot;&gt;
+
+&lt;!-- Или на отдельном контейнере: --&gt;
+&lt;article class=&quot;beauty&quot; data-theme=&quot;light&quot;&gt;...&lt;/article&gt;</code></pre>
+      </section>
+      <section id="customize" class="catalog-section" aria-labelledby="customize-title">
+        <h2 id="customize-title">Подстройте под себя</h2>
+        <p>Меняйте публичные переменные. Ваши стили имеют приоритет над слоем beauty, поэтому для обычной настройки !important не нужен.</p>
+        <pre tabindex="0"><code>:root {
+  --beauty-link: #7250a5;
+  --beauty-reading-width: 42.5rem;
+}
+
+/* Для prose переменные задаются на контейнере. */
+.beauty { --beauty-line-height: 1.7; }</code></pre>
+        <details><summary>Все переменные и значения по умолчанию (84)</summary><div class="beauty-scroll" role="region" aria-label="Публичные переменные" tabindex="0"><table><thead><tr><th scope="col">Переменная</th><th scope="col">Значение</th></tr></thead><tbody><tr><th scope="row"><code>--beauty-font</code></th><td><code>system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif</code></td></tr><tr><th scope="row"><code>--beauty-font-mono</code></th><td><code>ui-monospace, &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace</code></td></tr><tr><th scope="row"><code>--beauty-font-size</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-font-weight</code></th><td><code>400</code></td></tr><tr><th scope="row"><code>--beauty-line-height</code></th><td><code>1.65</code></td></tr><tr><th scope="row"><code>--beauty-reading-size</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-size-small</code></th><td><code>1rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-width</code></th><td><code>42.5rem</code></td></tr><tr><th scope="row"><code>--beauty-reading-line-height</code></th><td><code>1.6</code></td></tr><tr><th scope="row"><code>--beauty-heading-wrap</code></th><td><code>balance</code></td></tr><tr><th scope="row"><code>--beauty-text-wrap</code></th><td><code>pretty</code></td></tr><tr><th scope="row"><code>--beauty-h3-margin</code></th><td><code>1em</code></td></tr><tr><th scope="row"><code>--beauty-width</code></th><td><code>45rem</code></td></tr><tr><th scope="row"><code>--beauty-space</code></th><td><code>1.25em</code></td></tr><tr><th scope="row"><code>--beauty-radius</code></th><td><code>0.35rem</code></td></tr><tr><th scope="row"><code>--beauty-background</code></th><td><code>#ffffff</code></td></tr><tr><th scope="row"><code>--beauty-text</code></th><td><code>#444444</code></td></tr><tr><th scope="row"><code>--beauty-heading</code></th><td><code>#222222</code></td></tr><tr><th scope="row"><code>--beauty-muted</code></th><td><code>#556677</code></td></tr><tr><th scope="row"><code>--beauty-link</code></th><td><code>#0060a0</code></td></tr><tr><th scope="row"><code>--beauty-hover</code></th><td><code>#b73700</code></td></tr><tr><th scope="row"><code>--beauty-border</code></th><td><code>#d5dadd</code></td></tr><tr><th scope="row"><code>--beauty-control-border</code></th><td><code>#7d8892</code></td></tr><tr><th scope="row"><code>--beauty-danger</code></th><td><code>#b42318</code></td></tr><tr><th scope="row"><code>--beauty-surface</code></th><td><code>#f5f6f7</code></td></tr><tr><th scope="row"><code>--beauty-mark</code></th><td><code>#fff0b3</code></td></tr><tr><th scope="row"><code>--beauty-heading-font</code></th><td><code>var(--beauty-font)</code></td></tr><tr><th scope="row"><code>--beauty-heading-weight</code></th><td><code>600</code></td></tr><tr><th scope="row"><code>--beauty-h1-size</code></th><td><code>2.75em</code></td></tr><tr><th scope="row"><code>--beauty-h1-size-small</code></th><td><code>2em</code></td></tr><tr><th scope="row"><code>--beauty-h1-font</code></th><td><code>600 var(--beauty-h1-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope="row"><code>--beauty-h1-margin</code></th><td><code>0 0.55em</code></td></tr><tr><th scope="row"><code>--beauty-h1-tracking</code></th><td><code>-0.035em</code></td></tr><tr><th scope="row"><code>--beauty-h1-transform</code></th><td><code>none</code></td></tr><tr><th scope="row"><code>--beauty-h2-size</code></th><td><code>1.65em</code></td></tr><tr><th scope="row"><code>--beauty-h2-size-small</code></th><td><code>1.4em</code></td></tr><tr><th scope="row"><code>--beauty-h2-font</code></th><td><code>600 var(--beauty-h2-size)/1.2 var(--beauty-heading-font)</code></td></tr><tr><th scope="row"><code>--beauty-h2-margin</code></th><td><code>1.8em 0.55em</code></td></tr><tr><th scope="row"><code>--beauty-h2-tracking</code></th><td><code>-0.02em</code></td></tr><tr><th scope="row"><code>--beauty-h2-transform</code></th><td><code>none</code></td></tr><tr><th scope="row"><code>--beauty-content-line-height</code></th><td><code>var(--beauty-line-height)</code></td></tr><tr><th scope="row"><code>--beauty-block-start</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-list-indent</code></th><td><code>1.5em</code></td></tr><tr><th scope="row"><code>--beauty-list-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope="row"><code>--beauty-link-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration</code></th><td><code>underline</code></td></tr><tr><th scope="row"><code>--beauty-link-thickness</code></th><td><code>0.06em</code></td></tr><tr><th scope="row"><code>--beauty-link-offset</code></th><td><code>0.18em</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration-color</code></th><td><code>currentColor</code></td></tr><tr><th scope="row"><code>--beauty-link-decoration-hover</code></th><td><code>currentColor</code></td></tr><tr><th scope="row"><code>--beauty-link-icon-gap</code></th><td><code>0.35em</code></td></tr><tr><th scope="row"><code>--beauty-link-border</code></th><td><code>0 solid transparent</code></td></tr><tr><th scope="row"><code>--beauty-link-border-hover</code></th><td><code>var(--beauty-hover)</code></td></tr><tr><th scope="row"><code>--beauty-focus-offset</code></th><td><code>3px</code></td></tr><tr><th scope="row"><code>--beauty-quote-border</code></th><td><code>2px solid var(--beauty-border)</code></td></tr><tr><th scope="row"><code>--beauty-quote-inset</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding</code></th><td><code>var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding-block</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-padding-end</code></th><td><code>0</code></td></tr><tr><th scope="row"><code>--beauty-quote-margin-block</code></th><td><code>var(--beauty-block-start) var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-quote-background</code></th><td><code>transparent</code></td></tr><tr><th scope="row"><code>--beauty-quote-style</code></th><td><code>normal</code></td></tr><tr><th scope="row"><code>--beauty-quote-text</code></th><td><code>var(--beauty-heading)</code></td></tr><tr><th scope="row"><code>--beauty-code-size</code></th><td><code>0.875em</code></td></tr><tr><th scope="row"><code>--beauty-code-padding</code></th><td><code>0.12em 0.3em</code></td></tr><tr><th scope="row"><code>--beauty-code-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope="row"><code>--beauty-pre-padding</code></th><td><code>1.1em 1.25em</code></td></tr><tr><th scope="row"><code>--beauty-pre-radius</code></th><td><code>var(--beauty-radius)</code></td></tr><tr><th scope="row"><code>--beauty-rule-margin</code></th><td><code>2.5em</code></td></tr><tr><th scope="row"><code>--beauty-rule-border</code></th><td><code>1px solid var(--beauty-border)</code></td></tr><tr><th scope="row"><code>--beauty-callout-background</code></th><td><code>var(--beauty-surface)</code></td></tr><tr><th scope="row"><code>--beauty-callout-border</code></th><td><code>1px solid var(--beauty-heading)</code></td></tr><tr><th scope="row"><code>--beauty-lead-weight</code></th><td><code>var(--beauty-font-weight)</code></td></tr><tr><th scope="row"><code>--beauty-stat-size</code></th><td><code>clamp(2.5rem, 12vw, 3.5rem)</code></td></tr><tr><th scope="row"><code>--beauty-stat-color</code></th><td><code>var(--beauty-link)</code></td></tr><tr><th scope="row"><code>--beauty-steps-gap</code></th><td><code>1.5rem</code></td></tr><tr><th scope="row"><code>--beauty-step-size</code></th><td><code>1.5rem</code></td></tr><tr><th scope="row"><code>--beauty-step-gap</code></th><td><code>0.75rem</code></td></tr><tr><th scope="row"><code>--beauty-caption-align</code></th><td><code>start</code></td></tr><tr><th scope="row"><code>--beauty-caption-style</code></th><td><code>normal</code></td></tr><tr><th scope="row"><code>--beauty-caption-margin</code></th><td><code>0.6em 0 var(--beauty-space)</code></td></tr><tr><th scope="row"><code>--beauty-caption-gap</code></th><td><code>0.5em</code></td></tr><tr><th scope="row"><code>--beauty-button-font</code></th><td><code>600 1em/1.4 var(--beauty-font)</code></td></tr><tr><th scope="row"><code>--beauty-emphasis-color</code></th><td><code>currentColor</code></td></tr></tbody></table></div></details>
+        <p class="beauty-note">Фокус, нативная проверка полей, RTL и стили печати уже предусмотрены. При печати возвращается светлая палитра, длинные строки кода переносятся. Подписи полей и понятные тексты ссылок остаются задачей автора страницы.</p>
+        <p><a href="https://github.com/zavarovkv/beauty-css#readme">Документация на GitHub</a></p>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><p><a href="https://zavarov.com/">Константин Заваров</a> · <a href="LICENSE">MIT</a></p><p>Эта страница оформлена Beauty.css.</p></footer>
+</body>
+</html>
