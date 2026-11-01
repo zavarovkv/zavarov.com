@@ -12,23 +12,6 @@
   margin: 0;
 }
 
-.council-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.council-brand img {
-  flex: none;
-  inline-size: 2rem;
-  block-size: 2rem;
-  object-fit: contain;
-}
-
-[data-theme="dark"] .council-brand img {
-  filter: invert(1);
-}
-
 @media (min-width: 769px) {
   .council-nav {
     justify-content: flex-end;

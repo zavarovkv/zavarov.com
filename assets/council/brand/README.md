@@ -3,9 +3,9 @@
 `symbol.png` is the owner's selected monochrome symbol, prepared from:
 https://chatgpt.com/s/m_6ae785807860819190630ace9ec60fc5
 
-Hugo generates the 64 px header image and 32, 192 and 180 px application icons from
-this source. The header displays the image at 32 px and inverts it in the site's
-dark theme. Derived PNGs preserve alpha. An SVG favicon embeds the small PNG and
+Hugo generates 32, 192 and 180 px application icons from this source. The header
+uses the project name alone. Derived PNGs preserve alpha. An SVG favicon embeds
+a 64 px PNG and
 uses `prefers-color-scheme` to switch to white in dark browser chrome; PNG links
 remain as fallbacks. The SVG has no external image dependency.
 
