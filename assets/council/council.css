@@ -8,23 +8,25 @@
   gap: 1rem;
 }
 
-.council-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin-inline-start: auto;
-}
-
 .council-header nav a {
   margin: 0;
 }
 
-@media (max-width: 40rem) {
+@media (min-width: 769px) {
   .council-nav {
-    order: 1;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .council-header > .brand-link {
+    position: relative;
+    z-index: 1001;
+  }
+
+  .council-nav:not(.menu-ready) {
     flex-basis: 100%;
-    margin-inline-start: 0;
-    column-gap: 0.75rem;
   }
 }
 
@@ -116,7 +118,7 @@
 
 .council-counters {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(min-content, 1fr);
   gap: clamp(0.75rem, 3vw, 2rem);
 }
 
