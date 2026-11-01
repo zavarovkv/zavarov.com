@@ -121,14 +121,14 @@ complete in HTML. The packager preserves the theme's JSON-LD and author identity
 
 1. Complete blog CI and visual RU/EN/mobile review, with all six portraits present.
 2. Use the artifact from the successful main build; verify both URLs and the sign-in link.
-3. Follow [Council deployment automation](council-deploy-automation.md) to install the
-   reviewed static archive through the restricted receiver and protected environment.
+3. The workflow publishes the same static archive through the restricted receiver
+   and `council-production` environment; see [deployment automation](council-deploy-automation.md).
 4. Verify exact RU/EN hashes at the origin and the existing login/API checks. The
    server installer restores the previous static release if verification fails.
 
 The server accepts only `index.html`, `en/index.html` and assets under `/council/`.
 Keep that contract when changing the packager; application routes remain proxied
-to Hermes. Publishing the blog artifact does not automatically deploy the Council host.
+to Hermes. After successful blog publication, the same workflow automatically deploys its Council artifact. PR builds never deploy.
 
 ## Subdomain artifact
 

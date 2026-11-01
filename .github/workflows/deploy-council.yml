@@ -1,6 +1,14 @@
-name: Deploy Council landing (manual)
+name: Deploy Council landing
 
 on:
+  workflow_call:
+    inputs:
+      source_run_id:
+        required: true
+        type: string
+      artifact_name:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -27,6 +35,9 @@ jobs:
     environment: council-production
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Validate release inputs
         env:
           RUN_ID: ${{ inputs.source_run_id }}
@@ -36,10 +47,12 @@ jobs:
           set -euo pipefail
           [[ "$RUN_ID" =~ ^[0-9]+$ ]] || exit 1
           [[ "$ARTIFACT" =~ ^council-landing-[a-f0-9]{40}-deploy$ ]] || exit 1
-          run_json=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID")
-          echo "$run_json" | jq -e '.status == "completed" and .conclusion == "success" and .head_branch == "main" and .event == "push" and .path == ".github/workflows/gh-pages.yml"' >/dev/null
-          sha=$(echo "$run_json" | jq -r '.head_sha')
-          [[ "$ARTIFACT" == "council-landing-${sha}-deploy" ]] || exit 1
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID" > run.json
+          printf '{"jobs":[]}' > jobs.json
+          if [[ "$GITHUB_EVENT_NAME" == push ]]; then
+            gh api "repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID/jobs?filter=latest&per_page=100" > jobs.json
+          fi
+          node scripts/validate-council-release.mjs run.json jobs.json
       - name: Download reviewed artifact
         env:
           GH_TOKEN: ${{ github.token }}

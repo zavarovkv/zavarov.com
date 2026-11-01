@@ -71,9 +71,9 @@ jobs:
         run: python3 scripts/package-council-landing.py
 
       - name: Upload Council artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version || 'deploy' }}
+          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version }}
           path: council-landing.tar.gz
           retention-days: 14
 
@@ -162,9 +162,9 @@ jobs:
         run: python3 scripts/package-council-landing.py
 
       - name: Upload Council artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version || 'deploy' }}
+          name: council-landing-${{ github.sha }}-deploy
           path: council-landing.tar.gz
           retention-days: 14
 
@@ -204,3 +204,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+
+  deploy-council:
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/deploy-council.yml
+    with:
+      source_run_id: ${{ format('{0}', github.run_id) }}
+      artifact_name: council-landing-${{ github.sha }}-deploy
+    secrets: inherit

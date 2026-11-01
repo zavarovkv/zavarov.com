@@ -1,18 +1,51 @@
-# Council landing deployment automation
+# Council landing deployment
 
-This workflow is intentionally manual and uses the protected GitHub Actions environment `council-production`. It remains unusable until separately authorized credentials and a restricted deployment identity are provisioned. Declaring an environment in YAML does not itself require approval: configure required reviewers in GitHub before adding credentials.
+Edit the Council sources in this repository and push to `main`. The GitHub Pages
+workflow builds and checks the blog, publishes it, then automatically deploys the
+same build's Council archive to `https://council.zavarov.com/`. PRs run validation
+only. No application image build or service restart is involved.
 
-## Required setup
+`deploy-council.yml` is shared by automatic publication and manual recovery. It
+checks the source workflow, main branch, push event and artifact commit. Automatic
+publication requires the current run's successful `deploy` job; the enclosing run
+is still active. Rerunning a failed deployment reuses that successful build.
+Manual publication requires a completed successful source run.
 
-1. On the Council host, create a dedicated unprivileged `council-deploy` account with an SSH public key restricted by `authorized_keys` to a **fixed server-side command**. Disable port forwarding, PTY and agent forwarding. Do not use the root password or store it in GitHub.
-2. Implement and review the server-side `council-landing-deploy` command. It must accept only a 64-hex-character SHA-256 argument, stream a bounded tar.gz from stdin into a private temporary file, verify its checksum, invoke the reviewed `scripts/install-council-landing.py` through a narrowly scoped privileged wrapper, hold the shared Council operations lock, verify exact candidate RU/EN page hashes through direct-origin HTTPS with hostname verification, preserve the existing login/API checks and roll back the static symlink on failure. Nginx configuration changes belong to the initial guarded operator cutover; the receiver only switches static content. It must not allow arbitrary shell commands or alter Hermes credentials.
-3. Add environment `council-production` with required reviewers and restrict deployments to `main`.
-4. Configure secrets `COUNCIL_DEPLOY_SSH_KEY` and `COUNCIL_DEPLOY_KNOWN_HOSTS` (host key verified out of band), and variables `COUNCIL_DEPLOY_HOST`, `COUNCIL_DEPLOY_USER`. Use the dedicated account, not root.
-5. Stage the first reviewed artifact manually, then apply the reviewed Council Nginx route through its guarded route manager and verify the origin. Never switch the root route before an artifact is installed. Retain the previous Nginx route for initial-cutover rollback; later static deployments do not change Nginx. Existing auth routes must remain protected.
-6. Invoke workflow manually with the successful blog main workflow run ID and exact artifact name. It runs only from main, verifies that the source is a successful main push of `.github/workflows/gh-pages.yml`, and checks that the artifact name matches its commit SHA.
+## One-time setup and key rotation
 
-## Safety notes
+1. Complete the initial static-route cutover using the
+   [Council operator guide](https://github.com/zavarovkv/agent-council/blob/main/docs/council-static-deploy.md).
+2. Generate a dedicated Ed25519 key outside Git. On the server run
+   `sudo bash scripts/setup-council-static-deploy.sh PUBLIC_KEY_FILE` from the
+   reviewed Agent Council checkout. This installs a locked, unprivileged
+   `council-deploy` account and root-owned forced-command receiver. Running it again
+   with a new public key rotates access. Verify arbitrary commands are rejected.
+3. Create the GitHub Actions environment `council-production`, permitting only the
+   `main` branch. Automatic publication is owner-authorized; no reviewer or wait
+   timer is configured. Environment configuration is part of setup, not YAML.
+4. Set environment secrets `COUNCIL_DEPLOY_SSH_KEY` and
+   `COUNCIL_DEPLOY_KNOWN_HOSTS` through GitHub's encrypted secret input. Obtain the
+   server's host key through the existing trusted operator connection, not an
+   unauthenticated scan. Set variables `COUNCIL_DEPLOY_HOST` and
+   `COUNCIL_DEPLOY_USER=council-deploy`. Never use the operator/root key.
+5. Verify one real automatic deployment and its origin checks. Remove the temporary
+   local private key after upload and verification; rotate by repeating these steps.
 
-The workflow does not contain credentials, create SSH users, enable remote login, install server-side wrappers or modify production by itself. Until these prerequisites are complete, manual execution must fail closed.
+The SSH key permits only `council-landing-deploy <sha256>` with a bounded archive
+on stdin. It cannot start an interactive shell, forward ports or restart agents.
+Only `/`, `/en/` and `/council/` static assets can change. Authentication, agent
+configuration and Linear routes remain in Agent Council. The installer serializes
+with other Council operations and briefly retries a busy lock. It validates the
+archive and checks exact RU/EN bytes over direct-origin HTTPS, the login page and
+the protected API. A failed check restores the previous static release.
 
-The blog is the canonical source repository for static assets. The public site remains `https://council.zavarov.com/`, while `/login`, `/auth`, `/api` and `/integrations/linear` remain on the protected application origin.
+## Recovery
+
+For a transient failure, use **Re-run failed jobs** on the GitHub Pages run.
+For rollback or republishing, run **Deploy Council landing** from `main`, supplying
+the successful source run ID and its exact `council-landing-<sha>-deploy` artifact
+name. Artifacts are retained for 14 days. For an older revision, revert the intended
+source change on `main` and let the normal pipeline rebuild and publish it.
+A failed Council deployment is visible as a failed blog workflow; the already
+published blog stays available. Server-side checks preserve the prior Council
+release on installation failure.
