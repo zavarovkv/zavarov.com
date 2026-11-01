@@ -41,6 +41,9 @@ def main():
         parser.feed(html)
         assets.update(parser.paths)
         pages[target] = html.encode("utf-8")
+    # The actual hugo-mini CSS references local Inter font assets.
+    # Include them in the standalone Council subdomain bundle.
+    assets.update(str(p.relative_to(PUBLIC)) for p in (PUBLIC / "fonts").glob("*.woff2"))
     for name in ("qui-gon", "dexter", "lando", "padme"):
         assets.add(f"council/avatars/{name}.png")
     with tarfile.open(OUT, "w:gz") as archive:
