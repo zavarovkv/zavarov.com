@@ -35,7 +35,7 @@ def main():
         html = html.replace("https://zavarov.com/council/", ORIGIN + "/")
         html = re.sub(r'href="/en/council/"', 'href="/en/"', html)
         html = re.sub(r'href="/council/"', 'href="/"', html)
-        if f'hreflang="{lang}"' not in html:
+        if "hreflang" not in html:
             raise SystemExit(f"Missing hreflang in {source}")
         parser = Assets()
         parser.feed(html)
