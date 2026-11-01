@@ -16,11 +16,11 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 
 Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. The header contains the project name and links to Team, Analytics, How it works and Early access. Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
 
-Card and step headings use `beauty-heading-compact` for close multiline spacing.
+Card headings use `beauty-heading-compact`; the `beauty-steps` component owns step-heading spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
 conjunctions use nonbreaking spaces in the maintained copy. Section heading gaps are
 shared. The header and portrait rows can wrap with enlarged text, and the
-statistics grid reduces its columns only when the available text measure requires it.
+statistics grid keeps three columns with compact number formatting on mobile.
 
 The footer calls the theme's `footer-content.html` with project-specific links: the [Agent Council repository](https://github.com/zavarovkv/agent-council) and [Qui-Gon on Telegram](https://t.me/Qui_Gon_Jinn_ai). It retains the shared language and color-scheme controls, without the blog's personal contacts or RSS link.
 
@@ -40,8 +40,8 @@ circles connected by a thin line show the sequence, with no interactive behavior
 or completion status. The semantic ordered list retains
 `role="list"`; decorative markers are hidden from assistive technology. Both
 languages are maintained in the Council content partial. Typography comes from
-Beauty, including the `beauty-step-marker` accent treatment; the page owns
-only layout and connecting lines using shared tokens.
+Beauty's `beauty-steps` component, including marker placement, connecting lines and
+the `beauty-step-marker` accent treatment. The page only arranges the overall sections.
 
 The design was informed by the concrete workflows on [Dust](https://dust.tt/),
 [Lindy](https://www.lindy.ai/), and [Relevance AI](https://relevanceai.com/), and
@@ -59,7 +59,7 @@ in Telegram's documented `text` query parameter; the visitor sends it in Telegra
 Opening the link does not enroll anyone or grant dashboard access. This is a
 conversation-based request flow, with no form endpoint or on-page success claim.
 An understated text link below the button lets invited visitors log in through
-the same application endpoint used in the header. Its `beauty-note` treatment
+the application's Telegram login endpoint. Its `beauty-note` treatment
 belongs to Beauty.css; the landing only sets the short gap below the primary action.
 The Agent Council server captures explicit requests from the verified Telegram
 queues and saves them to the connected Notion register once per minute, with
@@ -75,7 +75,7 @@ and tokens used. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.
 Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
-labels quiet. Three equal columns keep all counters on one row, including
+labels quiet. Three columns keep all counters on one row, including
 mobile. Large totals use localized compact notation and `beauty-stat-unit` for
 the suffix. Exact values remain in semantic `data` elements and their tooltips.
 The template supplies the same unit scales to the live formatter; unknown counts
@@ -100,7 +100,7 @@ No chart dependency or history collector is needed.
 
 ## Telegram login
 
-The header uses an ordinary text link to
+The Early access section uses an ordinary text link to
 `https://council.zavarov.com/auth/login?provider=telegram-owner&next=%2Fprofiles`.
 It works without JavaScript on every origin. The landing loads no Telegram SDK
 and performs no nonce or session requests; the existing application owns the

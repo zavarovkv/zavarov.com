@@ -99,8 +99,10 @@ They were translated locally at the author's request. They use the existing
 `prepareTranslation` helper to validate preserved front matter and store the
 Russian `source_hash`; an unchanged source is skipped by the optional API
 translator. Hugo reads these files directly, without making translation requests.
-When revising the Russian text, review the English equivalent and refresh its
-hash only after the translation is synchronized. Dates and formulas must stay intact.
+Russian edits mark the corresponding generated translation as stale. Do not manually
+change English files or refresh hashes to suppress that signal. Synchronize them through
+the translation workflow when explicitly requested, or let deployment handle it. Dates
+and formulas must stay intact.
 
 ## Archive recovery
 
