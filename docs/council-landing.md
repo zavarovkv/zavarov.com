@@ -89,6 +89,9 @@ unchanged; collecting a request does not grant access.
 ## Public statistics
 
 The “In numbers” block has no visible heading and sits above the team cards.
+Its shorter 32–40px gap from the introduction groups the counters with the opening
+copy. The regular 56–72px section gap before the team marks the next section.
+These layout gaps belong to Council CSS; number typography remains in Beauty.
 Its existing anchor and accessible section name remain in place, but the header
 does not link to it.
 It contains three totals: agents on the team, tasks completed
