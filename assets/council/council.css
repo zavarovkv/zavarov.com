@@ -79,6 +79,11 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(min-content, 1fr);
   gap: clamp(0.75rem, 3vw, 2rem);
+  margin-block: 0;
+}
+
+.council-statistics {
+  scroll-margin-block-start: 0.75rem;
 }
 
 .council-counters > div {
@@ -102,9 +107,34 @@
   gap: 1.5rem;
 }
 
+.council-tool-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.council-tool-logo {
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}
+
+.council-tool-logo svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
 @media (min-width: 769px) {
   .council-tools {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: var(--columns-gap);
+  }
+
+  .council-tool-heading {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
   }
 }

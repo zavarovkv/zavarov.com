@@ -54,15 +54,19 @@ a claim that one layout is universally best.
 ## Tools
 
 The Tools section sits between the workflow and Early access. It lists Telegram,
-Notion, Google Drive, Calendar, Email and Linear with a short description of each
-tool's role. Calendar and Email remain provider-neutral. This is an editorial
+Notion, Google Workspace, Linear and GitHub with a short description of each
+tool's role. Google Workspace groups files, email and calendar. This is an editorial
 overview of the owner's selected tools, not a live connection or permission
 status; the landing does not connect accounts or request access.
 
 The section reuses the theme's `content-columns` layout and Beauty's
 `beauty-heading-compact` and `beauty-note` typography. Council CSS only arranges
-three columns on desktop and two on mobile. No icon library, embedded widgets or
-external assets are needed.
+three columns on desktop and two on mobile. Small service marks sit beside the
+names on desktop and above them on mobile to preserve the text column width.
+Reviewed SVGs in `assets/council/tools/` are minified and inlined; their
+[source notes](../assets/council/tools/README.md) record the official assets and
+dark-theme treatment. No icon library, embedded widgets or external requests
+are needed.
 
 ## Early access
 
@@ -84,7 +88,9 @@ unchanged; collecting a request does not grant access.
 
 ## Public statistics
 
-The “In numbers” block sits above the team cards and contains three totals: agents on the team, tasks completed
+The “In numbers” block has no visible heading and sits above the team cards.
+Its existing navigation anchor and accessible section name remain in place.
+It contains three totals: agents on the team, tasks completed
 and tokens used. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.

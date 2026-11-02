@@ -59,7 +59,9 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
       assert.equal(all(counter, node => ["svg", "table", "time"].includes(node.tagName) || Object.hasOwn(attrs(node), "data-agent")).length, 0, "counters have no charts, dates or agent breakdown");
     }
     assert.equal(all(page, node => attrs(node)["data-updated"] === snapshot.fetched_at).length, 1);
-    assert.equal(all(page, node => node.tagName === "h2" && attrs(node).id === "council-statistics-title").length, 1);
+    const statistics = all(page, node => node.tagName === "section" && attrs(node).id === "council-statistics-title")[0];
+    assert.ok(attrs(statistics)["aria-label"], "the counters keep an accessible section name");
+    assert.equal(all(statistics, node => node.tagName === "h2").length, 0, "the counters have no visible heading");
     const team = all(page, node => hasClass(node, "council-team"))[0];
     const rosterTotal = all(page, node => Object.hasOwn(attrs(node), "data-roster-total"))[0];
     assert.equal(Number(rosterTotal.childNodes.map(node => node.value || "").join("")), all(team, node => node.tagName === "h3").length);
