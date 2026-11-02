@@ -1,0 +1,18 @@
+{{- $ru := eq .Language.Lang "ru" -}}
+<section class="council-section" aria-labelledby="council-models-title">
+  <h2 id="council-models-title">{{ if $ru }}Модели{{ else }}Models{{ end }}</h2>
+  <div class="content-columns council-models">
+    <section>
+      <h3 class="beauty-heading-compact">Astra</h3>
+      <p class="beauty-note">{{ if $ru }}Сложные задачи и глубокий анализ{{ else }}Complex tasks and in-depth analysis{{ end }}</p>
+    </section>
+    <section>
+      <h3 class="beauty-heading-compact">Sol</h3>
+      <p class="beauty-note">{{ if $ru }}Повседневная работа агентов{{ else }}Everyday agent work{{ end }}</p>
+    </section>
+    <section>
+      <h3 class="beauty-heading-compact">Whisper</h3>
+      <p class="beauty-note">{{ if $ru }}Распознавание голосовых сообщений{{ else }}Voice message transcription{{ end }}</p>
+    </section>
+  </div>
+</section>

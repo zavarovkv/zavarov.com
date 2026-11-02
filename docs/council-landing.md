@@ -13,10 +13,11 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `layouts/_partials/council/content.html`: bilingual landing content and agent profiles
 - `layouts/_partials/council/tools-data.html`: shared bilingual service catalog used by the tools section and integration counter
 - `layouts/_partials/council/tools.html`: renders tool names and their roles in the workflow
+- `layouts/_partials/council/models.html`: bilingual model names and their roles
 - `assets/council/council.css`: scoped layout for the team grid, portrait rows, counters and tools
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools, Models and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
 
 Card headings use `beauty-heading-compact`; the `beauty-steps` component owns step-heading spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
@@ -68,6 +69,10 @@ Reviewed SVGs in `assets/council/tools/` are minified and inlined; their
 [source notes](../assets/council/tools/README.md) record the official assets and
 dark-theme treatment. No icon library, embedded widgets or external requests
 are needed.
+
+## Models
+
+A small Models section follows Tools and precedes Early access. It lists Astra for complex tasks and analysis, Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Names have no version numbers, per-agent assignments or extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
 
 ## Early access
 
