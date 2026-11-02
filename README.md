@@ -81,7 +81,7 @@ categories = ["Категория"]
 
 Optional fields include `draft`, `hidden`, `pinned`, `telegram_post`, `math`, and `mermaid`.
 
-Homepage projects show their GitHub link and stars in a separate compact `beauty-note` paragraph below each description. The `github-stars` shortcode reads `data/github_stars.json`. `npm run dev` and `npm run build` refresh the count from GitHub first; a GitHub failure preserves the last successful value. Plain Hugo commands use the saved data without a network request.
+Homepage projects show their GitHub link and stars in a separate compact `beauty-note` paragraph close below each description, with a larger gap between projects. The `github-stars` shortcode reads `data/github_stars.json`. `npm run dev` and `npm run build` refresh the count from GitHub first; a GitHub failure preserves the last successful value. Plain Hugo commands use the saved data without a network request.
 
 ## Project structure
 
