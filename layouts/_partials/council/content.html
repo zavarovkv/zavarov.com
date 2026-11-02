@@ -12,6 +12,9 @@
       (dict "slug" "padme" "nameRu" "Падме Амидала" "nameEn" "Padmé Amidala" "roleRu" "Главный редактор" "roleEn" "Editor-in-chief" "ru" "Проверяет качество текстов и сохраняет авторский голос." "en" "Reviews writing quality and preserves the author's voice.")
       (dict "slug" "k-2so" "nameRu" "K‑2SO" "nameEn" "K‑2SO" "roleRu" "Технический аудитор" "roleEn" "Technical auditor" "ru" "Ревью кода и архитектуры, оценка рисков и технического долга." "en" "Code and architecture reviews, risk assessment, and technical debt analysis.")
     -}}
+
+{{ partial "council/statistics.html" (dict "page" . "agentCount" (len $members)) }}
+
 <section class="council-section" aria-labelledby="council-team-title">
   <h2 id="council-team-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
   <div class="content-columns council-team">
@@ -33,8 +36,6 @@
     {{- end }}
   </div>
 </section>
-
-{{ partial "council/statistics.html" (dict "page" . "agentCount" (len $members)) }}
 
 <section class="council-section" aria-labelledby="council-workflow-title">
   <h2 id="council-workflow-title">{{ if $ru }}Как работает команда{{ else }}How the team works{{ end }}</h2>

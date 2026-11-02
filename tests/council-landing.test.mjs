@@ -92,7 +92,7 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     assert.ok(hasClass(navigation, "main-nav"));
     assert.equal(attrs(toggle)["aria-controls"], attrs(navigation).id);
     assert.deepEqual(links(navigation).map(a => a.href), [
-      "#council-team-title", "#council-statistics-title", "#council-workflow-title", "#council-access-title",
+      "#council-statistics-title", "#council-team-title", "#council-workflow-title", "#council-access-title",
     ]);
     for (const link of links(navigation)) {
       assert.equal(all(page, node => attrs(node).id === link.href.slice(1)).length, 1);
