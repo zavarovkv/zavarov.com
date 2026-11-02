@@ -14,6 +14,7 @@ Retrieved on 2026-11-02 from the owners' public assets:
 | `linear.svg` | [Linear brand assets](https://linear.app/brand), `logo-dark.svg` from the [official archive](https://static.linear.app/design-assets/Linear-Brand-Assets.zip?v=3) |
 | `github.svg` | [GitHub brand assets](https://brand.github.com/foundations/logo), `GitHub_Invertocat_Black.svg` from the [official archive](https://brand.github.com/GitHub_Logos.zip) |
 | `miro.svg` | `logos/miro-logo.svg` from Miro's [@mirohq/brand-assets 1.1.2](https://www.npmjs.com/package/@mirohq/brand-assets/v/1.1.2), [source archive](https://registry.npmjs.org/@mirohq/brand-assets/-/brand-assets-1.1.2.tgz) |
+| `cloudflare.svg` | [Cloudflare's cloud mark](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg) from the header of its [official documentation](https://developers.cloudflare.com/) |
 
 Paths, view boxes and brand artwork are preserved. Export metadata is removed,
 SVG IDs are prefixed per service to avoid inline collisions, and dimensions and

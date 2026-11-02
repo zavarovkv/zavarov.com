@@ -54,7 +54,7 @@ a claim that one layout is universally best.
 ## Tools
 
 The Tools section sits between the workflow and Early access. It lists Telegram,
-Notion, Google Workspace, Linear, GitHub and Miro with a short description of each
+Notion, Google Workspace, Linear, GitHub, Miro and Cloudflare with a short description of each
 tool's role. Google Workspace groups files, email and calendar. This is an editorial
 overview of the owner's selected tools, not a live connection or permission
 status; the landing does not connect accounts or request access.
