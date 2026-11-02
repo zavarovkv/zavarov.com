@@ -1,5 +1,5 @@
 /* Shared typography, colors and buttons belong to Beauty.css.
-   The landing arranges the header, team and counters. */
+   The landing arranges the header, team, counters and tools. */
 .council-header {
   display: flex;
   flex-wrap: wrap;
@@ -95,4 +95,16 @@
 .council-counters dd {
   order: -1;
   margin-block-end: 0.75rem;
+}
+
+.council-tools {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 769px) {
+  .council-tools {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--columns-gap);
+  }
 }

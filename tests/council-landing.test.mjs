@@ -85,14 +85,15 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     assert.equal(attrs(toggle)["aria-expanded"], "false");
     const header = all(page, node => hasClass(node, "council-header"))[0];
     assert.ok(links(header).every(a => !a.href.includes("/auth/login")), "login stays outside the top menu");
-    const note = all(page, node => hasClass(node, "beauty-note"))[0];
+    const earlyAccess = all(page, node => attrs(node)["aria-labelledby"] === "council-access-title")[0];
+    const note = all(earlyAccess, node => hasClass(node, "beauty-note"))[0];
     assert.equal(links(note)[0].href, "https://council.zavarov.com/auth/login?provider=telegram-owner&next=%2Fprofiles");
     assert.equal(all(page, node => hasClass(node, "tg-auth-button")).length, 0);
     const navigation = all(page, node => hasClass(node, "council-nav"))[0];
     assert.ok(hasClass(navigation, "main-nav"));
     assert.equal(attrs(toggle)["aria-controls"], attrs(navigation).id);
     assert.deepEqual(links(navigation).map(a => a.href), [
-      "#council-statistics-title", "#council-team-title", "#council-workflow-title", "#council-access-title",
+      "#council-statistics-title", "#council-team-title", "#council-workflow-title", "#council-tools-title", "#council-access-title",
     ]);
     for (const link of links(navigation)) {
       assert.equal(all(page, node => attrs(node).id === link.href.slice(1)).length, 1);

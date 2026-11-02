@@ -11,10 +11,11 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `content/{ru,en}/council.md`: page metadata
 - `layouts/council/single.html`: title, head, header, main, footer and script blocks extending Hugo Mini's shared page shell
 - `layouts/_partials/council/content.html`: bilingual landing content and agent profiles
-- `assets/council/council.css`: scoped layout for the team grid, portrait rows and counters
+- `layouts/_partials/council/tools.html`: bilingual tool names and their roles in the workflow
+- `assets/council/council.css`: scoped layout for the team grid, portrait rows, counters and tools
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as In numbers, The team, How the team works and Early access; the header follows the same order with concise labels. Russian labels are «В цифрах», «Команда», «Как работает» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as In numbers, The team, How the team works, Tools and Early access; the header follows the same order with concise labels. Russian labels are «В цифрах», «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
 
 Card headings use `beauty-heading-compact`; the `beauty-steps` component owns step-heading spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
@@ -49,6 +50,19 @@ NN/g's guidance on [visual hierarchy](https://www.nngroup.com/articles/visual-hi
 and [descriptive headings](https://www.nngroup.com/articles/layer-cake-pattern-scanning/).
 The vertical treatment is a design choice for this narrow, editorial page, not
 a claim that one layout is universally best.
+
+## Tools
+
+The Tools section sits between the workflow and Early access. It lists Telegram,
+Notion, Google Drive, Calendar, Email and Linear with a short description of each
+tool's role. Calendar and Email remain provider-neutral. This is an editorial
+overview of the owner's selected tools, not a live connection or permission
+status; the landing does not connect accounts or request access.
+
+The section reuses the theme's `content-columns` layout and Beauty's
+`beauty-heading-compact` and `beauty-note` typography. Council CSS only arranges
+three columns on desktop and two on mobile. No icon library, embedded widgets or
+external assets are needed.
 
 ## Early access
 

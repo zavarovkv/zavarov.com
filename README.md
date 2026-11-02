@@ -103,7 +103,7 @@ config.toml              Hugo and site configuration
 Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and social-sharing assets belong to the theme. Site-specific content and configuration remain in this repository.
 
 The [Council landing](docs/council-landing.md) reuses the theme's page shell and
-Beauty.css typography. Its content, statistics and layout stay site-owned; the
+Beauty.css typography. Its team profiles, statistics, workflow and tools stay site-owned; the
 authenticated application is maintained separately.
 
 Language content is selected by explicit `module.mounts.sites.matrix` mounts;

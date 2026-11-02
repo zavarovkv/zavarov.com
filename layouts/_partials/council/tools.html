@@ -1,0 +1,20 @@
+{{- $ru := eq .Language.Lang "ru" -}}
+{{- $tools := slice
+  (dict "nameRu" "Telegram" "nameEn" "Telegram" "ru" "Обсуждение задач и результатов" "en" "Task discussions and results")
+  (dict "nameRu" "Notion" "nameEn" "Notion" "ru" "Исследования и готовые тексты" "en" "Research and finished writing")
+  (dict "nameRu" "Google Диск" "nameEn" "Google Drive" "ru" "Файлы и материалы проектов" "en" "Project files and materials")
+  (dict "nameRu" "Календарь" "nameEn" "Calendar" "ru" "Встречи и расписание" "en" "Meetings and schedules")
+  (dict "nameRu" "Почта" "nameEn" "Email" "ru" "Рабочая переписка" "en" "Work correspondence")
+  (dict "nameRu" "Linear" "nameEn" "Linear" "ru" "Задачи, приоритеты и статусы" "en" "Tasks, priorities, and status")
+-}}
+<section class="council-section" aria-labelledby="council-tools-title">
+  <h2 id="council-tools-title">{{ if $ru }}Инструменты{{ else }}Tools{{ end }}</h2>
+  <div class="content-columns council-tools">
+    {{- range $tools }}
+    <section>
+      <h3 class="beauty-heading-compact">{{ if $ru }}{{ .nameRu }}{{ else }}{{ .nameEn }}{{ end }}</h3>
+      <p class="beauty-note">{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
+    </section>
+    {{- end }}
+  </div>
+</section>
