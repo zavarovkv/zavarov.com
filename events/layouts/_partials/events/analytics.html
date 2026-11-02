@@ -11,3 +11,18 @@
   ym({{ . }}, 'init', { ssr: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
 </script>
 {{- end }}
+
+{{- with .Site.Params.googleAnalyticsId }}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ . }}');
+  window.addEventListener('load', function () {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
+    document.head.appendChild(script);
+  });
+</script>
+{{- end }}

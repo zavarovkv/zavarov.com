@@ -126,6 +126,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   authorURL = "https://zavarov.com/"
   telegramChannel = "pmgen"
   yandexMetrikaId = 106247763
+  googleAnalyticsId = "G-P2MMRVCNQP"
   copyrightYear = 2023
   newPostDays = 30
   aiTranslatedLang = "en"
