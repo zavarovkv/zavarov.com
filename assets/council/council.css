@@ -140,13 +140,21 @@
   gap: 0.75rem;
 }
 
-.council-tool-logo {
+.council-models-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.council-tool-logo,
+.council-model-logo {
   flex: none;
   inline-size: 1.5rem;
   block-size: 1.5rem;
 }
 
-.council-tool-logo svg {
+.council-tool-logo svg,
+.council-model-logo svg {
   display: block;
   inline-size: 100%;
   block-size: 100%;

@@ -1,6 +1,6 @@
-# Service logos
+# Service and model logos
 
-Local SVG copies used to identify the tools listed on the Council landing.
+Local SVG copies used to identify services and the model provider on the Council landing.
 The service names remain visible text; the marks are decorative and do not
 indicate a partnership or endorsement. These trademarks belong to their owners.
 
@@ -15,13 +15,13 @@ Retrieved on 2026-11-02 from the owners' public assets:
 | `github.svg` | [GitHub brand assets](https://brand.github.com/foundations/logo), `GitHub_Invertocat_Black.svg` from the [official archive](https://brand.github.com/GitHub_Logos.zip) |
 | `miro.svg` | `logos/miro-logo.svg` from Miro's [@mirohq/brand-assets 1.1.2](https://www.npmjs.com/package/@mirohq/brand-assets/v/1.1.2), [source archive](https://registry.npmjs.org/@mirohq/brand-assets/-/brand-assets-1.1.2.tgz) |
 | `cloudflare.svg` | [Cloudflare's cloud mark](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg) from the header of its [official documentation](https://developers.cloudflare.com/) |
-| `chatgpt.svg` | ChatGPT's inline Blossom mark from the ChatGPT documentation header on [OpenAI Developers](https://developers.openai.com/); [brand guidelines](https://openai.com/brand/) |
+| `../models/openai.svg` | OpenAI's inline Blossom mark from the ChatGPT documentation header on [OpenAI Developers](https://developers.openai.com/); [brand guidelines](https://openai.com/brand/) |
 | `todoist.svg` | Todoist's square inline symbol from the header of its [official site](https://www.todoist.com/) |
 | `granola.svg` | [Granola's official 96px icon](https://www.granola.ai/favicon/favicon-96x96.png) from its [site](https://www.granola.ai/), embedded unchanged in a self-contained SVG wrapper |
 
 Paths, view boxes and brand artwork are preserved. Export metadata is removed,
 SVG IDs are prefixed per service to avoid inline collisions, and dimensions and
-accessibility attributes are normalized. Linear, GitHub and ChatGPT's monochrome marks
+accessibility attributes are normalized. Linear, GitHub and OpenAI's monochrome marks
 use `currentColor` to follow the shared heading color in light and dark themes;
 the other marks retain their original colors. Google's original SVG includes a
 self-contained 48px PNG color layer behind a vector clip; it is preserved.

@@ -1,6 +1,10 @@
 {{- $ru := eq .Language.Lang "ru" -}}
+{{- $logo := resources.Get "council/models/openai.svg" | resources.Minify -}}
 <section class="council-section" aria-labelledby="council-models-title">
-  <h2 id="council-models-title">{{ if $ru }}Модели{{ else }}Models{{ end }}</h2>
+  <h2 id="council-models-title" class="council-models-heading">
+    <span>{{ if $ru }}Модели{{ else }}Models{{ end }}</span>
+    <span class="council-model-logo" role="img" aria-label="OpenAI">{{ $logo.Content | safeHTML }}</span>
+  </h2>
   <div class="content-columns council-models">
     <section>
       <h3 class="beauty-heading-compact">GPT‑6 Astra</h3>

@@ -56,7 +56,7 @@ a claim that one layout is universally best.
 ## Tools
 
 The Tools section sits between the workflow and Early access. It lists Telegram,
-Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, ChatGPT, Todoist and Granola with a short description of each
+Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, Todoist and Granola with a short description of each
 tool's role. Google Workspace groups files, email and calendar. This is an editorial
 overview of the owner's selected tools, not a live connection or permission
 status; the landing does not connect accounts or request access.
@@ -72,7 +72,7 @@ are needed.
 
 ## Models
 
-A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; omit per-agent assignments, repeated provider icons and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
+A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; show one OpenAI mark beside the section heading and omit per-agent assignments, repeated per-model icons and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
 
 ## Early access
 
