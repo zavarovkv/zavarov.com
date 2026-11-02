@@ -62,6 +62,12 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     const statistics = all(page, node => node.tagName === "section" && attrs(node).id === "council-statistics-title")[0];
     assert.ok(attrs(statistics)["aria-label"], "the counters keep an accessible section name");
     assert.equal(all(statistics, node => node.tagName === "h2").length, 0, "the counters have no visible heading");
+    const counterList = all(statistics, node => hasClass(node, "council-counters"))[0];
+    assert.equal(attrs(counterList).tabindex, "0", "the native mobile scroller is keyboard focusable");
+    assert.equal(all(counterList, node => node.tagName === "dt").length, 4);
+    const tools = all(page, node => hasClass(node, "council-tools"))[0];
+    const toolsTotal = all(statistics, node => Object.hasOwn(attrs(node), "data-tools-total"))[0];
+    assert.equal(Number(toolsTotal.childNodes.map(node => node.value || "").join("")), all(tools, node => node.tagName === "h3").length, "integration count follows the rendered service catalog");
     const team = all(page, node => hasClass(node, "council-team"))[0];
     const rosterTotal = all(page, node => Object.hasOwn(attrs(node), "data-roster-total"))[0];
     assert.equal(Number(rosterTotal.childNodes.map(node => node.value || "").join("")), all(team, node => node.tagName === "h3").length);

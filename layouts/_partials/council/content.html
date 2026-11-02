@@ -13,7 +13,8 @@
       (dict "slug" "k-2so" "nameRu" "K‑2SO" "nameEn" "K‑2SO" "roleRu" "Технический аудитор" "roleEn" "Technical auditor" "ru" "Ревью кода и архитектуры, оценка рисков и технического долга." "en" "Code and architecture reviews, risk assessment, and technical debt analysis.")
     -}}
 
-{{ partial "council/statistics.html" (dict "page" . "agentCount" (len $members)) }}
+{{- $tools := partial "council/tools-data.html" . -}}
+{{ partial "council/statistics.html" (dict "page" . "agentCount" (len $members) "toolCount" (len $tools)) }}
 
 <section class="council-section" aria-labelledby="council-team-title">
   <h2 id="council-team-title">{{ if $ru }}Команда{{ else }}The team{{ end }}</h2>
@@ -64,6 +65,6 @@
   </ol>
 </section>
 
-{{ partial "council/tools.html" . }}
+{{ partial "council/tools.html" (dict "page" . "tools" $tools) }}
 
 {{ partial "council/early-access.html" . }}

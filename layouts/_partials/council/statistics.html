@@ -12,7 +12,7 @@
   "stale" (cond $ru "Не удалось обновить данные." "Could not refresh the data.")
 -}}
 <section class="council-section council-statistics" id="council-statistics-title" aria-label="{{ if $ru }}В цифрах{{ else }}In numbers{{ end }}">
-<dl class="council-counters" data-council-statistics data-messages="{{ $messages | jsonify }}" data-scales="{{ $scales | jsonify }}" data-updated="{{ $snapshot.fetched_at }}" aria-label="{{ if $ru }}Итоги работы команды{{ else }}Team totals{{ end }}" data-typography="off">
+<dl class="council-counters" data-council-statistics tabindex="0" data-messages="{{ $messages | jsonify }}" data-scales="{{ $scales | jsonify }}" data-updated="{{ $snapshot.fetched_at }}" aria-label="{{ if $ru }}Итоги работы команды{{ else }}Team totals{{ end }}" data-typography="off">
   <div>
     <dt class="beauty-stat-label">{{ if $ru }}Агентов в команде{{ else }}Agents on the team{{ end }}</dt>
     <dd class="beauty-stat-value"><span class="beauty-nowrap" data-roster-total>{{ .agentCount }}</span></dd>
@@ -24,5 +24,9 @@
       <dd class="beauty-stat-value"><data class="beauty-nowrap" data-total value="{{ if ne $total nil }}{{ printf "%.0f" (float $total) }}{{ end }}" title="{{ if eq $total nil }}{{ $messages.unknown }}{{ else }}{{ lang.FormatNumber 0 $total }}{{ end }}. {{ $messages.updated }} {{ time.Format "2 Jan 2006, 15:04" $snapshot.fetched_at }} UTC">{{ partial "council/count.html" (dict "value" $total "scales" $scales) }}</data></dd>
     </div>
   {{- end }}
+  <div>
+    <dt class="beauty-stat-label">{{ if $ru }}Интеграций по MCP{{ else }}MCP integrations{{ end }}</dt>
+    <dd class="beauty-stat-value"><span class="beauty-nowrap" data-tools-total>{{ .toolCount }}</span></dd>
+  </div>
 </dl>
 </section>

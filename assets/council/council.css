@@ -78,7 +78,7 @@
 
 .council-counters {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(min-content, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(0.75rem, 3vw, 2rem);
   margin-block: 0;
 }
@@ -97,6 +97,22 @@
 .council-counters dt,
 .council-counters dd {
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .council-counters {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(11rem, 48vw, 14rem);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    padding-block: 0.25rem 0.75rem;
+  }
+
+  .council-counters > div {
+    scroll-snap-align: start;
+  }
 }
 
 .council-counters dd {

@@ -11,7 +11,8 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `content/{ru,en}/council.md`: page metadata
 - `layouts/council/single.html`: title, head, header, main, footer and script blocks extending Hugo Mini's shared page shell
 - `layouts/_partials/council/content.html`: bilingual landing content and agent profiles
-- `layouts/_partials/council/tools.html`: bilingual tool names and their roles in the workflow
+- `layouts/_partials/council/tools-data.html`: shared bilingual service catalog used by the tools section and integration counter
+- `layouts/_partials/council/tools.html`: renders tool names and their roles in the workflow
 - `assets/council/council.css`: scoped layout for the team grid, portrait rows, counters and tools
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
@@ -94,13 +95,11 @@ copy. The regular 56–72px section gap before the team marks the next section.
 These layout gaps belong to Council CSS; number typography remains in Beauty.
 Its existing anchor and accessible section name remain in place, but the header
 does not link to it.
-It contains three totals: agents on the team, tasks completed
-and tokens used. The agent count comes from the same roster that renders the
+It contains four totals: agents on the team, tasks completed, tokens used and MCP integrations. The integration count comes from the same service catalog as the Tools section, counting each listed service once; it is an editorial total, not the number of individual MCP commands or a live connection check. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.
 Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
-labels quiet. Three columns keep all counters on one row, including
-mobile. Large totals use localized compact notation and `beauty-stat-unit` for
+labels quiet. Four columns show the totals on desktop. On mobile, a single horizontally scrollable row keeps wide counters readable, with a partial next item to indicate more content. Native scrolling and proximity snap support touch, trackpads and keyboard focus without carousel JavaScript. Large totals use localized compact notation and `beauty-stat-unit` for
 the suffix. Exact values remain in semantic `data` elements and their tooltips.
 The template supplies the same unit scales to the live formatter; unknown counts
 remain distinct from zero. The shared library owns sizing, weight and color.
@@ -112,7 +111,7 @@ allowlisted agent IDs and counters, and saves summed totals and the retrieval ti
 this snapshot; a failed refresh preserves saved values and timestamp. CI commits
 it with other generated updates. Plain Hugo builds use the saved snapshot.
 
-`layouts/_partials/council/statistics.html` renders all three counters without
+`layouts/_partials/council/statistics.html` renders all four counters without
 JavaScript. On the application origin only, `assets/council/statistics.js`
 refreshes the two activity counters on load and every five minutes while the page is visible, without
 cookies or credentials. Blog/local copies use saved HTML and need no CORS changes.
