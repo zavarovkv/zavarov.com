@@ -91,7 +91,9 @@
 .council-counters > div {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-inline-size: 0;
+  text-align: center;
 }
 
 .council-counters dt,
@@ -103,11 +105,16 @@
   .council-counters {
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: clamp(11rem, 48vw, 14rem);
+    grid-auto-columns: minmax(7rem, min-content);
     overflow-x: auto;
+    scrollbar-width: none;
     overscroll-behavior-inline: contain;
     scroll-snap-type: x proximity;
     padding-block: 0.25rem 0.75rem;
+  }
+
+  .council-counters::-webkit-scrollbar {
+    display: none;
   }
 
   .council-counters > div {

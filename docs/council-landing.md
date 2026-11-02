@@ -55,7 +55,7 @@ a claim that one layout is universally best.
 ## Tools
 
 The Tools section sits between the workflow and Early access. It lists Telegram,
-Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, ChatGPT and Todoist with a short description of each
+Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, ChatGPT, Todoist and Granola with a short description of each
 tool's role. Google Workspace groups files, email and calendar. This is an editorial
 overview of the owner's selected tools, not a live connection or permission
 status; the landing does not connect accounts or request access.
@@ -98,8 +98,8 @@ does not link to it.
 It contains four totals: agents on the team, tasks completed, tokens used and MCP integrations. The integration count comes from the same service catalog as the Tools section, counting each listed service once; it is an editorial total, not the number of individual MCP commands or a live connection check. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.
-Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
-labels quiet. Four columns show the totals on desktop. On mobile, a single horizontally scrollable row keeps wide counters readable, with a partial next item to indicate more content. Native scrolling and proximity snap support touch, trackpads and keyboard focus without carousel JavaScript. Large totals use localized compact notation and `beauty-stat-unit` for
+Numbers and labels are centered within each counter's column, including the mobile scroll row. Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
+labels quiet. Four columns show the totals on desktop. On mobile, a compact horizontally scrollable row sizes counters to their content with a 7rem minimum. The scrollbar is hidden while native touch and keyboard scrolling remain available; the next partially visible counter indicates more content. Native scrolling and proximity snap support touch, trackpads and keyboard focus without carousel JavaScript. Large totals use localized compact notation and `beauty-stat-unit` for
 the suffix. Exact values remain in semantic `data` elements and their tooltips.
 The template supplies the same unit scales to the live formatter; unknown counts
 remain distinct from zero. The shared library owns sizing, weight and color.

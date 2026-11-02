@@ -17,6 +17,7 @@ Retrieved on 2026-11-02 from the owners' public assets:
 | `cloudflare.svg` | [Cloudflare's cloud mark](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg) from the header of its [official documentation](https://developers.cloudflare.com/) |
 | `chatgpt.svg` | ChatGPT's inline Blossom mark from the ChatGPT documentation header on [OpenAI Developers](https://developers.openai.com/); [brand guidelines](https://openai.com/brand/) |
 | `todoist.svg` | Todoist's square inline symbol from the header of its [official site](https://www.todoist.com/) |
+| `granola.svg` | [Granola's official 96px icon](https://www.granola.ai/favicon/favicon-96x96.png) from its [site](https://www.granola.ai/), embedded unchanged in a self-contained SVG wrapper |
 
 Paths, view boxes and brand artwork are preserved. Export metadata is removed,
 SVG IDs are prefixed per service to avoid inline collisions, and dimensions and
@@ -25,6 +26,8 @@ use `currentColor` to follow the shared heading color in light and dark themes;
 the other marks retain their original colors. Google's original SVG includes a
 self-contained 48px PNG color layer behind a vector clip; it is preserved.
 Todoist's `--white` fill is resolved to `#fff` so its mark is self-contained.
+Granola provides a raster favicon (its official SVG also embeds a PNG); the
+96px original is embedded locally without resampling or recoloring.
 Google Workspace is identified by
 the Google G beside the complete service name, not by the Drive icon.
 
