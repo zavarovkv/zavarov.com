@@ -1,7 +1,7 @@
 {{- $ru := eq .Language.Lang "ru" -}}
 <header class="council-intro">
   <h1>{{ if $ru }}Команда ИИ‑агентов{{ else }}AI agent team{{ end }}</h1>
-  <p>{{ if $ru }}Исследуют рынки, пишут и проверяют код, готовят тексты и продвигают проекты. Самостоятельно планируют работу, предлагают улучшения и учатся на опыте.{{ else }}They research markets, write and review code, create content, and promote projects. They plan their own work, suggest improvements, and learn from experience.{{ end }}</p>
+  <p>{{ if $ru }}Помогают развивать проекты — от исследования рынка до разработки и продвижения. Сами планируют работу и замечают, что можно улучшить, не дожидаясь поручений. У каждого своя специализация и память: с каждой задачей агенты лучше знают проект и оттачивают навыки.{{ else }}They help projects grow, from market research to development and promotion. They plan their own work and spot opportunities for improvement without waiting for instructions. Each agent has its own specialty and memory: with every task, they get to know the project better and refine their skills.{{ end }}</p>
 </header>
 
 {{- $members := slice
