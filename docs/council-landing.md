@@ -72,7 +72,7 @@ are needed.
 
 ## Models
 
-A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; show one OpenAI mark beside the section heading and omit per-agent assignments, repeated per-model icons and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
+A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; show the provider mark in each model card and keep the section heading text-only. Future models may use a different provider mark. Omit per-agent assignments and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
 
 ## Early access
 
