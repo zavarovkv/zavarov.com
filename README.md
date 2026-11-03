@@ -104,7 +104,7 @@ Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and 
 
 The [Council landing](docs/council-landing.md) reuses the theme's page shell and
 Beauty.css typography. Its team profiles, statistics, workflow and tools stay site-owned; the
-authenticated application is maintained separately.
+authenticated application is maintained separately. Public counter updates preserve known values, use a validated browser cache and show delayed placeholders only for unknown totals; storage or API failures retain the last known data.
 
 Language content is selected by explicit `module.mounts.sites.matrix` mounts;
 `locale` and `label` use Hugo's current language configuration. Per-language

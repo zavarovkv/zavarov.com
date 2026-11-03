@@ -25,7 +25,7 @@
 {{ end }}
 
 {{ define "scripts" }}
-  {{- with resources.Get "council/statistics.js" | js.Build (dict "minify" true "targetPath" "council/statistics.js") | resources.Fingerprint "sha256" }}
+  {{- with resources.Get "council/statistics.mjs" | js.Build (dict "minify" true "targetPath" "council/statistics.js") | resources.Fingerprint "sha256" }}
   <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
   {{- end }}
 {{ end }}

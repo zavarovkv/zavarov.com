@@ -1,28 +1,21 @@
 {{- $ru := eq .Language.Lang "ru" -}}
-{{- $logo := resources.Get "council/models/openai.svg" | resources.Minify -}}
+{{- $models := slice
+  (dict "name" "GPT‑6 Astra" "provider" "OpenAI" "logo" "openai" "ru" "Сложные задачи и глубокий анализ" "en" "Complex tasks and in-depth analysis")
+  (dict "name" "GPT‑6.1 Sol" "provider" "OpenAI" "logo" "openai" "ru" "Повседневная работа агентов" "en" "Everyday agent work")
+  (dict "name" "Whisper" "provider" "OpenAI" "logo" "openai" "ru" "Распознавание голосовых сообщений" "en" "Voice message transcription")
+-}}
 <section class="council-section" aria-labelledby="council-models-title">
   <h2 id="council-models-title">{{ if $ru }}Модели{{ else }}Models{{ end }}</h2>
   <div class="content-columns council-models">
+    {{- range $models }}
+    {{- $logo := resources.Get (printf "council/models/%s.svg" .logo) | resources.Minify -}}
     <section>
-      <h3 class="beauty-heading-compact council-tool-heading">
-        <span class="council-model-logo" role="img" aria-label="OpenAI">{{ $logo.Content | safeHTML }}</span>
-        <span>GPT‑6 Astra</span>
+      <h3 class="beauty-heading-compact council-service-heading">
+        <span class="council-model-logo" role="img" aria-label="{{ .provider }}">{{ $logo.Content | safeHTML }}</span>
+        <span>{{ .name }}</span>
       </h3>
-      <p class="beauty-note">{{ if $ru }}Сложные задачи и глубокий анализ{{ else }}Complex tasks and in-depth analysis{{ end }}</p>
+      <p class="beauty-note">{{ if $ru }}{{ .ru }}{{ else }}{{ .en }}{{ end }}</p>
     </section>
-    <section>
-      <h3 class="beauty-heading-compact council-tool-heading">
-        <span class="council-model-logo" role="img" aria-label="OpenAI">{{ $logo.Content | safeHTML }}</span>
-        <span>GPT‑6.1 Sol</span>
-      </h3>
-      <p class="beauty-note">{{ if $ru }}Повседневная работа агентов{{ else }}Everyday agent work{{ end }}</p>
-    </section>
-    <section>
-      <h3 class="beauty-heading-compact council-tool-heading">
-        <span class="council-model-logo" role="img" aria-label="OpenAI">{{ $logo.Content | safeHTML }}</span>
-        <span>Whisper</span>
-      </h3>
-      <p class="beauty-note">{{ if $ru }}Распознавание голосовых сообщений{{ else }}Voice message transcription{{ end }}</p>
-    </section>
+    {{- end }}
   </div>
 </section>

@@ -9,7 +9,7 @@
 {{- $messages := dict
   "updated" (cond $ru "Данные на" "Data retrieved")
   "unknown" (cond $ru "Данные недоступны" "Data unavailable")
-  "stale" (cond $ru "Не удалось обновить данные." "Could not refresh the data.")
+  "stale" (cond $ru "Последние известные данные." "Last known data.")
 -}}
 <section class="council-section council-statistics" id="council-statistics-title" aria-label="{{ if $ru }}В цифрах{{ else }}In numbers{{ end }}">
 <dl class="council-counters" data-council-statistics tabindex="0" data-messages="{{ $messages | jsonify }}" data-scales="{{ $scales | jsonify }}" data-updated="{{ $snapshot.fetched_at }}" aria-label="{{ if $ru }}Итоги работы команды{{ else }}Team totals{{ end }}" data-typography="off">

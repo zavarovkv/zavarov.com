@@ -15,6 +15,8 @@
 @media (min-width: 769px) {
   .council-nav {
     justify-content: flex-end;
+    flex-wrap: wrap;
+    min-inline-size: 0;
     gap: 1rem;
   }
 }
@@ -77,9 +79,16 @@
 
 .council-counters {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(min-content, 1fr));
   gap: clamp(0.75rem, 3vw, 2rem);
   margin-block: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+
+.council-counters::-webkit-scrollbar {
+  display: none;
 }
 
 .council-statistics {
@@ -90,9 +99,7 @@
 .council-counters > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-inline-size: 0;
-  text-align: center;
 }
 
 .council-counters dt,
@@ -104,20 +111,18 @@
   .council-counters {
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(7rem, min-content);
-    overflow-x: auto;
-    scrollbar-width: none;
-    overscroll-behavior-inline: contain;
+    grid-auto-columns: minmax(max-content, 1fr);
     scroll-snap-type: x proximity;
     padding-block: 0.25rem 0.75rem;
   }
 
-  .council-counters::-webkit-scrollbar {
-    display: none;
+  .council-counters > div {
+    min-inline-size: 7rem;
+    scroll-snap-align: start;
   }
 
-  .council-counters > div {
-    scroll-snap-align: start;
+  .council-counters dt {
+    max-inline-size: 7rem;
   }
 }
 
@@ -132,11 +137,15 @@
   gap: 1.5rem;
 }
 
-.council-tool-heading {
+.council-service-heading {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
+}
+
+.council-service-heading > :last-child {
+  min-inline-size: 0;
 }
 
 .council-tool-logo,
@@ -160,7 +169,7 @@
     column-gap: var(--columns-gap);
   }
 
-  .council-tool-heading {
+  .council-service-heading {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;

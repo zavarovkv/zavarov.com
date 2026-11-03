@@ -6,7 +6,8 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readTotals, compactCount, normalizeSnapshot } from "../assets/council/statistics-data.mjs";
 import { refreshStatistics } from "../scripts/fetch-council-statistics.mjs";
-import { startStatistics } from "../assets/council/statistics.js";
+import { startStatistics } from "../assets/council/statistics.mjs";
+import { readStatisticsCache, statisticsCacheKey } from "../assets/council/statistics-cache.mjs";
 
 const fixture = () => ({ schema: 1, agents: [
   { slug: "qui-gon", closed_tasks: 2, tokens: 1500, model: { name: "GPT-6.1 Sol", effort: "PRIVATE", api_key: "PRIVATE" }, linear_model: { name: "GPT-6.1 Sol" } },
@@ -15,13 +16,13 @@ const fixture = () => ({ schema: 1, agents: [
   { slug: "padme", closed_tasks: 0, tokens: 50 },
 ] });
 
-test("first live request masks activity values, restores the snapshot on failure and keeps background refreshes visible", async () => {
-  const counters = Object.fromEntries(["closed_tasks", "tokens"].map(key => {
+function liveCounters(values = { closed_tasks: 12, tokens: 12 }, options = {}) {
+  const counters = Object.fromEntries(Object.entries(values).map(([key, value]) => {
     const classes = new Set();
     const attributes = new Map();
-    const children = { "[data-total-number]": { textContent: "12" }, "[data-total-unit]": { textContent: "", hidden: true } };
+    const children = { "[data-total-number]": { textContent: value === null ? "—" : String(value) }, "[data-total-unit]": { textContent: "", hidden: true } };
     return [key, {
-      value: "12", classes, attributes,
+      value: value === null ? "" : String(value), classes, attributes, dataset: {},
       classList: { add: value => classes.add(value), remove: value => classes.delete(value) },
       setAttribute: (name, value) => attributes.set(name, value),
       removeAttribute: name => attributes.delete(name),
@@ -29,35 +30,106 @@ test("first live request masks activity values, restores the snapshot on failure
     }];
   }));
   const root = {
-    dataset: { updated: "2026-11-01T14:00:00Z", scales: "[]", messages: JSON.stringify({ unknown: "Unknown", stale: "Stale", updated: "Updated" }) },
+    dataset: { updated: "2026-11-01T14:00:00.000Z", scales: "[]", messages: JSON.stringify({ unknown: "Unknown", stale: "Stale", updated: "Updated" }) },
     querySelectorAll: () => Object.values(counters),
     querySelector: selector => counters[selector.match(/data-metric="([^"]+)"/)[1]],
   };
-  let finish;
-  let refresh;
-  startStatistics({ root, origin: "https://council.zavarov.com", locale: "en", doc: { hidden: false },
-    fetchImpl: () => new Promise(resolve => { finish = resolve; }),
-    interval: callback => { refresh = callback; },
+  const requests = [];
+  const state = { counters, root, requests };
+  startStatistics({ root, origin: "https://council.zavarov.com", locale: "en", doc: { hidden: false }, storage: null,
+    fetchImpl: () => new Promise(resolve => { requests.push(resolve); }),
+    interval: callback => { state.refresh = callback; },
+    timeout: (callback, delay) => { state.placeholder = callback; state.delay = delay; return 1; },
+    cancelTimeout: () => { state.placeholder = null; },
+    now: () => new Date("2026-11-02T14:00:00Z"),
+    ...options,
   });
-  for (const counter of Object.values(counters)) {
-    assert.ok(counter.classes.has("loading-skeleton"));
-    assert.equal(counter.attributes.get("aria-busy"), "true");
-    assert.equal(counter.value, "12", "saved values remain intact under the placeholder");
-  }
-  finish({ ok: false });
-  await new Promise(resolve => setImmediate(resolve));
-  for (const counter of Object.values(counters)) {
-    assert.equal(counter.classes.size, 0);
-    assert.equal(counter.attributes.has("aria-busy"), false);
-    assert.equal(counter.value, "12");
-  }
-  const next = refresh();
-  assert.ok(Object.values(counters).every(counter => counter.classes.size === 0), "background refreshes never mask visible values");
-  finish({ ok: true, text: async () => JSON.stringify(fixture()) });
+  state.respond = async response => { requests.shift()(response); await new Promise(resolve => setImmediate(resolve)); };
+  return state;
+}
+
+const response = value => ({ ok: true, text: async () => JSON.stringify(value) });
+
+test("known numbers never disappear during initial requests, failures or background refreshes", async () => {
+  const state = liveCounters();
+  assert.equal(state.placeholder, undefined);
+  assert.ok(Object.values(state.counters).every(counter => counter.classes.size === 0));
+  await state.respond({ ok: false });
+  assert.ok(Object.values(state.counters).every(counter => counter.value === "12" && counter.classes.size === 0));
+  const next = state.refresh();
+  assert.ok(Object.values(state.counters).every(counter => counter.classes.size === 0));
+  await state.respond(response(fixture()));
   await next;
-  assert.equal(counters.closed_tasks.value, "8");
-  assert.equal(counters.tokens.value, "1850");
-  assert.ok(Object.values(counters).every(counter => !counter.attributes.has("aria-busy")));
+  assert.equal(state.counters.closed_tasks.value, "8");
+  assert.equal(state.counters.tokens.value, "1850");
+});
+
+test("only unknown numbers get a delayed placeholder, which clears after failure", async () => {
+  const state = liveCounters({ closed_tasks: null, tokens: 12 });
+  assert.equal(state.delay, 200);
+  assert.ok(Object.values(state.counters).every(counter => counter.classes.size === 0));
+  state.placeholder();
+  assert.ok(state.counters.closed_tasks.classes.has("loading-skeleton"));
+  assert.equal(state.counters.tokens.classes.size, 0);
+  await state.respond({ ok: false });
+  assert.equal(state.placeholder, null);
+  assert.equal(state.counters.closed_tasks.value, "");
+  assert.ok(Object.values(state.counters).every(counter => counter.classes.size === 0 && !counter.attributes.has("aria-busy")));
+});
+
+test("cached values survive unavailable metrics and keep their original retrieval time", async () => {
+  const saved = new Map();
+  const storage = { getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value) };
+  const first = liveCounters(undefined, { storage });
+  await first.respond(response(fixture()));
+  const second = liveCounters({ closed_tasks: null, tokens: 1 }, { storage, now: () => new Date("2026-11-03T14:00:00Z") });
+  assert.equal(second.counters.closed_tasks.value, "8");
+  assert.equal(second.counters.tokens.value, "1850");
+  assert.equal(second.placeholder, undefined);
+  const value = fixture();
+  value.agents[0].closed_tasks = null;
+  await second.respond(response(value));
+  assert.equal(second.counters.closed_tasks.value, "8");
+  assert.match(second.counters.closed_tasks.title, /Stale/);
+  assert.equal(second.counters.closed_tasks.dataset.updated, "2026-11-02T14:00:00.000Z");
+  assert.equal(second.counters.tokens.dataset.updated, "2026-11-03T14:00:00.000Z");
+  const third = liveCounters({ closed_tasks: null, tokens: null }, { storage });
+  assert.equal(third.counters.closed_tasks.value, "8");
+  await third.respond({ ok: false });
+});
+
+test("a fast first response cancels the unknown-value placeholder before it appears", async () => {
+  const state = liveCounters({ closed_tasks: null, tokens: 12 });
+  assert.equal(state.delay, 200);
+  await state.respond(response(fixture()));
+  assert.equal(state.placeholder, null);
+  assert.equal(state.counters.closed_tasks.value, "8");
+  assert.ok(Object.values(state.counters).every(counter => counter.classes.size === 0));
+});
+
+test("newer server-rendered zeros win over older cached numbers", async () => {
+  const records = { closed_tasks: { value: 99, updated: "2026-10-01T14:00:00.000Z" }, tokens: { value: 500, updated: "2026-10-01T14:00:00.000Z" } };
+  const storage = { getItem: () => JSON.stringify({ schema: 1, metrics: records }), setItem() {} };
+  const state = liveCounters({ closed_tasks: 0, tokens: 0 }, { storage });
+  assert.equal(state.counters.closed_tasks.value, "0");
+  assert.equal(state.counters.tokens.value, "0");
+  assert.equal(state.placeholder, undefined);
+  await state.respond({ ok: false });
+});
+
+test("blocked browser storage never interrupts loading and hidden pages request on becoming visible", async () => {
+  const handlers = new Map();
+  const doc = { hidden: true, addEventListener: (name, callback) => handlers.set(name, callback), removeEventListener: name => handlers.delete(name) };
+  const storage = { getItem() { throw new Error("Blocked"); }, setItem() { throw new Error("Quota"); } };
+  const state = liveCounters(undefined, { storage, doc });
+  assert.equal(state.requests.length, 0);
+  doc.hidden = false;
+  const resumed = handlers.get("visibilitychange")();
+  assert.equal(state.requests.length, 1);
+  assert.equal(handlers.size, 0);
+  await state.respond(response(fixture()));
+  await resumed;
+  assert.equal(state.counters.tokens.value, "1850");
 });
 
 test("counters publish only team totals and keep unknown values distinct from zero", () => {
@@ -135,4 +207,14 @@ test("refresh saves an allowlisted snapshot atomically and preserves it on outag
   }
   await writeFile(target, "{}");
   await assert.rejects(refreshStatistics({ target, now, fetchImpl: async () => { throw new Error("offline"); } }));
+});
+
+
+test("browser cache discards malformed records and unrelated fields", () => {
+  const updated = "2026-11-02T14:00:00.000Z";
+  const read = value => readStatisticsCache({ getItem: key => { assert.equal(key, statisticsCacheKey); return JSON.stringify(value); } });
+  assert.deepEqual(read({ schema: 1, metrics: { closed_tasks: { value: 0, updated, secret: "ignore" }, tokens: { value: -1, updated }, extra: { value: 10, updated } } }), { closed_tasks: { value: 0, updated } });
+  for (const value of [null, {}, { schema: 2 }, { schema: 1, metrics: { tokens: { value: 1, updated: "invalid" } } }]) assert.deepEqual(read(value), {});
+  assert.deepEqual(readStatisticsCache({ getItem: () => "not JSON" }), {});
+  assert.deepEqual(readStatisticsCache({ getItem: () => " ".repeat(2049) }), {});
 });

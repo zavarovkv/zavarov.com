@@ -14,16 +14,18 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `layouts/_partials/council/tools-data.html`: shared bilingual service catalog used by the tools section and integration counter
 - `layouts/_partials/council/tools.html`: renders tool names and their roles in the workflow
 - `layouts/_partials/council/models.html`: bilingual model names and their roles
+- `assets/council/statistics.mjs`: progressive live-counter updates without hiding known values
+- `assets/council/statistics-cache.mjs`: validated, per-metric browser cache of public totals
 - `assets/council/council.css`: scoped layout for the team grid, portrait rows, counters and tools
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools, Models and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The introduction and sections share Beauty's 720px reading container, without a separate narrower introduction limit. The content uses a single localized `h1`;  Hugo Mini applies its language-aware prose spacing.
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools, Models and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The introduction and sections share Beauty's 720px reading container, without a separate narrower introduction limit. The content uses a single localized `h1`; Hugo Mini applies its language-aware prose spacing.
 
 Card headings use `beauty-heading-compact`; the `beauty-steps` component owns step-heading spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
 conjunctions use nonbreaking spaces in the maintained copy. Section heading gaps are
-shared. The header and portrait rows can wrap with enlarged text, and the
-statistics grid keeps three columns with compact number formatting on mobile.
+shared. The desktop navigation, header and portrait rows can wrap with enlarged text, and the
+statistics use four desktop columns and one compact, swipeable row on mobile.
 
 The footer calls the theme's `footer-content.html` with project-specific links: the [Agent Council repository](https://github.com/zavarovkv/agent-council) and [Qui-Gon on Telegram](https://t.me/Qui_Gon_Jinn_ai). It retains the shared language and color-scheme controls, without the blog's personal contacts or RSS link.
 
@@ -64,7 +66,7 @@ status; the landing does not connect accounts or request access.
 The section reuses the theme's `content-columns` layout and Beauty's
 `beauty-heading-compact` and `beauty-note` typography. Council CSS only arranges
 three columns on desktop and two on mobile. Small service marks sit beside the
-names on desktop and above them on mobile to preserve the text column width.
+names on desktop and above them on mobile to preserve the text column width. Flexible heading labels can shrink and wrap at enlarged text sizes instead of overflowing their columns.
 Reviewed SVGs in `assets/council/tools/` are minified and inlined; their
 [source notes](../assets/council/tools/README.md) record the official assets and
 dark-theme treatment. No icon library, embedded widgets or external requests
@@ -72,7 +74,7 @@ are needed.
 
 ## Models
 
-A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; show the provider mark in each model card and keep the section heading text-only. Future models may use a different provider mark. Omit per-agent assignments and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
+A small Models section follows Tools and precedes Early access. It lists GPT-6 Astra for complex tasks and analysis, GPT-6.1 Sol for everyday agent work, and Whisper for voice transcription. These roles are supported by the application's `docs/agent-profiles.md`, `docs/voice.md` and local STT command in `compose.yaml`. The section is maintained editorial copy, not a live model assignment feed. Use the full configured model names; show the provider mark in each model card and keep the section heading text-only. Each model record supplies its name, provider, logo and localized role, so future models may use a different provider mark without duplicating markup. Omit per-agent assignments and any extra counter. It reuses Beauty's compact headings and notes and the same responsive grid as Tools, without adding a header navigation item.
 
 ## Early access
 
@@ -103,8 +105,8 @@ does not link to it.
 It contains four totals: agents on the team, tasks completed, tokens used and MCP integrations. The integration count comes from the same service catalog as the Tools section, counting each listed service once; it is an editorial total, not the number of individual MCP commands or a live connection check. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.
-Numbers and labels are centered within each counter's column, including the mobile scroll row. Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
-labels quiet. Four columns show the totals on desktop. On mobile, a compact horizontally scrollable row sizes counters to their content with a 7rem minimum. The scrollbar is hidden while native touch and keyboard scrolling remain available; the next partially visible counter indicates more content. Native scrolling and proximity snap support touch, trackpads and keyboard focus without carousel JavaScript. Large totals use localized compact notation and `beauty-stat-unit` for
+Numbers and labels align to the start of each counter's column, matching the rest of the landing. Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their
+labels quiet. Four intrinsic-width columns show the totals on desktop, keeping large values from overlapping. Extreme values or enlarged text can scroll within the counter row rather than widening the page. On mobile, a compact horizontally scrollable row sizes counters to their content with a 7rem minimum. The scrollbar is hidden while native touch and keyboard scrolling remain available; the next partially visible counter indicates more content. Native scrolling and proximity snap support touch, trackpads and keyboard focus without carousel JavaScript. Large totals use localized compact notation and `beauty-stat-unit` for
 the suffix. Exact values remain in semantic `data` elements and their tooltips.
 The template supplies the same unit scales to the live formatter; unknown counts
 remain distinct from zero. The shared library owns sizing, weight and color.
@@ -117,14 +119,15 @@ this snapshot; a failed refresh preserves saved values and timestamp. CI commits
 it with other generated updates. Plain Hugo builds use the saved snapshot.
 
 `layouts/_partials/council/statistics.html` renders all four counters without
-JavaScript. On the application origin only, `assets/council/statistics.js`
+JavaScript. On the application origin only, `assets/council/statistics.mjs`
 refreshes the two activity counters on load and every five minutes while the page is visible, without
-cookies or credentials. During the first request only, the two activity values use the theme's static `loading-skeleton` state with `aria-busy`; labels and the locally derived agent/integration totals stay visible. Success reveals current totals; failure reveals the saved snapshot. Background refreshes keep values visible, and without JavaScript the snapshot is always readable. Blog/local copies use saved HTML and need no CORS changes.
-Missing counters produce an unknown total for that metric, never a partial total
-or invented zero. Model names, configuration and other agent details are discarded. Token totals
+cookies or credentials. Known values remain visible throughout requests. A versioned, size-bounded `localStorage` cache (`council.statistics.v1`) keeps only allowlisted numeric totals and the retrieval time of each metric. On load, the newer cache or build snapshot wins per metric; a null response never erases a known value or advances that value's timestamp. Invalid cache data, disabled storage and quota failures fall back to the server-rendered snapshot. The cache is shared across languages and contains no agent details or credentials.
+
+Only a genuinely unknown value can show the theme's compact `loading-skeleton`, after a 200ms delay; a fast response cancels the placeholder. Its gentle pulse respects reduced-motion preferences. `aria-busy` applies only to the unknown metric, and success or failure clears the loading state. Requests time out after ten seconds. A page initially opened in a hidden tab starts its first request when it becomes visible. Known values never get placeholders, including during five-minute refreshes. Without JavaScript the build snapshot is always readable. Blog/local copies use saved HTML and need no CORS changes.
+When neither the cache nor the build snapshot has a value, missing counters remain unknown, never a partial total or invented zero. Model names, configuration and other agent details are discarded. Token totals
 use the source's input/output sum without adding cache/reasoning subsets again.
 The app caches its source for five minutes; retrieval time is not collection time.
-No chart dependency or history collector is needed.
+No chart dependency or history collector is needed. This follows the distinction between initial skeletons and existing content in [Carbon's loading guidance](https://www.carbondesignsystem.com/building-blocks/core/patterns/loading).
 
 ## Telegram login
 
