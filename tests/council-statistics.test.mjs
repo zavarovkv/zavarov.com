@@ -6,6 +6,7 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readTotals, compactCount, normalizeSnapshot } from "../assets/council/statistics-data.mjs";
 import { refreshStatistics } from "../scripts/fetch-council-statistics.mjs";
+import { startStatistics } from "../assets/council/statistics.js";
 
 const fixture = () => ({ schema: 1, agents: [
   { slug: "qui-gon", closed_tasks: 2, tokens: 1500, model: { name: "GPT-6.1 Sol", effort: "PRIVATE", api_key: "PRIVATE" }, linear_model: { name: "GPT-6.1 Sol" } },
@@ -13,6 +14,51 @@ const fixture = () => ({ schema: 1, agents: [
   { slug: "dexter", closed_tasks: 2, tokens: 100 },
   { slug: "padme", closed_tasks: 0, tokens: 50 },
 ] });
+
+test("first live request masks activity values, restores the snapshot on failure and keeps background refreshes visible", async () => {
+  const counters = Object.fromEntries(["closed_tasks", "tokens"].map(key => {
+    const classes = new Set();
+    const attributes = new Map();
+    const children = { "[data-total-number]": { textContent: "12" }, "[data-total-unit]": { textContent: "", hidden: true } };
+    return [key, {
+      value: "12", classes, attributes,
+      classList: { add: value => classes.add(value), remove: value => classes.delete(value) },
+      setAttribute: (name, value) => attributes.set(name, value),
+      removeAttribute: name => attributes.delete(name),
+      querySelector: selector => children[selector],
+    }];
+  }));
+  const root = {
+    dataset: { updated: "2026-11-01T14:00:00Z", scales: "[]", messages: JSON.stringify({ unknown: "Unknown", stale: "Stale", updated: "Updated" }) },
+    querySelectorAll: () => Object.values(counters),
+    querySelector: selector => counters[selector.match(/data-metric="([^"]+)"/)[1]],
+  };
+  let finish;
+  let refresh;
+  startStatistics({ root, origin: "https://council.zavarov.com", locale: "en", doc: { hidden: false },
+    fetchImpl: () => new Promise(resolve => { finish = resolve; }),
+    interval: callback => { refresh = callback; },
+  });
+  for (const counter of Object.values(counters)) {
+    assert.ok(counter.classes.has("loading-skeleton"));
+    assert.equal(counter.attributes.get("aria-busy"), "true");
+    assert.equal(counter.value, "12", "saved values remain intact under the placeholder");
+  }
+  finish({ ok: false });
+  await new Promise(resolve => setImmediate(resolve));
+  for (const counter of Object.values(counters)) {
+    assert.equal(counter.classes.size, 0);
+    assert.equal(counter.attributes.has("aria-busy"), false);
+    assert.equal(counter.value, "12");
+  }
+  const next = refresh();
+  assert.ok(Object.values(counters).every(counter => counter.classes.size === 0), "background refreshes never mask visible values");
+  finish({ ok: true, text: async () => JSON.stringify(fixture()) });
+  await next;
+  assert.equal(counters.closed_tasks.value, "8");
+  assert.equal(counters.tokens.value, "1850");
+  assert.ok(Object.values(counters).every(counter => !counter.attributes.has("aria-busy")));
+});
 
 test("counters publish only team totals and keep unknown values distinct from zero", () => {
   assert.deepEqual(readTotals(fixture()), { closed_tasks: 8, tokens: 1850 });

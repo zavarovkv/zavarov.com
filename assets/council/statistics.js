@@ -12,9 +12,17 @@ export function startStatistics({ root, origin, locale, fetchImpl = fetch, doc =
     counter.title = `${exact}. ${stale ? messages.stale + " " : ""}${messages.updated} ${date.format(new Date(root.dataset.updated))} UTC`;
   }
   let pending = false;
+  let firstLoad = true;
+  const counters = [...root.querySelectorAll("[data-total]")];
   async function update() {
     if (pending || doc.hidden) return;
     pending = true;
+    if (firstLoad) {
+      for (const counter of counters) {
+        counter.classList.add("loading-skeleton");
+        counter.setAttribute("aria-busy", "true");
+      }
+    }
     try {
       const response = await fetchImpl(statisticsEndpoint, {
         credentials: "omit", cache: "no-store", redirect: "error", signal: AbortSignal.timeout(10000),
@@ -41,6 +49,11 @@ export function startStatistics({ root, origin, locale, fetchImpl = fetch, doc =
         updateTitle(counter, true);
       }
     } finally {
+      for (const counter of counters) {
+        counter.classList.remove("loading-skeleton");
+        counter.removeAttribute("aria-busy");
+      }
+      firstLoad = false;
       pending = false;
     }
   }

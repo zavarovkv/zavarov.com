@@ -17,7 +17,7 @@ The authenticated app remains on `https://council.zavarov.com`. The landing uses
 - `assets/council/council.css`: scoped layout for the team grid, portrait rows, counters and tools
 - `scripts/fetch-council-avatars.py`: copies approved 256×256 PNG portraits from a pinned public Agent Council commit to `static/council/avatars/` before Hugo builds
 
-Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools, Models and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The content uses a single localized `h1` and Beauty's reading container; Hugo Mini applies its language-aware prose spacing.
+Typography, reading width, colors, links, fonts, footer controls and dark mode come from Hugo Mini and its pinned Beauty.css foundation. After the introduction, sections appear as counters, The team, How the team works, Tools, Models and Early access. The header links to Team, How it works, Tools and Early access, omitting the counters. Russian navigation labels are «Команда», «Как работает», «Инструменты» and «Ранний доступ». Mobile navigation reuses the theme's `menu-toggle.html` partial, `main-nav` styles and menu behavior; without JavaScript, the section links remain visible. The login link remains in the Early access section. Do not add native text styles or a separate palette to Council CSS. The introduction and sections share Beauty's 720px reading container, without a separate narrower introduction limit. The content uses a single localized `h1`;  Hugo Mini applies its language-aware prose spacing.
 
 Card headings use `beauty-heading-compact`; the `beauty-steps` component owns step-heading spacing.
 Visible compound names use nonbreaking hyphens; Russian one-letter prepositions and
@@ -119,7 +119,7 @@ it with other generated updates. Plain Hugo builds use the saved snapshot.
 `layouts/_partials/council/statistics.html` renders all four counters without
 JavaScript. On the application origin only, `assets/council/statistics.js`
 refreshes the two activity counters on load and every five minutes while the page is visible, without
-cookies or credentials. Blog/local copies use saved HTML and need no CORS changes.
+cookies or credentials. During the first request only, the two activity values use the theme's static `loading-skeleton` state with `aria-busy`; labels and the locally derived agent/integration totals stay visible. Success reveals current totals; failure reveals the saved snapshot. Background refreshes keep values visible, and without JavaScript the snapshot is always readable. Blog/local copies use saved HTML and need no CORS changes.
 Missing counters produce an unknown total for that metric, never a partial total
 or invented zero. Model names, configuration and other agent details are discarded. Token totals
 use the source's input/output sum without adding cache/reasoning subsets again.
