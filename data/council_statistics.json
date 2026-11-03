@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "fetched_at": "2026-11-02T20:36:05.857Z",
+  "fetched_at": "2026-11-03T22:31:35.923Z",
   "totals": {
-    "closed_tasks": null,
-    "tokens": 7189925
+    "closed_tasks": 12,
+    "tokens": 10662087
   }
 }
