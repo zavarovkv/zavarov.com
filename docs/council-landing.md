@@ -58,8 +58,9 @@ a claim that one layout is universally best.
 ## Tools
 
 The Tools section sits between the workflow and Early access. It lists Telegram,
-Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, Todoist and Granola with a short description of each
-tool's role. Google Workspace groups files, email and calendar. This is an editorial
+Notion, Google Workspace, Linear, GitHub, Miro, Cloudflare, Things and Granola with a short description of each
+tool's role. Google Workspace groups files, email and calendar. Things receives personal
+tasks in its Inbox through Mail to Things. This is an editorial
 overview of the owner's selected tools, not a live connection or permission
 status; the landing does not connect accounts or request access.
 
@@ -102,7 +103,7 @@ copy. The regular 56–72px section gap before the team marks the next section.
 These layout gaps belong to Council CSS; number typography remains in Beauty.
 Its existing anchor and accessible section name remain in place, but the header
 does not link to it.
-It contains four totals: agents on the team, tasks completed, tokens used and MCP integrations. The integration count comes from the same service catalog as the Tools section, counting each listed service once; it is an editorial total, not the number of individual MCP commands or a live connection check. The agent count comes from the same roster that renders the
+It contains four totals: agents on the team, tasks completed, tokens used and integrations. The integration count comes from the same service catalog as the Tools section, counting each listed service once regardless of connection method; it is an editorial total, not the number of individual MCP commands or a live connection check. The agent count comes from the same roster that renders the
 team cards, including all listed members; it is not a live-agent count from the API. No charts, per-agent breakdown, dates or explanatory copy appear in the
 block. Counter tooltips retain the retrieval time and indicate a failed refresh.
 Numbers and labels align to the start of each counter's column, matching the rest of the landing. Numbers use Beauty's `beauty-stat-value` treatment; `beauty-stat-label` keeps their

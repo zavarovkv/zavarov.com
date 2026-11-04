@@ -4,7 +4,7 @@ Local SVG copies used to identify services and the model provider on the Council
 The service names remain visible text; the marks are decorative and do not
 indicate a partnership or endorsement. These trademarks belong to their owners.
 
-Retrieved on 2026-11-02 from the owners' public assets:
+Retrieved on 2026-11-02 from the owners' public assets unless noted otherwise:
 
 | File | Source |
 | --- | --- |
@@ -16,7 +16,7 @@ Retrieved on 2026-11-02 from the owners' public assets:
 | `miro.svg` | `logos/miro-logo.svg` from Miro's [@mirohq/brand-assets 1.1.2](https://www.npmjs.com/package/@mirohq/brand-assets/v/1.1.2), [source archive](https://registry.npmjs.org/@mirohq/brand-assets/-/brand-assets-1.1.2.tgz) |
 | `cloudflare.svg` | [Cloudflare's cloud mark](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg) from the header of its [official documentation](https://developers.cloudflare.com/) |
 | `../models/openai.svg` | OpenAI's inline Blossom mark from the ChatGPT documentation header on [OpenAI Developers](https://developers.openai.com/); [brand guidelines](https://openai.com/brand/) |
-| `todoist.svg` | Todoist's square inline symbol from the header of its [official site](https://www.todoist.com/) |
+| `things.svg` | [Things' official SVG favicon](https://culturedcode.com/favicon.svg) from its [site](https://culturedcode.com/things/), retrieved on 2026-11-04 |
 | `granola.svg` | [Granola's official 96px icon](https://www.granola.ai/favicon/favicon-96x96.png) from its [site](https://www.granola.ai/), embedded unchanged in a self-contained SVG wrapper |
 
 Paths, view boxes and brand artwork are preserved. Export metadata is removed,
@@ -25,7 +25,6 @@ accessibility attributes are normalized. Linear, GitHub and OpenAI's monochrome 
 use `currentColor` to follow the shared heading color in light and dark themes;
 the other marks retain their original colors. Google's original SVG includes a
 self-contained 48px PNG color layer behind a vector clip; it is preserved.
-Todoist's `--white` fill is resolved to `#fff` so its mark is self-contained.
 Granola provides a raster favicon (its official SVG also embeds a PNG); the
 96px original is embedded locally without resampling or recoloring.
 Google Workspace is identified by
