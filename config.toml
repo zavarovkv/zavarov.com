@@ -120,6 +120,8 @@ ignoreErrors = ["error-disable-taxonomy"]
         about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the Product Code Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
+  preferenceCookieDomain = "zavarov.com"
+  rememberLanguage = true
   favicon = "images/favicon.png"
   favicon192 = "images/favicon-192.png"
   appleTouchIcon = "images/apple-touch-icon.png"
@@ -216,6 +218,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 [[cascade]]
   [cascade.params]
     canonicalURL = "https://council.zavarov.com/"
+    languagePreferenceEntry = true
     seoSiteName = "Agent Council"
     seoSiteURL = "https://council.zavarov.com/"
   [cascade.sitemap]
@@ -228,6 +231,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 [[cascade]]
   [cascade.params]
     canonicalURL = "https://council.zavarov.com/en/"
+    languagePreferenceEntry = true
     seoSiteName = "Agent Council"
     seoSiteURL = "https://council.zavarov.com/"
   [cascade.sitemap]

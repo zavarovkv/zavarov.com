@@ -50,7 +50,7 @@ Council's two public total counters are rendered from `data/council_statistics.j
 - `defaultContentLanguageInSubdirectory = false` — no `/ru/` prefix, existing URLs preserved
 - UI strings: `i18n/ru.toml`, `i18n/en.toml` — templates use `{{ i18n "key" }}`
 - Per-language menus configured in `config.toml` under `[languages.ru.menu]` / `[languages.en.menu]`
-- Language switcher in footer uses Hugo's `.Translations` (server-side links, no JS)
+- Language switcher in footer uses Hugo's `.Translations` as ordinary links. The theme progressively remembers explicit choices with `rememberLanguage`; `preferenceCookieDomain = "zavarov.com"` shares theme and language between the blog and Council landing. Language is applied automatically only on homepages and Council pages marked `languagePreferenceEntry`; direct article URLs retain their language.
 - hreflang tags in `<head>` for SEO
 - Translation script: `scripts/translate.mjs` — Node.js, uses the official `openai` SDK and Responses API (`gpt-5.6-luna` by default, configurable via `OPENAI_MODEL`)
 - EN content is auto-generated and committed by CI; do NOT manually edit files in `content/en/` — the script writes a `source_hash` (SHA-256 of normalized RU content) into the EN file's front matter and re-translates whenever that hash changes, so any manual EN edit will be overwritten on the next RU change. Use `--force` to re-translate regardless of hash. Exception: `_index.md` files are skipped by the script, so `content/en/_index.md` is maintained by hand.

@@ -14,6 +14,17 @@ const all = (node, predicate) => [...(predicate(node) ? [node] : []), ...(node.c
 const hasClass = (node, name) => attrs(node).class?.split(" ").includes(name);
 const links = document => all(document, node => node.tagName === "a").map(attrs);
 const canonical = document => attrs(all(document, node => node.tagName === "link" && attrs(node).rel === "canonical")[0]).href;
+const assertEntryPreferences = document => {
+  const html = attrs(all(document, node => node.tagName === "html")[0]);
+  assert.equal(html["data-preference-cookie-domain"], "zavarov.com");
+  assert.equal(html["data-remember-language"], "true");
+  assert.equal(html["data-language-preference-entry"], "true");
+  const head = all(document, node => node.tagName === "head")[0];
+  const firstScript = head.childNodes.findIndex(node => node.tagName === "script");
+  const alternates = head.childNodes.filter(node => attrs(node).hreflang);
+  assert.ok(alternates.length >= 2);
+  assert.ok(alternates.every(node => head.childNodes.indexOf(node) < firstScript), "language destinations are available before preference initialization");
+};
 const assertProjectFooter = document => {
   const footer = all(document, node => hasClass(node, "social-icons"))[0];
   assert.deepEqual(links(footer).map(a => a.href).sort(), [
@@ -35,11 +46,16 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
   const pixel = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aM1sAAAAASUVORK5CYII=", "base64");
   for (const name of ["qui-gon", "dexter", "lando", "padme"]) await writeFile(join(output, `council/avatars/${name}.png`), pixel);
   const home = parse(await readFile(join(output, "index.html"), "utf8"));
+  assertEntryPreferences(home);
+  const englishHome = parse(await readFile(join(output, "en/index.html"), "utf8"));
+  assertEntryPreferences(englishHome);
+  assert.ok(links(englishHome).some(a => a.class === "project-link" && a.href === "https://council.zavarov.com/en/"), "English blog links to English Council even without stored preferences or JavaScript");
   const sharedCSS = attrs(all(home, node => node.tagName === "link" && attrs(node).rel === "stylesheet")[0]).href;
   const snapshot = JSON.parse(await readFile(join(root, "data/council_statistics.json"), "utf8"));
   for (const prefix of ["", "en/"]) {
     const html = await readFile(join(output, prefix, "council/index.html"), "utf8");
     const page = parse(html);
+    assertEntryPreferences(page);
     assertProjectFooter(page);
     assert.equal(canonical(page), `https://council.zavarov.com/${prefix}`);
     assert.equal(all(page, node => node.tagName === "h1").length, 1);
@@ -125,6 +141,7 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
   assert.ok(names.every(name => ["index.html", "en/index.html"].includes(name) || name.startsWith("council/")), "archive follows the restricted server installer contract");
   for (const prefix of ["", "en/"]) {
     const page = parse(await readFile(join(unpacked, prefix, "index.html"), "utf8"));
+    assertEntryPreferences(page);
     assertProjectFooter(page);
     assert.equal(canonical(page), `https://council.zavarov.com/${prefix}`);
     assert.ok(links(page).some(a => a.class === "lang-toggle" && a.href === `https://council.zavarov.com/${prefix ? "" : "en/"}`));

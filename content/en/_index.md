@@ -19,7 +19,7 @@ Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a
 
 ## Projects {.posts-group-title .no-anchor}
 
-{{< project name="Agent Council" url="https://council.zavarov.com/" >}}
+{{< project name="Agent Council" url="https://council.zavarov.com/en/" >}}
 A self-hosted platform for managing AI agents, with a web dashboard and Telegram integration.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/agent-council" >}}</p>

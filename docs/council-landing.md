@@ -29,6 +29,18 @@ statistics use four desktop columns and one compact, swipeable row on mobile.
 
 The footer calls the theme's `footer-content.html` with project-specific links: the [Agent Council repository](https://github.com/zavarovkv/agent-council) and [Qui-Gon on Telegram](https://t.me/Qui_Gon_Jinn_ai). It retains the shared language and color-scheme controls, without the blog's personal contacts or RSS link.
 
+The blog and public Council landing share explicit theme and language choices
+through the theme's optional preference cookies on `zavarov.com`. Site config
+sets `preferenceCookieDomain` and `rememberLanguage`; both Council cascades mark
+the landing as `languagePreferenceEntry`. A shared choice overrides old
+per-origin local storage, and open pages refresh it on focus or history restore.
+Automatic language selection applies only to entry pages, preserves query
+strings and fragments, and follows the published same-origin `hreflang` links
+that the packager already relocates. Direct article URLs retain their language.
+The manually maintained English homepage links directly to Council's `/en/`,
+including for new visitors and without JavaScript. Authenticated app preferences
+are owned by the application and are outside this static landing behavior.
+
 Portraits are fetched at build time, not by browsers from the application origin. The pinned source revision must be reviewed when portraits change. To preview locally, run `python3 scripts/fetch-council-avatars.py` before `hugo server`. The build fails if an image is unavailable or malformed rather than silently deploying broken cards.
 
 The team order is Qui-Gon, Galen Erso (CTO), Dexter, Lando, Padmé and K-2SO
