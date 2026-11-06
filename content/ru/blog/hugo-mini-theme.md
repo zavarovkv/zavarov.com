@@ -4,6 +4,7 @@ slug = "hugo-mini-theme"
 date = "2026-11-06T07:00:00+03:00"
 description = "Как устроена моя open-source тема Hugo Mini: статический Hugo, типографика, мультиязычность, локальные ассеты и запуск блога на Vercel."
 categories = ["productivity"]
+draft = true
 +++
 
 Несколько лет назад я писал тексты на WordPress. Потом перенес [свой блог](https://zavarov.com/) на [Hugo](https://gohugo.io/) — генератор статических сайтов, в котором статья остается обычным Markdown-файлом, а готовая страница собирается заранее.
