@@ -49,7 +49,13 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
   assertEntryPreferences(home);
   const englishHome = parse(await readFile(join(output, "en/index.html"), "utf8"));
   assertEntryPreferences(englishHome);
-  assert.ok(links(englishHome).some(a => a.class === "project-link" && a.href === "https://council.zavarov.com/en/"), "English blog links to English Council even without stored preferences or JavaScript");
+  for (const homepage of [home, englishHome]) {
+    const projects = links(homepage).filter(a => a.class === "project-link");
+    assert.deepEqual(projects.map(a => a.href), [
+      "https://themes.gohugo.io/themes/hugo-mini/",
+      "https://www.npmjs.com/package/beauty-css",
+    ], "blog homepages list only the two public design projects");
+  }
   const sharedCSS = attrs(all(home, node => node.tagName === "link" && attrs(node).rel === "stylesheet")[0]).href;
   const snapshot = JSON.parse(await readFile(join(root, "data/council_statistics.json"), "utf8"));
   for (const prefix of ["", "en/"]) {
