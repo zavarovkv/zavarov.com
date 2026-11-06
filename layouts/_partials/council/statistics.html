@@ -1,5 +1,10 @@
 {{- $ru := eq .page.Language.Lang "ru" -}}
-{{- $snapshot := .page.Site.Data.council_statistics -}}
+{{- $snapshot := dict -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $snapshot = hugo.Data.council_statistics -}}
+{{- else -}}
+  {{- $snapshot = .page.Site.Data.council_statistics -}}
+{{- end -}}
 {{- $scales := slice
   (dict "divisor" 1000000000000 "suffix" (cond $ru "трлн" "T"))
   (dict "divisor" 1000000000 "suffix" (cond $ru "млрд" "B"))
