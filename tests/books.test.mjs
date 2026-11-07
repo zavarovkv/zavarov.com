@@ -16,6 +16,7 @@ const katex = require("../themes/hugo-mini/static/katex/katex.min.js");
 const attrs = (node) => Object.fromEntries((node.attrs || []).map(({name, value}) => [name, value]));
 const text = (node) => node.nodeName === "#text" ? node.value : (node.childNodes || []).map(text).join("");
 const all = (node, predicate) => [...(predicate(node) ? [node] : []), ...(node.childNodes || []).flatMap((child) => all(child, predicate))];
+const typographicText = (value) => value.replace(/[\u00a0\u202f]/g, " ");
 
 test("the restored shelf is one ordinary article with indexable reviews", async (t) => {
   const config = parseTOML(await readFile(join(root, "config.toml"), "utf8"));
@@ -49,15 +50,15 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
     assert.ok(row, book.id);
     const cells = all(row, (node) => node.tagName === "td");
     assert.equal(cells.length, 2);
-    assert.ok(text(cells[0]).includes(book.title));
-    assert.ok(text(cells[0]).includes(book.author));
+    assert.ok(typographicText(text(cells[0])).includes(typographicText(book.title)), `rendered book title: ${book.id}`);
+    assert.ok(typographicText(text(cells[0])).includes(typographicText(book.author)), `rendered book author: ${book.id}`);
     assert.equal(attrs(cells[1]).class, "reading-date");
     assert.equal(text(cells[1]), book.read.split("-").reverse().join("."));
     const readingTimes = all(cells[1], (node) => node.tagName === "time");
     assert.equal(readingTimes.length, 1);
     assert.equal(attrs(readingTimes[0]).datetime, book.read);
     const details = all(cells[0], (node) => attrs(node).class === "reading-meta")[0];
-    assert.ok(text(details).includes(book.author));
+    assert.ok(typographicText(text(details)).includes(typographicText(book.author)));
     if (book.year) assert.ok(text(details).includes(String(book.year)), "the year belongs with the author");
     if (!book.review) continue;
     const file = join(root, "content/ru", book.review.replace(/^\//, "") + ".md");
@@ -137,7 +138,7 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
       assert.doesNotMatch(review.body, /\\{2,}(?:\[|\]|over|times|frac)/, "archive escaping must not leak into math");
     }
     if (book.id === "of-mice-and-men") {
-      assert.ok(all(article, (node) => node.tagName === "h2" && text(node).includes("Цитаты на память")).length);
+      assert.ok(all(article, (node) => node.tagName === "h2" && text(node).includes("Цитаты на\u00a0память")).length);
       assert.ok(all(article, (node) => node.tagName === "blockquote" && text(node).replace(/\u00a0/g, " ").includes("У нас люди редко друг друга держатся")).length);
     }
     if (book.id === "never-let-me-go") {
