@@ -19,7 +19,7 @@ Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a
 
 ## Projects {.posts-group-title .no-anchor}
 
-{{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
+{{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" icon="images/hugo-mini-logo-light.svg" iconDark="images/hugo-mini-logo-dark.svg" >}}
 A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/hugo-mini" >}}</p>

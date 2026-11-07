@@ -19,7 +19,7 @@ description = "Константин Заваров — блог о продук�
 
 ## Проекты {.posts-group-title .no-anchor}
 
-{{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" >}}
+{{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" icon="images/hugo-mini-logo-light.svg" iconDark="images/hugo-mini-logo-dark.svg" >}}
 Минималистичная тема для Hugo, на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/hugo-mini" >}}</p>

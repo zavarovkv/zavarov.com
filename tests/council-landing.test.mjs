@@ -55,6 +55,18 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
       "https://themes.gohugo.io/themes/hugo-mini/",
       "https://www.npmjs.com/package/beauty-css",
     ], "blog homepages list only the two public design projects");
+    const projectLinks = all(homepage, node => node.tagName === "a" && hasClass(node, "project-link"));
+    const mark = all(projectLinks[0], node => hasClass(node, "project-mark"))[0];
+    assert.ok(mark && hasClass(mark, "has-dark-mark"), "Hugo Mini shows its branded mark in both themes");
+    const images = all(mark, node => node.tagName === "img").map(attrs);
+    assert.deepEqual(images.map(image => image.src), [
+      "/images/hugo-mini-logo-light.svg",
+      "/images/hugo-mini-logo-dark.svg",
+    ], "project branding reuses the theme's existing SVG marks");
+    assert.ok(images.every(image => image.alt === "" && image.width === "18" && image.height === "18"),
+      "decorative marks do not duplicate the accessible project name or shift the layout");
+    assert.equal(all(projectLinks[1], node => hasClass(node, "project-mark")).length, 0,
+      "projects without an icon remain unchanged");
   }
   const sharedCSS = attrs(all(home, node => node.tagName === "link" && attrs(node).rel === "stylesheet")[0]).href;
   const snapshot = JSON.parse(await readFile(join(root, "data/council_statistics.json"), "utf8"));
