@@ -91,7 +91,7 @@ Theme-owned for the blog (do not shadow these paths in the site):
 Site-owned (`static/` in the blog repo):
 - `CNAME` — GitHub Pages custom-domain file (`zavarov.com`).
 - `data/` — post-specific datasets referenced from markdown (e.g. `retention-dataset.csv`).
-- `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, favicons (`favicon.png` 32×32, `favicon-192.png` 192×192, `apple-touch-icon.png` 180×180), `og-default.png` base for dynamic OG image generation.
+- `images/` — avatars (`avatar1.webp`, `avatar2.webp`), post illustrations, legacy PNG icons retained for the independent event landings, and `og-default.png` for dynamic OG image generation. The main blog inherits the default asterisk favicon set from Hugo Mini.
 
 Third-party runtime behavior:
 - Mermaid is **self-hosted from a pinned npm dependency** (`12.2.0`), not a CDN or committed blob. `scripts/vendor-mermaid.mjs` copies `mermaid.esm.min.mjs` and its `.mjs` chunks into `static/js/mermaid/` during `postinstall`. `params.mermaidModuleSrc` selects that ESM entry. The theme retains `mermaidSrc` and its pinned CDN fallback for other consumers. Node.js 22.12+ and ES2024-capable browsers (Safari 17.4+) are required by Mermaid 12. The theme keeps Dagre/classic and `flowchart.wrappingWidth = 200`, `flowchart.minNodeWidth = 0` to preserve Mermaid 11 geometry; do not remove these explicit settings when upgrading.
@@ -108,7 +108,7 @@ Third-party runtime behavior:
 
 Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/hugo-mini/layouts/` for usage):
 
-- **Identity**: `authorURL`, `favicon`, `avatar` / `avatarHover` (two-frame hover on header), `[params.author].jobTitle`, `[params.social]` (telegram, linkedin, github, email — rendered in footer and JSON-LD).
+- **Identity**: `authorURL`, optional `favicon` override (otherwise inherited from Hugo Mini), `avatar` / `avatarHover` (two-frame hover on header), `[params.author].jobTitle`, `[params.social]` (telegram, linkedin, github, email — rendered in footer and JSON-LD).
 - **i18n UI**: `aiTranslatedLang` (language code whose footer gets the AI-translated sparkle icon; here `"en"`), per-language `authorName` / `description` / `title` under `[languages.<lang>.params]`.
 - **Copyright/freshness**: `copyrightYear` (start year for the `YYYY–currentYear` range in footer), `newPostDays` (window in days for the "new" badge on listings).
 - **Listing layout**: `recentSidebarCount` (see Content section), `socialSharing` (default true; set false to hide Likely bar on posts), `pinned` (front-matter, not params).

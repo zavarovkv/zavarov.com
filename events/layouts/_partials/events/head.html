@@ -10,13 +10,13 @@
 {{- range .Translations }}
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
 {{- end }}
-{{- with .Site.Params.favicon }}
+{{- with (.Site.Params.favicon | default "images/favicon.png") }}
 <link rel="icon" href="{{ . | relURL }}" sizes="32x32" type="image/png">
 {{- end }}
-{{- with .Site.Params.favicon192 }}
+{{- with (.Site.Params.favicon192 | default "images/favicon-192.png") }}
 <link rel="icon" href="{{ . | relURL }}" sizes="192x192" type="image/png">
 {{- end }}
-{{- with .Site.Params.appleTouchIcon }}
+{{- with (.Site.Params.appleTouchIcon | default "images/apple-touch-icon.png") }}
 <link rel="apple-touch-icon" href="{{ . | relURL }}" sizes="180x180">
 {{- end }}
 <meta property="og:title" content="{{ $metadata.title }}">
