@@ -56,7 +56,12 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
       "https://www.npmjs.com/package/beauty-css",
     ], "blog homepages list only the two public design projects");
     const projectLinks = all(homepage, node => node.tagName === "a" && hasClass(node, "project-link"));
-    const mark = all(projectLinks[0], node => hasClass(node, "project-mark"))[0];
+    const spinButtons = all(homepage, node => node.tagName === "button" && hasClass(node, "project-mark-button"));
+    assert.equal(spinButtons.length, 1, "only the branded project has a separate spin control");
+    assert.ok(Object.hasOwn(attrs(spinButtons[0]), "disabled"), "the logo is decorative until JavaScript initializes");
+    assert.equal(attrs(spinButtons[0])["aria-label"], homepage === home ? "Покрутить логотип Hugo Mini" : "Spin the Hugo Mini logo");
+    assert.equal(all(projectLinks[0], node => node.tagName === "button").length, 0, "the link has no nested controls");
+    const mark = all(spinButtons[0], node => hasClass(node, "project-mark"))[0];
     assert.ok(mark && hasClass(mark, "has-dark-mark"), "Hugo Mini shows its branded mark in both themes");
     const images = all(mark, node => node.tagName === "img").map(attrs);
     assert.deepEqual(images.map(image => image.src), [
