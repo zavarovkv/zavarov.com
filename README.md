@@ -4,6 +4,8 @@ Source code and content for [zavarov.com](https://zavarov.com) — Konstantin Za
 
 Built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme.
 
+Syntax highlighting uses Hugo CSS classes (`markup.highlight.noClasses = false`) and Hugo Mini’s light, dark and print palettes. Shared typography fixes belong to the theme; see the [technical audit and follow-up status](docs/technical-audit-2026-11-08.md).
+
 ## Local development
 
 Requirements:

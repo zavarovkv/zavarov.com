@@ -101,7 +101,7 @@ ignoreErrors = ["error-disable-taxonomy"]
               block = [['$$', '$$'], ['\[', '\]']]
               inline = [['\(', '\)']]
       [languages.ru.markup.highlight]
-        style = 'friendly'
+        noClasses = false
         lineNos = true
         lineNumbersInTable = false
         codeFences = true
@@ -164,7 +164,7 @@ ignoreErrors = ["error-disable-taxonomy"]
           block = [['$$', '$$'], ['\[', '\]']]
           inline = [['\(', '\)']]
   [markup.highlight]
-    style = 'friendly'
+    noClasses = false
     lineNos = true
     lineNumbersInTable = false
     codeFences = true
