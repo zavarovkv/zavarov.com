@@ -57,21 +57,23 @@ test("Council inherits the blog shell and packages a complete subdomain with wor
     ], "blog homepages list only the two public design projects");
     const projectLinks = all(homepage, node => node.tagName === "a" && hasClass(node, "project-link"));
     const spinButtons = all(homepage, node => node.tagName === "button" && hasClass(node, "project-mark-button"));
-    assert.equal(spinButtons.length, 1, "only the branded project has a separate spin control");
-    assert.ok(Object.hasOwn(attrs(spinButtons[0]), "disabled"), "the logo is decorative until JavaScript initializes");
-    assert.equal(attrs(spinButtons[0])["aria-label"], homepage === home ? "Покрутить логотип Hugo Mini" : "Spin the Hugo Mini logo");
-    assert.equal(all(projectLinks[0], node => node.tagName === "button").length, 0, "the link has no nested controls");
-    const mark = all(spinButtons[0], node => hasClass(node, "project-mark"))[0];
-    assert.ok(mark && hasClass(mark, "has-dark-mark"), "Hugo Mini shows its branded mark in both themes");
-    const images = all(mark, node => node.tagName === "img").map(attrs);
-    assert.deepEqual(images.map(image => image.src), [
-      "/images/hugo-mini-logo-light.svg",
-      "/images/hugo-mini-logo-dark.svg",
-    ], "project branding reuses the theme's existing SVG marks");
-    assert.ok(images.every(image => image.alt === "" && image.width === "18" && image.height === "18"),
-      "decorative marks do not duplicate the accessible project name or shift the layout");
-    assert.equal(all(projectLinks[1], node => hasClass(node, "project-mark")).length, 0,
-      "projects without an icon remain unchanged");
+    assert.equal(spinButtons.length, 2, "both public design projects have separate logo controls");
+    const logos = [
+      { name: "Hugo Mini", paths: ["/images/hugo-mini-logo-light.svg", "/images/hugo-mini-logo-dark.svg"] },
+      { name: "Beauty.css", paths: ["/images/beauty-logo-light.svg", "/images/beauty-logo-dark.svg"] },
+    ];
+    for (const [index, { name, paths }] of logos.entries()) {
+      const button = spinButtons[index];
+      assert.ok(Object.hasOwn(attrs(button), "disabled"), "logos stay decorative until JavaScript initializes");
+      assert.equal(attrs(button)["aria-label"], homepage === home ? `Покрутить логотип ${name}` : `Spin the ${name} logo`);
+      assert.equal(all(projectLinks[index], node => node.tagName === "button").length, 0, "project links have no nested controls");
+      const mark = all(button, node => hasClass(node, "project-mark"))[0];
+      assert.ok(mark && hasClass(mark, "has-dark-mark"), `${name} has artwork for both themes`);
+      const images = all(mark, node => node.tagName === "img").map(attrs);
+      assert.deepEqual(images.map(image => image.src), paths);
+      assert.ok(images.every(image => image.alt === "" && image.width === "18" && image.height === "18"),
+        "decorative marks do not duplicate the accessible project name or shift the layout");
+    }
   }
   const sharedCSS = attrs(all(home, node => node.tagName === "link" && attrs(node).rel === "stylesheet")[0]).href;
   const snapshot = JSON.parse(await readFile(join(root, "data/council_statistics.json"), "utf8"));

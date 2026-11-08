@@ -20,12 +20,12 @@ description = "Константин Заваров — блог о продук�
 ## Проекты {.posts-group-title .no-anchor}
 
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" icon="images/hugo-mini-logo-light.svg" iconDark="images/hugo-mini-logo-dark.svg" >}}
-Минималистичная тема для Hugo, на которой работает этот блог. В ней есть темная тема, поддержка нескольких языков и интеграция с Telegram.
+Минималистичная тема для Hugo, на которой работает этот блог. В ней есть автотипографика, темная тема, поддержка нескольких языков и интеграция с Telegram.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/hugo-mini" >}}</p>
 {{< /project >}}
 
-{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" >}}
+{{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" icon="images/beauty-logo-light.svg" iconDark="images/beauty-logo-dark.svg" >}}
 Легкая CSS-библиотека для красивых сайтов, которые приятно читать. Типографика, формы и темная тема для обычного HTML.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/beauty-css" >}}</p>
