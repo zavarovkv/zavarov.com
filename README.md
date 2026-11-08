@@ -131,6 +131,11 @@ The theme's standalone KaTeX remains at 0.18.2. Details and the regression check
 
 Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/workflows/gh-pages.yml).
 
+All external actions are pinned to reviewed commit SHAs and use the Node.js 24
+action runtime. Site scripts continue to run on Node.js 22. Checkout credentials
+are retained only in the publishing job that commits generated updates. Council
+artifacts keep ZIP packaging so the existing download and deployment steps work unchanged.
+
 The workflow installs dependencies, updates English translations and public counters,
 builds the site, verifies self-hosted assets, and publishes `public/`. It then deploys
 the same build's Council archive through the restricted static-site receiver;
