@@ -46,6 +46,8 @@ records deliberately omit `added`.
 The shelf sorts by `read`, newest first, in a two-column table without year groups.
 Each row shows the title above the author, publication year and optional rating.
 Reading months align on the right. Long titles wrap naturally, including on mobile;
+on narrow screens the table can scroll horizontally within its own accessible container.
+Its 20em minimum mobile width keeps book titles readable without widening the page;
 the table keeps the blog's fonts, colors and light link weight. Whitespace separates
 rows. Both column labels share the theme's heading weight and color, with one
 separator beneath the header. A section gap separates the final
