@@ -32,3 +32,7 @@ node_modules/
 /council-landing.tar.gz
 __pycache__/
 .ruff_cache/
+
+# Private licensed fonts and local font preview configuration
+/assets/private-fonts/
+/.local/

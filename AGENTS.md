@@ -137,3 +137,7 @@ Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/
 - Hugo Mini's catalog submission, [gohugoio/hugoThemesSiteBuilder#698](https://github.com/gohugoio/hugoThemesSiteBuilder/pull/698), was merged on 2026-09-02. The theme is listed at https://themes.gohugo.io/themes/hugo-mini/.
 - The supporting Roxo repository-path fix, [gohugoio/hugoThemesSiteBuilder#766](https://github.com/gohugoio/hugoThemesSiteBuilder/pull/766), was merged on 2026-08-17. Both catalog tasks are complete; there is no pending branch update or Netlify retry from that submission.
 - The theme's Go module path is `github.com/zavarovkv/hugo-mini/v3`. Check the repository's current releases and this site's submodule pointer when reviewing versions; do not reuse the historical submission's release or commit snapshots.
+
+## Optional licensed blog fonts
+
+ALS Story is an opt-in site profile at `config/fonts/als-story.toml`; ordinary builds retain Inter. The generic loader and weight roles belong to Hugo Mini, while files in `assets/private-fonts/` and secret bundles in `.local/` are gitignored. Never commit these files or put them in the theme/Beauty. The deployment job restores four verified secrets only when `BLOG_FONT=als-story`; PRs use Inter. Council has `useDefaultFonts=true`; events remain independent. See `docs/site-fonts.md` before enabling or changing the profile.

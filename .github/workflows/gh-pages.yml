@@ -143,10 +143,27 @@ jobs:
       - name: Vendor Council portraits
         run: python3 scripts/fetch-council-avatars.py
 
+      # Private font bytes are available only in the trusted main deployment job.
+      # Fork/PR validation uses the theme's default open-source fonts.
+      - name: Restore licensed site fonts
+        if: vars.BLOG_FONT == 'als-story'
+        env:
+          ALS_STORY_PART_1: ${{ secrets.ALS_STORY_PART_1 }}
+          ALS_STORY_PART_2: ${{ secrets.ALS_STORY_PART_2 }}
+          ALS_STORY_PART_3: ${{ secrets.ALS_STORY_PART_3 }}
+          ALS_STORY_PART_4: ${{ secrets.ALS_STORY_PART_4 }}
+        run: node scripts/prepare-site-fonts.mjs --restore
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run build
+          BLOG_FONT: ${{ vars.BLOG_FONT }}
+        run: |
+          if [ "$BLOG_FONT" = "als-story" ]; then
+            npm run build -- --config config.toml,config/fonts/als-story.toml
+          else
+            npm run build
+          fi
 
       - name: Verify Council rendered pages
         run: |

@@ -6,6 +6,8 @@ Built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zava
 
 Syntax highlighting uses Hugo CSS classes (`markup.highlight.noClasses = false`) and Hugo Mini’s light, dark and print palettes. Shared typography fixes belong to the theme; see the [technical audit and follow-up status](docs/technical-audit-2026-11-08.md).
 
+The optional [site font profile](docs/site-fonts.md) keeps licensed font files out of Git and out of the theme. The default build still uses Inter; ALS Story is an explicit local/CI opt-in.
+
 ## Local development
 
 Requirements:

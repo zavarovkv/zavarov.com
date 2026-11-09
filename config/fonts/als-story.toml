@@ -1,0 +1,21 @@
+[params.fonts]
+family = "ALS Story"
+regularWeight = 400
+mediumWeight = 400
+boldWeight = 700
+titleWeight = 700
+
+[[params.fonts.faces]]
+source = "private-fonts/als-story/regular.otf"
+weight = 400
+preload = true
+
+[[params.fonts.faces]]
+source = "private-fonts/als-story/italic.otf"
+weight = 400
+style = "italic"
+
+[[params.fonts.faces]]
+source = "private-fonts/als-story/bold.otf"
+weight = 700
+preload = true
