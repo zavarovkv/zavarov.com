@@ -83,7 +83,7 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
     assert.ok(indexedURLs.has(expected), "each review remains in the sitemap");
     assert.equal(new URL(attrs(href).href, config.baseURL).href, expected);
     const page = parseHTML(await readFile(join(output, decodeURI(new URL(expected).pathname), "index.html"), "utf8"));
-    assert.deepEqual(all(page, (node) => node.tagName === "h1").map(text), [review.data.title]);
+    assert.deepEqual(all(page, (node) => node.tagName === "h1").map(node => typographicText(text(node))), [typographicText(review.data.title)]);
     const canonical = all(page, (node) => node.tagName === "link" && attrs(node).rel === "canonical");
     assert.equal(canonical.length, 1);
     assert.equal(new URL(attrs(canonical[0]).href).href, expected);
@@ -185,7 +185,7 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
     assert.ok(englishIndexed.has(expected));
     assert.ok(!englishFeed.items.some((item) => item.url === expected), "English reviews stay out of feeds");
     const page = parseHTML(await readFile(join(output, decodeURI(new URL(expected).pathname), "index.html"), "utf8"));
-    assert.deepEqual(all(page, (node) => node.tagName === "h1").map(text), [review.data.title]);
+    assert.deepEqual(all(page, (node) => node.tagName === "h1").map(node => typographicText(text(node))), [typographicText(review.data.title)]);
     const article = all(page, (node) => node.tagName === "article" && attrs(node).lang === "en")[0];
     assert.ok(article && text(article).trim());
     assert.doesNotMatch(text(article), /\uFFFD|\{\{[<%]|[>%]\}\}|tails list=/);
