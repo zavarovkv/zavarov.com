@@ -36,8 +36,8 @@ ignoreErrors = ["error-disable-taxonomy"]
 [permalinks]
   blog = "/:slug/"
 
-# Explicit component mounts keep the blog's defaults while adding the
-# site-owned events module. Event assets have their own namespace.
+# Explicit mounts select each language's content and retain site-owned assets
+# and layouts alongside the theme.
 [module]
   [module.hugoVersion]
     min = "0.154.5"
@@ -45,14 +45,8 @@ ignoreErrors = ["error-disable-taxonomy"]
     source = "layouts"
     target = "layouts"
   [[module.mounts]]
-    source = "events/layouts"
-    target = "layouts"
-  [[module.mounts]]
     source = "assets"
     target = "assets"
-  [[module.mounts]]
-    source = "events/assets"
-    target = "assets/events"
   [[module.mounts]]
     source = "content/ru"
     target = "content"
@@ -63,11 +57,6 @@ ignoreErrors = ["error-disable-taxonomy"]
     target = "content"
     [module.mounts.sites.matrix]
       languages = ["en"]
-  [[module.mounts]]
-    source = "events/content/ru"
-    target = "content"
-    [module.mounts.sites.matrix]
-      languages = ["ru"]
 
 [languages]
   [languages.ru]
@@ -120,7 +109,6 @@ ignoreErrors = ["error-disable-taxonomy"]
         about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the Product Code Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
-  preferenceCookieDomain = "zavarov.com"
   rememberLanguage = true
   showSearchButton = true
   authorURL = "https://zavarov.com/"
@@ -210,33 +198,3 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 3
     [languages.en.menu.main.params]
       icon = "telegram"
-
-# Council is published primarily on its own origin. Keep its blog copies
-# crawlable with matching canonical/hreflang, but out of the blog sitemap.
-[[cascade]]
-  [cascade.params]
-    useDefaultFonts = true
-    canonicalURL = "https://council.zavarov.com/"
-    languagePreferenceEntry = true
-    seoSiteName = "Agent Council"
-    seoSiteURL = "https://council.zavarov.com/"
-  [cascade.sitemap]
-    disable = true
-  [cascade.target]
-    path = "/council"
-    [cascade.target.sites.matrix]
-      languages = ["ru"]
-
-[[cascade]]
-  [cascade.params]
-    useDefaultFonts = true
-    canonicalURL = "https://council.zavarov.com/en/"
-    languagePreferenceEntry = true
-    seoSiteName = "Agent Council"
-    seoSiteURL = "https://council.zavarov.com/"
-  [cascade.sitemap]
-    disable = true
-  [cascade.target]
-    path = "/council"
-    [cascade.target.sites.matrix]
-      languages = ["en"]

@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import { readDocument, writeDocument } from "./content.mjs";
+import { assertProtectedContent } from "./protected-content.mjs";
 
 // Whitespace is part of Markdown and code semantics. Normalize only line endings.
 export function sourceHash(text) {
@@ -34,6 +35,7 @@ export function assertPreserved(source, translated, file) {
 export function prepareTranslation(source, translated, file) {
   assertPreserved(source, translated, file);
   const { data, body } = readDocument(translated, file);
+  assertProtectedContent(readDocument(source, file).body, body, file);
   return writeDocument({ ...data, source_hash: sourceHash(source) }, body);
 }
 

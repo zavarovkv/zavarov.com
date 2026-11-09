@@ -50,40 +50,20 @@ jobs:
       - name: Audit dependencies
         run: npm audit --audit-level=moderate
 
-      - name: Vendor Council portraits
-        run: python3 scripts/fetch-council-avatars.py
-
       - name: Build
         run: hugo --minify --panicOnWarning
-
-      - name: Verify Council rendered pages
-        run: |
-          test -s public/council/index.html
-          test -s public/en/council/index.html
-          test -s public/council/avatars/qui-gon.png
-          test -s public/council/avatars/dexter.png
-          test -s public/council/avatars/lando.png
-          test -s public/council/avatars/padme.png
-          grep -q 'council.zavarov.com/auth/login' public/council/index.html
-          grep -q 'hreflang' public/council/index.html
-          grep -q 'hreflang' public/en/council/index.html
-
-      - name: Package Council subdomain
-        run: python3 scripts/package-council-landing.py
-
-      - name: Upload Council artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: council-landing-${{ github.sha }}-${{ matrix.hugo-version }}
-          path: council-landing.tar.gz
-          archive: true
-          retention-days: 14
 
       - name: Check content and local links
         run: npm run check
 
       - name: Check self-hosted assets
         run: test -s public/js/mermaid/mermaid.esm.min.mjs
+
+      - name: Install test browsers
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Browser regression tests
+        run: npm run test:browser
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -140,9 +120,6 @@ jobs:
         continue-on-error: true
         run: npm run fetch-telegram-reactions
 
-      - name: Vendor Council portraits
-        run: python3 scripts/fetch-council-avatars.py
-
       # Private font bytes are available only in the trusted main deployment job.
       # Fork/PR validation uses the theme's default open-source fonts.
       - name: Restore licensed site fonts
@@ -165,29 +142,6 @@ jobs:
             npm run build
           fi
 
-      - name: Verify Council rendered pages
-        run: |
-          test -s public/council/index.html
-          test -s public/en/council/index.html
-          test -s public/council/avatars/qui-gon.png
-          test -s public/council/avatars/dexter.png
-          test -s public/council/avatars/lando.png
-          test -s public/council/avatars/padme.png
-          grep -q 'council.zavarov.com/auth/login' public/council/index.html
-          grep -q 'hreflang' public/council/index.html
-          grep -q 'hreflang' public/en/council/index.html
-
-      - name: Package Council subdomain
-        run: python3 scripts/package-council-landing.py
-
-      - name: Upload Council artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: council-landing-${{ github.sha }}-deploy
-          path: council-landing.tar.gz
-          archive: true
-          retention-days: 14
-
       - name: Check content and local links
         run: npm run check
 
@@ -202,6 +156,19 @@ jobs:
           test -s public/js/mermaid/mermaid.esm.min.mjs
           echo "ok: public/js/mermaid/mermaid.esm.min.mjs ($(wc -c < public/js/mermaid/mermaid.esm.min.mjs) bytes)"
 
+      - name: Install test browsers
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Browser regression tests
+        env:
+          BLOG_FONT: ${{ vars.BLOG_FONT }}
+        run: |
+          if [ "$BLOG_FONT" = "als-story" ]; then
+            BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml npm run test:browser
+          else
+            npm run test:browser
+          fi
+
       - name: Commit generated updates
         if: >-
           github.event_name == 'push'
@@ -211,7 +178,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/en/ data/github_stars.json data/council_statistics.json
+          git add content/en/ data/github_stars.json
           if git diff --cached --quiet; then
             echo "No translation or public counter changes to commit."
           else
@@ -224,15 +191,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-
-  deploy-council:
-    needs: deploy
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    permissions:
-      contents: read
-      actions: read
-    uses: ./.github/workflows/deploy-council.yml
-    with:
-      source_run_id: ${{ format('{0}', github.run_id) }}
-      artifact_name: council-landing-${{ github.sha }}-deploy
-    secrets: inherit

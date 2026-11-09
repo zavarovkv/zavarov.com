@@ -42,7 +42,7 @@ test("translation validates TOML and all non-translatable values", () => {
   ]) assert.throws(() => prepareTranslation(source, altered, "example.md"));
 });
 
-test("one rejected response leaves every EN file and orphan untouched", async (t) => {
+for (const rejection of ["front matter", "protected body"]) test(`one rejected ${rejection} response leaves every EN file and orphan untouched`, async (t) => {
   const root = await fixture(t);
   for (const file of ["a.md", "b.md"]) {
     await writeFile(join(root, "content/ru/blog", file), source);
@@ -51,7 +51,8 @@ test("one rejected response leaves every EN file and orphan untouched", async (t
   const orphan = join(root, "content/en/blog/orphan.md");
   await writeFile(orphan, prepareTranslation(source, translated, "orphan.md"));
   let calls = 0;
-  const createClient = () => ({ responses: { create: async () => ({ status: "completed", output_text: ++calls === 1 ? translated : translated.replace("math = true\n", "") }) } });
+  const invalid = rejection === "front matter" ? translated.replace("math = true\n", "") : translated.replace("First paragraph.", "[First paragraph.](https://example.net/injected)");
+  const createClient = () => ({ responses: { create: async () => ({ status: "completed", output_text: ++calls === 1 ? translated : invalid }) } });
   await assert.rejects(translate({ root, args: [], baseline: {}, createClient }), /no EN files changed/);
   for (const file of ["a.md", "b.md"]) assert.equal(await readFile(join(root, "content/en/blog", file), "utf8"), "old content");
   await access(orphan);

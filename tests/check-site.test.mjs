@@ -6,6 +6,36 @@ import { join } from "node:path";
 import { checkSite } from "../scripts/check-site.mjs";
 import { createHash } from "node:crypto";
 
+test("srcset and CSS references resolve from their own documents, including imports and escaped URLs", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "asset-graph-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const dir of ["content/ru", "public/css/nested", "public/img", "public/fonts", "public/post"]) await mkdir(join(root, dir), { recursive: true });
+  await writeFile(join(root, "public/img/a,b.svg"), '<svg id="icon"/>');
+  await writeFile(join(root, "public/fonts/a b.woff2"), "font");
+  await writeFile(join(root, "public/css/main.css"), `
+    @import "nested/child.css";
+    @import url('https://elsewhere.example/remote.css');
+    @font-face {src:url(../fonts/a\\20 b.woff2)}
+    .mask {background:URL('../img/a,b.svg#icon');filter:url(#local-mask)}
+    .missing {background:image-set("../img/missing.png" 2x, url(../img/a,b.svg) 1x)}
+    /* url(comment-is-not-an-asset) */`);
+  await writeFile(join(root, "public/css/nested/child.css"), '@font-face {src:url(../../fonts/missing.woff2)}');
+  await writeFile(join(root, "public/post/index.html"), `
+    <base href="/sub/">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preload" as="image" imagesrcset="img/a,b.svg 1x, img/preload-missing.svg 2x">
+    <picture><source srcset="img/a,b.svg 320w, img/source-missing.svg 640w"><img src="img/a,b.svg" srcset="data:image/png;base64,AAAA 1x, img/image-missing.svg 2x"></picture>
+    <style>.inline {background:url(img/style-missing.svg)}</style>
+    <p style="background:url(img/attribute-missing.svg)">Text</p>
+    <template><img srcset="inert-missing.svg 2x"></template>`);
+  const errors = await checkSite({ root, baseURL: "https://example.org/sub/" });
+  assert.equal(errors.length, 7, errors.join("\n"));
+  for (const name of ["missing.png", "missing.woff2", "preload-missing.svg", "source-missing.svg", "image-missing.svg", "style-missing.svg", "attribute-missing.svg"]) {
+    assert.ok(errors.some(error => error.includes(name)), name);
+  }
+  assert.ok(errors.some(error => error.startsWith("css/nested/child.css:")));
+});
+
 test("local asset integrity checks detect stale files and use the strongest advertised hash", async (t) => {
   const root = await mkdtemp(join(tmpdir(), "integrity-check-"));
   t.after(() => rm(root, { recursive: true, force: true }));
@@ -62,30 +92,29 @@ test("telegram_post is a message ID, not the URL from the former archetype", asy
 });
 
 
-test("event bundles receive the same source validation as blog content", async (t) => {
-  const root = await mkdtemp(join(tmpdir(), "event-metadata-test-"));
+test("page bundles validate source text and front matter", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "bundle-metadata-test-"));
   t.after(() => rm(root, { recursive: true, force: true }));
-  for (const dir of ["content/ru", "events/content/ru/metadata", "events/content/ru/invalid", "public"]) {
+  for (const dir of ["content/ru", "content/ru/metadata", "content/ru/invalid", "public"]) {
     await mkdir(join(root, dir), { recursive: true });
   }
   await writeFile(join(root, "content/ru/_index.md"), '+++\ntitle="Home"\n+++\n');
-  await writeFile(join(root, "events/content/ru/metadata/_index.md"), '+++\ntitle="Ещ\u0451 один вебинар"\ntelegram_post="https://t.me/example/123"\n+++\n');
-  await writeFile(join(root, "events/content/ru/invalid/_index.md"), '+++\ntitle="Unclosed string\n+++\n');
+  await writeFile(join(root, "content/ru/metadata/_index.md"), '+++\ntitle="Ещ\u0451 одна страница"\ntelegram_post="https://t.me/example/123"\n+++\n');
+  await writeFile(join(root, "content/ru/invalid/_index.md"), '+++\ntitle="Unclosed string\n+++\n');
   await writeFile(join(root, "public/index.html"), "<p>Home</p>");
 
   const errors = await checkSite({ root, baseURL: "https://example.com/" });
   assert.equal(errors.length, 3, errors.join("\n"));
-  assert.ok(errors.some((message) => message.includes("events/content/ru/metadata/_index.md: contains a forbidden Russian letter")));
-  assert.ok(errors.some((message) => message.includes("events/content/ru/metadata/_index.md: telegram_post must be a positive integer")));
-  assert.ok(errors.some((message) => message.includes("events/content/ru/invalid/_index.md: invalid TOML")));
+  assert.ok(errors.some((message) => message.includes("ru/metadata/_index.md: contains a forbidden Russian letter")));
+  assert.ok(errors.some((message) => message.includes("ru/metadata/_index.md: telegram_post must be a positive integer")));
+  assert.ok(errors.some((message) => message.includes("ru/invalid/_index.md: invalid TOML")));
 });
 
-test("an invalid events content path is not ignored as an absent optional module", async (t) => {
-  const root = await mkdtemp(join(tmpdir(), "event-content-path-test-"));
+test("an invalid content path fails validation", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "content-path-test-"));
   t.after(() => rm(root, { recursive: true, force: true }));
-  for (const dir of ["content/ru", "events", "public"]) await mkdir(join(root, dir), { recursive: true });
-  await writeFile(join(root, "content/ru/_index.md"), '+++\ntitle="Home"\n+++\n');
-  await writeFile(join(root, "events/content"), "not a directory");
+  await mkdir(join(root, "public"));
+  await writeFile(join(root, "content"), "not a directory");
   await writeFile(join(root, "public/index.html"), "<p>Home</p>");
   await assert.rejects(checkSite({ root, baseURL: "https://example.com/" }), { code: "ENOTDIR" });
 });

@@ -1,19 +1,25 @@
 # zavarov.com
 
-Source code and content for [zavarov.com](https://zavarov.com) — Konstantin Zavarov's bilingual blog about product management.
+Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about product management. Built with [Hugo](https://gohugo.io/), [Hugo Mini](https://github.com/zavarovkv/hugo-mini) and [Beauty.css](https://github.com/zavarovkv/beauty-css).
 
-Built with [Hugo](https://gohugo.io) and the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme.
+## What is included
 
-Syntax highlighting uses Hugo CSS classes (`markup.highlight.noClasses = false`) and Hugo Mini’s light, dark and print palettes. Shared typography fixes belong to the theme; see the [technical audit and follow-up status](docs/technical-audit-2026-11-08.md).
+| Area | Features |
+| --- | --- |
+| Content | Russian articles and committed English translations; categories, pinned and hidden posts, recent articles and New badges |
+| Reading | 720 px column; 18/28 px desktop and 19/29 px mobile text; light, dark and system colors; dedicated print layout |
+| Typography | Build-time punctuation and spacing; responsive images; lists and linked footnotes; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
+| Navigation | Mobile menu, heading links, back-to-top and language choice; Option/Alt + Left/Right moves between older/newer articles without wrapping |
+| Projects and books | Hugo Mini and Beauty.css project links with saved GitHub star counts; bilingual bookshelf and linked reviews |
+| Integrations | Lazy Telegram comments, saved reactions/views, optional sharing and analytics |
+| Discovery | Canonicals, language alternates, generated share cards, structured data, RSS, JSON Feed, sitemap, robots.txt and localized llms.txt |
+| Delivery | GitHub Pages CI; protected batch translation, asset/link checks and Chromium/WebKit regression tests |
 
-The optional [site font profile](docs/site-fonts.md) keeps licensed font files out of Git and out of the theme. The default build still uses Inter; ALS Story is an explicit local/CI opt-in.
+The magnifier currently links to the homepage; full-text search is not implemented. See the theme's [complete feature index](themes/hugo-mini/docs/advanced-features.md) for behavior and configuration.
 
-## Local development
+## Run locally
 
-Requirements:
-
-- Hugo Extended 0.154.5+ (CI pins 0.154.5; the standalone theme supports 0.146+)
-- Node.js 22.12+
+Requires **Hugo Extended 0.154.5+** and **Node.js 22.12+**. The independent theme supports Hugo 0.146+.
 
 ```bash
 git clone --recursive https://github.com/zavarovkv/zavarov.com.git
@@ -22,151 +28,43 @@ npm ci
 hugo server
 ```
 
-The site will be available at <http://localhost:1313>.
-
-If the repository was cloned without submodules:
+Open <http://localhost:1313/>. For an existing clone, initialize the theme with `git submodule update --init`. `npm ci` prepares the self-hosted Mermaid modules; a build of committed content needs no API key.
 
 ```bash
-git submodule update --init
+npm run dev                 # Refresh GitHub stars and start Hugo
+npm run build               # Refresh stars and build strictly
+npm test                    # Site and theme regression tests
+npm run check:syntax        # Authored JavaScript
+npm run check               # Validate the generated public/ directory
+npx playwright install chromium webkit
+npm run test:browser         # Isolated browser fixtures
 ```
 
-## Commands
+For licensed ALS Story, follow the [font profile guide](docs/site-fonts.md). Private font files stay out of Git; CI restores them only for the opted-in production build. Inter remains the default.
 
-```bash
-hugo server                              # Start the development server
-npm run dev                              # Refresh public counters and start Hugo
-npm run build                            # Refresh public counters and build strictly
-hugo --minify                            # Build the production site
-npm run translate                        # Translate new or changed content
-npm run translate:force                  # Re-translate all content
-npm run translate -- blog/brandage.md    # Translate one file
-npm run fetch-telegram-reactions         # Update Telegram statistics
-npm run fetch-github-stars                # Update project star counts
-npm run fetch-council-statistics          # Update Council task and token totals
-npm run vendor-mermaid                   # Refresh the local Mermaid bundle
-npm run check                            # Validate content and local links
-npm run check:syntax                     # Check all authored JavaScript
-npm test                                 # Test the site, events, and theme without API calls
-npm run test:theme                       # Run only the theme's regression tests
-npm run translate -- --dry-run            # Inspect pending translations/deletions
-npm run translate -- --allow-stale        # Keep existing EN if the API is unavailable
-```
+## Ownership
 
-Automatic translation requires an `OPENAI_API_KEY`. Building and previewing
-the committed Russian and English pages does not require an API key.
+| Repository/layer | Owns |
+| --- | --- |
+| This site | `content/`, books and counter data, configuration, translation, resource checks and deployment; search-engine verification in `layouts/` |
+| `themes/hugo-mini/` submodule | Layouts, UI, JavaScript, font loading, render hooks, shortcodes, SEO and integrations |
+| Beauty.css, pinned by the theme | Native typography, forms, tables, lists, footnotes and reusable editorial styles |
 
-## Content workflow
+Fix shared behavior in its owning repository. Do not duplicate theme assets or base typography in site overrides. Push Beauty changes first, pin the reviewed commit in the theme, then push the theme before updating this site's submodule pointer.
 
-Russian content in `content/ru/` is the source of truth.
+## Documentation
 
-English pages in `content/en/` are committed translations. The optional OpenAI
-workflow refreshes generated translations when the Russian source hash changes.
-Do not edit generated files casually; `content/en/_index.md` is maintained by hand.
-The restored bookshelf and its reviews were translated and reviewed locally.
-They carry the same validated `source_hash` metadata and build without an API.
+- [Operations](docs/operations.md) — all commands, content rules, translation guarantees, assets, CI and checks.
+- [Bookshelf](docs/books.md) — shared records, localization, reading history and reviews.
+- [Site fonts](docs/site-fonts.md) — local setup, licensed assets and production restoration.
+- [Theme features](themes/hugo-mini/docs/advanced-features.md) — complete feature map and configuration links.
+- [Technical audit](docs/technical-audit-2026-11-08.md) — historical findings and follow-up status.
+- [Repository guidance](AGENTS.md) — implementation conventions and ownership boundaries.
 
-Translation validates TOML and preserves every front-matter field except `title` and `description`. A failed response leaves the entire batch unchanged. Local translation commands fail by default; CI uses `--allow-stale` to warn and build with available translations when credentials are missing, the API fails, or a response is rejected. No EN files or hashes change in this fallback, so pending updates are retried on the next run. New posts may temporarily be available only in Russian. Source parsing, file writes, Hugo, and link checks remain strict.
+Russian content is authoritative. Generated English articles are maintained by the translator; `content/en/_index.md` is manual. See [translation rules](docs/operations.md#content-workflow) before changing either.
 
-Generated EN files whose RU sources were removed are pruned during a full successful run; manual pages and `_index.md` files are preserved. Pruning is also deferred if a translation batch fails.
-
-Source hashes retain Markdown whitespace and normalize only CRLF line endings. `scripts/translation-baseline.json` is a fixed migration snapshot for the previous hashes: it avoids retranslating unchanged posts without rewriting existing EN files. Do not regenerate this snapshot after editing sources.
-
-Posts use Markdown with TOML front matter:
-
-```toml
-+++
-title = "Post title"
-slug = "post-slug"
-date = 2026-01-01
-description = "Short description"
-categories = ["Категория"]
-+++
-```
-
-Optional fields include `draft`, `hidden`, `pinned`, `telegram_post`, `math`, and `mermaid`.
-
-Homepage projects show their GitHub link and stars in a separate compact `beauty-note` paragraph close below each description, with a larger gap between projects. The `github-stars` shortcode reads `data/github_stars.json`. `npm run dev` and `npm run build` refresh the count from GitHub first; a GitHub failure preserves the last successful value. Plain Hugo commands use the saved data without a network request.
-
-## Project structure
-
-```text
-content/                 Russian sources and English translations
-data/                    Shared book records and saved public counters
-assets/council/          Council layout, live statistics and source portraits
-events/                  Independent event content, layouts, assets and generator
-static/                  Images, datasets, favicons, and CNAME
-scripts/                 Translation and asset-vendoring scripts
-layouts/                 Site verification and Council landing templates
-i18n/                    Category name overrides
-themes/hugo-mini/        Theme submodule
-docs/                    Site content maintenance notes
-tests/                   Site integration and script tests
-config.toml              Hugo and site configuration
-```
-
-Reusable layouts, styles, scripts, fonts, shortcodes, SEO templates, KaTeX, and social-sharing assets belong to the theme. Site-specific content and configuration remain in this repository.
-
-The [Council landing](docs/council-landing.md) reuses the theme's page shell and
-Beauty.css typography. Its team profiles, statistics, workflow and tools stay site-owned; the
-authenticated application is maintained separately. Public counter updates preserve known values, use a validated browser cache and show delayed placeholders only for unknown totals; storage or API failures retain the last known data.
-
-Language content is selected by explicit `module.mounts.sites.matrix` mounts;
-`locale` and `label` use Hugo's current language configuration. Per-language
-`params.ogLocale` preserves regional Open Graph values on older supported Hugo
-versions. Keep the theme's minimum independent of the consuming site's version.
-
-The reading shelf is documented in [docs/books.md](docs/books.md). Its reading
-history is stored once; localized titles and authors are display overrides on
-the same records. Reviews use ordinary Markdown and the shared article layout.
-
-The four pinned npm dependencies are build/development tools: Mermaid supplies the local diagram
-modules, OpenAI powers the optional translator, and parse5/smol-toml validate HTML and TOML.
-The theme requires no npm installation, and its Beauty.css foundation has no runtime dependencies.
-Sharing assets are minified and fingerprinted by Hugo only when sharing is enabled.
-
-The 2026-11-01 dependency audit reports no npm vulnerabilities after upgrading Mermaid to 12.2.0.
-The theme explicitly retains Dagre, classic styling and the previous flowchart label widths, preserving
-the existing diagrams' geometry instead of adopting Mermaid 12's ELK/neo defaults. Mermaid 12 requires
-ES2024-capable browsers (including Safari 17.4+); loading failures leave readable diagram source.
-The theme's standalone KaTeX remains at 0.18.2. Details and the regression check are documented in
-[the theme's asset maintenance guide](themes/hugo-mini/docs/vendor-assets.md#katex).
-
-## Deployment
-
-Pushes to `main` are deployed to GitHub Pages through [GitHub Actions](.github/workflows/gh-pages.yml).
-
-All external actions are pinned to reviewed commit SHAs and use the Node.js 24
-action runtime. Site scripts continue to run on Node.js 22. Checkout credentials
-are retained only in the publishing job that commits generated updates. Council
-artifacts keep ZIP packaging so the existing download and deployment steps work unchanged.
-
-The workflow installs dependencies, updates English translations and public counters,
-builds the site, verifies self-hosted assets, and publishes `public/`. It then deploys
-the same build's Council archive through the restricted static-site receiver;
-see [Council deployment](docs/council-deploy-automation.md).
-
-Pull requests run the same regression tests against Hugo 0.154.5 and the latest
-release, including isolated builds of the event module. Deployment keeps the
-pinned version so toolchain updates remain explicit.
-
-Translations and the GitHub/Council counter snapshots are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, HTML/SVG anchors, duplicate IDs, and empty builds. Local scripts and stylesheets with `integrity` metadata are also checked against their generated bytes, using the strongest advertised hash as browsers do. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
-
-Set the `OPENAI_API_KEY` GitHub Actions secret to enable automatic translation. Without it, deployment continues using the committed EN content.
-
-## Generated outputs
-
-Each build produces:
-
-- HTML pages in Russian and English
-- RSS and JSON feeds
-- `sitemap.xml` and `robots.txt`
-- Localized `llms.txt`
-- Open Graph and structured metadata
-
-Russian pages use root-level URLs such as `/blog/` and `/:slug/`. English pages use the `/en/` prefix.
+Pushes to `main` run [GitHub Actions](.github/workflows/gh-pages.yml) and deploy to GitHub Pages. Translation API failures preserve the last committed English content; build, source and link errors still block deployment.
 
 ## License
 
-Original content is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-Site-specific content and assets follow the terms in [LICENSE](LICENSE). The hugo-mini theme is licensed separately under [MIT](themes/hugo-mini/LICENSE).
+Original content is [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). See [LICENSE](LICENSE) for site assets and [the theme license](themes/hugo-mini/LICENSE) for Hugo Mini's MIT terms.

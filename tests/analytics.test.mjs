@@ -70,13 +70,9 @@ async function assertAnalytics(path) {
   assert.ok(loadedScripts.every(script => script.async === true));
 }
 
-test("blog and Council pages initialize GA4 alongside the existing Yandex counter", async () => {
+test("blog pages initialize GA4 alongside the existing Yandex counter", async () => {
   for (const page of ["index.html", "en/index.html", "blog/index.html", "en/blog/index.html",
-    "consultation/index.html", "en/consultation/index.html", "council/index.html", "en/council/index.html"]) {
+    "consultation/index.html", "en/consultation/index.html"]) {
     await assertAnalytics(page);
   }
-});
-
-test("the independent webinar landing also keeps both analytics counters", async () => {
-  await assertAnalytics("pm-hiring-webinar/index.html");
 });

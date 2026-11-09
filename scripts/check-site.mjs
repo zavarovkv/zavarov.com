@@ -6,6 +6,8 @@ import { createHash } from "node:crypto";
 import { parse as parseHTML } from "parse5";
 import { parse as parseTOML } from "smol-toml";
 import { listMarkdown, readDocument } from "./lib/content.mjs";
+import parseSrcset from "parse-srcset";
+import { cssReferences } from "./lib/asset-references.mjs";
 
 async function walk(dir) {
   const files = [];
@@ -36,6 +38,13 @@ export function inspectHTML(html) {
     if (node.tagName !== "base") {
       for (const key of ["href", "src"]) if (attrs[key]) links.push(attrs[key]);
     }
+    for (const key of ["srcset", "imagesrcset"]) {
+      if (attrs[key]) links.push(...parseSrcset(attrs[key]).map(candidate => candidate.url));
+    }
+    if (attrs.style) links.push(...cssReferences(`x{${attrs.style}}`));
+    if (node.tagName === "style") {
+      links.push(...cssReferences((node.childNodes || []).map(child => child.value || "").join("")));
+    }
     const resource = node.tagName === "script" ? attrs.src :
       node.tagName === "link" && /(?:^|\s)(?:stylesheet|preload|modulepreload)(?:\s|$)/i.test(attrs.rel || "") ? attrs.href : null;
     if (resource && attrs.integrity) {
@@ -55,31 +64,20 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   baseURL ??= parseTOML(await readFile(join(root, "config.toml"), "utf8")).baseURL;
   const siteURL = new URL(baseURL);
   const basePath = siteURL.pathname.replace(/\/?$/, "/");
-  for (const sourceRoot of ["content", "events/content"]) {
-    const directory = join(root, sourceRoot);
-    if (sourceRoot === "events/content") {
-      try { await stat(directory); }
-      catch (error) {
-        // Minimal test fixtures and blog-only projects may omit this module.
-        if (error.code === "ENOENT") continue;
-        throw error;
-      }
-    }
-    for (const sourceFile of await listMarkdown(directory)) {
-      const file = sourceRoot === "content" ? sourceFile : `${sourceRoot}/${sourceFile}`;
-      const content = await readFile(join(directory, sourceFile), "utf8");
-      if (sourceFile.startsWith("ru/") && /[\u0451\u0401]/u.test(content)) report(`${file}: contains a forbidden Russian letter`);
-      try {
-        const { data } = readDocument(content, file);
-        if (sourceFile.includes("/blog/") && !sourceFile.endsWith("/_index.md")) {
-          for (const key of ["title", "slug", "date", "description", "categories"]) {
-            if (!Object.hasOwn(data, key)) report(`${file}: missing front matter field ${key}`);
-          }
-          if (data.categories !== undefined && (!Array.isArray(data.categories) || data.categories.some((item) => typeof item !== "string"))) report(`${file}: categories must be an array of strings`);
+  const directory = join(root, "content");
+  for (const file of await listMarkdown(directory)) {
+    const content = await readFile(join(directory, file), "utf8");
+    if (file.startsWith("ru/") && /[\u0451\u0401]/u.test(content)) report(`${file}: contains a forbidden Russian letter`);
+    try {
+      const { data } = readDocument(content, file);
+      if (file.includes("/blog/") && !file.endsWith("/_index.md")) {
+        for (const key of ["title", "slug", "date", "description", "categories"]) {
+          if (!Object.hasOwn(data, key)) report(`${file}: missing front matter field ${key}`);
         }
-        if (data.telegram_post !== undefined && (!Number.isSafeInteger(data.telegram_post) || data.telegram_post <= 0)) report(`${file}: telegram_post must be a positive integer, not a URL`);
-      } catch (error) { report(error.message); }
-    }
+        if (data.categories !== undefined && (!Array.isArray(data.categories) || data.categories.some((item) => typeof item !== "string"))) report(`${file}: categories must be an array of strings`);
+      }
+      if (data.telegram_post !== undefined && (!Number.isSafeInteger(data.telegram_post) || data.telegram_post <= 0)) report(`${file}: telegram_post must be a positive integer, not a URL`);
+    } catch (error) { report(error.message); }
   }
 
   let files;
@@ -97,9 +95,17 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
     return fileStats.get(path);
   }
   for (const file of files.filter((file) => file.endsWith(".html"))) {
-    documents.set(file, inspectHTML(await readFile(file, "utf8")));
+    try { documents.set(file, inspectHTML(await readFile(file, "utf8"))); }
+    catch (error) { report(`${relative(publicDir, file)}: ${error.message}`); }
   }
   if (!documents.size) report("No HTML pages found; run Hugo before this check");
+  // Scan each emitted stylesheet once. Relative URLs resolve from the CSS file,
+  // including imported sheets; inline styles resolve from their HTML document.
+  for (const file of files.filter((file) => file.endsWith(".css"))) {
+    try {
+      documents.set(file, { links: cssReferences(await readFile(file, "utf8"), file), duplicateIds: [], integrities: new Map() });
+    } catch (error) { report(`${relative(publicDir, file)}: ${error.message}`); }
+  }
   for (const [file, document] of documents) {
     const name = relative(publicDir, file).split(sep).join("/");
     for (const id of document.duplicateIds) report(`${name}: duplicate element id ${id}`);
