@@ -1,5 +1,5 @@
 +++
-source_hash = "06d1203461f2"
+source_hash = "5fbd27f0a748e1ea899a1c7a0be1c2b4262a41026256c60e28baccc9588a1f59"
 title = "Product Strategy ≠ a Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
@@ -20,8 +20,8 @@ Product strategy is an ongoing process. Depending on where you are in a product'
 
 Here are some genuinely workable examples.
 
-1/ Strategy as a person. A leader who accumulates knowledge across business, marketing, finance, and product — and channels it to the team through decisions and priorities. It works, but "strategy as tribal knowledge" stops scaling as the team grows.
+1. Strategy as a person. A leader who accumulates knowledge across business, marketing, finance, and product — and channels it to the team through decisions and priorities. It works, but "strategy as tribal knowledge" stops scaling as the team grows.
 
-2/ Or "strategy as manifesto" — an internal team artifact containing a set of principles and answers to the questions "what do we do" and "why." This kind of strategy can be written in an evening, but it can lose touch with reality just as quickly.
+2. Or "strategy as manifesto" — an internal team artifact containing a set of principles and answers to the questions "what do we do" and "why." This kind of strategy can be written in an evening, but it can lose touch with reality just as quickly.
 
 Strategy isn't a template document you write once and file away. It's a system that lives and evolves alongside the product.
