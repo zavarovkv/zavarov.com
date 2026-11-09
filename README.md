@@ -9,7 +9,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 | Content | Russian articles and committed English translations; categories, pinned and hidden posts, recent articles and New badges |
 | Reading | 720 px column; 18/28 px desktop and 19/29 px mobile text; light, dark and system colors; dedicated print layout |
 | Typography | Build-time punctuation and spacing; responsive images; lists and linked footnotes; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
-| Navigation | Mobile menu, heading links, back-to-top and language choice; Option/Alt + Left/Right moves between older/newer articles without wrapping |
+| Navigation | Stable menu widths with smooth desktop selection, mobile menu, heading links, back-to-top and language choice; Option/Alt + Left/Right moves between older/newer articles without wrapping |
 | Projects and books | Hugo Mini and Beauty.css project links with saved GitHub star counts; bilingual bookshelf and linked reviews |
 | Integrations | Lazy Telegram comments, saved reactions/views, optional sharing and analytics |
 | Discovery | Canonicals, language alternates, generated share cards, structured data, RSS, JSON Feed, sitemap, robots.txt and localized llms.txt |
