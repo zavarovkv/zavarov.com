@@ -5,6 +5,7 @@ date = "2023-08-16T12:00:00+03:00"
 description = "Разбираем как вручную посчитать 3 вида метрики Retention с помощью Python и Pandas и нарисовать кривую Retention с помощью Matplotlib."
 categories = ["metrics"]
 telegram_post = 37
+wideCode = true
 +++
 
 В этой заметке хочу разобрать как вручную посчитать 3 вида метрики Retention с помощью Python и Pandas и нарисовать кривую Retention с помощью Matplotlib. Чаще всего для анализа данных и метрик любой продакт будет использовать аналитическую систему, но предположим, что наш продакт попал на необитаемый остров и под рукой у него оказались только интерпретатор Python-скриптов и несколько дополнительных библиотек; этим и воспользуемся.
@@ -110,7 +111,7 @@ classic_retention = calculate_classic_retention(df, days)
 plt_show(days, classic_retention, xs=[1, 7, 28, 56], title='Daily Classic Retention')
 ```
 
-![Classic Retention](/images/retention-classic.png)
+{{< image src="/images/retention-classic.png" alt="Classic Retention" wide=true >}}
 
 Видим, что на следующий день после первого захода в продукт — вернулось 70% пользователей, на 7 день — 36%, на 28 день — 20%. Примерно через 30 дней кривая выходит на плато, т. е. для продукта найден Product/Market Fit.
 
@@ -160,7 +161,7 @@ rolling_retention = calculate_rolling_retention(df, days)
 plt_show(days, rolling_retention, xs=[1, 7, 28, 56], title='Daily Rolling Retention')
 ```
 
-![Rolling Retention](/images/retention-rolling.png)
+{{< image src="/images/retention-rolling.png" alt="Rolling Retention" wide=true >}}
 
 Видим, что со следующего дня после первого захода в продукт — вернулось 93% пользователей, с 7 дня — 69%, с 28 день — 46%.
 
@@ -205,7 +206,7 @@ full_retention = calculate_full_retention(df, days)
 plt_show(days, full_retention, xs=[1, 3, 6], title='Daily Full Retention')
 ```
 
-![Full Retention](/images/retention-full.png)
+{{< image src="/images/retention-full.png" alt="Full Retention" wide=true >}}
 
 Видим, что 70% пользователей вернулись в продукт на следующий день после первого знакомства с ним. И поскольку это значение метрики совпадает со значением Classic Retention, вероятно в вычислениях я не ошибся:). 22% пользователей заходили в продукт ежедневно на протяжении 3 дней; и только 2% пользователей заходили в продукт ежедневно на протяжении 6 дней.
 

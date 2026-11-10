@@ -14,9 +14,7 @@ categories = ["productivity"]
 
 <!--more-->
 
-<img loading="lazy" src="/images/zettelkasten-luhmann.webp" alt="Никлас Луман" width="1024" height="683">
-
- {{< caption >}}Никлас Луман{{< /caption >}} 
+{{< image src="/images/zettelkasten-luhmann.webp" alt="Никлас Луман" wide=true caption="Никлас Луман" >}}
 
 ## Суть метода
 
@@ -24,9 +22,7 @@ Zettelkästen — метод хранения идей в отдельных к�
 
 [Вот здесь](https://niklas-luhmann-archiv.de/bestand/zettelkasten/inhaltsuebersicht) можно увидеть часть оцифрованных карточек идей и взаимосвязей самого Николаса Лумана.
 
-<img loading="lazy" src="/images/zettelkasten-card.webp" alt="Карточка идеи Лумана" width="1024" height="761">
-
- {{< caption >}}А вот так выглядела карточка идеи в доцифровую эпоху{{< /caption >}}
+{{< image src="/images/zettelkasten-card.webp" alt="Карточка идеи Лумана" wide=true caption="А вот так выглядела карточка идеи в доцифровую эпоху" >}}
 
 
 ## Принципы хранения идей
@@ -49,6 +45,4 @@ Zettelkästen — метод хранения идей в отдельных к�
 
 Я же, после нескольких дней потраченных на поиск лучшего инструмента, остановился на [VScode](https://code.visualstudio.com) в качестве основного редактора .md файлов и плагинах к нему: [markdown memo](https://marketplace.visualstudio.com/items?itemName=svsool.markdown-memo), [nested tags](https://marketplace.visualstudio.com/items?itemName=vscode-nested-tags.vscode-nested-tags) и [markdown links](https://marketplace.visualstudio.com/items?itemName=tchayen.markdown-links), которые в совокупности позволяют создавать теги, удобно редактировать файлы в md-разметке и строить граф связей между записями.
 
-<img loading="lazy" src="/images/zettelkasten-vscode.webp" alt="VSCode с настроенными плагинами для Zettelkästen" width="1024" height="600">
-
- {{< caption >}}VSCode с настроенными плагинами для Zettelkästen{{< /caption >}}
+{{< image src="/images/zettelkasten-vscode.webp" alt="VSCode с настроенными плагинами для Zettelkästen" wide=true caption="VSCode с настроенными плагинами для Zettelkästen" >}}

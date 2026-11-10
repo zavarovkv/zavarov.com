@@ -1,5 +1,5 @@
 +++
-source_hash = "51626d3d87e09ee38338f695bd75a2b67ac80391bf6839c32a42b35c48360fab"
+source_hash = "58644c12c6f1cb826ccc2b169924626e3e182e6d52bf54e895d5474850f7e461"
 title = "The Zettelkasten Note-Taking Method"
 slug = "zettelkasten"
 date = "2023-03-12T12:00:00+03:00"
@@ -15,9 +15,7 @@ Online discussions of Zettelkasten — in both English and Russian — only bega
 
 <!--more-->
 
-<img loading="lazy" src="/images/zettelkasten-luhmann.webp" alt="Niklas Luhmann" width="1024" height="683">
-
- {{< caption >}}Niklas Luhmann{{< /caption >}} 
+{{< image src="/images/zettelkasten-luhmann.webp" alt="Niklas Luhmann" wide=true caption="Niklas Luhmann" >}}
 
 ## The Core Idea
 
@@ -25,9 +23,7 @@ Zettelkasten is a method of storing ideas in individual cards — physical or di
 
 [Here](https://niklas-luhmann-archiv.de/bestand/zettelkasten/inhaltsuebersicht) you can explore a portion of Niklas Luhmann's digitized idea cards and the connections between them.
 
-<img loading="lazy" src="/images/zettelkasten-card.webp" alt="One of Luhmann's idea cards" width="1024" height="761">
-
- {{< caption >}}This is what an idea card looked like in the pre-digital era{{< /caption >}}
+{{< image src="/images/zettelkasten-card.webp" alt="One of Luhmann's idea cards" wide=true caption="This is what an idea card looked like in the pre-digital era" >}}
 
 
 ## Principles for Storing Ideas
@@ -50,6 +46,4 @@ That said, a fairly substantial (well, relatively speaking) collection of tools 
 
 After spending several days searching for the ideal tool, I settled on [VSCode](https://code.visualstudio.com) as my primary `.md` file editor, along with a set of plugins: [markdown memo](https://marketplace.visualstudio.com/items?itemName=svsool.markdown-memo), [nested tags](https://marketplace.visualstudio.com/items?itemName=vscode-nested-tags.vscode-nested-tags), and [markdown links](https://marketplace.visualstudio.com/items?itemName=tchayen.markdown-links). Together, they let me create tags, edit Markdown files comfortably, and visualize a graph of connections between notes.
 
-<img loading="lazy" src="/images/zettelkasten-vscode.webp" alt="VS Code configured with Zettelkasten plugins" width="1024" height="600">
-
- {{< caption >}}VSCode configured with plugins for Zettelkasten{{< /caption >}}
+{{< image src="/images/zettelkasten-vscode.webp" alt="VS Code configured with Zettelkasten plugins" wide=true caption="VSCode configured with plugins for Zettelkasten" >}}

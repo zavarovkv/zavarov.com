@@ -1,11 +1,12 @@
 +++
-source_hash = "74dd5e323ba7fed45c8eb2a45ad5ca3704f7a1b67f3292b570a32af85035cb19"
+source_hash = "c1899c9c267e92c4bbb5b840a5b430e138f7cfbe0c8b4e60cf7bfbdd2fcb6378"
 title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
 description = "A hands-on guide to manually calculating 3 types of Retention metrics using Python and Pandas, and plotting a Retention curve with Matplotlib."
 categories = ["metrics"]
 telegram_post = 37
+wideCode = true
 +++
 
 In this post, I want to walk through how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve with Matplotlib. Most of the time, a product manager will rely on an analytics platform for data analysis — but let's imagine our PM has been stranded on a desert island with nothing but a Python interpreter and a few extra libraries. That's exactly what we'll work with.
@@ -111,7 +112,7 @@ classic_retention = calculate_classic_retention(df, days)
 plt_show(days, classic_retention, xs=[1, 7, 28, 56], title='Daily Classic Retention')
 ```
 
-![Classic Retention](/images/retention-classic.png)
+{{< image src="/images/retention-classic.png" alt="Classic Retention" wide=true >}}
 
 We can see that 70% of users returned the day after their first visit, 36% came back on day 7, and 20% on day 28. After roughly 30 days, the curve flattens into a plateau — a sign that the product has found Product/Market Fit.
 
@@ -161,7 +162,7 @@ rolling_retention = calculate_rolling_retention(df, days)
 plt_show(days, rolling_retention, xs=[1, 7, 28, 56], title='Daily Rolling Retention')
 ```
 
-![Rolling Retention](/images/retention-rolling.png)
+{{< image src="/images/retention-rolling.png" alt="Rolling Retention" wide=true >}}
 
 We can see that 93% of users returned to the product from day 1 onward, 69% from day 7, and 46% from day 28.
 
@@ -206,7 +207,7 @@ full_retention = calculate_full_retention(df, days)
 plt_show(days, full_retention, xs=[1, 3, 6], title='Daily Full Retention')
 ```
 
-![Full Retention](/images/retention-full.png)
+{{< image src="/images/retention-full.png" alt="Full Retention" wide=true >}}
 
 We can see that 70% of users returned to the product the day after their first visit. Since this matches the Classic Retention value, the calculations are probably correct :). 22% of users visited the product every day for 3 days straight; and only 2% visited every day for 6 consecutive days.
 

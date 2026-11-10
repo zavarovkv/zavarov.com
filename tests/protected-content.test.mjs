@@ -69,6 +69,15 @@ test("nested code, escaped Markdown and data URLs have no false URL matches", ()
   assert.throws(() => assertProtectedContent(text, text.replace('AAAA', 'BBBB'), "nested.md"), /protected links/);
 });
 
+test("Mermaid with layout attributes still protects its complete diagram source", () => {
+  for (const [open, close] of [['<', '>'], ['%', '%']]) {
+    const text = `{{${open} mermaid wide=true caption="A diagram" ${close}}}\ngraph LR\n  A --> B\n{{${open} /mermaid ${close}}}`;
+    assert.doesNotThrow(() => assertProtectedContent(text, text, 'diagram.md'));
+    assert.throws(() => assertProtectedContent(text, text.replace('A --> B', 'A --> C'), 'diagram.md'), /protected opaque/);
+    assert.throws(() => assertProtectedContent(text, text.replace(`{{${open} /mermaid ${close}}}`, ''), 'diagram.md'), /unclosed Mermaid/);
+  }
+});
+
 test("inline HTML code stays protected across Markdown token boundaries", () => {
   const text = 'Text with <code>x &lt; 2</code> and <span title="Подпись">prose</span>.';
   assert.doesNotThrow(() => assertProtectedContent(text, text.replace('prose', 'текст').replace('Подпись', 'Label'), 'inline.md'));

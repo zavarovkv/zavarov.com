@@ -18,7 +18,7 @@ function protectedToken(src, type) {
       } else if ('"\'`'.includes(char)) quote = char;
       else if (src.startsWith(close, i)) {
         let raw = src.slice(0, i + 3);
-        if (/^\{\{[<%]\s*mermaid\s*[>%]\}\}$/.test(raw)) {
+        if (/^\{\{[<%]\s*mermaid(?:\s|[>%])/.test(raw)) {
           const end = /\{\{[<%]\s*\/mermaid\s*[>%]\}\}/.exec(src.slice(raw.length));
           if (!end) throw new Error("unclosed Mermaid shortcode");
           raw = src.slice(0, raw.length + end.index + end[0].length);

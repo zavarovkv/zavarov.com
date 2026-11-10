@@ -1,5 +1,5 @@
 +++
-source_hash = "83fe16cbcf45"
+source_hash = "26c13cda3dd92617ea1f708ecc547b741389938e6fd6e7752477d1418aee0e41"
 title = "Becoming a Certified Scrum Product Owner (CSPO)"
 slug = "cspo"
 date = "2021-02-13T12:00:00+03:00"
@@ -29,4 +29,4 @@ If you're thinking about committing a couple of days to this training, here are 
 
 And in the end, you'll walk away with an official piece of paper. Difficulty: 1/10. Cost: 7/10. Usefulness: you decide.
 
-![CSPO Certificate](/images/cspo-certificate.webp)
+{{< image src="/images/cspo-certificate.webp" alt="CSPO Certificate" wide=true >}}

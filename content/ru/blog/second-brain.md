@@ -12,22 +12,22 @@ mermaid = true
 
 Статья называется «Второй мозг», а значит, мы будем строить систему, напоминающую структуру мозга человека.
 
-{{< mermaid >}}
+{{< mermaid wide=true caption="Элементы структуры мозга" >}}
 graph LR
     S@{ shape: text, label: "Звук" }
     T@{ shape: text, label: "Текст" }
     I@{ shape: text, label: "Изображения" }
-    S e1@--> A[**Слуховая кора**
-    *Захватывает и обрабатывает звук*]
-    T e2@--> B[**Зрительная кора**
-    *Захватывает и обрабатывает визуальные образы*]
+    S e1@--> A["`**Слуховая кора**
+    *Захватывает и обрабатывает звук*`"]
+    T e2@--> B["`**Зрительная кора**
+    *Захватывает и обрабатывает визуальные образы*`"]
     I e3@--> B
-    A e4@--> C[**Гиппокамп**
-    *Маршрутизирует и индексирует информацию*]
+    A e4@--> C["`**Гиппокамп**
+    *Маршрутизирует и индексирует информацию*`"]
     B e5@--> C
     C e6@--> mem
-    mem e7@--> F[**Префронтальная кора**
-    *Анализ, планирование, принятие решений*]
+    mem e7@--> F["`**Префронтальная кора**
+    *Анализ, планирование, принятие решений*`"]
     e1@{ animate: true, curve: linear }
     e2@{ animate: true, curve: linear }
     e3@{ animate: true, curve: linear }
@@ -36,13 +36,11 @@ graph LR
     e6@{ animate: true, curve: linear }
     e7@{ animate: true, curve: linear }
 
-    subgraph mem[**Память**]
+    subgraph mem["`**Память**`"]
         direction TB
-        short[**Кратковременная**] <--> long[**Долговременная**]
+        short["`**Кратковременная**`"] <--> long["`**Долговременная**`"]
     end
 {{< /mermaid >}}
-
-{{< caption >}}Элементы структуры мозга{{< /caption >}} 
 
 **PARA (Projects–Areas–Resources–Archives)** — простая модель организации информации, которую сформулировал [Тиаго Форте](https://www.youtube.com/@TiagoForte). Суть — разделить все на четыре директории: актуальные Projects, долгосрочные Areas, Resources как хранилище документов и Archives с завершенными проектами. Тиаго написал целую [книгу](https://www.amazon.com/PARA-Method-Simplify-Organize-Digital/dp/1668045567) об этой модели в 2023 году, но в 2026 — продуктивнее узнать детали у LLM.
 
@@ -53,9 +51,7 @@ graph LR
 В 2025 году на GitHub создано [121 миллион новых 
 репозиториев](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) — рекорд за всю историю платформы.
 
- <img loading="lazy" src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub" width="1400" height="955">
-
-{{< caption >}}Количество репозиториев на GitHub{{< /caption >}} 
+{{< image src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub" wide=true caption="Количество репозиториев на GitHub" >}}
 
 Отдельно подчеркну: markdown — это формат, который однозначно понимает любая LLM, в отличие от .docx, .pdf и других форматов документов. И это не только заголовки и списки — вот полная [спецификация](https://spec.commonmark.org/0.31.2/#introduction). Markdown переживет любой инструмент. Evernote умирает, Notion однажды закроется, Google Docs привязан к аккаунту, md-файл откроется через 20 лет в любом текстовом редакторе — это plain text.
 
@@ -65,9 +61,7 @@ graph LR
 
 **Claude Code** — agentic AI с доступом к файловой системе, в нашем случае — к папке Obsidian vault. Он может читать, редактировать, создавать и анализировать любые файлы в этом пространстве. По названию может показаться, что он предназначен только для написания кода, но это не так — он отлично справляется с анализом и работой над любыми текстовыми документами. Интересная особенность, что взаимодействие с Claude Code происходит в терминале. Но, поверьте, он настолько удобен, что не вызывает каких-либо сложностей.
 
-<img loading="lazy" src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI" width="1440" height="900">
-
-{{< caption >}}Obsidian и Claude Code CLI{{< /caption >}} 
+{{< image src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI" wide=true caption="Obsidian и Claude Code CLI" >}}
 
 У [Claude](https://claude.ai/) есть и другие инструменты: веб, десктоп, мобильное приложение, расширения для Chrome, Excel и PowerPoint. Они закрывают свои задачи, но не имеют прямого доступа к файлам в Obsidian vault — а значит, в контексте нашего умного стека ключевой инструмент именно Claude Code.
 
@@ -79,22 +73,22 @@ graph LR
 
 Вернемся к аналогии рассматриваемого стека со структурой мозга человека:
 
-{{< mermaid >}}
+{{< mermaid wide=true caption="Аналогия стека со структурой мозга" >}}
 graph LR
     S@{ shape: text, label: "*Звук*" }
     T@{ shape: text, label: "*Текст*" }
     I@{ shape: text, label: "*Изображения*" }
-    S e1@--> A[**Слуховая кора**
-    Granola]
-    T e2@--> B[**Зрительная кора**
-    /Resources]
+    S e1@--> A["`**Слуховая кора**
+    Granola`"]
+    T e2@--> B["`**Зрительная кора**
+    /Resources`"]
     I e3@--> B
-    A e4@--> C[**Гиппокамп**
-    PARA]
+    A e4@--> C["`**Гиппокамп**
+    PARA`"]
     B e5@--> C
     C e6@--> mem
-    mem e7@--> F[**Префронтальная кора**
-    Claude Code]
+    mem e7@--> F["`**Префронтальная кора**
+    Claude Code`"]
     e1@{ animate: true, curve: linear }
     e2@{ animate: true, curve: linear }
     e3@{ animate: true, curve: linear }
@@ -103,18 +97,16 @@ graph LR
     e6@{ animate: true, curve: linear }
     e7@{ animate: true, curve: linear }
 
-    subgraph mem[**Память**]
+    subgraph mem["`**Память**`"]
         direction TB
         Obsidian@{ shape: text, label: "Obsidian vault" } ~~~
-        short[**Кратковременная**
+        short["`**Кратковременная**
         /Inbox
-        /Projects] <--> long[**Долговременная**
+        /Projects`"] <--> long["`**Долговременная**
         /Areas
-        /Archive]
+        /Archive`"]
     end
 {{< /mermaid >}}
-
-{{< caption >}}Аналогия стека со структурой мозга{{< /caption >}} 
 
 Каждый инструмент в стеке выполняет свою роль: Granola захватывает входящий поток (слуховая кора), PARA маршрутизирует информацию (гиппокамп), Obsidian хранит знания (память), а Claude Code анализирует и помогает принимать решения (префронтальная кора).
 
