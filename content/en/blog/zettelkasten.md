@@ -1,5 +1,5 @@
 +++
-source_hash = "58644c12c6f1cb826ccc2b169924626e3e182e6d52bf54e895d5474850f7e461"
+source_hash = "f04347881a3a071bfbff546678a9c93eb3a13e7fbdc0322e7fad017fddc1e34f"
 title = "The Zettelkasten Note-Taking Method"
 slug = "zettelkasten"
 date = "2023-03-12T12:00:00+03:00"

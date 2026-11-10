@@ -1,5 +1,5 @@
 +++
-source_hash = "c0624803743d"
+source_hash = "6cc3742e7169bbc5dd96da99a8af35b37758731053b29fac436e92d64ce1e559"
 title = "10 Deadly Sins of a Junior Product Manager"
 slug = "10-evils"
 date = "2024-09-29T15:17:01+03:00"
@@ -20,16 +20,16 @@ Every product manager faces enormous flows of information — countless initiati
 
 Instead of focusing on the tasks that truly matter for the product, a junior manager spreads their time and energy thin across a wide range of goals. The core mistake is failing to understand that attention is a limited resource — there simply isn't enough of it to handle everything. This resource gets depleted both when we're actively pursuing a goal and when we're just keeping a task alive in our severely limited working memory.
 
-It's worth remembering that "attention is a significantly limited process. When additional tasks arise, it becomes exhausted — and if those tasks are complex, it's exhausted quickly" [9]. Good time management comes down to two simple principles:
+It's worth remembering that "attention is a significantly limited process. When additional tasks arise, it becomes exhausted — and if those tasks are complex, it's exhausted quickly"[^9]. Good time management comes down to two simple principles:
 
-1. First, write down every unfinished task [1].
-2. Every thought rattling around in your head consumes "mental fuel" (a brilliant phrase coined by Maxim Dorofeev). "If we can build habits that let us write tasks down instead of trying to remember them, we can live not just more effectively, but more calmly" [2].
+1. First, write down every unfinished task[^1].
+2. Every thought rattling around in your head consumes "mental fuel" (a brilliant phrase coined by Maxim Dorofeev). "If we can build habits that let us write tasks down instead of trying to remember them, we can live not just more effectively, but more calmly"[^2].
 
 And the old Russian proverb — "chase two rabbits and you'll catch neither" — says exactly the same thing.
 
 **How to fix it:**
 
-1. Ruthlessly eliminate multitasking [12].
+1. Ruthlessly eliminate multitasking[^12].
 2. Accept the reality of the job: it's normal for stakeholders to want everything at once; it's normal to have a Product Backlog stretching a year or more out; it's normal to focus on what matters and not spend your attention on lower-priority items.
 3. Build the habit of writing down all ideas and tasks — in text or visual form. The goal is to avoid losing information, avoid overloading your working memory, and stop wasting your attention unnecessarily.
 4. Focus on the product strategy if one exists; if it doesn't (which happens) — agree on the key priorities for the coming quarter with your product lead. For anything outside the product strategy, learn to say "no" politely.
@@ -40,7 +40,7 @@ And the old Russian proverb — "chase two rabbits and you'll catch neither" —
 
 A product manager is the driving force behind a product's growth, and experience, decisiveness, boldness, and ambition largely determine how successful that product will be in the market. Yet junior managers are often afraid to make even minor decisions that have virtually no direct impact on the product strategy.
 
-Even mild indecisiveness slows down product development and hurts quality. And if a product manager is afraid to make decisions in high-stakes situations — or keeps deferring them or offloading responsibility to others — this will inevitably lead to the project's failure and, ultimately, to a derailed career [3].
+Even mild indecisiveness slows down product development and hurts quality. And if a product manager is afraid to make decisions in high-stakes situations — or keeps deferring them or offloading responsibility to others — this will inevitably lead to the project's failure and, ultimately, to a derailed career[^3].
 
 Indecisiveness often hides behind the guise of running yet another product experiment or testing yet another hypothesis. Instead of moving the product forward quickly and getting it in front of users, there's an endless cycle of research under the banner of product hypotheses.
 
@@ -53,7 +53,7 @@ It's important to remember that experience is built through trial and error. Aft
 **How to fix it:**
 
 1. Keep the outcomes you're aiming for — and the core business goal — constantly in mind. I've seen it many times, and fallen into this trap myself: in the midst of a creative problem-solving process, the original goal gets lost, and the solution you land on is "wonderful" — but doesn't actually get you where you need to go.
-2. Different decisions carry different levels of consequences, and often "we can fix a mistake in just a few hours. In other cases, the consequences can put the product or the entire business at risk" [4]. For high-stakes decisions, it's better to make them in the morning, when your "mental fuel" or "psychic energy" [5] is at its fullest.
+2. Different decisions carry different levels of consequences, and often "we can fix a mistake in just a few hours. In other cases, the consequences can put the product or the entire business at risk"[^4]. For high-stakes decisions, it's better to make them in the morning, when your "mental fuel" or "psychic energy"[^5] is at its fullest.
 
 ## 3. Making Decisions Alone
 
@@ -61,8 +61,8 @@ The opposite extreme is making important product decisions unilaterally, without
 
 **How to fix it:**
 
-1. Don't be shy about discussing problems and solutions with colleagues. Set your professional ego aside. Good advice can only help you — and there's nothing wrong with turning to people who have relevant experience and have already navigated situations like yours. Those people aren't just your managers; often they're people in operational roles who have more hands-on experience with these issues than your boss does [6]. Moreover, when decisions are made collaboratively — and disagreements are resolved through testing and open discussion — a PM signals to the team that their input matters, which contributes to a healthy working environment [4].
-2. Keep in mind that any help is only good in moderation. Don't shift decision-making responsibility onto your colleagues or delegate away your own authority. "Unnecessary help is harmful — that is, if I ask someone for help in dealing with circumstances I should handle myself, I seriously damage my belief in my own abilities" [3]. This is worth reflecting on: how do you strike the balance between accepting help and remaining independent in your work?
+1. Don't be shy about discussing problems and solutions with colleagues. Set your professional ego aside. Good advice can only help you — and there's nothing wrong with turning to people who have relevant experience and have already navigated situations like yours. Those people aren't just your managers; often they're people in operational roles who have more hands-on experience with these issues than your boss does[^6]. Moreover, when decisions are made collaboratively — and disagreements are resolved through testing and open discussion — a PM signals to the team that their input matters, which contributes to a healthy working environment[^4].
+2. Keep in mind that any help is only good in moderation. Don't shift decision-making responsibility onto your colleagues or delegate away your own authority. "Unnecessary help is harmful — that is, if I ask someone for help in dealing with circumstances I should handle myself, I seriously damage my belief in my own abilities"[^3]. This is worth reflecting on: how do you strike the balance between accepting help and remaining independent in your work?
 
 ## 4. Not Going All In
 
@@ -74,7 +74,7 @@ I've met many specialists who were sold on the "romance of product management" t
 
 So it's worth asking yourself: "Is this actually what I want to be doing right now — with full commitment and 200% engagement? Or not?" If not — don't waste your time; go find what inspires you.
 
-And if the answer is yes, then remember: "Your work must have three qualities: it should be something you have a natural aptitude for, something you find deeply interesting, and something that gives you the opportunity to do great work" [7].
+And if the answer is yes, then remember: "Your work must have three qualities: it should be something you have a natural aptitude for, something you find deeply interesting, and something that gives you the opportunity to do great work"[^7].
 
 **How to fix it:**
 
@@ -87,7 +87,7 @@ And if the answer is yes, then remember: "Your work must have three qualities: i
 
 What sets great managers apart is a low tolerance for bureaucracy and formalism. Many people write documentation because "that's what you do" — not because it helps them think through requirements more carefully. They stick to "the rules" even when those rules slow down product development, rather than finding informal ways to get things done.
 
-In short — they're afraid to break rules someone set up somewhere along the way, or they simply don't notice opportunities to improve those rules. In doing so, they limit their ability to find new, effective approaches to problems. Paul Graham has noted that one of the hallmarks of great work is "informality. Informality means focusing on what matters, not what doesn't." [7]
+In short — they're afraid to break rules someone set up somewhere along the way, or they simply don't notice opportunities to improve those rules. In doing so, they limit their ability to find new, effective approaches to problems. Paul Graham has noted that one of the hallmarks of great work is "informality. Informality means focusing on what matters, not what doesn't."[^7]
 
 **How to fix it:**
 
@@ -103,13 +103,13 @@ Writing coherent, well-structured prose is harder than drawing a few boxes and c
 **How to fix it:**
 
 1. Default to the simplest tools so you can focus on content rather than presentation. Don't count on an impressive-looking format to solve the problem — it's more likely to distract from it. Use a sheet of paper or a plain text document with no unnecessary elements or graphics.
-2. Let principles from adjacent engineering fields — more formal disciplines — guide your day-to-day product work. "Less is more" [10] from software development, for instance. Or "KISS (Keep It Short and Simple)" — a principle that originated in U.S. Navy engineering culture and found a very comfortable home in software development and UX design.
+2. Let principles from adjacent engineering fields — more formal disciplines — guide your day-to-day product work. "Less is more"[^10] from software development, for instance. Or "KISS (Keep It Short and Simple)" — a principle that originated in U.S. Navy engineering culture and found a very comfortable home in software development and UX design.
 
 ## 7. Not Talking to Users
 
 I often encounter product managers who don't independently study the users of the product they're building. Some don't use their own product and don't talk to users at all — even when the company has dedicated UX researchers or even entire research teams who are ready to help organize the process or offer guidance.
 
-A few years ago, I read an article called "From Managing Products To Managing Product Managers" [11] that significantly shaped how I approach new products. The author gives a brilliant piece of advice to junior PMs: "A new product manager should know the product's users better than any other employee within the first three months on the job."
+A few years ago, I read an article called "From Managing Products To Managing Product Managers"[^11] that significantly shaped how I approach new products. The author gives a brilliant piece of advice to junior PMs: "A new product manager should know the product's users better than any other employee within the first three months on the job."
 
 Understanding users allows you to become their advocate and make decisions grounded in the real problems and needs of the people who actually use the product. This is especially important for managers who've recently joined a team or taken on a new product. Without it, a PM starts making decisions based on their own — or someone else's — assumptions, and that's toxic for the product.
 
@@ -158,12 +158,10 @@ Refusing to do anything on autopilot — never executing a task without thinking
 
 **How to fix it:**
 
-1. Don't allow yourself to simply execute tasks handed down by others. "If you ever do great work, it will probably be your own project" [7].
+1. Don't allow yourself to simply execute tasks handed down by others. "If you ever do great work, it will probably be your own project"[^7].
 2. Be independent. Analyze the goals you're given, work toward achieving them, and find your own ways to do so — even if your early attempts aren't the best.
 3. Never rush into executing a task without thinking it through. Give yourself time to understand it properly, and don't let anyone rush you when you know you haven't fully grasped what's being asked.
 4. Never propose solutions you haven't thought through yourself — even if someone hands you a ready-made answer on a silver platter. Always rely on your own judgment, and don't doubt your ability to get there.
-
----
 
 No one walks into a profession and succeeds from day one. Experience, skill, knowledge, and ability are built up gradually — through trial and error that, if you're willing, you can correct and learn from. The road is made by walking.
 
@@ -171,26 +169,24 @@ Never lose heart, and always remember: nothing is impossible — because "the im
 
 ## References
 
-[1] David Allen. *Getting Things Done: The Art of Stress-Free Productivity.*
+[^1]: David Allen. *Getting Things Done: The Art of Stress-Free Productivity.*
 
-[2] Maxim Dorofeev. *Jedi Techniques: How to Train Your Monkey, Empty Your Inbox, and Preserve Your Mental Fuel.* (Russian-language productivity book)
+[^2]: Maxim Dorofeev. *Jedi Techniques: How to Train Your Monkey, Empty Your Inbox, and Preserve Your Mental Fuel.* (Russian-language productivity book)
 
-[3] Types of decision-making fears drawn from Giorgio Nardone's *Страх принятия решений. Как найти мужество, чтобы сделать выбор* (the Russian edition of his book on overcoming the fear of making decisions).
+[^3]: Types of decision-making fears drawn from Giorgio Nardone's *Страх принятия решений. Как найти мужество, чтобы сделать выбор* (the Russian edition of his book on overcoming the fear of making decisions).
 
-[4] Based on Marty Cagan's article on product decision-making, "Coaching – Decisions," published on the SVPG blog.
+[^4]: Based on Marty Cagan's article on product decision-making, "Coaching – Decisions," published on the SVPG blog.
 
-[5] Based on Arnold Modell's article "The Concept of Psychic Energy," published in the *Journal of the American Psychoanalytic Association*. This author is, to my knowledge, the first to have introduced the term "psychic energy."
+[^5]: Based on Arnold Modell's article "The Concept of Psychic Energy," published in the *Journal of the American Psychoanalytic Association*. This author is, to my knowledge, the first to have introduced the term "psychic energy."
 
-[6] Based on the business novel by Dennis Bakke, *The Decision Maker: Unlock the Potential of Everyone in Your Organization, One Decision at a Time.* A wonderful short story about building a company culture where everyone makes decisions — what I'd call a "product culture."
+[^6]: Based on the business novel by Dennis Bakke, *The Decision Maker: Unlock the Potential of Everyone in Your Organization, One Decision at a Time.* A wonderful short story about building a company culture where everyone makes decisions — what I'd call a "product culture."
 
-[7] Based on Paul Graham's essay "How to Do Great Work," which I'd recommend to anyone starting out in any field.
+[^7]: Based on Paul Graham's essay "How to Do Great Work," which I'd recommend to anyone starting out in any field.
 
-[8] Quote from Theodor Fontane's novel *Der Stechlin.*
+[^9]: Based on Nobel laureate Daniel Kahneman's *Thinking, Fast and Slow.*
 
-[9] Based on Nobel laureate Daniel Kahneman's *Thinking, Fast and Slow.*
+[^10]: Based on the chapter "The Rise of Worse is Better" from Richard P. Gabriel's *Lisp: Good News, Bad News, How to Win Big.*
 
-[10] Based on the chapter "The Rise of Worse is Better" from Richard P. Gabriel's *Lisp: Good News, Bad News, How to Win Big.*
+[^11]: Refers to the article "From Managing Products To Managing Product Managers" by Chris Jones, co-author of *Empowered: Ordinary People, Extraordinary Products*, published on the SVPG blog.
 
-[11] Refers to the article "From Managing Products To Managing Product Managers" by Chris Jones, co-author of *Empowered: Ordinary People, Extraordinary Products*, published on the SVPG blog.
-
-[12] Based on Theo Compernolle's *BrainChains: Discover Your Brain, to Unleash Its Full Potential in a Hyperconnected, Multitasking World.*
+[^12]: Based on Theo Compernolle's *BrainChains: Discover Your Brain, to Unleash Its Full Potential in a Hyperconnected, Multitasking World.*

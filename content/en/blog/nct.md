@@ -1,5 +1,5 @@
 +++
-source_hash = "687460d916ea"
+source_hash = "444c53337403a488422fb6c2d39ff689683fb83d7738f1b653120788ce873475"
 title = "The Evolution of Goal-Setting Frameworks: From OKR to NCT"
 slug = "nct"
 date = "2024-08-24T15:17:01+03:00"
@@ -8,9 +8,9 @@ categories = ["strategy"]
 telegram_post = 45
 +++
 
-I came across an interesting approach to goal-setting — NCT (Narratives, Commitments, Tasks) by Ravi Mehta [1]. What makes it compelling is that it positions itself as an alternative to OKR and could be genuinely useful for many product teams. Before diving into NCT, let's take a quick look at the history of goal-setting frameworks.
+I came across an interesting approach to goal-setting — NCT (Narratives, Commitments, Tasks) by Ravi Mehta[^1]. What makes it compelling is that it positions itself as an alternative to OKR and could be genuinely useful for many product teams. Before diving into NCT, let's take a quick look at the history of goal-setting frameworks.
 
-In 1954, Peter Drucker introduced the concept of MBO (Management by Objectives) in his book *The Practice of Management* [2]. The core idea is to set goals at the company level and cascade them down to individuals at each level. Many services within Yandex, for example, still use a similar approach today. There's even a dedicated internal tool for cascading goals called "Golzyatnitsa."
+In 1954, Peter Drucker introduced the concept of MBO (Management by Objectives) in his book *The Practice of Management*[^2]. The core idea is to set goals at the company level and cascade them down to individuals at each level. Many services within Yandex, for example, still use a similar approach today. There's even a dedicated internal tool for cascading goals called "Golzyatnitsa."
 
 In 1981, George Doran formulated the SMART goal-setting framework and published it in a [journal article](https://community.mis.temple.edu/mis0855002fall2015/files/2015/10/S.M.A.R.T-Way-Management-Review.pdf). My guess is that before SMART gained popularity, goals were described something like: *Person X must complete the following list of tasks by a specific date.*
 
@@ -27,18 +27,18 @@ I've tried applying OKR at the team level and ran into a number of challenges, i
 1. OKR dogma says: "No metric, no Key Result." But in practice, it's perfectly normal for a project to still be in development at the end of a quarter — meaning the work done hasn't yet moved any product or business metrics. My workaround was to use traditional goal-setting for products in the launch stage and OKR for products in the growth stage. That's not very convenient when you're managing a portfolio of products at different lifecycle stages.
 2. OKR doesn't really help a manager or team forecast and build a roadmap for shipping new features. Without that, it's hard to keep the team focused and manage stakeholder expectations.
 
-In his NCT framework, Ravi Mehta proposes the following improvements over OKR [3]:
+In his NCT framework, Ravi Mehta proposes the following improvements over OKR[^3]:
 
-- Add more context to the Objective in the form of a **Narrative** — explaining why the goal matters and how it connects to strategy.
-- Make Key Results mandatory commitments. Ravi Mehta calls them **Commitments**, and they can be framed either quantitatively (as prescribed in OKR) or in a project delivery format ("Launch-It").
-- For each commitment, work with the team to develop an execution plan and build a roadmap of **Tasks**. Unlike commitments, the plan and tasks can be adjusted along the way.
+- Add more context to the Objective in the form of a Narrative — explaining why the goal matters and how it connects to strategy.
+- Make Key Results mandatory commitments. Ravi Mehta calls them Commitments, and they can be framed either quantitatively (as prescribed in OKR) or in a project delivery format ("Launch-It").
+- For each commitment, work with the team to develop an execution plan and build a roadmap of Tasks. Unlike commitments, the plan and tasks can be adjusted along the way.
 
 I don't think Ravi Mehta invented something entirely new here — he's formalizing an approach that many teams already use intuitively. And it tends to stick much better than OKR. Worth knowing about.
 
 ## Notes
 
-[1] The Reforge blog has a detailed [article](https://www.reforge.com/blog/set-better-goals-with-ncts-not-okrs) by [Ravi Mehta](https://www.linkedin.com/in/ravimehta/), former CPO at Tinder and Product Director at Facebook, on NCT.
+[^1]: The Reforge blog has a detailed [article](https://www.reforge.com/blog/set-better-goals-with-ncts-not-okrs) by [Ravi Mehta](https://www.linkedin.com/in/ravimehta/), former CPO at Tinder and Product Director at Facebook, on NCT.
 
-[2] *The Practice of Management* is available in Russian, published by [Mann, Ivanov and Ferber](https://www.mann-ivanov-ferber.ru/catalog/product/praktika_menedzhmenta/).
+[^2]: *The Practice of Management* is available in Russian, published by [Mann, Ivanov and Ferber](https://www.mann-ivanov-ferber.ru/catalog/product/praktika_menedzhmenta/).
 
-[3] Here's a [template](https://docs.google.com/spreadsheets/d/1mEerL6kASHtONDvF_qEptDQ0e0r1EuWoxlGfl5zzNss/edit#gid=2125365906) with a sample NCT goal description from Ravi Mehta, for reference.
+[^3]: Here's a [template](https://docs.google.com/spreadsheets/d/1mEerL6kASHtONDvF_qEptDQ0e0r1EuWoxlGfl5zzNss/edit#gid=2125365906) with a sample NCT goal description from Ravi Mehta, for reference.

@@ -1,5 +1,5 @@
 +++
-source_hash = "c1899c9c267e92c4bbb5b840a5b430e138f7cfbe0c8b4e60cf7bfbdd2fcb6378"
+source_hash = "2a36c49489dc2b94b0aa78b78368e139e2294065dad97cb474b4df7b0c5c1e6b"
 title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
@@ -56,11 +56,11 @@ df = pd.read_csv(dataset_path, parse_dates=['date'])
 
 ## Calculating Classic Retention
 
-Now let's write a *calculate_classic_retention* function that takes a DataFrame and computes Classic Retention for the days we specify. We'll pass the DataFrame and a list of target days as inputs.
+Now let's write a `calculate_classic_retention` function that takes a DataFrame and computes Classic Retention for the days we specify. We'll pass the DataFrame and a list of target days as inputs.
 
-To do the calculations, we need to create two additional columns in the DataFrame: *start_date* — the date of the user's first product visit; *day* — the number of days between the first visit and the current visit.
+To do the calculations, we need to create two additional columns in the DataFrame: `start_date` — the date of the user's first product visit; `day` — the number of days between the first visit and the current visit.
 
-To calculate *Retention for Day N*, we simply count the number of rows in the *day* column (with unique *user_id* values) and divide by the total number of users in the cohort.
+To calculate *Retention for Day N*, we simply count the number of rows in the `day` column (with unique `user_id` values) and divide by the total number of users in the cohort.
 
 ```python
 def calculate_classic_retention(df: pd.DataFrame, days: list) -> list:
@@ -86,7 +86,7 @@ def calculate_classic_retention(df: pd.DataFrame, days: list) -> list:
     return classic_retention
 ```
 
-To visualize the Retention curve, I wrote a *plt_show* function. It takes *days* — a list of day numbers; *retention* — a list of computed Retention values for those days; and *xs* — a list of day indices to highlight on the chart.
+To visualize the Retention curve, I wrote a `plt_show` function. It takes `days` — a list of day numbers; `retention` — a list of computed Retention values for those days; and `xs` — a list of day indices to highlight on the chart.
 
 ```python
 def plt_show(days: list, retention: list, xs: list, title: str):
@@ -118,7 +118,7 @@ We can see that 70% of users returned the day after their first visit, 36% came 
 
 ## Calculating Rolling Retention
 
-Now let's write a *calculate_rolling_retention* function. Its logic is almost identical to the previous one — with one key difference: we now select records where the day number is greater than or equal to the day we're calculating the metric for.
+Now let's write a `calculate_rolling_retention` function. Its logic is almost identical to the previous one — with one key difference: we now select records where the day number is greater than or equal to the day we're calculating the metric for.
 
 Here's that condition:
 

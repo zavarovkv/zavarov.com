@@ -37,6 +37,14 @@ Do not edit generated files casually; `content/en/_index.md` is maintained by ha
 The restored bookshelf and its reviews were translated and reviewed locally.
 They carry the same validated `source_hash` metadata and build without an API.
 
+An explicitly requested structure-only cleanup may reuse the existing English
+prose without an API call. Review each RU/EN pair's headings, lists, paragraphs,
+footnotes and media; preserve translated captions, code comments and conventional
+English book-title italics. Verify links, source code and front matter before
+updating the reviewed file's `source_hash`; never advance hashes just to suppress
+pending translations. Use native Markdown footnotes in both languages and check
+that every reference resolves to the intended source.
+
 Translation validates TOML and preserves every front-matter field except `title` and `description`. A failed response leaves the entire batch unchanged. Local translation commands fail by default; CI uses `--allow-stale` to warn and build with available translations when credentials are missing, the API fails, or a response is rejected. No EN files or hashes change in this fallback, so pending updates are retried on the next run. New posts may temporarily be available only in Russian. Source parsing, file writes, Hugo, and link checks remain strict.
 
 Generated EN files whose RU sources were removed are pruned during a full successful run; manual pages and `_index.md` files are preserved. Pruning is also deferred if a translation batch fails.
