@@ -36,6 +36,14 @@ ignoreErrors = ["error-disable-taxonomy"]
 [permalinks]
   blog = "/:slug/"
 
+# Keep analytical prose in lining figures in both languages without editing
+# generated translations. Other article paragraphs use proportional old-style figures.
+[[cascade]]
+  [cascade.params]
+    proseNumerals = false
+  [cascade.target]
+    path = "/blog/{retention,template-abt,template-diagrams}"
+
 # Explicit mounts select each language's content and retain site-owned assets
 # and layouts alongside the theme.
 [module]
@@ -109,6 +117,8 @@ ignoreErrors = ["error-disable-taxonomy"]
         about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the Product Code Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
+  hangingQuotes = true
+  proseNumerals = true
   rememberLanguage = true
   showSearchButton = true
   authorURL = "https://zavarov.com/"
