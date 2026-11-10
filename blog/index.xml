@@ -3,22 +3,23 @@
 &lt;p&gt;Как бы ни хотелось, не существует универсального шаблона продуктовой стратегии, да и вообще никакого не существует. Формат зависит от зрелости компании и сотрудников, структуры команды, бизнес-модели, бизнес-стратегии и еще огромного количества факторов.&lt;/p&gt;
 &lt;p&gt;Именно поэтому существует множество определений продуктовой стратегии — одно абстрактнее другого. Авторы известных книг формулируют красивые принципы, но между ними и реальной работой — пропасть. Вспомним хотя бы «Good Strategy, Bad Strategy» — принципы звучат убедительно, но попробуйте приземлить их в продуктовый процесс. Если у вас получилось — напишите, обсудим.&lt;/p&gt;</description></item><item><title>Второй мозг: PARA × Obsidian × Granola × Claude</title><link>https://zavarov.com/second-brain/</link><guid>https://zavarov.com/second-brain/</guid><pubDate>Sat, 07 Mar 2026 00:00:00 +0300</pubDate><description>&lt;p&gt;Несколько лет назад я &lt;a href="https://zavarov.com/zettelkasten/"&gt;организовывал&lt;/a&gt; заметки по методу Zettelkasten в VS Code, с тех пор все поменялось, во многом из-за экспоненциального развития LLM и agentic AI. Хочу поделиться свежим стеком инструментов, которые помогают снизить когнитивную нагрузку и не терять информацию в условиях дефицита времени: &lt;span class="beauty-emphasis"&gt;PARA × Obsidian × Granola × Claude&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Статья называется «Второй мозг», а значит, мы будем строить систему, напоминающую структуру мозга человека.&lt;/p&gt;
+&lt;figure class="article-diagram article-diagram-wide"&gt;
 &lt;pre class="mermaid"&gt;
 graph LR
 S@{ shape: text, label: "Звук" }
 T@{ shape: text, label: "Текст" }
 I@{ shape: text, label: "Изображения" }
-S e1@--&gt; A[**Слуховая кора**
-*Захватывает и обрабатывает звук*]
-T e2@--&gt; B[**Зрительная кора**
-*Захватывает и обрабатывает визуальные образы*]
+S e1@--&gt; A["`**Слуховая кора**
+*Захватывает и обрабатывает звук*`"]
+T e2@--&gt; B["`**Зрительная кора**
+*Захватывает и обрабатывает визуальные образы*`"]
 I e3@--&gt; B
-A e4@--&gt; C[**Гиппокамп**
-*Маршрутизирует и индексирует информацию*]
+A e4@--&gt; C["`**Гиппокамп**
+*Маршрутизирует и индексирует информацию*`"]
 B e5@--&gt; C
 C e6@--&gt; mem
-mem e7@--&gt; F[**Префронтальная кора**
-*Анализ, планирование, принятие решений*]
+mem e7@--&gt; F["`**Префронтальная кора**
+*Анализ, планирование, принятие решений*`"]
 e1@{ animate: true, curve: linear }
 e2@{ animate: true, curve: linear }
 e3@{ animate: true, curve: linear }
@@ -26,12 +27,13 @@ e4@{ animate: true, curve: linear }
 e5@{ animate: true, curve: linear }
 e6@{ animate: true, curve: linear }
 e7@{ animate: true, curve: linear }
-subgraph mem[**Память**]
+subgraph mem["`**Память**`"]
 direction TB
-short[**Кратковременная**] &lt;--&gt; long[**Долговременная**]
+short["`**Кратковременная**`"] &lt;--&gt; long["`**Долговременная**`"]
 end
-&lt;/pre&gt;
-&lt;p class="caption beauty-caption"&gt;Элементы структуры мозга&lt;/p&gt;</description></item><item><title>Люди, которые пишут интересно</title><link>https://zavarov.com/people/</link><guid>https://zavarov.com/people/</guid><pubDate>Mon, 15 Sep 2025 15:17:01 +0300</pubDate><description>&lt;p&gt;Хочу поделиться подборкой интернет-людей, которые интересно пишут на около продуктовые темы и которых полезно читать. Я часто возвращаюсь к тем или иным статьям из этого списка авторов, особенно в моменты поиска творческого вдохновения.&lt;/p&gt;
+&lt;/pre&gt;&lt;figcaption class="beauty-caption"&gt;Элементы структуры мозга&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;PARA (Projects–Areas–Resources–Archives)&lt;/strong&gt; — простая модель организации информации, которую сформулировал &lt;a href="https://www.youtube.com/@TiagoForte" target="_blank" rel="noopener noreferrer"&gt;Тиаго Форте&lt;/a&gt;. Суть — разделить все на четыре директории: актуальные Projects, долгосрочные Areas, Resources как хранилище документов и Archives с завершенными проектами. Тиаго написал целую &lt;a href="https://www.amazon.com/PARA-Method-Simplify-Organize-Digital/dp/1668045567" target="_blank" rel="noopener noreferrer"&gt;книгу&lt;/a&gt; об этой модели в 2023 году, но в 2026 — продуктивнее узнать детали у LLM.&lt;/p&gt;</description></item><item><title>Люди, которые пишут интересно</title><link>https://zavarov.com/people/</link><guid>https://zavarov.com/people/</guid><pubDate>Mon, 15 Sep 2025 15:17:01 +0300</pubDate><description>&lt;p&gt;Хочу поделиться подборкой интернет-людей, которые интересно пишут на около продуктовые темы и которых полезно читать. Я часто возвращаюсь к тем или иным статьям из этого списка авторов, особенно в моменты поиска творческого вдохновения.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.svpg.com/team/marty-cagan/" target="_blank" rel="noopener noreferrer"&gt;Marty Cagan&lt;/a&gt; — культовый человек, автор серии популярных в продуктовом мире книг: Inspired, Empowered, Transformed. Основатель SVPG и активный автор блога о продакт-менеджменте. Его идеи о product discovery и empowered teams стали стандартом индустрии.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.paulgraham.com/articles.html" target="_blank" rel="noopener noreferrer"&gt;Paul Graham&lt;/a&gt; — со-основатель Y Combinator и автор замечательных эссе, которые остаются актуальными сквозь время. Пишет про стартапы, мышление и принятие решений — коротко, точно и без воды.&lt;/li&gt;
@@ -182,7 +184,8 @@ end
 &lt;p&gt;В интернете на англо-и ру- язычных ресурсах Zettelkästen начали обсуждать только в 2020 году после публикации статьи Дэвида Клира «&lt;a href="https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125" target="_blank" rel="noopener noreferrer"&gt;Zettelkasten — How One German Scholar Was So Freakishly Productive&lt;/a&gt;», русскоязычный перевод которой есть на &lt;a href="https://habr.com/en/post/508672/" target="_blank" rel="noopener noreferrer"&gt;habr&amp;rsquo;е&lt;/a&gt;. И это не смотря на то, что Луман никогда не делал секретов из своего уникального метода управления знаниями, подробное описание которого в оригинале можно найти в немецких журналах 1981 — 1987 годов (&lt;a href="https://www.uni-bielefeld.de/soz/luhmann-archiv/pdf/jschmidt_zettelkasten-als-uberraschungsgenerator.pdf" target="_blank" rel="noopener noreferrer"&gt;оригиналы на немецком&lt;/a&gt;).&lt;/p&gt;</description></item><item><title>Как провести ретроспективу для большой команды</title><link>https://zavarov.com/retrospective/</link><guid>https://zavarov.com/retrospective/</guid><pubDate>Sat, 12 Nov 2022 12:00:00 +0300</pubDate><description>&lt;p&gt;Ретроспектива — групповая рефлексия, инструмент непрерывного процесса совершенствования и культурных изменений в команде.&lt;/p&gt;
 &lt;p&gt;Но, обычно мы слышим про «ретро» в контексте некоторого мероприятия в конце спринтов при итеративной разработке. Однако, значимое большинство команд не придерживается ни scrum, ни итеративного подхода в создании it продуктов. Но это не повод отказываться ни от саморефлексии, ни от групповой рефлексии при достижении заданных проектных майлстоунов.&lt;/p&gt;
 &lt;p&gt;Ниже подробно описан план с таймингами из 8 шагов по проведению вовлеченного ретро для большой команды (10+ человек).&lt;/p&gt;
-&lt;img loading="lazy" src="https://zavarov.com/images/retro-cover.webp" alt="Ретроспектива" width="1024" height="598"&gt;</description></item><item><title>Шаблон дизайна A/B-теста</title><link>https://zavarov.com/template-abt/</link><guid>https://zavarov.com/template-abt/</guid><pubDate>Mon, 22 Aug 2022 12:00:00 +0300</pubDate><description>&lt;p&gt;Шаблон в Google Sheets для проектирования A/B-тестов. Помогает структурировать эксперимент до его запуска — от формулировки гипотезы до расчета продолжительности теста.&lt;/p&gt;
+&lt;figure class="article-image article-image-wide" style="--image-natural-width: 1024px"&gt;&lt;img src="https://zavarov.com/images/retro-cover.webp" alt="Ретроспектива" loading="lazy" decoding="async" width="1024" height="598" /&gt;
+&lt;/figure&gt;</description></item><item><title>Шаблон дизайна A/B-теста</title><link>https://zavarov.com/template-abt/</link><guid>https://zavarov.com/template-abt/</guid><pubDate>Mon, 22 Aug 2022 12:00:00 +0300</pubDate><description>&lt;p&gt;Шаблон в Google Sheets для проектирования A/B-тестов. Помогает структурировать эксперимент до его запуска — от формулировки гипотезы до расчета продолжительности теста.&lt;/p&gt;
 &lt;p&gt;&lt;a class="button beauty-button" target="_blank" href="https://docs.google.com/spreadsheets/d/1zZbdA6IfF65Vg-puwzFS8QMacBDei5nz2Hs3N8kXq_w/edit?usp=sharing"&gt;Скачать шаблон&lt;/a&gt;&lt;/p&gt;
 &lt;img loading="lazy" src="https://zavarov.com/images/template-abt.webp" alt="Шаблон дизайна A/B-теста" width="1440" height="916"&gt;
 &lt;h2 id="что-внутри"&gt;Что внутри&lt;a class="heading-anchor" href="#%d1%87%d1%82%d0%be-%d0%b2%d0%bd%d1%83%d1%82%d1%80%d0%b8" aria-label="Скопировать ссылку на раздел"&gt;&lt;svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M6.5 9.5a3.5 3.5 0 0 0 5 0l2-2a3.5 3.5 0 0 0-5-5l-1 1"/&gt;&lt;path d="M9.5 6.5a3.5 3.5 0 0 0-5 0l-2 2a3.5 3.5 0 0 0 5 5l1-1"/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
