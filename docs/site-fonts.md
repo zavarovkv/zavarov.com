@@ -1,4 +1,4 @@
-# Шрифты блога: ALS Story
+# Шрифты блога: ALS Story и ALS Sourdine
 
 Подключение ALS Story Regular, Italic и Bold подготовлено для блога и локальной примерки. Владелец подтвердил
 лицензию Art. Lebedev Studio для личного сайта/блога. Применимость лицензии к конкретным
@@ -51,20 +51,48 @@ hugo server --config config.toml,config/fonts/als-story.toml --port 1315
 Неиспользованные private-fonts assets в обычную сборку не публикуются. Для проверки используйте
 чистый output-каталог: Hugo не удаляет старые ресурсы предыдущей сборки автоматически.
 
+### Сурдин Medium для H1
+
+Для локального запуска добавить оригинальный `ALS Sourdine Medium.otf` как
+`assets/private-fonts/als-sourdine/medium.otf` и подключить второй профиль:
+
+```sh
+hugo server --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml --port 1315
+```
+
+`config/fonts/sourdine.toml` выбирает ALS Sourdine Medium 500 только для H1. Обычный
+текст, подзаголовки, меню и названия статей в списках сохраняют ALS Story. Размеры H1
+44/32 px, интерлиньяж 1.15, отступ до текста 24 px и цвет задает тема через Beauty.css.
+Межбуквенный интервал H1 — 0 на экранах шире 768 px и −0.01em на мобильных.
+Основной текст светлой темы использует `#333`, заголовки — `#222`. Исходный OTF
+не меняется; его SHA-256 — `d887616077a78c0e9b77a6d098f4f11214d0813b7723e2c3fa231b83d251101b`.
+Файл исключен из Git вместе с остальными приватными шрифтами.
+
+Production подключает оба профиля. Комплект `ALS_STORY_PART_*` содержит только три
+начертания Story, а `ALS_SOURDINE_PART_*` — отдельный файл Medium; они проверяются
+и восстанавливаются независимо, без замены уже настроенных секретов Story.
+
 ## Доставка в production
 
 Доставка настроена через GitHub Actions Secrets и переключатель `BLOG_FONT=als-story`. Публичный Git содержит только
-код, описание семейства и SHA-256 оригинальных файлов (`scripts/als-story-manifest.json`).
+код, описание семейств и SHA-256 оригинальных файлов (`scripts/als-story-manifest.json`
+и `scripts/als-sourdine-manifest.json`).
 
 1. `node scripts/prepare-site-fonts.mjs --pack` проверяет файлы и записывает четыре части
    сжатого комплекта в `.local/font-secrets/part-1` ... `part-4`, не печатая их содержимое.
 2. Загрузить части через stdin в четыре repository secrets `ALS_STORY_PART_1` ...
    `ALS_STORY_PART_4` репозитория `zavarovkv/zavarov.com`. Каждая часть меньше лимита GitHub
    48 КБ. Например: `gh secret set ALS_STORY_PART_1 --repo zavarovkv/zavarov.com < .local/font-secrets/part-1`.
-3. После загрузки полного комплекта установить repository variable `BLOG_FONT=als-story`.
+3. `node scripts/prepare-site-fonts.mjs --pack als-sourdine` записывает две части
+   комплекта Medium в `.local/sourdine-secrets/part-1` и `part-2`. Загрузить их через stdin
+   в `ALS_SOURDINE_PART_1` и `ALS_SOURDINE_PART_2` того же репозитория, например:
+   `gh secret set ALS_SOURDINE_PART_1 --repo zavarovkv/zavarov.com < .local/sourdine-secrets/part-1`.
+   Файлы шрифтов не меняются; разбиение нужно для лимита размера секретов.
+4. После загрузки обоих комплектов установить repository variable `BLOG_FONT=als-story`.
    До этого переключателя production остается на Inter.
-4. Следующая публикация main восстановит файлы, проверит весь комплект по SHA-256 и только
-   затем соберет сайт с `config/fonts/als-story.toml`. Отсутствующий секрет или несовпавший
+5. Следующая публикация main восстановит оба комплекта, проверит их по SHA-256 и только
+   затем соберет сайт с `config/fonts/als-story.toml,config/fonts/sourdine.toml` поверх
+   `config.toml`. Отсутствующий секрет или несовпавший
    файл останавливает публикацию, не заменяя сайт сборкой с другим шрифтом.
 
 Секреты не передаются PR-сборкам и тестам; PR проверяется с Inter. В готовый сайт попадут
@@ -76,8 +104,9 @@ hugo server --config config.toml,config/fonts/als-story.toml --port 1315
 определяется лицензией, а не секретностью CSS или адреса файла.
 
 Для возврата на Inter удалить `BLOG_FONT` и запустить новую публикацию. Секреты после этого
-можно удалить отдельно. При смене комплекта шрифтов обновить manifest и все четыре секрета
-согласованно; не менять SHA-256 ради обхода проверки чужих или непроверенных файлов.
+можно удалить отдельно. При смене одного семейства обновить его manifest и все части
+соответствующего комплекта согласованно; не менять SHA-256 ради обхода проверки чужих
+или непроверенных файлов.
 
 ## Особенности цифр и кавычек
 

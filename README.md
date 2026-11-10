@@ -40,7 +40,24 @@ npx playwright install chromium webkit
 npm run test:browser         # Isolated browser fixtures
 ```
 
-For licensed ALS Story, follow the [font profile guide](docs/site-fonts.md). Private font files stay out of Git; CI restores them only for the opted-in production build. Inter remains the default.
+## Fonts
+
+- **ALS Story** supplies body text and article-list links at 400, real italic at 400,
+  and subheadings and bold emphasis at 700.
+- **ALS Sourdine Medium 500** supplies H1 at 44 px desktop / 32 px mobile, with
+  normal desktop letter spacing and compact mobile tracking. Lists and navigation keep Story.
+- **Inter** is the fallback setup when no private font profile is selected.
+
+Font files stay outside Git in `assets/private-fonts/`. The site owns licensed assets
+and family choices; Hugo Mini loads them and Beauty.css provides shared typography.
+Production restores both families from separate, checksum-verified CI secret bundles.
+The font files are never committed to the theme or the blog repository.
+
+After preparing the files from the [font profile guide](docs/site-fonts.md), preview both:
+
+```bash
+hugo server --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml --port 1315
+```
 
 ## Ownership
 

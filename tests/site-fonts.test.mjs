@@ -21,3 +21,17 @@ test('missing secrets and unrecognized font bytes fail before publication', () =
   assert.throws(() => unpackFonts(parts, { ...manifest, 'regular.otf': 'wrong' }), /verification failed/);
   assert.throws(() => packFonts({ ...files, '../unexpected.otf': files['bold.otf'] }, manifest));
 });
+
+test('the H1 font has a separate verified bundle and cannot satisfy body font secrets', () => {
+  const sourdineFiles = {'medium.otf': Buffer.from('OTTO-test-fixture-sourdine-medium')};
+  const sourdineManifest = {'medium.otf': createHash('sha256').update(sourdineFiles['medium.otf']).digest('hex')};
+  const parts = packFonts(sourdineFiles, sourdineManifest, 'als-sourdine');
+  assert.equal(parts.length, 2);
+  assert.ok(parts.every(p => p.length > 0 && p.length <= 47000));
+  assert.deepEqual(unpackFonts(parts, sourdineManifest, 'als-sourdine'), sourdineFiles);
+  assert.throws(() => unpackFonts(parts.slice(1), sourdineManifest, 'als-sourdine'), /All 2/);
+  assert.throws(() => unpackFonts(parts, {'medium.otf':'wrong'}, 'als-sourdine'), /verification failed/);
+  assert.throws(() => unpackFonts(parts, manifest), /All 4/);
+  assert.throws(() => packFonts(files, manifest, 'als-sourdine'), /Unexpected font bundle entries/);
+  assert.throws(() => packFonts(sourdineFiles, sourdineManifest, '../unexpected'), /Unknown site font profile/);
+});

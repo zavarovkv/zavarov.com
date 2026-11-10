@@ -1,0 +1,8 @@
+# Optional H1 profile layered after the site's body font configuration.
+[params.fonts]
+titleWeight = 500
+
+[params.fonts.title]
+family = "ALS Sourdine"
+source = "private-fonts/als-sourdine/medium.otf"
+preload = true

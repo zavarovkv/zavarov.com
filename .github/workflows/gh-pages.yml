@@ -131,13 +131,20 @@ jobs:
           ALS_STORY_PART_4: ${{ secrets.ALS_STORY_PART_4 }}
         run: node scripts/prepare-site-fonts.mjs --restore
 
+      - name: Restore licensed H1 font
+        if: vars.BLOG_FONT == 'als-story'
+        env:
+          ALS_SOURDINE_PART_1: ${{ secrets.ALS_SOURDINE_PART_1 }}
+          ALS_SOURDINE_PART_2: ${{ secrets.ALS_SOURDINE_PART_2 }}
+        run: node scripts/prepare-site-fonts.mjs --restore als-sourdine
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BLOG_FONT: ${{ vars.BLOG_FONT }}
         run: |
           if [ "$BLOG_FONT" = "als-story" ]; then
-            npm run build -- --config config.toml,config/fonts/als-story.toml
+            npm run build -- --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml
           else
             npm run build
           fi
@@ -164,7 +171,7 @@ jobs:
           BLOG_FONT: ${{ vars.BLOG_FONT }}
         run: |
           if [ "$BLOG_FONT" = "als-story" ]; then
-            BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml npm run test:browser
+            BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml npm run test:browser
           else
             npm run test:browser
           fi
