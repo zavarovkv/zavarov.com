@@ -13,17 +13,13 @@ Comparing the top edTech companies in the Russian internet market, I noticed an 
 
 ## Product EdTech Theorem #1
 
-{{< callout >}}
-The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, having deadlines leads to ↓ Revenue and ↑ Completion Rate.
-{{< /callout >}}
+<p class="beauty-lead">The absence of deadlines in an educational course leads to ↑ Revenue and ↓ Completion Rate (COR). Conversely, having deadlines leads to ↓ Revenue and ↑ Completion Rate.</p>
 
 It's a simple theorem, easily derived intuitively and confirmed by edTech managers. The practical takeaway for prospective students: in a self-paced course, you're less likely to finish and earn your certificate — and less likely to get a refund.
 
 Which gives us a direct corollary:
 
-{{< callout >}}
-In educational courses without deadlines, the number of refunds → 0.
-{{< /callout >}}
+<p class="beauty-lead">In educational courses without deadlines, the number of refunds → 0.</p>
 
 ## Type "A" Companies
 
@@ -39,7 +35,7 @@ The result: as student numbers grow, Revenue grows linearly — and so do variab
 
 These companies treat courses as a product business: minimize variable costs, maximize revenue, and try to attract as many students as possible by any means necessary.
 
-"Minimize costs" unravels like this: no student support team → no hard deadlines → minimal course completion → low NPS (0% on a good day) → very few new paying students coming in organically.
+"Minimize costs" unravels like this: no student support team → no hard deadlines → minimal course completion → low NPS (0% on a good day) → very few new paying students coming in organically.
 
 They set out to build a product business, even managed to drive variable costs to zero — but end up critically short on students to actually grow revenue.
 

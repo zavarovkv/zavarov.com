@@ -37,6 +37,17 @@ test('the H1 font has a separate verified bundle and cannot satisfy body font se
   assert.throws(() => packFonts(sourdineFiles, sourdineManifest, '../unexpected'), /Unknown site font profile/);
 });
 
+test('the quotation font round-trips independently and rejects missing or mismatched parts', () => {
+  const quoteFiles = {'regular.otf': Buffer.from('OTTO-test-fixture-mirta-regular')};
+  const quoteManifest = {'regular.otf': createHash('sha256').update(quoteFiles['regular.otf']).digest('hex')};
+  const parts = packFonts(quoteFiles, quoteManifest, 'als-mirta');
+  assert.equal(parts.length, 2);
+  assert.deepEqual(unpackFonts(parts, quoteManifest, 'als-mirta'), quoteFiles);
+  assert.throws(() => unpackFonts(parts.slice(1), quoteManifest, 'als-mirta'), /All 2/);
+  assert.throws(() => unpackFonts(parts, {'regular.otf': 'wrong'}, 'als-mirta'), /verification failed/);
+  assert.throws(() => unpackFonts(parts, manifest, 'als-sourdine'), /Unexpected font bundle entries/);
+});
+
 // The checked bundle contains ALSStory-Bold with OS/2 usWeightClass = 700.
 test('ALS Story registers the verified Bold face at 700', () => {
   const config = readFileSync(new URL('../config/fonts/als-story.toml', import.meta.url), 'utf8');

@@ -18,14 +18,19 @@ Though it's hard to argue that these are precisely the kinds of tasks handled by
 
 The funny thing is that half a century ago, Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book *Marketing Essentials*:
 
-{{< callout >}}
-What does the term "marketing" really mean? Most people mistakenly equate marketing with selling and advertising. Many are surprised to learn that selling is not even the most important part of marketing. Selling is only the tip of the marketing iceberg — and not the most critical part at that. If the marketer does a good job on other aspects of marketing — identifying consumer needs, developing suitable products, pricing them appropriately, and establishing an effective distribution system — those products will sell easily.
-{{< /callout >}}
+<figure class="beauty-quotation quotation-reading">
+  <blockquote>
+    <p><span class="beauty-hanging-open">“</span>What does the term ‘marketing’ really mean? Most people mistakenly equate marketing with selling and advertising. Many are surprised to learn that selling is not even the most important part of marketing. Selling is only the tip of the marketing iceberg — and not the most critical part at that.</p>
+    <p>If the marketer does a good job on other aspects of marketing — identifying consumer needs, developing suitable products, pricing them appropriately, and establishing an effective distribution system — those products will sell easily.”</p>
+  </blockquote>
+</figure>
 
 And a second quote:
 
-{{< callout >}}
-The core activities of marketing include: product development; research; establishing communication; pricing; and providing service to users.
-{{< /callout >}}
+<figure class="beauty-quotation quotation-reading">
+  <blockquote>
+    <p><span class="beauty-hanging-open">“</span>The core activities of marketing include: product development; research; establishing communication; pricing; and providing service to users.”</p>
+  </blockquote>
+</figure>
 
 So, fellow product managers — in Kotler's terminology, we are "marketing specialists," while our colleagues in marketing are "sales (promotion) specialists." Just don't tell them that, though, or they might get upset and take offense — and then you'll be left selling your own product all by yourself.

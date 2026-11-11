@@ -8,7 +8,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 | --- | --- |
 | Content | Russian articles and committed English translations; categories, pinned and hidden posts, homepage latest articles and New badges |
 | Reading | 720 px text column; opt-in images, diagrams and long code blocks up to 960 px sharing its left edge; 18/28 px desktop and 19/29 px mobile text; light, dark and system colors; dedicated print layout |
-| Typography | Build-time punctuation and spacing; optical headings and narrow-screen title hyphenation; [raised initials with two-line wrapping](themes/hugo-mini/docs/typography.md#drop-caps) in selected prose articles and substantial reviews, matched across RU/EN; image descriptions and source credits; footnotes with stable leading and desktop margin notes in all articles that have footnotes (endnotes on narrow screens and in print); new-tab destinations in article bodies; scalable link arrows; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
+| Typography | Shared RU/EN quotation styling through `editorialQuotes`, including native Markdown quotes, hanging opening marks and right-aligned attributions; `beauty-lead` for short author definitions and theorems; build-time punctuation and spacing; optical headings and narrow-screen title hyphenation; [raised initials with two-line wrapping](themes/hugo-mini/docs/typography.md#drop-caps) in selected prose articles and substantial reviews, matched across RU/EN; image descriptions and source credits; footnotes with stable leading and desktop margin notes in all articles that have footnotes (endnotes on narrow screens and in print); new-tab destinations in article bodies; scalable link arrows; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
 | Navigation | Stable menu widths with smooth desktop selection, mobile menu, heading links, back-to-top and language choice; Option/Alt + Left/Right moves between older/newer articles without wrapping |
 | Projects and books | Hugo Mini and Beauty.css project links with saved GitHub star counts; bilingual bookshelf and linked reviews |
 | Integrations | Lazy Telegram comments, saved reactions/views, optional sharing and analytics |
@@ -42,21 +42,25 @@ npm run test:browser         # Isolated browser fixtures
 
 ## Fonts
 
-- **ALS Story** supplies body text and article-list links at 400, real italic at 400,
+- **[ALS Story](https://www.artlebedev.ru/type/story/)** supplies body text and article-list links at 400, real italic at 400,
   and subheadings and emphasized text at Bold 700.
-- **ALS Sourdine Medium 500** supplies H1 at 44 px desktop / 32 px mobile, with
+- **[ALS Sourdine Medium 500](https://www.artlebedev.ru/type/sourdine/)** supplies H1 and selected drop caps, with H1 at 44 px desktop / 32 px mobile and
   normal desktop letter spacing and compact mobile tracking. Lists and navigation keep Story.
+- **[ALS Mirta Regular 400](https://www.artlebedev.ru/type/mirta/)** supplies block quotations
+  in the optional quote profile. Attributions retain Story; featured testimonials use
+  20/30 px on desktop and mobile in a column up to 640 px wide.
 - **Inter** is the fallback setup when no private font profile is selected.
 
 Font files stay outside Git in `assets/private-fonts/`. The site owns licensed assets
 and family choices; Hugo Mini loads them and Beauty.css provides shared typography.
-Production restores both families from separate, checksum-verified CI secret bundles.
+Production restores Story and Sourdine from separate, checksum-verified CI secret bundles.
+Production also enables Mirta through its own secret bundle and `BLOG_QUOTE_FONT=als-mirta`.
 The font files are never committed to the theme or the blog repository.
 
-After preparing the files from the [font profile guide](docs/site-fonts.md), preview both:
+After preparing the files from the [font profile guide](docs/site-fonts.md), preview all three:
 
 ```bash
-hugo server --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml --port 1315
+hugo server --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml,config/fonts/mirta.toml --port 1313
 ```
 
 ## Ownership

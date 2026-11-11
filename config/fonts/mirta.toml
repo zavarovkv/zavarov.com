@@ -1,0 +1,6 @@
+# Optional site-owned face for block quotations; load after the body font profile.
+[params.fonts.quote]
+family = "ALS Mirta"
+source = "private-fonts/als-mirta/regular.otf"
+weight = 400
+preload = false

@@ -119,6 +119,7 @@ ignoreErrors = ["error-disable-taxonomy"]
 [params]
   articleLinksNewTab = true
   hangingQuotes = true
+  editorialQuotes = true
   proseNumerals = true
   rememberLanguage = true
   showSearchButton = true

@@ -8,6 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const profiles = {
   'als-story': { names: ['regular.otf', 'italic.otf', 'bold.otf'], partCount: 4, prefix: 'ALS_STORY_PART_', output: 'font-secrets' },
   'als-sourdine': { names: ['medium.otf'], partCount: 2, prefix: 'ALS_SOURDINE_PART_', output: 'sourdine-secrets' },
+  'als-mirta': { names: ['regular.otf'], partCount: 2, prefix: 'ALS_MIRTA_PART_', output: 'mirta-secrets' },
 };
 const partSize = 47000; // Below GitHub's 48 KB per-secret limit.
 
@@ -61,7 +62,7 @@ export function unpackFonts(parts, manifest, profile = 'als-story') {
 async function main() {
   const action = process.argv[2];
   if (!['--pack', '--restore'].includes(action) || ![3, 4].includes(process.argv.length)) {
-    throw new Error('Usage: node scripts/prepare-site-fonts.mjs --pack | --restore [als-story | als-sourdine]');
+    throw new Error('Usage: node scripts/prepare-site-fonts.mjs --pack | --restore [als-story | als-sourdine | als-mirta]');
   }
   const profile = process.argv[3] || 'als-story';
   const { names, partCount, prefix, output: outputName } = profileFor(profile);

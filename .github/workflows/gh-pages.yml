@@ -138,13 +138,25 @@ jobs:
           ALS_SOURDINE_PART_2: ${{ secrets.ALS_SOURDINE_PART_2 }}
         run: node scripts/prepare-site-fonts.mjs --restore als-sourdine
 
+      - name: Restore licensed quotation font
+        if: vars.BLOG_FONT == 'als-story' && vars.BLOG_QUOTE_FONT == 'als-mirta'
+        env:
+          ALS_MIRTA_PART_1: ${{ secrets.ALS_MIRTA_PART_1 }}
+          ALS_MIRTA_PART_2: ${{ secrets.ALS_MIRTA_PART_2 }}
+        run: node scripts/prepare-site-fonts.mjs --restore als-mirta
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BLOG_FONT: ${{ vars.BLOG_FONT }}
+          BLOG_QUOTE_FONT: ${{ vars.BLOG_QUOTE_FONT }}
         run: |
           if [ "$BLOG_FONT" = "als-story" ]; then
-            npm run build -- --config config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml
+            font_config=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml
+            if [ "$BLOG_QUOTE_FONT" = "als-mirta" ]; then
+              font_config="$font_config,config/fonts/mirta.toml"
+            fi
+            npm run build -- --config "$font_config"
           else
             npm run build
           fi
@@ -169,9 +181,14 @@ jobs:
       - name: Browser regression tests
         env:
           BLOG_FONT: ${{ vars.BLOG_FONT }}
+          BLOG_QUOTE_FONT: ${{ vars.BLOG_QUOTE_FONT }}
         run: |
           if [ "$BLOG_FONT" = "als-story" ]; then
-            BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml npm run test:browser
+            font_config=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml
+            if [ "$BLOG_QUOTE_FONT" = "als-mirta" ]; then
+              font_config="$font_config,config/fonts/mirta.toml"
+            fi
+            BROWSER_HUGO_CONFIG="$font_config" npm run test:browser
           else
             npm run test:browser
           fi
