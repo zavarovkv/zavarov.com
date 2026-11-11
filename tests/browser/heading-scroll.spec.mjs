@@ -97,7 +97,7 @@ for (const path of ['/leader/', '/en/leader/']) test(`Alt arrows navigate headin
   const end=page.url();await page.keyboard.press('Alt+ArrowDown');expect(page.url()).toBe(end);
 });
 
-test('heading shortcuts respect editing, overlays, modifiers and rapid presses', async ({page})=>{
+test('heading shortcuts respect editing, overlays and modifiers', async ({page})=>{
   await page.goto('/leader/');await page.evaluate(()=>document.fonts.ready);
   const original=page.url();
   await page.evaluate(()=>{const input=document.createElement('input');input.id='review-input';document.querySelector('main').prepend(input);input.focus();});
@@ -107,6 +107,14 @@ test('heading shortcuts respect editing, overlays, modifiers and rapid presses',
   await page.keyboard.press('Alt+ArrowDown');expect(page.url()).toBe(original);
   await page.evaluate(()=>document.body.classList.remove('menu-open'));
   await page.keyboard.press('Alt+Shift+ArrowDown');expect(page.url()).toBe(original);
+});
+
+test('rapid heading shortcuts advance the in-flight destination', async ({page})=>{
+  // Modified native shortcuts may scroll the previous scenario on Linux.
+  // Test pending destinations independently, from a known viewport position.
+  await page.goto('/leader/');await page.evaluate(()=>document.fonts.ready);
+  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+  await expect.poll(()=>page.evaluate(()=>window.scrollY)).toBe(0);
   await page.evaluate(()=>{getSelection().removeAllRanges();window.scrollTo=()=>{};});
   // With scrolling still in flight, distinct presses must advance the destination.
   await page.keyboard.press('Alt+ArrowDown');await page.keyboard.press('Alt+ArrowDown');await page.keyboard.press('Alt+ArrowDown');
