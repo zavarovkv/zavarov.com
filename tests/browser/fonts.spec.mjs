@@ -20,9 +20,12 @@ test('the licensed H1 face loads without changing body or article-list fonts', a
         await expect(title).toHaveCSS('letter-spacing', width > 768 ? 'normal' : '-0.32px');
         await expect(page.locator('article > p').first()).toHaveCSS('font-family', /^"?ALS Story/);
         await expect(page.locator('h2').first()).toHaveCSS('font-family', /^"?ALS Story/);
-        await expect(page.locator('.blog-posts a').first()).toHaveCSS('font-family', /^"?ALS Story/);
         expect(await page.evaluate(() => [...document.fonts].some(font => /ALS Sourdine/i.test(font.family) && font.status === 'loaded'))).toBe(true);
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+      }
+      for (const path of ['/', '/en/', '/blog/', '/en/blog/']) {
+        await page.goto(path);
+        await expect(page.locator('.blog-posts a').first()).toHaveCSS('font-family', /^"?ALS Story/);
       }
     }
   }

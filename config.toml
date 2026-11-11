@@ -117,6 +117,7 @@ ignoreErrors = ["error-disable-taxonomy"]
         about = "Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT. Previously worked at Yandex, Megamarket, and Kaspersky Lab. Taught product management courses at Yandex Practicum from 2021 to 2025. Runs the Product Code Telegram channel (https://t.me/pmgen). Original content is in Russian; English pages are AI-translated."
 
 [params]
+  articleLinksNewTab = true
   hangingQuotes = true
   proseNumerals = true
   rememberLanguage = true
@@ -208,3 +209,10 @@ ignoreErrors = ["error-disable-taxonomy"]
     weight     = 3
     [languages.en.menu.main.params]
       icon = "telegram"
+
+# Desktop margin notes for all articles in both languages; narrow screens retain endnotes.
+[[cascade]]
+  [cascade.params]
+    sideNotes = true
+  [cascade.target]
+    path = "/blog/**"

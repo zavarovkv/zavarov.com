@@ -1,5 +1,5 @@
 +++
-source_hash = "c5a0fd886da41fe5bb36ee0308c05d412c9f368c3ef28168f7384d90d44e96cc"
+source_hash = "32aed736ccb7ba3c5ebd7cd46b5e48104b1be975ea6c17e26e8193b398239238"
 title = "Product Strategy ≠ a Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
@@ -13,7 +13,7 @@ The goal of strategy is to move from "build whatever anyone asks for" to a delib
 
 As much as we'd like one to exist, there's no universal product strategy template — honestly, no template at all. The format depends on company and team maturity, team structure, business model, business strategy, and a whole host of other factors.
 
-That's exactly why there are so many definitions of product strategy, each more abstract than the last. Authors of well-known books articulate elegant principles, but there's a chasm between those principles and actual day-to-day work. Take "Good Strategy, Bad Strategy" — the ideas sound compelling, but try grounding them in a real product process. If you've managed it, reach out — I'd love to discuss.
+That's exactly why there are so many definitions of product strategy, each more abstract than the last. Authors of well-known books articulate elegant principles, but there's a chasm between those principles and actual day-to-day work. Take [“Good Strategy, Bad Strategy”]({{< relref "book-good-strategy-bad-strategy.md" >}}) — the ideas sound compelling, but try grounding them in a real product process. If you've managed it, reach out — I'd love to discuss.
 
 Read any article about building a product strategy — even ones written by leaders from Avito (I mention them because of their exceptionally well-developed product processes) — and you'll find a common comment in the replies: "Great article. Really enjoyed it, but it feels too abstract to use in practice."
 

@@ -88,7 +88,7 @@ Set `date` to the book's reading month, using the first day for sorting.
 `date_precision = "month"` shows only the known month and year on the page.
 Keep the actual restoration or editing date separately in `lastmod`.
 
-`hidden = true` keeps reviews out of article lists, recent posts and feeds.
+`hidden = true` keeps reviews out of article lists and feeds.
 They remain regular crawlable pages with canonical URLs, BlogPosting metadata
 and sitemap entries. Do not add `noindex` or disable their sitemap entries.
 
