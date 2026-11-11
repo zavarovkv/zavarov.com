@@ -56,6 +56,9 @@ and family choices; Hugo Mini loads them and Beauty.css provides shared typograp
 Production restores Story and Sourdine from separate, checksum-verified CI secret bundles.
 Production also enables Mirta through its own secret bundle and `BLOG_QUOTE_FONT=als-mirta`.
 The font files are never committed to the theme or the blog repository.
+The public [Hugo Mini demo](https://hugo-mini-demo.vercel.app/) uses the same three
+families through a Vercel-only profile that verifies and self-hosts the blog's
+published font assets. Standard theme, starter and CI builds retain Inter.
 
 After preparing the files from the [font profile guide](docs/site-fonts.md), preview all three:
 
