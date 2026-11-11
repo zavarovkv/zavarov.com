@@ -37,11 +37,11 @@ test('the H1 font has a separate verified bundle and cannot satisfy body font se
   assert.throws(() => packFonts(sourdineFiles, sourdineManifest, '../unexpected'), /Unknown site font profile/);
 });
 
-// The existing licensed-file name is kept for compatibility with the CI secret bundle.
-test('ALS Story registers Semibold at 600, not Bold at 700', () => {
+// The checked bundle contains ALSStory-Bold with OS/2 usWeightClass = 700.
+test('ALS Story registers the verified Bold face at 700', () => {
   const config = readFileSync(new URL('../config/fonts/als-story.toml', import.meta.url), 'utf8');
-  assert.match(config, /^boldWeight = 600$/m);
-  assert.match(config, /^titleWeight = 600$/m);
-  assert.match(config, /source = "private-fonts[/]als-story[/]bold[.]otf"\nweight = 600/m);
-  assert.doesNotMatch(config, /^boldWeight = 700$/m);
+  assert.match(config, /^boldWeight = 700$/m);
+  assert.match(config, /^titleWeight = 700$/m);
+  assert.match(config, /source = "private-fonts[/]als-story[/]bold[.]otf"\nweight = 700/m);
+  assert.doesNotMatch(config, /^boldWeight = 600$/m);
 });
