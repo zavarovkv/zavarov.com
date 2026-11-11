@@ -2,8 +2,8 @@
 family = "ALS Story"
 regularWeight = 400
 mediumWeight = 400
-boldWeight = 700
-titleWeight = 700
+boldWeight = 600
+titleWeight = 600
 
 [[params.fonts.faces]]
 source = "private-fonts/als-story/regular.otf"
@@ -15,7 +15,9 @@ source = "private-fonts/als-story/italic.otf"
 weight = 400
 style = "italic"
 
+# The legacy filename is retained for compatibility with the verified private font bundle.
+# Its purchased style is ALS Story Semibold (600), not Bold (700).
 [[params.fonts.faces]]
 source = "private-fonts/als-story/bold.otf"
-weight = 700
+weight = 600
 preload = true

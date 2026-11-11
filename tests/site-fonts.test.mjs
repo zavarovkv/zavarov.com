@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { packFonts, unpackFonts } from '../scripts/prepare-site-fonts.mjs';
 
 const files = Object.fromEntries(['regular.otf', 'italic.otf', 'bold.otf'].map(name => [name, Buffer.from(`OTTO-test-fixture-${name}`)]));
@@ -34,4 +35,13 @@ test('the H1 font has a separate verified bundle and cannot satisfy body font se
   assert.throws(() => unpackFonts(parts, manifest), /All 4/);
   assert.throws(() => packFonts(files, manifest, 'als-sourdine'), /Unexpected font bundle entries/);
   assert.throws(() => packFonts(sourdineFiles, sourdineManifest, '../unexpected'), /Unknown site font profile/);
+});
+
+// The existing licensed-file name is kept for compatibility with the CI secret bundle.
+test('ALS Story registers Semibold at 600, not Bold at 700', () => {
+  const config = readFileSync(new URL('../config/fonts/als-story.toml', import.meta.url), 'utf8');
+  assert.match(config, /^boldWeight = 600$/m);
+  assert.match(config, /^titleWeight = 600$/m);
+  assert.match(config, /source = "private-fonts[/]als-story[/]bold[.]otf"\nweight = 600/m);
+  assert.doesNotMatch(config, /^boldWeight = 700$/m);
 });

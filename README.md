@@ -43,7 +43,7 @@ npm run test:browser         # Isolated browser fixtures
 ## Fonts
 
 - **ALS Story** supplies body text and article-list links at 400, real italic at 400,
-  and subheadings and bold emphasis at 700.
+  and subheadings and emphasized text at Semibold 600.
 - **ALS Sourdine Medium 500** supplies H1 at 44 px desktop / 32 px mobile, with
   normal desktop letter spacing and compact mobile tracking. Lists and navigation keep Story.
 - **Inter** is the fallback setup when no private font profile is selected.
