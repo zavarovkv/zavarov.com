@@ -1,5 +1,5 @@
 +++
-source_hash = "6cc3742e7169bbc5dd96da99a8af35b37758731053b29fac436e92d64ce1e559"
+source_hash = "6eae0b127268f1f3a3d8e96f8dd41602fec669d31f3fcb7d4c1ceececa48c088"
 title = "10 Deadly Sins of a Junior Product Manager"
 slug = "10-evils"
 date = "2024-09-29T15:17:01+03:00"
@@ -7,8 +7,6 @@ description = "10 key mistakes that junior product managers make, which hold bac
 categories = ["self-development"]
 telegram_post = 58
 +++
-
-*This article was originally published on [habr.com](https://habr.com/ru/articles/838694/).*
 
 These "deadly sins" can serve as a self-assessment checklist for both new and more experienced managers.
 
@@ -166,6 +164,8 @@ Refusing to do anything on autopilot — never executing a task without thinking
 No one walks into a profession and succeeds from day one. Experience, skill, knowledge, and ability are built up gradually — through trial and error that, if you're willing, you can correct and learn from. The road is made by walking.
 
 Never lose heart, and always remember: nothing is impossible — because "the impossible just takes a little longer than the possible" (F. Nansen).
+
+<p class="beauty-note">This article was published on <a href="https://habr.com/ru/articles/838694/">Habr</a>.</p>
 
 ## References
 

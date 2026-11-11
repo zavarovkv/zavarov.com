@@ -9,7 +9,8 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20231128222453id_/https://zavarov.com/books/good-strategy-bad-strategy/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
-source_hash = "f7cebe8b0ead4ea3e14062ced76679b372640cea3e3b34a34d8261e5e9401525"
+source_hash = "8469b76af32be7913442da98b06ca56290eb1b2f2282cf20238c050221e79eae"
+dropCap = true
 +++
 
 The central idea of strategy is to use strengths to overcome weaknesses. Yet most companies focus on goals that are either unrelated or mutually contradictory.

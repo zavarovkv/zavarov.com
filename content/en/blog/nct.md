@@ -1,11 +1,12 @@
 +++
-source_hash = "444c53337403a488422fb6c2d39ff689683fb83d7738f1b653120788ce873475"
+source_hash = "8bd9d96b67e957286e0a2bae6cb706973f115dce6e7a766b79f573e7306f64ee"
 title = "The Evolution of Goal-Setting Frameworks: From OKR to NCT"
 slug = "nct"
 date = "2024-08-24T15:17:01+03:00"
 description = "The evolution of goal-setting frameworks: from MBO and OKR to NCT — Ravi Mehta's framework that could replace OKR."
 categories = ["strategy"]
 telegram_post = 45
+dropCap = true
 +++
 
 I came across an interesting approach to goal-setting — NCT (Narratives, Commitments, Tasks) by Ravi Mehta[^1]. What makes it compelling is that it positions itself as an alternative to OKR and could be genuinely useful for many product teams. Before diving into NCT, let's take a quick look at the history of goal-setting frameworks.

@@ -6,6 +6,7 @@ description = "Как выстроить систему управления з�
 categories = ["productivity"]
 telegram_post = 69
 mermaid = true
+dropCap = true
 +++
 
 Несколько лет назад я [организовывал](/zettelkasten/) заметки по методу Zettelkasten в VS Code, с тех пор все поменялось, во многом из-за экспоненциального развития LLM и agentic AI. Хочу поделиться свежим стеком инструментов, которые помогают снизить когнитивную нагрузку и не терять информацию в условиях дефицита времени: <span class="beauty-emphasis">PARA × Obsidian × Granola × Claude</span>.

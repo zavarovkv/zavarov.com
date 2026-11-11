@@ -9,7 +9,8 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20250427141324id_/https://zavarov.com/books/playing-to-win/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
-source_hash = "2097214bd5cef39e863e66d32c58ffc56c3cfcdead40527e4af64e0930a8c6b3"
+source_hash = "61077b42c895d84ce7a2540f77f3144e5fe023d45eda31b3a0990cfb23abc42b"
+dropCap = true
 +++
 
 Lately I have been struggling to keep up with my plans. I need to think seriously about how effective my planning systems are and how I use my time. Otherwise, summer will pass me by again :)

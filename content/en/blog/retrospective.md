@@ -1,11 +1,12 @@
 +++
-source_hash = "3f84e281ac5097ed854e0c16fb4ac7bd77bb245235d2ed2221eb22e8fdfbcafb"
+source_hash = "d8505cf656743a28970508fe63d2baf4a02c1a65a3e75d70315f053eab2d2d6d"
 title = "How to Run a Retrospective for a Large Team"
 slug = "retrospective"
 date = "2022-11-12T12:00:00+03:00"
 description = "A detailed 8-step plan with timings for running an engaging retrospective with a large team (10+ people)."
 categories = ["leadership"]
 telegram_post = 13
+dropCap = true
 +++
 
 A retrospective is a form of group reflection — a tool for continuous improvement and cultural change within a team.

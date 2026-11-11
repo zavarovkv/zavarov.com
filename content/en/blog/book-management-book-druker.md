@@ -9,7 +9,8 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20231128215631id_/https://zavarov.com/books/management-book-druker/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
-source_hash = "a9cc3c1927149602389380838fc50af8d70f2c966d75a14c9e66478aa2837193"
+source_hash = "a0d2f78844b84ca0166edf5412389831c1d94996e336791ea21d242bd228bf2e"
+dropCap = true
 +++
 
 Drucker is worth rereading from time to time. After reading a second book of his, I understood why some major global companies make his work required reading for new employees.

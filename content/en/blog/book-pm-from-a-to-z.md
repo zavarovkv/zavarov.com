@@ -9,7 +9,8 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20240223001945id_/https://zavarov.com/books/pm-from-a-to-z/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
-source_hash = "10a8016761cc303e157597365460d67e0f913930a9a09543d71d0b3772f85d5d"
+source_hash = "1324594a7946d8d5f51b7520def3c9cbe09591f639dd46de0bd4f840fd418ac3"
+dropCap = true
 +++
 
 I will start my Top 500 with this short book. It is more like a handbook of practical advice on the basics of project management, the kind that can be useful to reread occasionally.

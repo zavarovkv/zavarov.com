@@ -9,6 +9,7 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20231128222453id_/https://zavarov.com/books/good-strategy-bad-strategy/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
+dropCap = true
 +++
 
 Основная идея стратегии заключается в применении сильных сторон с целью преодолеть слабые. При этом большинство компаний концентрируется на целях, или не связанных друг с другом, или противоречащих друг другу.

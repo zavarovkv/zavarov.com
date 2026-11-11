@@ -4,6 +4,7 @@ slug = "cspo"
 date = "2021-02-13T12:00:00+03:00"
 description = "Чего можно ожидать от обучения и сертификации CSPO, кроме еще одной ачивки."
 categories = ["self-development"]
+dropCap = true
 +++
 
 Марти Каган в своей книге [Empowered: Ordinary People, Extraordinary Products](https://www.amazon.com/EMPOWERED-Ordinary-Extraordinary-Products-Silicon/dp/111969129X) советует начинающим продакт-менеджерам обязательно пройти обучение и получить сертификат CSPO в начале своего профессионального пути. Хочу рассказать, чего можно ожидать от этого обучения / сертификации, кроме еще одной ачивки (к тому же, достаточно не дешевой).

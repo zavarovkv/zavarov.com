@@ -9,6 +9,7 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20231128215631id_/https://zavarov.com/books/management-book-druker/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
+dropCap = true
 +++
 
 Друкера стоит периодически перечитывать, после прочтения его второй книги мне стало понятно, почему его труды являются обязательными для ознакомления при трудоустройстве в некоторые крупные компании с мировым именем.

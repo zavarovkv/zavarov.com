@@ -1,11 +1,12 @@
 +++
-source_hash = "55d7021db0df"
+source_hash = "effb445f62850dd73317e0f534163571c45b61971674e980776edb4e6721b3c1"
 title = "The Brand Age, Paul Graham"
 slug = "brandage"
 date = "2026-04-05T12:00:00+03:00"
 description = "Reflections on Paul Graham's essay 'The Brand Age': why technological advantage is finite, and when betting on brand becomes a matter of survival."
 categories = ["marketing"]
 telegram_post = 71
+dropCap = true
 +++
 
 Paul Graham is the co-founder of Y Combinator and one of the leading thinkers in computer science. For 25 years he has been publishing thoughtful essays on his [blog](https://www.paulgraham.com/articles.html), though infrequently. In 2025, for instance, he published just four pieces. In March 2026, a new one appeared: [“The Brand Age”](https://www.paulgraham.com/brandage.html). I'd like to discuss it.

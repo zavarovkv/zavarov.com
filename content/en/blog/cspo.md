@@ -1,10 +1,11 @@
 +++
-source_hash = "26c13cda3dd92617ea1f708ecc547b741389938e6fd6e7752477d1418aee0e41"
+source_hash = "4e9dcb32f62eeea7718785d6a45be6e4e70171ed556d770e7f5e6299f20f69a7"
 title = "Becoming a Certified Scrum Product Owner (CSPO)"
 slug = "cspo"
 date = "2021-02-13T12:00:00+03:00"
 description = "What to expect from CSPO training and certification — beyond just another badge to collect."
 categories = ["self-development"]
+dropCap = true
 +++
 
 In his book [Empowered: Ordinary People, Extraordinary Products](https://www.amazon.com/EMPOWERED-Ordinary-Extraordinary-Products-Silicon/dp/111969129X), Marty Cagan recommends that aspiring product managers get CSPO-certified early in their careers. I want to share what you can actually expect from this training and certification — beyond collecting yet another badge (and a rather pricey one at that).

@@ -9,6 +9,7 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20250427141324id_/https://zavarov.com/books/playing-to-win/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
+dropCap = true
 +++
 
 Последнее время зашиваюсь просто со своими планами, стоит серьезно обдумать эффективность своих систем планирования и использование времени. Иначе лето меня снова обойдет стороной:)

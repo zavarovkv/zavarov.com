@@ -1,11 +1,12 @@
 +++
-source_hash = "4cde6d91db0d0cc1c33c0a790fe0da1fb8931d31ca478efe073b6a921d0c819b"
+source_hash = "0713fc39d032715ff1287a7f08701f7e7f5bdb3929a127a04bf3f2342d99fe73"
 title = "Thinking Through Writing"
 slug = "text"
 date = "2024-09-24T15:17:01+03:00"
 description = "How Amazon's document-centric culture develops critical thinking, and why the ability to work with text matters for product managers."
 categories = ["self-development"]
 telegram_post = 55
+dropCap = true
 +++
 
 I came across a fascinating [interview with Andrei Styskin](https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%8B%D1%81%D0%BA%D0%B8%D0%BD,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%98%D0%B3%D0%BE%D1%80%D0%B5%D0%B2%D0%B8%D1%87) (Director at Amazon, former CEO of Yandex's search portal), in which Andrei talks about some interesting aspects of Amazon's internal culture — in particular, its "document-centric" approach to meetings and decision-making.

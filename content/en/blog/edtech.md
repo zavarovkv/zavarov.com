@@ -1,11 +1,12 @@
 +++
-source_hash = "0ce787b0cf4dcc1e8d5a6838d47f09e259ec148e72c8937c03b6a7e57f54768a"
+source_hash = "341e8932a8fd295a0f5146ceeef25f8267d676a93de9478cc37b6a8debc3cd82"
 title = "Why Online Courses Struggle to Scale"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
 description = "Why the economics of online courses don't scale well, and what the growth dilemma looks like for edTech companies in the Russian internet market."
 categories = ["strategy"]
 telegram_post = 43
+dropCap = true
 +++
 
 Comparing the top edTech companies in the Russian internet market, I noticed an interesting scaling problem baked into their course economics — one they all seem to live with. I'm not talking about product-driven edTech platforms like Lingualeo, but companies that create educational courses for upskilling or career transitions.

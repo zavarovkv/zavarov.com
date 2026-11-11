@@ -8,7 +8,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 | --- | --- |
 | Content | Russian articles and committed English translations; categories, pinned and hidden posts, recent articles and New badges |
 | Reading | 720 px text column; opt-in images, diagrams and long code blocks up to 960 px sharing its left edge; 18/28 px desktop and 19/29 px mobile text; light, dark and system colors; dedicated print layout |
-| Typography | Build-time punctuation and spacing; optical headings and narrow-screen title hyphenation; image descriptions and source credits; footnotes with stable leading; scalable link arrows; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
+| Typography | Build-time punctuation and spacing; optical headings and narrow-screen title hyphenation; [two-line drop caps](themes/hugo-mini/docs/typography.md#drop-caps) in selected prose articles and substantial reviews, matched across RU/EN; image descriptions and source credits; footnotes with stable leading; scalable link arrows; scrollable tables; code highlighting and copying; optional KaTeX and Mermaid |
 | Navigation | Stable menu widths with smooth desktop selection, mobile menu, heading links, back-to-top and language choice; Option/Alt + Left/Right moves between older/newer articles without wrapping |
 | Projects and books | Hugo Mini and Beauty.css project links with saved GitHub star counts; bilingual bookshelf and linked reviews |
 | Integrations | Lazy Telegram comments, saved reactions/views, optional sharing and analytics |

@@ -9,6 +9,7 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20230927224259id_/https://zavarov.com/books/management-book-druker-2/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
+dropCap = true
 +++
 
 Я заметно отстаю от поставленной цели, ибо читать нужно в два раза больше, как при этом не потерять эффективности, или даже приобрести, до прочтения Друкера было не ясно. Сейчас картинка прорисовалась, но об этом потом…

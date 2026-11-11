@@ -9,6 +9,7 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20240223001945id_/https://zavarov.com/books/pm-from-a-to-z/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
+dropCap = true
 +++
 
 Top 500 начну с этой небольшой книги, по содержанию больше похожа на справочник практических советов по самым основам управления проектами, который порой полезно перечитывать.

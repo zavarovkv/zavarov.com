@@ -1,11 +1,12 @@
 +++
-source_hash = "5fbd27f0a748e1ea899a1c7a0be1c2b4262a41026256c60e28baccc9588a1f59"
+source_hash = "c5a0fd886da41fe5bb36ee0308c05d412c9f368c3ef28168f7384d90d44e96cc"
 title = "Product Strategy ≠ a Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
 description = "There's no universal product strategy template. On what strategy actually looks like in practice — and why it's a living system, not a document."
 categories = ["strategy"]
 telegram_post = 70
+dropCap = true
 +++
 
 The goal of strategy is to move from "build whatever anyone asks for" to a deliberate position aimed at creating a better future for both users and the business.

@@ -1,5 +1,5 @@
 +++
-source_hash = "a4ac87893a5b07c4ec79283b65962a8261dd242d0233b45aaad4059adbe0cdb7"
+source_hash = "df557ae36dcdc79f1c176415beb4278e201e6cbb6bb57ea7f396162b71fcedc5"
 title = "ICE, RICE, DRICE Prioritization Frameworks"
 slug = "drice"
 date = "2024-10-24T15:17:01+03:00"
@@ -7,6 +7,7 @@ description = "A detailed breakdown of the ICE, RICE, and DRICE task prioritizat
 categories = ["strategy"]
 telegram_post = 57
 math = true
+dropCap = true
 +++
 
 Ein, zwei, drei… There are endless ways to prioritize tasks. Every product I've ever worked on had its own unique ranking method, each with its own quirks. For a quick tour of all the approaches used at major companies, check out [Misha Karpov's talk](https://www.youtube.com/watch?v=BpXVJByOh8g&t=2421s) at Yandex's product meetup. As for me, my personal favorite prioritization methods are the energy-based one — where priorities are chosen based on how you're feeling that day — and the intuitive one, where you simply follow your gut and your heart. Too bad the team rarely agrees to go along with either.

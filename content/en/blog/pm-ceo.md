@@ -1,13 +1,12 @@
 +++
-source_hash = "a77a714d1bbd"
+source_hash = "08029e85fddb66a46dde84cd7ab587d6dfc74aed0a1a17defc677450d5998085"
 title = "Product CEO: How a Product Manager Creates Meaning and Communicates Value"
 slug = "pm-ceo"
 date = "2024-07-24T15:17:01+03:00"
 description = "How a product manager creates meaning and communicates the value of a product to the business, the team, and users."
 categories = ["marketing"]
+dropCap = true
 +++
-
-*This article was originally published on [Delovoy Mir](https://delovoymir.biz/ceo-produkta-kak-prodakt-menedzher-sozdaet-smysly-i-transliruet-cennosti.html).*
 
 Technology today is advancing at a breakneck pace. There's even a concept called "technological singularity" — the idea that in some hypothetical future, explosive technological growth will fundamentally transform our civilization.
 
@@ -60,3 +59,5 @@ In this way, technology — or more precisely, technological products — create
 Information technology isn't the only force generating new values and meaning through products. There's another important factor: the teams that build those products. Most of the digital services we use every day are created by cross-cultural groups of people — which means they inevitably carry multicultural values. And product managers are often involved in hiring and shaping those teams.
 
 To sum up: a product manager is a versatile professional who leads technical and creative teams inside a company while actively engaging with the outside world. Drawing on their own breadth of experience and the collective value created by their teams, they formulate a product vision and define the strategy for its growth. That's why it's so important to keep developing your hard and soft skills, broaden your exposure to great products, sharpen your creative problem-solving, listen closely to your users, and always advocate for them.
+
+<p class="beauty-note">This article was published in <a href="https://delovoymir.biz/ceo-produkta-kak-prodakt-menedzher-sozdaet-smysly-i-transliruet-cennosti.html">Delovoy Mir</a>.</p>

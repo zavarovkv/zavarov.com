@@ -1,5 +1,5 @@
 +++
-source_hash = "2a36c49489dc2b94b0aa78b78368e139e2294065dad97cb474b4df7b0c5c1e6b"
+source_hash = "aaf8e4f730aeb9f9f3b51dd50615c648131d88a3000142cd3fb1bef878b002c6"
 title = "Calculating Classic, Rolling, and Full Retention in Python"
 slug = "retention"
 date = "2023-08-16T12:00:00+03:00"
@@ -7,6 +7,7 @@ description = "A hands-on guide to manually calculating 3 types of Retention met
 categories = ["metrics"]
 telegram_post = 37
 wideCode = true
+dropCap = true
 +++
 
 In this post, I want to walk through how to manually calculate 3 types of Retention metrics using Python and Pandas, and how to plot a Retention curve with Matplotlib. Most of the time, a product manager will rely on an analytics platform for data analysis — but let's imagine our PM has been stranded on a desert island with nothing but a Python interpreter and a few extra libraries. That's exactly what we'll work with.

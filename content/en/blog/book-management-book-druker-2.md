@@ -9,7 +9,8 @@ categories = [ "collections" ]
 archive_url = "https://web.archive.org/web/20230927224259id_/https://zavarov.com/books/management-book-druker-2/"
 date_precision = "month"
 lastmod = "2026-10-25T00:00:00+03:00"
-source_hash = "02e5b7e477caaa6e35eb3672176b6452aacbd425941f4b66d860cd04c3712f06"
+source_hash = "1007cd003f54d4ba60d627828f7dbcff1d4b72146a0c696c3735a02c5953afc2"
+dropCap = true
 +++
 
 I am falling well behind the goal I set myself: I need to read twice as much. Before reading Drucker, I did not know how to do that while maintaining or even improving my effectiveness. The picture is clearer now, but more on that another time…

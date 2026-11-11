@@ -1,13 +1,11 @@
 +++
-source_hash = "3fb8d42093ba0c39330e02cf7a0a38fafdcdaf4dcad1e4eab2d266b9e8915130"
+source_hash = "f5d180a014e4c005bf9d3520cc59892f96904494bd67d6618bdf8674baa6f9ea"
 title = "On Leadership"
 slug = "leader"
 date = "2024-03-28T15:17:01+03:00"
 description = "What leadership is, why it matters, and where to start if you want to develop the skill of positively influencing people."
 categories = [ "leadership" ]
 +++
-
-*The original interview was published on [VC](https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno).*
 
 ## Konstantin, why do you think it's worthwhile or interesting to be a leader?
 
@@ -55,3 +53,5 @@ Write a plan for developing your professional expertise — including books, cou
 
 Start a blog on any platform to practice the skills of persuasion and communicating your ideas to an audience. I've been running a professional blog and the [Telegram channel "Product Code"](https://t.me/pmgen) for many years now.
 Identify your strengths and weaknesses. Things that help here: reflection; feedback from friends and colleagues; therapy.
+
+<p class="beauty-note">The interview was published on <a href="https://vc.ru/hr/1095299-zachem-byt-liderom-i-s-chego-nachat-esli-vam-eto-vse-taki-nuzhno">vc.ru</a>.</p>

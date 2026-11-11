@@ -1,5 +1,5 @@
 +++
-source_hash = "fdd47661326a3e3ae89d1cb82ca6e7d28208a7278959a19341caf769c29b0aa8"
+source_hash = "d427f6cee88c322f79185b974273173ac91caa4ebe2078f3c0e4695f279d55b2"
 title = "Second Brain: PARA × Obsidian × Granola × Claude"
 slug = "second-brain"
 date = "2026-03-07T00:00:00+03:00"
@@ -7,6 +7,7 @@ description = "How to build a knowledge management system from PARA, Obsidian, G
 categories = ["productivity"]
 telegram_post = 69
 mermaid = true
+dropCap = true
 +++
 
 A few years ago I was [organizing](/zettelkasten/) notes using the Zettelkasten method in VS Code. Since then, everything has changed — largely due to the exponential growth of LLMs and agentic AI. I want to share a fresh tool stack that helps reduce cognitive load and keep information from slipping through the cracks when time is scarce: <span class="beauty-emphasis">PARA × Obsidian × Granola × Claude</span>.
