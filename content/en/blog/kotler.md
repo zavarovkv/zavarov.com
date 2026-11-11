@@ -1,5 +1,5 @@
 +++
-source_hash = "a438463fbdf1d3161c3cd6e7144572658d390a54548f5450f3eaff8e5874ef4f"
+source_hash = "372610dbcefc9aff55f6186701fb97d9834583571c89ddd8262dd7df7a88c6d4"
 title = "Product Management Is Marketing Management"
 slug = "kotler"
 date = "2024-05-24T15:17:01+03:00"
@@ -16,7 +16,7 @@ As someone who came up through the technical ranks, I long believed that "market
 
 Though it's hard to argue that these are precisely the kinds of tasks handled by specialists at digital companies who are commonly called marketers (Marketing Manager — MM) or even product marketers (Product Marketing Manager — PMM).
 
-The funny thing is that half a century ago, Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book *Marketing Essentials*:
+The funny thing is that half a century ago, Philip Kotler was already writing about the confusion between "marketing" and "sales and advertising." Here's what he says in his book “Marketing Essentials”:
 
 <figure class="beauty-quotation quotation-reading">
   <blockquote>

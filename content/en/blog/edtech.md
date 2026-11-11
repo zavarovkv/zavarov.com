@@ -1,5 +1,5 @@
 +++
-source_hash = "341e8932a8fd295a0f5146ceeef25f8267d676a93de9478cc37b6a8debc3cd82"
+source_hash = "322057603efddc734ff812e4629b2898ab48b8a2355660c0461fb600db64b80e"
 title = "Why Online Courses Struggle to Scale"
 slug = "edtech"
 date = "2024-06-24T15:17:01+03:00"
