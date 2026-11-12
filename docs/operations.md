@@ -58,7 +58,10 @@ document without shortening or revising achievements.
 Job headers contain the company, role and period; repeated Moscow labels and
 company website links are omitted. The company is bold, the role is regular,
 and the smaller period aligns at the upper right, including on ordinary phones.
-The role spans the full width. Below 360 px, they stack in that reading order.
+On 360–600 px screens, the role sits directly below the company in the left
+column, while the date spans both rows on the right. A two-line date therefore
+does not create a blank line above the role. Desktop and print retain a full-width
+role. Below 360 px, they stack in that reading order.
 The gap before the job description is larger than the gaps within the header.
 Screen company titles use 20 px, below the 22–24 px section headings.
 The introduction keeps `IT-продукты` and `Ozon Travel` together. Its final sentence
