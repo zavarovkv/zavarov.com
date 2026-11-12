@@ -29,6 +29,77 @@ the committed Russian and English pages does not require an API key.
 
 ## Content workflow
 
+### CV
+
+`content/ru/cv.md` maintains the Russian resume at `/cv/`. Its `noindex = true`
+emits `noindex, follow` and excludes the page from the sitemap, while keeping
+the URL accessible to visitors and crawlers so they can read that directive.
+It uses the theme's
+`resume` layout and `resume-entry` shortcode, with no blog navigation, footer,
+back-to-top gutter or article widgets. Section headings, their rules and company
+names use the shared `headingScroll` behavior, including URL fragments
+and Option/Alt + Up/Down navigation. Clicking the person's name scrolls to the top
+and clears the fragment without reloading or losing query parameters. Repeated
+employers get distinct anchors through the `resume-entry` shortcode position.
+CV sections use short explicit ASCII anchors to keep browser-PDF destinations
+within format limits even for long Russian headings.
+Keyboard navigation also reaches the final sections when the viewport is too
+tall to align them at the top; manual scrolling resets its reference position.
+Contacts and the professional role live in
+front matter; phone and email are `tel:` / `mailto:` links at the upper right,
+styled like ordinary text, with a pointer cursor and no hover color or underline.
+There are no LinkedIn or homepage links. On mobile the name and role are followed by one row with
+phone and email in two equal columns; below 320 px they stack vertically.
+Each section heading ends in a thin rule. CV-specific screen and print styles
+live in the theme's `assets/css/resume.css`, loaded only for this layout.
+The complete experience, education, courses and mentoring stay in
+the Markdown body. The initial content was transferred from the supplied Word
+document without shortening or revising achievements.
+Job headers contain the company, role and period; repeated Moscow labels and
+company website links are omitted. The company is bold, the role is regular,
+and the smaller period aligns at the upper right, including on ordinary phones.
+The role spans the full width. Below 360 px, they stack in that reading order.
+The gap before the job description is larger than the gaps within the header.
+Screen company titles use 20 px, below the 22–24 px section headings.
+The introduction keeps `IT-продукты` and `Ozon Travel` together. Its final sentence
+uses `resume-mobile-paragraph` to start a new visual paragraph at 600 px and below;
+desktop and print retain one continuous paragraph.
+Experience entries lead with a product description, then a compact native
+Markdown definition list for the objective and team, followed by a result list.
+The two Yandex Travel products retain separate descriptions and result groups
+inside one employment entry; brief earlier roles remain prose. Context uses
+16/24 px on screen, descriptions/results use 18/28 px, and key outcome metrics
+are selectively bold. Sentence case, punctuation and number formatting are
+normalized without removing achievements or changing quantities. Date ranges
+and short number/unit combinations stay together with Beauty helpers or NBSP.
+Result lists use Beauty's native `pretty` wrapping on screen, reducing isolated
+last words where supported. Bold emphasis stays on the outcome values.
+Education, courses and mentoring use the theme's
+`resume-list` / `resume-item` shortcodes: regular-weight text, no visible bullets,
+smaller dates at the right, stacked below 360 px. The mentoring section contains
+the two Yandex Practicum roles; private consultations are omitted. Institution names use
+18 px regular text with the qualification directly below in a 16 px `subtitle`.
+They are not headings or navigation stops. Active study uses “обучаюсь”;
+the HSE master's program records academic leave in its subtitle and uses
+“2021 — н. в.” for the period. Current jobs also use “н. в.”. Screen pages have an extra
+64 px of space at the end; print omits it and keeps individual records intact.
+
+The page inherits the site's selected fonts and has no separate visible controls.
+All text, links and rules share one ink color: black in light mode and print,
+white in dark mode. Type size, font and weight establish hierarchy; the main professional role is bold. Use
+the browser's Print command (`Cmd+P` on macOS / `Ctrl+P` elsewhere) and choose
+Save as PDF for a current copy. The named A4 print layout uses 16 mm margins and a white background
+and keeps entry headings with their text and individual result bullets together.
+Printing also works without JavaScript. Turn off browser-added headers and footers for a clean copy.
+There is no separate committed PDF to keep synchronized. Review every PDF page
+after substantial content changes; pagination depends on fonts and browser settings.
+
+The layout is reusable across languages. No English CV was generated
+as part of this import; existing translation rules below still apply. See the
+theme's [resume authoring guide](../themes/hugo-mini/docs/content.md#standalone-resume).
+
+### Translations
+
 Russian content in `content/ru/` is the source of truth.
 
 English pages in `content/en/` are committed translations. The optional OpenAI
