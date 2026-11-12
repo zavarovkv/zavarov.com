@@ -14,27 +14,26 @@ for (const lang of ['ru','en']) {
     pages.push({path:`/${lang==='en'?'en/':''}${slug}/`,count});
   }
 }
-for (const scheme of ['light','dark']) test(`all RU and EN quotations share the editorial layout (${scheme})`, async({page})=>{
+// Each page has its own timeout, so adding articles cannot exhaust one shared budget.
+for (const {path,count} of pages) for (const scheme of ['light','dark']) test(`quotations share the editorial layout: ${path} (${scheme})`, async({page})=>{
   await page.emulateMedia({colorScheme:scheme});
   for(const width of [390,1440]) {
     await page.setViewportSize({width,height:900});
-    for(const {path,count} of pages) {
-      await page.goto(path);
-      await page.evaluate(()=>document.fonts.ready);
-      const figures=page.locator('article .beauty-quotation');
-      await expect(figures, path).toHaveCount(count);
-      await expect(page.locator('article blockquote.beauty-callout'),path).toHaveCount(0);
-      for(const figure of await figures.all()) {
-        const geometry=await figure.evaluate(el=>({width:el.getBoundingClientRect().width,quoteWidth:el.firstElementChild.getBoundingClientRect().width}));
-        expect(geometry.width,path).toBeLessThanOrEqual(640.5);
-        expect(Math.abs(geometry.width-geometry.quoteWidth),path).toBeLessThan(1);
-        const quote=figure.locator(':scope > blockquote');
-        await expect(quote).toHaveCSS('border-left-width','0px');
-        await expect(quote).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
-        await expect(quote).toHaveCSS('font-size',path.endsWith('/consultation/')?'20px':width>768?'18px':'19px');
-        await expect(figure.locator('.beauty-hanging-open')).toHaveCount(1);
-      }
-      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),path).toBe(true);
+    await page.goto(path);
+    await page.evaluate(()=>document.fonts.ready);
+    const figures=page.locator('article .beauty-quotation');
+    await expect(figures, path).toHaveCount(count);
+    await expect(page.locator('article blockquote.beauty-callout'),path).toHaveCount(0);
+    for(const figure of await figures.all()) {
+      const geometry=await figure.evaluate(el=>({width:el.getBoundingClientRect().width,quoteWidth:el.firstElementChild.getBoundingClientRect().width}));
+      expect(geometry.width,path).toBeLessThanOrEqual(640.5);
+      expect(Math.abs(geometry.width-geometry.quoteWidth),path).toBeLessThan(1);
+      const quote=figure.locator(':scope > blockquote');
+      await expect(quote).toHaveCSS('border-left-width','0px');
+      await expect(quote).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+      await expect(quote).toHaveCSS('font-size',path.endsWith('/consultation/')?'20px':width>768?'18px':'19px');
+      await expect(figure.locator('.beauty-hanging-open')).toHaveCount(1);
     }
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),path).toBe(true);
   }
 });
