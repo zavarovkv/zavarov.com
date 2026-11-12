@@ -16,7 +16,7 @@ label = "zavarovkv@gmail.com"
 url = "mailto:zavarovkv@gmail.com"
 +++
 
-Более 10 лет создаю и развиваю <span class="beauty-nowrap">IT-продукты</span>, из них 6 — в travelTech. В Ozon Travel отвечаю за продуктовую вертикаль отелей и апартаментов. <span class="resume-mobile-paragraph">Специализируюсь на hotelTech, построении продуктовых команд и развитии технически сложных продуктов.</span>
+Более 10 лет создаю и развиваю <span class="beauty-nowrap">IT-продукты</span>, из них 6 — в travelTech. В Ozon Travel отвечаю за продуктовую вертикаль отелей и апартаментов. <span class="resume-mobile-paragraph">Специализируюсь на разработке продуктовой стратегии, построении продуктовых команд и развитии технически сложных продуктов.</span>
 
 ## Опыт работы {#experience}
 
