@@ -5,7 +5,7 @@ resumeContracts(test, expect);
 test('the full Russian CV keeps real content readable across widths and print', async ({ page, browserName }, testInfo) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  for (const width of [1440, 768, 601, 600, 390, 360, 320, 240]) {
+  for (const width of [1440, 768, 601, 600, 430, 390, 375, 360, 320, 240]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/cv/');
     await page.evaluate(() => document.fonts.ready);

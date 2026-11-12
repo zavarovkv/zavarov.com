@@ -131,5 +131,5 @@ test('Tab restores the focus outline after a heading shortcut', async ({page}) =
   await page.keyboard.press('Tab');
   await expect(title).not.toHaveClass(/heading-shortcut-focus/);
   await title.focus();
-  await expect(title).toHaveCSS('outline-style', 'solid');
+  await expect(title).toHaveCSS('outline-style', 'dotted');
 });

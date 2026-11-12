@@ -58,46 +58,69 @@ document without shortening or revising achievements.
 Job headers contain the company, role and period; repeated Moscow labels and
 company website links are omitted. The company is bold, the role is regular,
 and the smaller period aligns at the upper right, including on ordinary phones.
-On 360–600 px screens, the role sits directly below the company in the left
-column, while the date spans both rows on the right. Start and end dates use
-separate lines aligned at the left edge of that right-hand block. A two-line date therefore
-does not create a blank line above the role. Desktop and print retain a full-width
-role. Below 360 px, they stack in that reading order.
-The gap before the job description is larger than the gaps within the header.
+Company and role share normal text flow in the left column; the date occupies
+an independent right column. On 360–600 px screens, start and end dates use
+separate lines aligned at the left edge of that right-hand block. A two-line date
+does not stretch the spacing between company and role. Desktop and print keep
+dates inline. Below 360 px, the date follows the complete text group.
 Screen company titles use 20 px, below the 22–24 px section headings.
 The introduction keeps `IT-продукты` and `Ozon Travel` together. Its final sentence
 uses `resume-mobile-paragraph` to start a new visual paragraph at 600 px and below;
 desktop and print retain one continuous paragraph.
 Experience entries lead with a product description, then a compact native
 Markdown definition list for the objective and team, followed by a result list.
+Results use native level-four headings, or level five inside a product group,
+with short ASCII IDs and the shared `resume-group-heading` class. The larger
+space above and smaller space below attach each heading to its list without
+adding heading-navigation stops.
 The two Yandex Travel products use compact level-four headings with short ASCII
 anchors and the theme's `resume-product-heading` class inside one employment
-entry, followed by their context and result groups; brief earlier roles remain prose. Context uses
-16/24 px on screen, descriptions/results use 18/28 px, and key outcome metrics
+entry, followed by their context and result groups; brief earlier roles remain prose.
+Context, descriptions and results share the 17/26 px screen reading scale; key outcome metrics
 are selectively bold. Sentence case, punctuation and number formatting are
 normalized without removing achievements or changing quantities. Date ranges
 and short number/unit combinations stay together with Beauty helpers or NBSP.
-Result lists use Beauty's native `pretty` wrapping on screen, reducing isolated
-last words where supported. Bold emphasis stays on the outcome values.
+Screen paragraphs and list items use Beauty's native `pretty` wrapping, reducing
+isolated last words where supported. Definition values are loose Markdown
+paragraphs to receive the same behavior. Dated-record titles use balanced lines;
+longer qualifications and providers retain `pretty`. Bold emphasis stays on short outcome values;
+surrounding explanations and long before/after comparisons retain regular weight.
 Education, courses and mentoring use the theme's
 `resume-list` / `resume-item` shortcodes: regular-weight text, no visible bullets,
 smaller dates at the right, stacked below 360 px. The mentoring section contains
 the two Yandex Practicum roles; private consultations are omitted. On screens up
 to 600 px, course providers and mentoring organizations appear below the title
 at 16/24 px; desktop and print retain inline details. Institution names use
-18 px regular text with the qualification directly below in a 16 px `subtitle`.
+17 px regular text with the qualification directly below in a 16 px `subtitle`.
 They are not headings or navigation stops. Active study uses “обучаюсь” alongside
 the course provider, with only the year in the date column;
 the HSE master's program records academic leave in its subtitle and uses
 “2021 — н. в.” for the period. Current jobs also use “н. в.”. Screen pages have an extra
 64 px of space at the end; print omits it and keeps individual records intact.
 
+All resume text groups retain Beauty's native paragraph margins instead of
+resetting each field or using grid rows for paragraphs. The common
+`--beauty-space` is 0.75em on screen and 4pt in print. Related fields inherit
+half that space through `--resume-group-space`, dated records use 1.5 times it,
+and jobs use 3.5 times it. The same compact flow groups company/role,
+institution/qualification and course/provider pairs. Line wrapping stays
+controlled by line height, independently of paragraph spacing.
+Result bullets retain their 0.75em item gap with a wider indentation up to 2em
+(34 px on screen, capped at 10%).
+Section headings have 56 px above and 24 px below. Print retains 10.5 pt text,
+with 3.5 pt between bullets and 24/14 pt around section headings.
+Only the final block's
+outer margin is trimmed at a group boundary. The shared browser contract checks
+that changing this one token reaches job, education and course paragraphs.
+
 The page inherits the site's selected fonts and has no separate visible controls.
 All text, links and rules share one ink color: black in light mode and print,
 white in dark mode. Type size, font and weight establish hierarchy; the main professional role is bold. Use
 the browser's Print command (`Cmd+P` on macOS / `Ctrl+P` elsewhere) and choose
 Save as PDF for a current copy. The named A4 print layout uses 16 mm margins and a white background
-and keeps entry headings with their text and individual result bullets together.
+and keeps entry/group headings with their text and individual result bullets intact.
+The last two items of every job list stay together to avoid an isolated final
+result at the top of the next page; longer lists can still span pages.
 Printing also works without JavaScript. Turn off browser-added headers and footers for a clean copy.
 There is no separate committed PDF to keep synchronized. Review every PDF page
 after substantial content changes; pagination depends on fonts and browser settings.
