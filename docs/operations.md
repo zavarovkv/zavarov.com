@@ -59,7 +59,8 @@ Job headers contain the company, role and period; repeated Moscow labels and
 company website links are omitted. The company is bold, the role is regular,
 and the smaller period aligns at the upper right, including on ordinary phones.
 On 360–600 px screens, the role sits directly below the company in the left
-column, while the date spans both rows on the right. A two-line date therefore
+column, while the date spans both rows on the right. Start and end dates use
+separate lines aligned at the left edge of that right-hand block. A two-line date therefore
 does not create a blank line above the role. Desktop and print retain a full-width
 role. Below 360 px, they stack in that reading order.
 The gap before the job description is larger than the gaps within the header.
