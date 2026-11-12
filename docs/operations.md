@@ -70,8 +70,9 @@ uses `resume-mobile-paragraph` to start a new visual paragraph at 600 px and bel
 desktop and print retain one continuous paragraph.
 Experience entries lead with a product description, then a compact native
 Markdown definition list for the objective and team, followed by a result list.
-The two Yandex Travel products retain separate descriptions and result groups
-inside one employment entry; brief earlier roles remain prose. Context uses
+The two Yandex Travel products use compact level-four headings with short ASCII
+anchors and the theme's `resume-product-heading` class inside one employment
+entry, followed by their context and result groups; brief earlier roles remain prose. Context uses
 16/24 px on screen, descriptions/results use 18/28 px, and key outcome metrics
 are selectively bold. Sentence case, punctuation and number formatting are
 normalized without removing achievements or changing quantities. Date ranges
@@ -81,9 +82,12 @@ last words where supported. Bold emphasis stays on the outcome values.
 Education, courses and mentoring use the theme's
 `resume-list` / `resume-item` shortcodes: regular-weight text, no visible bullets,
 smaller dates at the right, stacked below 360 px. The mentoring section contains
-the two Yandex Practicum roles; private consultations are omitted. Institution names use
+the two Yandex Practicum roles; private consultations are omitted. On screens up
+to 600 px, course providers and mentoring organizations appear below the title
+at 16/24 px; desktop and print retain inline details. Institution names use
 18 px regular text with the qualification directly below in a 16 px `subtitle`.
-They are not headings or navigation stops. Active study uses “обучаюсь”;
+They are not headings or navigation stops. Active study uses “обучаюсь” alongside
+the course provider, with only the year in the date column;
 the HSE master's program records academic leave in its subtitle and uses
 “2021 — н. в.” for the period. Current jobs also use “н. в.”. Screen pages have an extra
 64 px of space at the end; print omits it and keeps individual records intact.

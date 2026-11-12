@@ -57,7 +57,9 @@ url = "mailto:zavarovkv@gmail.com"
 {{< /resume-entry >}}
 
 {{< resume-entry title="Яндекс Путешествия" period="апрель 2018 — август 2021" role="Product Manager" >}}
-Мобильное приложение «Яндекс Расписание» (MAU 4 млн) на Android и iOS.
+#### Мобильное приложение «Яндекс Расписание» {#yandex-timetable .resume-product-heading}
+
+MAU 4 млн, Android и iOS.
 
 Задача
 : рост активной аудитории (DAU) приложения и CR в оплату.
@@ -73,7 +75,7 @@ url = "mailto:zavarovkv@gmail.com"
 - Вырастил CR в оплату с нуля до **13%** на сегменте ЦА в Москве и МО.
 - Вырастил покупку билетов с нуля до **900 000 билетов / мес.**
 
-Сервис бронирования отелей на Яндекс Путешествиях.
+#### Сервис бронирования отелей на Яндекс Путешествиях {#yandex-hotels .resume-product-heading}
 
 Задача
 : разработать сервис для подключения отелей к Путешествиям по оферте и подключить большинство отелей в РФ.
@@ -123,7 +125,7 @@ url = "mailto:zavarovkv@gmail.com"
 ## Курсы {#courses}
 
 {{< resume-list >}}
-{{< resume-item title="Школа руководителей" detail="Бюро Горбунова" period="2026 — обучаюсь" >}}
+{{< resume-item title="Школа руководителей" detail="Бюро Горбунова — обучаюсь" period="2026" >}}
 {{< resume-item title="Revenue Management Pro" detail="Cosmos Hotel Group" period="2025" >}}
 {{< resume-item title="Enterprise Product Ownership" detail="ICAgile" period="2022" >}}
 {{< resume-item title="Certified LeSS Basics" detail="LeSS" period="2022" >}}
