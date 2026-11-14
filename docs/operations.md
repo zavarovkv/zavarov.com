@@ -96,15 +96,15 @@ Screen company titles use 20 px, below the 22–24 px section headings.
 The introduction keeps `IT-продукты` and `Ozon Travel` together. Its final sentence
 uses `resume-mobile-paragraph` to start a new visual paragraph at 600 px and below;
 desktop and print retain one continuous paragraph.
-Experience entries lead with a product description, then a compact native
-Markdown definition list for the objective and team, followed by a result list.
+Experience entries lead with a product description and responsibility context,
+followed by a result list. Optional objective and team metadata can use a compact
+native Markdown definition list.
 Results use native level-four headings, or level five inside a product group,
 with short ASCII IDs and the shared `resume-group-heading` class. The larger
 space above and smaller space below attach each heading to its list without
 adding heading-navigation stops.
-The two Yandex Travel products use compact level-four headings with short ASCII
-anchors and the theme's `resume-product-heading` class inside one employment
-entry, followed by their context and result groups; brief earlier roles remain prose.
+The Yandex Travel entry combines the mobile application and direct hotel-contract
+service in shared context paragraphs and one result list; brief earlier roles remain prose.
 Context, descriptions and results share the 17/26 px screen reading scale; key outcome metrics
 are selectively bold. Sentence case, punctuation and number formatting are
 normalized without removing achievements or changing quantities. Date ranges
@@ -134,10 +134,10 @@ half that space through `--resume-group-space`, dated records use 1.5 times it,
 and jobs use 3.5 times it. The same compact flow groups company/role,
 institution/qualification and course/provider pairs. Line wrapping stays
 controlled by line height, independently of paragraph spacing.
-Result bullets retain their 0.75em item gap with a wider indentation up to 2em
+Result bullets use a compact 0.6em item gap with a wider indentation up to 2em
 (34 px on screen, capped at 10%).
 Section headings have 56 px above and 24 px below. Print retains 10.5 pt text,
-with 3.5 pt between bullets and 24/14 pt around section headings.
+with 3 pt between bullets and 24/14 pt around section headings.
 Only the final block's
 outer margin is trimmed at a group boundary. The shared browser contract checks
 that changing this one token reaches job, education and course paragraphs.
