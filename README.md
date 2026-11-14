@@ -34,7 +34,7 @@ npm run check   # Validate generated pages, links and assets
 
 ## Fonts
 
-Production uses **ALS Story** for text, **ALS Sourdine** for H1 and drop caps, and
+Production uses **ALS Story** for text, **ALS Sourdine** for H1, article H2 and drop caps, and
 **ALS Mirta** for quotations. Local builds use **Inter** by default.
 
 Licensed fonts are not included in Git. See [font setup and deployment](docs/site-fonts.md).

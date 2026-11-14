@@ -84,7 +84,7 @@ test('quote attribution alignment covers native captions and wraps long signatur
   }
 });
 
-test('the licensed H1 face loads without changing body or article-list fonts', async ({page}) => {
+test('the licensed title face styles article H1 and H2 while other roles keep Story', async ({page}) => {
   test.skip(!process.env.BROWSER_HUGO_CONFIG?.split(',').includes('config/fonts/sourdine.toml'), 'Private font profile is not selected');
   const fontFailures = [];
   page.on('response', response => {
@@ -94,7 +94,7 @@ test('the licensed H1 face loads without changing body or article-list fonts', a
     await page.emulateMedia({colorScheme});
     for (const width of [320, 390, 1440]) {
       await page.setViewportSize({width, height:900});
-      for (const path of ['/nct/', '/en/nct/']) {
+      for (const path of ['/books/sabirov/', '/en/books/sabirov/']) {
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
         const title = page.locator('h1');
@@ -103,15 +103,50 @@ test('the licensed H1 face loads without changing body or article-list fonts', a
         await expect(title).toHaveCSS('font-size', width > 768 ? '44px' : '32px');
         await expect(title).toHaveCSS('letter-spacing', width > 768 ? 'normal' : '-0.32px');
         await expect(page.locator('article > p').first()).toHaveCSS('font-family', /^"?ALS Story/);
-        await expect(page.locator('h2').first()).toHaveCSS('font-family', /^"?ALS Story/);
+        const section = page.locator('article h2').first();
+        await expect(section).toHaveCSS('font-family', /^"?ALS Sourdine/);
+        await expect(section).toHaveCSS('font-weight', '500');
+        await expect(section).toHaveCSS('font-size', '24px');
+        await expect(section).toHaveCSS('line-height', '30px');
+        await expect(page.locator('article h3').first()).toHaveCSS('font-family', /^"?ALS Story/);
+        await expect(page.locator('article h3').first()).toHaveCSS('font-weight', '700');
         expect(await page.evaluate(() => [...document.fonts].some(font => /ALS Sourdine/i.test(font.family) && font.status === 'loaded'))).toBe(true);
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       }
       for (const path of ['/', '/en/', '/blog/', '/en/blog/']) {
         await page.goto(path);
         await expect(page.locator('.blog-posts a').first()).toHaveCSS('font-family', /^"?ALS Story/);
+        const headings = page.locator('.posts-group-title');
+        expect(await headings.count()).toBeGreaterThan(0);
+        for (const heading of await headings.all()) {
+          await expect(heading).toHaveCSS('font-family', /^"?ALS Story/);
+          await expect(heading).toHaveCSS('font-weight', '700');
+        }
       }
     }
   }
+  for (const path of ['/consultation/', '/en/consultation/']) {
+    await page.goto(path);
+    await expect(page.locator('article > p').first()).toHaveCSS('font-family', /^"?ALS Story/);
+    // These standalone pages have no authored H2; exercise their heading role
+    // without adding artificial content to the published site.
+    await page.locator('article').evaluate(article => {
+      const heading = document.createElement('h2');
+      heading.textContent = 'Standalone section';
+      article.append(heading);
+    });
+    await expect(page.locator('article h2')).toHaveCSS('font-family', /^"?ALS Story/);
+    await expect(page.locator('article h2')).toHaveCSS('font-weight', '700');
+  }
+  await page.goto('/books/sabirov/');
+  await page.emulateMedia({media:'print'});
+  await expect(page.locator('article h2').first()).toHaveCSS('font-family', /^"?ALS Sourdine/);
+  await expect(page.locator('article h2').first()).toHaveCSS('font-weight', '500');
+  const printHeading = await page.locator('article h2').first().evaluate(heading => {
+    const style = getComputedStyle(heading);
+    return {size:parseFloat(style.fontSize), leading:parseFloat(style.lineHeight)};
+  });
+  expect(printHeading.size).toBeCloseTo(16 * 96 / 72, 2);
+  expect(printHeading.leading).toBeCloseTo(20 * 96 / 72, 2);
   expect(fontFailures).toEqual([]);
 });

@@ -1,4 +1,7 @@
-# Optional H1 profile layered after the site's body font configuration.
+# Optional title profile layered after the site's body font configuration.
+[params]
+articleH2UseTitleFont = true
+
 [params.fonts]
 titleWeight = 500
 
