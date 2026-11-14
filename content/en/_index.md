@@ -2,11 +2,11 @@
 description = "Konstantin Zavarov — blog about product management, strategy and team leadership"
 +++
 
-My name is Konstantin Zavarov. I build digital products and help others learn to build them well.
+# I build and grow digital products {.no-anchor}
 
-I have over <span class="beauty-nowrap">12 years</span> of experience in IT — from software developer to Head of Product at Ozon. I've worked at Yandex, Megamarket, and Kaspersky Lab across various domains and scales. Currently I focus on product strategy, creating business value, and building product teams.
+My focus is product strategy, business results, and developing product teams.
 
-From 2021 to 2025, I taught project and product management courses at Yandex Practicum, helping over <span class="beauty-nowrap">300 students</span> graduate. I now offer [one-on-one consultations](/en/consultation/).
+At Yandex Practicum, I helped over <span class="beauty-nowrap">300 students</span> graduate from project and product management courses. I now offer [one-on-one consultations](/en/consultation/).
 
 I run the Telegram channel [Product Code](https://t.me/pmgen), where I write about product management without the fluff.
 
@@ -20,13 +20,13 @@ Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a
 ## Projects {.posts-group-title .no-anchor}
 
 {{< project name="Hugo Mini" url="https://themes.gohugo.io/themes/hugo-mini/" icon="images/hugo-mini-logo-light.svg" iconDark="images/hugo-mini-logo-dark.svg" >}}
-A minimal Hugo theme that powers this blog. It supports dark mode, multiple languages, and Telegram integration.
+A minimal Hugo theme with automatic typography and Telegram integration. It powers this blog.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/hugo-mini" >}}</p>
 {{< /project >}}
 
 {{< project name="Beauty.css" url="https://www.npmjs.com/package/beauty-css" icon="images/beauty-logo-light.svg" iconDark="images/beauty-logo-dark.svg" >}}
-A lightweight CSS library for beautiful, readable websites. Typography, forms, and dark mode for plain HTML.
+A CSS library for polished typography, forms, and tables in plain HTML.
 
 <p class="beauty-note">{{< github-stars repo="zavarovkv/beauty-css" >}}</p>
 {{< /project >}}
