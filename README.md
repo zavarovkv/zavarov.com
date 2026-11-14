@@ -4,7 +4,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 
 ## Included
 
-- **Content:** Russian and English articles, projects, a bookshelf and a printable CV.
+- **Content:** Russian and English articles, a curated homepage selection, projects, a bookshelf and a printable CV.
 - **Reading:** responsive typography, light and dark modes, margin notes and print styles.
 - **Rich posts:** quotations, code, math, diagrams and Telegram comments.
 - **Discovery:** SEO, share cards, RSS, JSON Feed and localized `llms.txt`.
@@ -50,7 +50,7 @@ Russian articles are the source; English articles are generated. Both homepage `
 
 ## Documentation
 
-- [Operations](docs/operations.md) — commands, translation, deployment and checks.
+- [Operations](docs/operations.md) — homepage selection, commands, translation, deployment and checks.
 - [Bookshelf](docs/books.md) — book records, translations and reviews.
 - [Fonts](docs/site-fonts.md) — licensed profiles and local preview.
 - [Theme features](themes/hugo-mini/docs/advanced-features.md) — components and configuration.

@@ -29,6 +29,35 @@ the committed Russian and English pages does not require an API key.
 
 ## Content workflow
 
+### Featured homepage articles
+
+Both manually maintained homepage files use the theme's `featured-posts` shortcode.
+The shared `params.featuredPosts` list in `config.toml` selects the articles and their
+display order for Russian and English:
+
+```toml
+[params]
+featuredPosts = [
+  "/blog/10-evils",
+  "/blog/text",
+  "/blog/brandage",
+  "/blog/product-strategy",
+  "/blog/nps-csi",
+  "/blog/kotler",
+]
+```
+
+Change this list to add, remove or reorder an article. References are Hugo content
+paths, without a language prefix or file extension, rather than the public URLs.
+The theme resolves each title and URL in the homepage's language and skips missing,
+hidden and non-post pages; Hugo excludes drafts and future posts in production.
+Duplicates appear only once. An empty or unavailable selection renders no block.
+
+The link to all articles remains below the selection, and the full archive keeps
+its existing category and date ordering. Changing this list does not modify article
+front matter or trigger new translations. See the theme's
+[featured articles reference](../themes/hugo-mini/docs/content.md#featured-articles).
+
 ### CV
 
 `content/ru/cv.md` maintains the Russian resume at `/cv/`. Its `noindex = true`
