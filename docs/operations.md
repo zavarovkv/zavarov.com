@@ -79,6 +79,8 @@ front matter; phone and email are `tel:` / `mailto:` links at the upper right,
 styled like ordinary text, with a pointer cursor and no hover color or underline.
 There are no LinkedIn or homepage links. On mobile the name and role are followed by one row with
 phone and email in two equal columns; below 320 px they stack vertically.
+On screens up to 600 px, the name scales from 32 to 36 px and the professional
+role uses 1.125em (19.125 px at the default CV text size).
 Each section heading ends in a thin rule. CV-specific screen and print styles
 live in the theme's `assets/css/resume.css`, loaded only for this layout.
 The complete experience, education, courses and mentoring stay in
