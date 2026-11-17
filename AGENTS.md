@@ -34,6 +34,7 @@ Homepage project stars use the theme's `github-stars` shortcode and `scripts/fet
 ## Architecture
 
 - **Blog theme**: [hugo-mini](https://github.com/zavarovkv/hugo-mini) (git submodule at `themes/hugo-mini/`) — provides the blog's base layouts, CSS, JS, fonts, KaTeX, Likely, shortcodes, i18n UI strings, and build scripts (`fetch-telegram-reactions.mjs`). The blog does not shadow theme assets; its fonts/katex/likely are served from the theme directly.
+- **Custom CV**: `layouts/resume/single.html`, `layouts/resume/_shortcodes/resume-*.html`, `layouts/resume/_markup/render-heading.html` and `assets/css/resume.css` are site-owned. Keep `/cv/`, its responsive/print styles and tests here, not in Hugo Mini. The page reuses the theme shell and generic heading navigation.
 - **Blog override**: `layouts/_partials/custom_head.html` adds Yandex/Google verification meta tags. The theme uses Hugo's current template system (0.146+), so partials live under `_partials/` with the underscore.
 - **Content mounts**: `module.mounts.sites.matrix.languages` selects Russian and English content. Keep explicit mounts for `layouts`, `assets`, `content/ru` and `content/en`; do not restore `mounts.lang` or duplicate the content selection with language `contentDir` settings.
 - **Header title split**: the theme's `header.html` auto-splits `.Site.Title` on the first space into `.title-first-name` / `.title-last-name` spans (so `"Константин Заваров"` renders as two styleable pieces). No site override needed.
@@ -106,7 +107,7 @@ Third-party runtime behavior:
 
 ## Theme vs Site Overrides
 
-`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/_partials/custom_head.html` or by re-adding shadowed copies of theme assets. Blog overrides exist strictly for site-specific search-engine verification.
+`themes/hugo-mini/` is the project's own submodule — edit it directly. If a fix or change belongs to the theme (CSS, JS, layouts, partials, static assets inside the theme), apply it in the theme. Do not work around it with patches in `layouts/_partials/custom_head.html` or by re-adding shadowed copies of theme assets. Blog overrides exist strictly for site-specific search-engine verification. The standalone CV is a site-owned layout with its own styles, shortcodes and scoped heading hook; it does not replace the shared blog templates.
 
 ## Config Parameters
 

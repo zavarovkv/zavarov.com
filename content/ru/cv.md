@@ -1,7 +1,7 @@
 +++
 title = "Константин Заваров"
 slug = "cv"
-layout = "resume"
+type = "resume"
 noindex = true
 role = "Head of Product"
 description = "Резюме Константина Заварова — Head of Product. Опыт работы, образование, курсы и менторство."

@@ -6,8 +6,8 @@ Build, translation and validation contracts for [zavarov.com](../README.md). The
 
 ```bash
 hugo server                              # Hugo only; does not refresh search
-npm run dev                              # Refresh counters, start Hugo and watch the search index
-npm run build                            # Refresh counters, build Hugo strictly and index search
+npm run dev                              # Refresh GitHub stars, start Hugo and watch the search index
+npm run build                            # Refresh GitHub stars, build Hugo strictly and index search
 npm run build:site                       # Build + index without fetching counters
 npm run index-search                     # Reindex existing public/ output
 hugo --minify                            # Hugo only; no search indexing
@@ -39,7 +39,7 @@ Wait for **Search index updated**, then reload an open search after content edit
 
 The theme owns the dialog, index markers and build helper. Russian and English
 results stay separate. Published articles and ordinary pages are included;
-hidden/noindex/search=false pages, resumes, drafts, future/expired pages and site
+hidden/noindex/search=false pages, drafts, future/expired pages and site
 navigation are excluded. `search = false` in front matter removes a page only
 from local search. No translations or source hashes change during indexing.
 
@@ -81,105 +81,26 @@ front matter or trigger new translations. See the theme's
 
 ### CV
 
-`content/ru/cv.md` maintains the Russian resume at `/cv/`. Its `noindex = true`
-emits `noindex, follow` and excludes the page from the sitemap, while keeping
-the URL accessible to visitors and crawlers so they can read that directive.
-It uses the theme's
-`resume` layout and `resume-entry` shortcode, with no blog navigation, footer,
-back-to-top gutter or article widgets. Section headings, their rules and company
-names use the shared `headingScroll` behavior, including URL fragments
-and Option/Alt + Up/Down navigation. Clicking the person's name scrolls to the top
-and clears the fragment without reloading or losing query parameters. Repeated
-employers get distinct anchors through the `resume-entry` shortcode position.
-CV sections use short explicit ASCII anchors to keep browser-PDF destinations
-within format limits even for long Russian headings.
-Keyboard navigation also reaches the final sections when the viewport is too
-tall to align them at the top; manual scrolling resets its reference position.
-Contacts and the professional role live in
-front matter; phone and email are `tel:` / `mailto:` links at the upper right,
-styled like ordinary text, with a pointer cursor and no hover color or underline.
-There are no LinkedIn or homepage links. On mobile the name and role are followed by one row with
-phone and email in two equal columns; below 320 px they stack vertically.
-On screens up to 600 px, the name scales from 32 to 36 px and the professional
-role uses 1.125em (19.125 px at the default CV text size).
-Each section heading ends in a thin rule. CV-specific screen and print styles
-live in the theme's `assets/css/resume.css`, loaded only for this layout.
-The complete experience, education, courses and mentoring stay in
-the Markdown body. The initial content was transferred from the supplied Word
-document without shortening or revising achievements.
-Job headers contain the company, role and period; repeated Moscow labels and
-company website links are omitted. The company is bold, the role is regular,
-and the smaller period aligns at the upper right, including on ordinary phones.
-Company and role share normal text flow in the left column; the date occupies
-an independent right column. On 360–600 px screens, start and end dates use
-separate lines aligned at the left edge of that right-hand block. A two-line date
-does not stretch the spacing between company and role. Desktop and print keep
-dates inline. Below 360 px, the date follows the complete text group.
-Screen company titles use 20 px, below the 22–24 px section headings.
-The introduction keeps `IT-продукты` and `Ozon Travel` together. Its final sentence
-uses `resume-mobile-paragraph` to start a new visual paragraph at 600 px and below;
-desktop and print retain one continuous paragraph.
-Experience entries lead with a product description and responsibility context,
-followed by a result list. Optional objective and team metadata can use a compact
-native Markdown definition list.
-Results use native level-four headings, or level five inside a product group,
-with short ASCII IDs and the shared `resume-group-heading` class. The larger
-space above and smaller space below attach each heading to its list without
-adding heading-navigation stops.
-The Yandex Travel entry combines the mobile application and direct hotel-contract
-service in shared context paragraphs and one result list; brief earlier roles remain prose.
-Context, descriptions and results share the 17/26 px screen reading scale; key outcome metrics
-are selectively bold. Sentence case, punctuation and number formatting are
-normalized without removing achievements or changing quantities. Date ranges
-and short number/unit combinations stay together with Beauty helpers or NBSP.
-Screen paragraphs and list items use Beauty's native `pretty` wrapping, reducing
-isolated last words where supported. Definition values are loose Markdown
-paragraphs to receive the same behavior. Dated-record titles use balanced lines;
-longer qualifications and providers retain `pretty`. Bold emphasis stays on short outcome values;
-surrounding explanations and long before/after comparisons retain regular weight.
-Education, courses and mentoring use the theme's
-`resume-list` / `resume-item` shortcodes: regular-weight text, no visible bullets,
-smaller dates at the right, stacked below 360 px. The mentoring section contains
-the two Yandex Practicum roles; private consultations are omitted. On screens up
-to 600 px, course providers and mentoring organizations appear below the title
-at 16/24 px; desktop and print retain inline details. Institution names use
-17 px regular text with the qualification directly below in a 16 px `subtitle`.
-They are not headings or navigation stops. Active study uses “обучаюсь” alongside
-the course provider, with only the year in the date column;
-the HSE master's program records academic leave in its subtitle and uses
-“2021 — н. в.” for the period. Current jobs also use “н. в.”. Screen pages have an extra
-64 px of space at the end; print omits it and keeps individual records intact.
+`content/ru/cv.md` owns the resume at `/cv/`. Role and contacts live in front matter;
+experience, education and mentoring remain in the Markdown body. `type = "resume"`
+selects the site-owned templates and scopes their heading hook. `noindex = true`
+keeps the page out of the sitemap and local search while leaving its URL accessible.
 
-All resume text groups retain Beauty's native paragraph margins instead of
-resetting each field or using grid rows for paragraphs. The common
-`--beauty-space` is 0.75em on screen and 4pt in print. Related fields inherit
-half that space through `--resume-group-space`, dated records use 1.5 times it,
-and jobs use 3.5 times it. The same compact flow groups company/role,
-institution/qualification and course/provider pairs. Line wrapping stays
-controlled by line height, independently of paragraph spacing.
-Result bullets use a compact 0.6em item gap with a wider indentation up to 2em
-(34 px on screen, capped at 10%).
-Section headings have 56 px above and 24 px below. Print retains 10.5 pt text,
-with 3 pt between bullets and 24/14 pt around section headings.
-Only the final block's
-outer margin is trimmed at a group boundary. The shared browser contract checks
-that changing this one token reaches job, education and course paragraphs.
+The CV belongs to this site, not Hugo Mini:
 
-The page inherits the site's selected fonts and has no separate visible controls.
-All text, links and rules share one ink color: black in light mode and print,
-white in dark mode. Type size, font and weight establish hierarchy; the main professional role is bold. Use
-the browser's Print command (`Cmd+P` on macOS / `Ctrl+P` elsewhere) and choose
-Save as PDF for a current copy. The named A4 print layout uses 16 mm margins and a white background
-and keeps entry/group headings with their text and individual result bullets intact.
-The last two items of every job list stay together to avoid an isolated final
-result at the top of the next page; longer lists can still span pages.
-Printing also works without JavaScript. Turn off browser-added headers and footers for a clean copy.
-There is no separate committed PDF to keep synchronized. Review every PDF page
-after substantial content changes; pagination depends on fonts and browser settings.
+- `layouts/resume/single.html` reuses the theme shell, fonts and typography without navigation, footer or search.
+- `layouts/resume/_shortcodes/resume-*.html` renders jobs and dated records.
+- `layouts/resume/_markup/render-heading.html` formats only CV headings.
+- `assets/css/resume.css` supplies the responsive layout and A4 print rules, loaded only on the CV.
+- `tests/browser/resume*.mjs` and its local fixture check contacts, narrow screens, heading navigation and printing.
 
-The layout is reusable across languages. No English CV was generated
-as part of this import; existing translation rules below still apply. See the
-theme's [resume authoring guide](../themes/hugo-mini/docs/content.md#standalone-resume).
+Keep short ASCII section IDs and the existing `resume-group-heading` result headings.
+Company headings opt into the theme's generic `data-heading-scroll` behavior; clicking
+the name clears the fragment. `backToTop = false` keeps the page free of that control.
+
+Use **Cmd/Ctrl+P → Save as PDF**, with browser headers/footers disabled. Print uses
+A4, 16 mm margins and the selected fonts; review every page after substantial edits.
+There is no committed PDF or separately maintained English CV. Translation rules below apply.
 
 ### Translations
 
@@ -229,7 +150,7 @@ data/                    Shared book records and saved public counters
 assets/private-fonts/    Ignored licensed fonts for the optional site profile
 static/                  Images, datasets, and CNAME
 scripts/                 Translation and asset-vendoring scripts
-layouts/                 Site-specific search-engine verification
+layouts/                 Search-engine verification and the custom CV
 i18n/                    Category name overrides
 themes/hugo-mini/        Theme submodule
 docs/                    Site content maintenance notes
@@ -249,7 +170,7 @@ history is stored once; localized titles and authors are display overrides on
 the same records. Reviews use ordinary Markdown and the shared article layout.
 
 The pinned npm dependencies are build/development tools: Mermaid supplies the local diagram
-modules, OpenAI powers the optional translator, parsers validate content and local asset references,
+modules, Pagefind indexes search, OpenAI powers the optional translator, parsers validate content and local asset references,
 and Playwright runs browser checks. The theme requires no npm installation for ordinary Hugo builds,
 and its Beauty.css foundation has no runtime dependencies.
 Sharing assets are minified and fingerprinted by Hugo only when sharing is enabled.
@@ -275,7 +196,7 @@ builds the site, verifies self-hosted assets, and publishes `public/`.
 Pull requests run the same regression tests against Hugo 0.154.5 and the latest
 release. Deployment keeps the pinned version so toolchain updates remain explicit.
 
-Translations and the GitHub star snapshots are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, HTML/SVG anchors, duplicate IDs, and empty builds. Local scripts and stylesheets with `integrity` metadata are also checked against their generated bytes, using the strongest advertised hash as browsers do. To verify a fresh build without stale local output, use `hugo --minify --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
+Translations and the GitHub star snapshots are committed only after the build and link checks succeed. The build uses the workflow's existing GitHub token for star counts; an API failure keeps the committed snapshot. Link checks cover rendered relative and same-origin absolute URLs, resource query strings, HTML/SVG anchors, duplicate IDs, and empty builds. Local scripts and stylesheets with `integrity` metadata are also checked against their generated bytes, using the strongest advertised hash as browsers do. To verify a fresh build without stale local output, use `npm run build:site -- --destination /tmp/blog-check` followed by `npm run check -- --public-dir /tmp/blog-check` (choose an empty destination).
 
 Set the `OPENAI_API_KEY` GitHub Actions secret to enable automatic translation. Without it, deployment continues using the committed EN content.
 
@@ -287,6 +208,7 @@ Each build produces:
 - RSS and JSON feeds
 - `sitemap.xml` and `robots.txt`
 - Localized `llms.txt`
+- Pagefind search index in `public/pagefind/` when using the npm build commands
 - Open Graph and structured metadata
 
 Russian pages use root-level URLs such as `/blog/` and `/:slug/`. English pages use the `/en/` prefix.

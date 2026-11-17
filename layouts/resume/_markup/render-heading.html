@@ -1,0 +1,2 @@
+{{- /* Scoped to content with type = "resume"; article headings use the theme hook. */ -}}
+<h{{ .Level }} id="{{ .Anchor | safeURL }}"{{ with .Attributes.class }} class="{{ . }}"{{ end }}>{{ if eq .Level 2 }}<span class="resume-section-label">{{ .Text | safeHTML }}</span>{{ else }}{{ .Text | safeHTML }}{{ end }}</h{{ .Level }}>

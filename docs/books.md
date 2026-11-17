@@ -114,17 +114,9 @@ Their `archive_url` fields record the actual snapshots used. Publication dates
 use the reading months from the old shelf; exact reading days and original
 publication timestamps are unknown. `lastmod` records the restoration date.
 
-The four illustrations referenced inside the old reviews could not initially
-be retrieved from the archive. Their source URLs are retained in
-`docs/books-missing-images.json` for recovery. The TED embed is a normal
-link to the original talk.
+Preview with `npm run dev` so search is refreshed too. Validate with `npm test`,
+`npm run build:site` and `npm run check`. See [operations](operations.md) for
+isolated builds and browser checks.
 
-Run `hugo server` to preview locally. Validate with `npm test`,
-`node --test themes/hugo-mini/tests/*.test.mjs`, a production Hugo build and
-`node scripts/check-site.mjs --public-dir <build-directory>`.
-
-For bulk content imports, stop the development server before rewriting files,
-write complete files atomically and restart with
-`hugo server --renderToMemory --disableFastRender`.
-Check the running pages over HTTP as well as the clean
-production build: a successful disk build alone does not validate a live preview.
+For bulk imports, write complete files atomically and restart `npm run dev`.
+Wait for **Search index updated**, then check the shelf and edited reviews in the browser.

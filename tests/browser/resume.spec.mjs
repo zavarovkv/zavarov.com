@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { resumeContracts } from '../../themes/hugo-mini/tests/browser/resume-contracts.mjs';
+import { resumeContracts } from './resume-contracts.mjs';
 resumeContracts(test, expect);
 
 test('the full Russian CV keeps real content readable across widths and print', async ({ page, browserName }, testInfo) => {
@@ -9,6 +9,8 @@ test('the full Russian CV keeps real content readable across widths and print', 
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/cv/');
     await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('main')).toHaveAttribute('data-pagefind-ignore', 'all');
+    await expect(page.locator('#site-search')).toHaveCount(0);
     await expect(page.locator('.resume-entry')).toHaveCount(6);
     await expect(page.locator('.resume > h2')).toHaveCount(4);
     await expect(page.locator('.resume-contacts a')).toHaveCount(2);

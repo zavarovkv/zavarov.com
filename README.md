@@ -10,7 +10,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 - **Discovery:** full-text Pagefind search, SEO, share cards, RSS, JSON Feed and localized `llms.txt`.
 - **Delivery:** GitHub Pages, automatic translation and build, link and browser checks.
 
-[Full feature index](themes/hugo-mini/docs/advanced-features.md).
+[Theme feature index](themes/hugo-mini/docs/advanced-features.md).
 
 ## Run locally
 
@@ -41,7 +41,7 @@ Licensed fonts are not included in Git. See [font setup and deployment](docs/sit
 
 ## Ownership
 
-- **Site:** content, data, configuration, translations and deployment.
+- **Site:** content, data, configuration, translations, deployment and the [custom CV](docs/operations.md#cv).
 - **Hugo Mini submodule:** layouts, UI, scripts, font loading and integrations.
 - **Beauty.css:** shared typography, forms and tables.
 
