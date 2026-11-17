@@ -5,10 +5,12 @@ Build, translation and validation contracts for [zavarov.com](../README.md). The
 ## Commands
 
 ```bash
-hugo server                              # Start the development server
-npm run dev                              # Refresh public counters and start Hugo
-npm run build                            # Refresh public counters and build strictly
-hugo --minify                            # Build the production site
+hugo server                              # Hugo only; does not refresh search
+npm run dev                              # Refresh counters, start Hugo and watch the search index
+npm run build                            # Refresh counters, build Hugo strictly and index search
+npm run build:site                       # Build + index without fetching counters
+npm run index-search                     # Reindex existing public/ output
+hugo --minify                            # Hugo only; no search indexing
 npm run translate                        # Translate new or changed content
 npm run translate:force                  # Re-translate all content
 npm run translate -- blog/brandage.md    # Translate one file
@@ -26,6 +28,25 @@ npm run translate -- --allow-stale        # Keep existing EN if the API is unava
 
 Automatic translation requires an `OPENAI_API_KEY`. Building and previewing
 the committed Russian and English pages does not require an API key.
+
+## Search
+
+Pagefind 1.6.0 indexes the generated HTML after every build. `npm run dev`
+refreshes it after Hugo rebuilds; `npm run build` and `npm run build:site`
+clean stale output, build and recreate `public/pagefind/`. CI uses this same
+pipeline and publishes the whole directory. Plain Hugo commands do not run Pagefind.
+Wait for **Search index updated**, then reload an open search after content edits.
+
+The theme owns the dialog, index markers and build helper. Russian and English
+results stay separate. Published articles and ordinary pages are included;
+hidden/noindex/search=false pages, resumes, drafts, future/expired pages and site
+navigation are excluded. `search = false` in front matter removes a page only
+from local search. No translations or source hashes change during indexing.
+
+Open with the magnifier, mobile menu, `Cmd/Ctrl+K` or `/`; arrows select results,
+Enter opens and Escape closes. Search assets are self-hosted and loaded on demand.
+See the theme's [search guide](../themes/hugo-mini/docs/search.md) for setup,
+customization, hosting and language details.
 
 ## Content workflow
 

@@ -7,10 +7,10 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 - **Content:** Russian and English articles, a curated homepage selection, projects, a bookshelf and a printable CV.
 - **Reading:** responsive typography, light and dark modes, margin notes and print styles.
 - **Rich posts:** quotations, code, math, diagrams and Telegram comments.
-- **Discovery:** SEO, share cards, RSS, JSON Feed and localized `llms.txt`.
+- **Discovery:** full-text Pagefind search, SEO, share cards, RSS, JSON Feed and localized `llms.txt`.
 - **Delivery:** GitHub Pages, automatic translation and build, link and browser checks.
 
-[Full feature index](themes/hugo-mini/docs/advanced-features.md). Full-text search is not implemented; the magnifier currently links home.
+[Full feature index](themes/hugo-mini/docs/advanced-features.md).
 
 ## Run locally
 
@@ -20,14 +20,14 @@ Requires **Hugo Extended 0.154.5+** and **Node.js 22.12+**.
 git clone --recursive https://github.com/zavarovkv/zavarov.com.git
 cd zavarov.com
 npm ci
-hugo server
+npm run dev
 ```
 
 Open <http://localhost:1313/>. Existing clones need `git submodule update --init`.
 `npm ci` prepares Mermaid; building committed content needs no API key.
 
 ```bash
-npm run build   # Refresh GitHub stars and build
+npm run build   # Refresh GitHub stars, build Hugo and index search
 npm test        # Site and theme tests
 npm run check   # Validate generated pages, links and assets
 ```

@@ -6,13 +6,17 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 Personal blog (zavarov.com) built with Hugo using the [hugo-mini](https://github.com/zavarovkv/hugo-mini) theme (git submodule). Multilingual: Russian (default) + English (auto-translated via OpenAI API). Content is focused on Product Management topics. Blog layouts, CSS/JS, fonts, KaTeX, and Likely live in the theme.
 
+Search is provided by the theme's opt-in Pagefind integration (`params.search = true`). The pinned npm dependency builds `public/pagefind/` after Hugo; `npm run dev` reindexes completed rebuilds and production builds clean stale output. Do not replace JSON Feed with a search index or edit translations for indexing. See `themes/hugo-mini/docs/search.md`.
+
 The concise feature map is in `README.md`; all site commands, translation guarantees and CI/check contracts are in `docs/operations.md`. Reusable theme features are indexed in `themes/hugo-mini/docs/advanced-features.md`. Keep these entry points current without duplicating full parameter references.
 
 ## Build & Development Commands
 
 ```bash
-hugo server                              # Local dev server with live reload
-hugo --minify                            # Production build (outputs to /public)
+npm run dev                              # Hugo + Pagefind live index, refresh saved counters
+hugo server                              # Hugo only; no search indexing
+npm run build                            # Counters + Hugo + Pagefind production build
+npm run build:site                       # Hugo + Pagefind without fetching counters
 npm run translate                        # Translate new/changed content to EN
 npm run translate -- --force             # Re-translate all content
 npm run translate -- blog/brandage.md    # Translate specific file

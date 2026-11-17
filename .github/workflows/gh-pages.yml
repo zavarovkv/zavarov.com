@@ -51,13 +51,16 @@ jobs:
         run: npm audit --audit-level=moderate
 
       - name: Build
-        run: hugo --minify --panicOnWarning
+        run: npm run build:site
 
       - name: Check content and local links
         run: npm run check
 
       - name: Check self-hosted assets
-        run: test -s public/js/mermaid/mermaid.esm.min.mjs
+        run: |
+          test -s public/js/mermaid/mermaid.esm.min.mjs
+          test -s public/pagefind/pagefind.js
+          test -s public/pagefind/pagefind-entry.json
 
       - name: Install test browsers
         run: npx playwright install --with-deps chromium webkit
@@ -173,6 +176,8 @@ jobs:
         run: |
           set -euo pipefail
           test -s public/js/mermaid/mermaid.esm.min.mjs
+          test -s public/pagefind/pagefind.js
+          test -s public/pagefind/pagefind-entry.json
           echo "ok: public/js/mermaid/mermaid.esm.min.mjs ($(wc -c < public/js/mermaid/mermaid.esm.min.mjs) bytes)"
 
       - name: Install test browsers

@@ -1,13 +1,13 @@
 {
   "name": "zavarov-com",
   "private": true,
-  "description": "Build-time scripts for the zavarov.com Hugo site (RU→EN translation, Telegram reactions fetch).",
+  "description": "Build-time scripts for the zavarov.com Hugo site (RU\u2192EN translation, Telegram reactions fetch).",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run fetch-github-stars && hugo server --bind 127.0.0.1",
-    "build": "npm run fetch-github-stars && hugo --minify --panicOnWarning",
+    "dev": "npm run fetch-github-stars && node themes/hugo-mini/scripts/hugo-search.mjs dev",
+    "build": "npm run fetch-github-stars && node themes/hugo-mini/scripts/hugo-search.mjs build",
     "test": "node --test tests/*.test.mjs themes/hugo-mini/tests/*.test.mjs",
     "test:theme": "node --test themes/hugo-mini/tests/*.test.mjs",
     "test:browser": "playwright test",
@@ -18,7 +18,9 @@
     "translate": "node scripts/translate.mjs",
     "translate:force": "node scripts/translate.mjs --force",
     "fetch-telegram-reactions": "node themes/hugo-mini/scripts/fetch-telegram-reactions.mjs",
-    "fetch-github-stars": "node themes/hugo-mini/scripts/fetch-github-stars.mjs zavarovkv/hugo-mini zavarovkv/beauty-css"
+    "fetch-github-stars": "node themes/hugo-mini/scripts/fetch-github-stars.mjs zavarovkv/hugo-mini zavarovkv/beauty-css",
+    "build:site": "node themes/hugo-mini/scripts/hugo-search.mjs build",
+    "index-search": "node themes/hugo-mini/scripts/hugo-search.mjs index"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
@@ -26,6 +28,7 @@
     "marked-footnote": "1.4.0",
     "mermaid": "12.2.0",
     "openai": "7.4.0",
+    "pagefind": "1.6.0",
     "parse-srcset": "1.0.2",
     "parse5": "8.0.1",
     "postcss": "8.5.32",

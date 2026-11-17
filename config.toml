@@ -132,6 +132,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   proseNumerals = true
   rememberLanguage = true
   showSearchButton = true
+  search = true
   authorURL = "https://zavarov.com/"
   telegramChannel = "pmgen"
   yandexMetrikaId = 106247763
