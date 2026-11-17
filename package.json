@@ -1,7 +1,7 @@
 {
   "name": "zavarov-com",
   "private": true,
-  "description": "Build-time scripts for the zavarov.com Hugo site (RU\u2192EN translation, Telegram reactions fetch).",
+  "description": "Build-time scripts for the zavarov.com Hugo site (RU→EN translation, Telegram reactions fetch).",
   "engines": {
     "node": ">=22.12.0"
   },
