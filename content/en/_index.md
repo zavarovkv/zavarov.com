@@ -12,7 +12,7 @@ I run the Telegram channel [Product Code](https://t.me/pmgen), where I write abo
 
 Feel free to [reach out](https://telegram.me/zavarov) if you'd like to discuss a partnership, connect, or grab a coffee.
 
-{{< columns >}}
+{{< columns ratio="3:2" >}}
 {{< featured-posts archive="/en/blog/" archiveLabel="All articles" >}}
 
 {{< column >}}

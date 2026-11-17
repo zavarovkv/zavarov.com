@@ -36,6 +36,8 @@ refreshes it after Hugo rebuilds; `npm run build` and `npm run build:site`
 clean stale output, build and recreate `public/pagefind/`. CI uses this same
 pipeline and publishes the whole directory. Plain Hugo commands do not run Pagefind.
 Wait for **Search index updated**, then reload an open search after content edits.
+For a missing local index, restart the preview with `npm run dev`; an HTTP 404 at
+`/pagefind/pagefind-entry.json` confirms that the index is not being served.
 
 The theme owns the dialog, index markers and build helper. Russian and English
 results stay separate. Published articles and ordinary pages are included;
@@ -45,6 +47,7 @@ from local search. No translations or source hashes change during indexing.
 
 Open with the magnifier, mobile menu, `Cmd/Ctrl+K` or `/`; arrows select results,
 Enter opens and Escape closes. Search assets are self-hosted and loaded on demand.
+Failed downloads show the ordinary empty state; Enter, editing or reopening retries.
 See the theme's [search guide](../themes/hugo-mini/docs/search.md) for setup,
 customization, hosting and language details.
 
@@ -53,6 +56,8 @@ customization, hosting and language details.
 ### Featured homepage articles
 
 Both manually maintained homepage files use the theme's `featured-posts` shortcode.
+Their `columns ratio="3:2"` gives articles 60% and projects 40% of the desktop
+column space; mobile keeps the source order in a single column.
 The shared `params.featuredPosts` list in `config.toml` selects the articles and their
 display order for Russian and English:
 
