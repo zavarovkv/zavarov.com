@@ -80,6 +80,17 @@ test("HTML link checks handle relative URLs, own origin, fragments and query str
   assert.ok(errors.some((s) => s.includes("missing anchor #absent")));
 });
 
+test("output paths preserve literal delimiters, index suffixes and encoded base directories", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "output-url-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(join(root, "content/ru"), { recursive: true });
+  const article = join(root, "public", "100% #1");
+  await mkdir(article, { recursive: true });
+  await writeFile(join(article, "index.html"), '<a href="myindex.html#details">Details</a>');
+  await writeFile(join(article, "myindex.html"), '<h2 id="details">Details</h2><a href="#details">Jump</a>');
+  assert.deepEqual(await checkSite({ root, baseURL: "https://example.org/blog%20archive" }), []);
+});
+
 test("telegram_post is a message ID, not the URL from the former archetype", async (t) => {
   const root = await mkdtemp(join(tmpdir(), "metadata-test-"));
   t.after(() => rm(root, { recursive: true, force: true }));

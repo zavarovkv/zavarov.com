@@ -63,7 +63,8 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   const report = (message) => errors.push(message);
   baseURL ??= parseTOML(await readFile(join(root, "config.toml"), "utf8")).baseURL;
   const siteURL = new URL(baseURL);
-  const basePath = siteURL.pathname.replace(/\/?$/, "/");
+  siteURL.pathname = siteURL.pathname.replace(/\/?$/, "/");
+  const basePath = decodeURIComponent(siteURL.pathname);
   const directory = join(root, "content");
   for (const file of await listMarkdown(directory)) {
     const content = await readFile(join(directory, file), "utf8");
@@ -109,7 +110,9 @@ export async function checkSite({ root = resolve(dirname(fileURLToPath(import.me
   for (const [file, document] of documents) {
     const name = relative(publicDir, file).split(sep).join("/");
     for (const id of document.duplicateIds) report(`${name}: duplicate element id ${id}`);
-    const pageURL = new URL(name.replace(/index\.html$/, ""), siteURL);
+    // Output filenames may contain literal URL delimiters or percent signs.
+    const route = name.split("/").map(encodeURIComponent).join("/").replace(/(^|\/)index\.html$/, "$1");
+    const pageURL = new URL("./" + route, siteURL);
     let documentURL = pageURL;
     try { if (document.base) documentURL = new URL(document.base, pageURL); }
     catch { report(`${name}: malformed base URL ${document.base}`); continue; }
