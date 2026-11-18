@@ -211,13 +211,13 @@ test("the restored shelf is one ordinary article with indexable reviews", async 
     }
   }
   const englishBlog = parseHTML(await readFile(join(output, "en/blog/index.html"), "utf8"));
-  assert.equal(all(englishBlog, (node) => node.tagName === "h3" && text(node) === "Collections").length, 1);
+  assert.equal(all(englishBlog, (node) => node.tagName === "h2" && text(node) === "Collections").length, 1);
   assert.ok(all(englishBlog, (node) => node.tagName === "a" && attrs(node).href === "/en/books/").length, "the English shelf appears in Articles");
   assert.ok(englishFeed.items.some((item) => item.url === new URL("en/books/", config.baseURL).href));
   const robots = await readFile(join(output, "robots.txt"), "utf8");
   assert.ok(robots.includes(`Sitemap: ${new URL("sitemap.xml", config.baseURL).href}`));
   const blog = parseHTML(await readFile(join(output, "blog/index.html"), "utf8"));
-  assert.equal(all(blog, (node) => node.tagName === "h3" && text(node) === "Подборки").length, 1);
+  assert.equal(all(blog, (node) => node.tagName === "h2" && text(node) === "Подборки").length, 1);
   const shelfRow = all(blog, (node) => node.tagName === "li" && text(node).includes(source.data.title))[0];
   if (!registry.items.some((book) => book.added)) {
     assert.equal(all(shelfRow, (node) => attrs(node).class === "badge-new").length, 0,
