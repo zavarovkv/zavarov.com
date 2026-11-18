@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { readDocument } from "../scripts/lib/content.mjs";
-import { sourceHash, isCurrent, prepareTranslation } from "../scripts/lib/translation.mjs";
+import { sourceHash, matchesSourceHash, prepareTranslation } from "../scripts/lib/translation.mjs";
 import { translate, planTranslations } from "../scripts/translate.mjs";
 import OpenAI from "openai";
 
@@ -24,9 +24,8 @@ test("hash preserves paragraphs and code indentation, normalizing only CRLF", ()
   assert.notEqual(sourceHash("if ok:\n    a()\n    b()"), sourceHash("if ok:\n    a()\nb()"));
   assert.equal(sourceHash(source), sourceHash(source.replaceAll("\n", "\r\n")));
   const baseline = { legacy_hash: createHash("sha256").update(source.replace(/\s+/g, " ").trim()).digest("hex").slice(0, 12), source_hash: sourceHash(source) };
-  const old = translated.replace("+++\n", `+++\nsource_hash = "${baseline.legacy_hash}"\n`);
-  assert.equal(isCurrent(source, old, baseline), true);
-  assert.equal(isCurrent(source.replace("\n\nSecond", "\nSecond"), old, baseline), false);
+  assert.equal(matchesSourceHash(source, baseline.legacy_hash, baseline), true);
+  assert.equal(matchesSourceHash(source.replace("\n\nSecond", "\nSecond"), baseline.legacy_hash, baseline), false);
 });
 
 test("translation validates TOML and all non-translatable values", () => {

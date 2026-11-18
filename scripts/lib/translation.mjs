@@ -8,9 +8,7 @@ export function sourceHash(text) {
   return createHash("sha256").update(text.replace(/\r\n/g, "\n")).digest("hex");
 }
 
-export function assertPreserved(source, translated, file) {
-  const original = readDocument(source, file);
-  const result = readDocument(translated, file);
+export function assertPreserved(original, result, file) {
   const before = { ...original.data };
   const after = { ...result.data };
   for (const key of ["title", "description", "source_hash"]) {
@@ -33,14 +31,14 @@ export function assertPreserved(source, translated, file) {
 }
 
 export function prepareTranslation(source, translated, file) {
-  assertPreserved(source, translated, file);
-  const { data, body } = readDocument(translated, file);
-  assertProtectedContent(readDocument(source, file).body, body, file);
-  return writeDocument({ ...data, source_hash: sourceHash(source) }, body);
+  const original = readDocument(source, file);
+  const result = readDocument(translated, file);
+  assertPreserved(original, result, file);
+  assertProtectedContent(original.body, result.body, file);
+  return writeDocument({ ...result.data, source_hash: sourceHash(source) }, result.body);
 }
 
-export function isCurrent(source, translated, baseline) {
-  const stored = readDocument(translated).data.source_hash;
+export function matchesSourceHash(source, stored, baseline) {
   const hash = sourceHash(source);
   // A fixed migration snapshot keeps unchanged legacy translations without
   // rewriting EN files or paying to translate them again. Never compare a new

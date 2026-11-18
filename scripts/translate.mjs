@@ -6,7 +6,7 @@ import { pathToFileURL } from "node:url";
 import { randomUUID } from "node:crypto";
 import OpenAI from "openai";
 import { listMarkdown, readDocument } from "./lib/content.mjs";
-import { assertPreserved, isCurrent, prepareTranslation } from "./lib/translation.mjs";
+import { assertPreserved, matchesSourceHash, prepareTranslation } from "./lib/translation.mjs";
 
 const MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 const MAX_RETRIES = 3;
@@ -44,18 +44,19 @@ export async function planTranslations({ root, args = [], baseline = {} }) {
   }
   const ruDir = resolve(root, "content/ru");
   const enDir = resolve(root, "content/en");
-  const sources = (await listMarkdown(ruDir)).filter((file) => file.split("/").at(-1) !== "_index.md");
-  const selected = [...new Set(args.filter((arg) => !arg.startsWith("--")).map(contentFile))];
-  const files = selected.length ? selected.filter((file) => sources.includes(file)) : sources;
+  const sources = new Set((await listMarkdown(ruDir)).filter((file) => file.split("/").at(-1) !== "_index.md"));
+  const selected = new Set(args.filter((arg) => !arg.startsWith("--")).map(contentFile));
+  const files = selected.size ? [...selected].filter((file) => sources.has(file)) : sources;
   const toTranslate = [];
   for (const file of files) {
     const source = await readFile(resolve(ruDir, file), "utf8");
-    readDocument(source, file);
+    const original = readDocument(source, file);
     const translated = await readOptional(resolve(enDir, file));
     if (translated !== null && !args.includes("--force")) {
       try {
-        if (isCurrent(source, translated, baseline[file])) {
-          assertPreserved(source, translated, file);
+        const result = readDocument(translated, file);
+        if (matchesSourceHash(source, result.data.source_hash, baseline[file])) {
+          assertPreserved(original, result, file);
           continue;
         }
       } catch {
@@ -71,7 +72,7 @@ export async function planTranslations({ root, args = [], baseline = {} }) {
   try { englishFiles = await listMarkdown(enDir); }
   catch (error) { if (error.code !== "ENOENT") throw error; }
   for (const file of englishFiles) {
-    if (file.split("/").at(-1) === "_index.md" || sources.includes(file) || (selected.length && !selected.includes(file))) continue;
+    if (file.split("/").at(-1) === "_index.md" || sources.has(file) || (selected.size && !selected.has(file))) continue;
     const translated = await readFile(resolve(enDir, file), "utf8");
     let hash;
     try { hash = readDocument(translated, file).data.source_hash; }
@@ -80,7 +81,7 @@ export async function planTranslations({ root, args = [], baseline = {} }) {
     if (typeof hash === "string" && /^(?:[a-f0-9]{12}|[a-f0-9]{64})$/.test(hash)) orphans.push(file);
   }
   for (const file of selected) {
-    if (!sources.includes(file) && !orphans.includes(file)) throw new Error(`Source not found: ${file}`);
+    if (!sources.has(file) && !orphans.includes(file)) throw new Error(`Source not found: ${file}`);
   }
   return { toTranslate, orphans };
 }
