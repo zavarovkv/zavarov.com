@@ -97,7 +97,7 @@ The CV belongs to this site, not Hugo Mini:
 - `layouts/resume/_shortcodes/resume-*.html` renders jobs and dated records.
 - `layouts/resume/_markup/render-heading.html` formats only CV headings.
 - `assets/css/resume.css` supplies the responsive layout and A4 print rules, loaded only on the CV.
-- `tests/browser/resume*.mjs` and its local fixture check contacts, narrow screens, heading navigation and printing.
+- `tests/browser/resume.spec.mjs` checks contacts, narrow screens, heading navigation and printing on the published CV.
 
 Keep short ASCII section IDs and the existing `resume-group-heading` result headings.
 Company headings opt into the theme's generic `data-heading-scroll` behavior; clicking
@@ -222,8 +222,8 @@ Russian pages use root-level URLs such as `/blog/` and `/:slug/`. English pages 
 
 New translation responses must preserve fenced/inline code, math, destinations of links and images, shortcode tags, Mermaid bodies, and HTML structure/technical attributes. Prose, link labels and HTML `alt`, `title`, `aria-label`, and `placeholder` may be translated. A violation rejects the complete batch before writing a file or advancing its source hash. Existing hash-matched translations retain the metadata validation policy; this change does not trigger a bulk retranslation of historical content.
 
-Resource checks include responsive `srcset`/`imagesrcset`, inline styles, stylesheet `url()`, `@import`, and `image-set()`. CSS paths resolve from the stylesheet; inline references honor the HTML base URL. Every emitted stylesheet is checked once. External URLs and embedded data are not fetched. This check does not parse JavaScript module graphs; browser tests exercise the pinned diagram modules, including failed downloads.
+Resource checks include responsive `srcset`/`imagesrcset`, inline styles, stylesheet `url()`, `@import`, and `image-set()`. CSS paths resolve from the stylesheet; inline references honor the HTML base URL. Every emitted stylesheet is checked once. External URLs and embedded data are not fetched. This check does not parse JavaScript module graphs; the blog browser suite loads the published diagram entry and its chunks. Hugo Mini tests delayed and failed downloads.
 
-Install browsers once with `npx playwright install chromium webkit`, then run `npm run test:browser`. The suite uses an isolated build with the real blog configuration, shared theme contracts and representative RU/EN pages at 320, 390 and 1440 px in both color schemes. For the licensed profile, run `BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml,config/fonts/mirta.toml npm run test:browser`. CI checks Inter on PRs and the selected production profile before deployment; no licensed fonts or traces are published as artifacts. `PLAYWRIGHT_CHROMIUM_CHANNEL=chrome` selects installed Chrome locally.
+Install browsers once with `npx playwright install chromium webkit`, then run `npm run test:browser`. The suite uses an isolated production build of the blog. It exercises RU/EN search, the reading shelf, article navigation, side notes, the local diagram bundle, editorial typography and the printable CV. For the licensed profile, run `BROWSER_HUGO_CONFIG=config.toml,config/fonts/als-story.toml,config/fonts/sourdine.toml,config/fonts/mirta.toml npm run test:browser`. CI checks Inter on PRs and the selected production profile before deployment; no licensed fonts or traces are published as artifacts. `PLAYWRIGHT_CHROMIUM_CHANNEL=chrome` selects installed Chrome locally.
 
-Quotation checks discover every RU/EN page containing quotations and register a separate test per page and color scheme, covering both mobile and desktop widths. Each page keeps the normal 30-second test budget; adding articles does not consume a single shared timeout for the entire collection.
+Quotation checks use a published Markdown quotation and the attributed consultation testimonial. Shared behavior and failure modes are tested in Hugo Mini.
