@@ -52,7 +52,7 @@ graph LR
 В 2025 году на GitHub создано [121 миллион новых 
 репозиториев](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) — рекорд за всю историю платформы.
 
-{{< image src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub" wide=true caption="Количество репозиториев на GitHub" >}}
+{{< image src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: рост репозиториев на GitHub" caption="Количество репозиториев на GitHub" >}}
 
 Отдельно подчеркну: markdown — это формат, который однозначно понимает любая LLM, в отличие от .docx, .pdf и других форматов документов. И это не только заголовки и списки — вот полная [спецификация](https://spec.commonmark.org/0.31.2/#introduction). Markdown переживет любой инструмент. Evernote умирает, Notion однажды закроется, Google Docs привязан к аккаунту, md-файл откроется через 20 лет в любом текстовом редакторе — это plain text.
 
@@ -62,7 +62,7 @@ graph LR
 
 **Claude Code** — agentic AI с доступом к файловой системе, в нашем случае — к папке Obsidian vault. Он может читать, редактировать, создавать и анализировать любые файлы в этом пространстве. По названию может показаться, что он предназначен только для написания кода, но это не так — он отлично справляется с анализом и работой над любыми текстовыми документами. Интересная особенность, что взаимодействие с Claude Code происходит в терминале. Но, поверьте, он настолько удобен, что не вызывает каких-либо сложностей.
 
-{{< image src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI" wide=true caption="Obsidian и Claude Code CLI" >}}
+{{< image src="/images/obsidian-claude-scr.webp" alt="Obsidian и Claude Code CLI" caption="Obsidian и Claude Code CLI" >}}
 
 У [Claude](https://claude.ai/) есть и другие инструменты: веб, десктоп, мобильное приложение, расширения для Chrome, Excel и PowerPoint. Они закрывают свои задачи, но не имеют прямого доступа к файлам в Obsidian vault — а значит, в контексте нашего умного стека ключевой инструмент именно Claude Code.
 
