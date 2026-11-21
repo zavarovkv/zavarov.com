@@ -1029,3 +1029,16 @@ year = 1985
 title = "Surely You're Joking, Mr. Feynman!"
 author = "Richard P. Feynman, as told to Ralph Leighton"
 source_url = "https://wwnorton.co.uk/books/9780393316049-surely-you-re-joking-mr-feynman"
+
+[[items]]
+id = "the-commanding-heights"
+title = "The Commanding Heights"
+author = "Уилл Манидис и Джо Робертс"
+read = "2026-11"
+added = "2026-11-22"
+year = 2026
+
+[items.translations.en]
+title = "The Commanding Heights"
+author = "Will Manidis and Joe Roberts"
+source_url = "https://commanding-heights.com/"
