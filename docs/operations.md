@@ -101,7 +101,7 @@ The CV belongs to this site, not Hugo Mini:
 
 Keep short ASCII section IDs and the existing `resume-group-heading` result headings.
 Company headings opt into the theme's generic `data-heading-scroll` behavior; clicking
-the name clears the fragment. `backToTop = false` keeps the page free of that control.
+the name clears the fragment.
 
 Use **Cmd/Ctrl+P → Save as PDF**, with browser headers/footers disabled. Print uses
 A4, 16 mm margins and the selected fonts; review every page after substantial edits.

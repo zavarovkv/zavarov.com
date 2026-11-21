@@ -5,7 +5,7 @@ Source and content for [Konstantin Zavarov's blog](https://zavarov.com/) about p
 ## Included
 
 - **Content:** Russian and English articles, a curated homepage selection, projects, a bookshelf and a printable CV.
-- **Reading:** responsive typography, light and dark modes, margin notes and print styles.
+- **Reading:** responsive typography, light and dark modes, a desktop section outline, margin notes and print styles.
 - **Rich posts:** quotations, code, math, diagrams and Telegram comments.
 - **Discovery:** full-text Pagefind search, SEO, share cards, RSS, JSON Feed and localized `llms.txt`.
 - **Delivery:** GitHub Pages, automatic translation and build, link and browser checks.

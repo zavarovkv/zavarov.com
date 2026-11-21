@@ -8,8 +8,8 @@ test('published footnotes move from the desktop margin to mobile endnotes', asyn
   const notes = page.locator('.footnotes > ol > li');
   await expect(article).toHaveClass(/has-side-notes/);
   await expect(page.locator('#recent-sidebar')).toHaveCount(0);
-  await expect(notes.first()).toHaveCSS('font-size','15px');
-  await expect(notes.first()).toHaveCSS('line-height','24px');
+  await expect(notes.first()).toHaveCSS('font-size','14px');
+  await expect(notes.first()).toHaveCSS('line-height','20px');
   await expect.poll(() => article.evaluate(article => {
     const a = article.getBoundingClientRect();
     let bottom = -Infinity;
@@ -25,13 +25,13 @@ test('published footnotes move from the desktop margin to mobile endnotes', asyn
     return n.fontFamily === p.fontFamily && n.fontWeight === p.fontWeight && n.color !== p.color;
   })).toBe(true);
   await expect(page.locator('[id="fn:5"]')).toBeInViewport();
-  await expect(notes.first().locator('.footnote-backref').first()).toBeHidden();
+  await expect(notes.first().locator('.beauty-footnote-number')).toBeVisible();
   const copy = await notes.allTextContents();
   await page.setViewportSize({width:390,height:900});
   await expect(article).not.toHaveClass(/has-side-notes/);
-  await expect(notes.first()).toHaveCSS('font-size','16px');
-  await expect(notes.first()).toHaveCSS('line-height','25.6px');
-  await expect(notes.first().locator('.footnote-backref').first()).toBeVisible();
+  await expect(notes.first()).toHaveCSS('font-size','15px');
+  await expect(notes.first()).toHaveCSS('line-height','22px');
+  await expect(notes.first().locator('.beauty-footnote-number')).toBeVisible();
   expect(await notes.allTextContents()).toEqual(copy);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

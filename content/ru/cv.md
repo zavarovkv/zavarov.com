@@ -6,7 +6,6 @@ noindex = true
 role = "Head of Product"
 description = "Резюме Константина Заварова — Head of Product. Опыт работы, образование, курсы и менторство."
 headingScroll = true
-backToTop = false
 
 [[contacts]]
 label = "+7 926 077 52 12"
