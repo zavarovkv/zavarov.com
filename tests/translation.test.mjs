@@ -41,6 +41,14 @@ test("translation validates TOML and all non-translatable values", () => {
   ]) assert.throws(() => prepareTranslation(source, altered, "example.md"));
 });
 
+test("new translations preserve optional descriptions and translate their text", () => {
+  const withDescription = source.replace("slug =", 'description = "Обзор"\nslug =');
+  assert.doesNotThrow(() => prepareTranslation(withDescription, withDescription.replace("Обзор", "Review"), "example.md"));
+  for (const [before, after] of [[withDescription, translated], [withDescription, withDescription.replace("Обзор", "")], [source, withDescription]]) {
+    assert.throws(() => prepareTranslation(before, after, "example.md"), /description/);
+  }
+});
+
 for (const rejection of ["front matter", "protected body"]) test(`one rejected ${rejection} response leaves every EN file and orphan untouched`, async (t) => {
   const root = await fixture(t);
   for (const file of ["a.md", "b.md"]) {

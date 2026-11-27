@@ -34,6 +34,10 @@ export function prepareTranslation(source, translated, file) {
   const original = readDocument(source, file);
   const result = readDocument(translated, file);
   assertPreserved(original, result, file);
+  if (Object.hasOwn(original.data, "description") !== Object.hasOwn(result.data, "description") ||
+      Boolean(original.data.description?.trim()) !== Boolean(result.data.description?.trim())) {
+    throw new Error(`${file}: translation changed the presence of the description`);
+  }
   assertProtectedContent(original.body, result.body, file);
   return writeDocument({ ...result.data, source_hash: sourceHash(source) }, result.body);
 }

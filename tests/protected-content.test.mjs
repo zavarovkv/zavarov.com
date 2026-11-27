@@ -84,6 +84,25 @@ test("inline HTML code stays protected across Markdown token boundaries", () => 
   assert.throws(() => assertProtectedContent(text, text.replace('x &lt; 2', 'x &lt; 3'), 'inline.md'), /protected html/);
 });
 
+test("CV shortcode labels translate while dates, destinations and markup stay intact", () => {
+  const source = '{{< resume-entry title="[Компания](/company/)" period="май 2023 — н. в." url="/employer/" >}}\nТекст.\n{{< /resume-entry >}}';
+  const en = source.replace("Компания", "Company").replace("май 2023 — н. в.", "May 2023 – present").replace("Текст", "Text");
+  assert.doesNotThrow(() => assertProtectedContent(source, en, "cv.md"));
+  for (const [from, to] of [["/company/", "/missing/"], ["2023", "2024"], ["/employer/", "/other/"], ["period=", "detail="], ["[Company](/company/)", "Company"]]) {
+    assert.throws(() => assertProtectedContent(source, en.replace(from, to), "cv.md"), /protected opaque/);
+  }
+});
+
+test("translated attributes retain their presence and accessible text", () => {
+  for (const attr of ["alt", "title", "aria-label", "placeholder"]) {
+    const original = `<img src="/a.png" ${attr}="Описание">`;
+    assert.doesNotThrow(() => assertProtectedContent(original, original.replace("Описание", "Description"), "label.md"));
+    for (const changed of [original.replace(` ${attr}="Описание"`, ""), original.replace("Описание", " ")]) {
+      assert.throws(() => assertProtectedContent(original, changed, "label.md"), /protected html/);
+    }
+  }
+});
+
 test("footnote prose translates while references and nested technical content remain protected", () => {
   const text = 'Текст[^brief] и текст[^details].\n\n[^brief]: Слово.\n\n[^details]: [Источник](https://example.org/note).\n\n    `value()` и \\(x=1\\).\n';
   const translated = text.replaceAll('Текст', 'Text').replaceAll('текст', 'text')

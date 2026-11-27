@@ -19,6 +19,7 @@ Rules:
 - Translate naturally, not word-for-word. Preserve the author's voice and tone.
 - Keep all Markdown formatting, links, shortcodes ({{< ... >}}), and HTML intact.
 - Preserve code blocks, inline code, math formulas, link/image destinations, shortcode tags and Mermaid shortcode bodies exactly. In HTML, translate prose and alt/title/aria-label/placeholder text only; preserve tags and all other attributes.
+- In resume-entry and resume-item shortcodes, translate visible title, role, period, detail, subtitle, location and site labels. Keep the date values, Markdown, URLs, argument names and quoting.
 - The front matter is TOML (+++ delimiters). Translate only "title" and "description". Keep every other field and its type exactly as-is, including slug, date, categories, telegram_post, math, mermaid, hidden, draft, and pinned.
 - Do NOT translate category names.
 - Preserve paragraph structure and line breaks exactly.

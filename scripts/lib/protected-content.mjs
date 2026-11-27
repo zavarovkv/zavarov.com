@@ -46,6 +46,21 @@ const protectedMarkdown = { gfm: true, extensions: ["block", "inline"].map(level
 
 const proseAttributes = new Set(["alt", "title", "aria-label", "placeholder"]);
 
+// CV entries store visible text in named arguments. Keep the shortcode syntax,
+// technical arguments, and Markdown inside each translated field comparable.
+function shortcodeContract(raw) {
+  if (!/^\{\{[<%]\s*resume-(?:entry|item)\s/.test(raw)) return raw;
+  const fields = [];
+  const shape = raw.replace(/([\w-]+=)?("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`[^`]*`)/gs, (token, key, quoted) => {
+    if (!/^(?:title|role|period|detail|subtitle|location|site)=$/.test(key)) return token;
+    const value = quoted.slice(1, -1);
+    fields.push([Boolean(value.trim()), protectedContent(value),
+      ...(key === "period=" ? [value.match(/\d+/g) || []] : [])]);
+    return key + quoted[0] + quoted[0];
+  });
+  return { shape, fields };
+}
+
 function htmlContract(html) {
   function visit(node, code = false) {
     const opaque = code || ["pre", "code", "script", "style"].includes(node.tagName);
@@ -56,7 +71,7 @@ function htmlContract(html) {
       while ((match = pattern.exec(node.value))) {
         const token = protectedToken(node.value.slice(match.index), "html_protected");
         if (token) {
-          protectedText.push({ source: token.raw });
+          protectedText.push({ source: shortcodeContract(token.raw) });
           pattern.lastIndex = match.index + token.raw.length;
         }
       }
@@ -64,8 +79,10 @@ function htmlContract(html) {
     }
     const children = (node.content?.childNodes || node.childNodes || []).flatMap(child => visit(child, opaque));
     if (!node.tagName) return children;
-    const attrs = (node.attrs || []).filter(attr => !proseAttributes.has(attr.name))
-      .map(({ name, value, namespace }) => [namespace || "", name, value])
+    // A translated label may change wording, but losing its attribute or
+    // turning a meaningful image alternative into a decorative one is structural.
+    const attrs = (node.attrs || [])
+      .map(({ name, value, namespace }) => [namespace || "", name, proseAttributes.has(name) ? Boolean(value.trim()) : value])
       .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
     const text = node => node.value || (node.childNodes || []).map(text).join("");
     return [{ tag: node.tagName, attrs, children,
@@ -89,7 +106,7 @@ export function protectedContent(body) {
     walkTokens(token) {
       if (["code", "codespan"].includes(token.type)) contract.code.push([token.type, token.lang || "", token.text]);
       if (["link", "image"].includes(token.type)) contract.links.push([token.type, token.href]);
-      if (token.type.startsWith("protected_")) contract.opaque.push(token.raw);
+      if (token.type.startsWith("protected_")) contract.opaque.push(shortcodeContract(token.raw));
       if (["footnote", "footnoteRef"].includes(token.type)) contract.footnotes.push([token.type, token.label]);
     },
   });
