@@ -24,7 +24,7 @@ Konstantin Zavarov is Head of Product at Ozon with 12+ years of experience in IT
 
 - [Books I've Read](https://zavarov.com/en/books/): My reading list, personal ratings, notes and book reviews.
 - [The Brand Age, Paul Graham](https://zavarov.com/en/brandage/): Reflections on Paul Graham's essay 'The Brand Age': why technological advantage is finite, and when betting on brand becomes a matter of survival.
-- [Product Strategy ≠ a Template](https://zavarov.com/en/product-strategy/): There's no universal product strategy template. On what strategy actually looks like in practice — and why it's a living system, not a document.
+- [Product Strategy ≠ a Template](https://zavarov.com/en/product-strategy/): What product strategy looks like in practice, from a leader’s daily decisions to a short team manifesto, and how it evolves as a product grows.
 - [Second Brain: PARA × Obsidian × Granola × Claude](https://zavarov.com/en/second-brain/): How to build a knowledge management system from PARA, Obsidian, Granola, and Claude — and why it works like a second brain.
 - [People Worth Reading](https://zavarov.com/en/people/): A curated list of authors who write compelling content on product-related topics and are worth returning to.
 - [ICE, RICE, DRICE Prioritization Frameworks](https://zavarov.com/en/drice/): A detailed breakdown of the ICE, RICE, and DRICE task prioritization frameworks: formulas, examples, and a comparison of approaches.
