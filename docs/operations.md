@@ -105,7 +105,8 @@ the name clears the fragment.
 
 Use **Cmd/Ctrl+P → Save as PDF**, with browser headers/footers disabled. Print uses
 A4, 16 mm margins and the selected fonts; review every page after substantial edits.
-There is no committed PDF or separately maintained English CV. Translation rules below apply.
+The English CV at `/en/cv/` uses the same templates, print layout and indexing rules.
+Both versions print directly from the browser.
 
 ### Translations
 
@@ -220,7 +221,9 @@ Russian pages use root-level URLs such as `/blog/` and `/:slug/`. English pages 
 
 ## Regression contracts
 
-New translation responses must preserve fenced/inline code, math, destinations of links and images, shortcode tags, Mermaid bodies, and HTML structure/technical attributes. Prose, link labels and HTML `alt`, `title`, `aria-label`, and `placeholder` may be translated. A violation rejects the complete batch before writing a file or advancing its source hash. Existing hash-matched translations retain the metadata validation policy; this change does not trigger a bulk retranslation of historical content.
+New translation responses must preserve fenced/inline code, math, destinations of links and images, shortcode tags, Mermaid bodies, and HTML structure/technical attributes. Descriptions and HTML `alt`, `title`, `aria-label`, and `placeholder` keep their presence and whether they contain text. Their wording, prose and link labels may be translated. A violation rejects the complete batch before writing a file or advancing its source hash. Existing hash-matched translations retain the metadata validation policy; this change does not trigger a bulk retranslation of historical content.
+
+The CV shortcodes also allow translation of visible labels and date ranges. Their argument names, links, Markdown structure and year values remain protected.
 
 Resource checks include responsive `srcset`/`imagesrcset`, inline styles, stylesheet `url()`, `@import`, and `image-set()`. CSS paths resolve from the stylesheet; inline references honor the HTML base URL. Every emitted stylesheet is checked once. External URLs and embedded data are not fetched. This check does not parse JavaScript module graphs; the blog browser suite loads the published diagram entry and its chunks. Hugo Mini tests delayed and failed downloads.
 

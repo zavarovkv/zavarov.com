@@ -24,7 +24,7 @@ draft = true
 ```text
 content/blog/article.md
          ↓
-   Hugo + шаблоны
+   Hugo + layouts/
          ↓
    public/article/index.html
 ```

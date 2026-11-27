@@ -1,5 +1,5 @@
 +++
-source_hash = "d427f6cee88c322f79185b974273173ac91caa4ebe2078f3c0e4695f279d55b2"
+source_hash = "63277ef31426691cb049a9d16954d4d836c4ac2563fefd631f111948b5328833"
 title = "Second Brain: PARA × Obsidian × Granola × Claude"
 slug = "second-brain"
 date = "2026-03-07T00:00:00+03:00"
@@ -12,7 +12,7 @@ dropCap = true
 
 A few years ago I was [organizing](/zettelkasten/) notes using the Zettelkasten method in VS Code. Since then, everything has changed — largely due to the exponential growth of LLMs and agentic AI. I want to share a fresh tool stack that helps reduce cognitive load and keep information from slipping through the cracks when time is scarce: <span class="beauty-emphasis">PARA × Obsidian × Granola × Claude</span>.
 
-The article is called "Second Brain," which means we're building a system that mirrors the structure of the human brain.
+I call it a second brain because each tool has a job that loosely corresponds to a part of the human brain.
 
 {{< mermaid wide=true caption="Elements of the brain's structure" >}}
 graph LR
@@ -52,17 +52,17 @@ I'll admit, I get a particular kick out of the fact that maximum productivity to
 
 In 2025, [121 million new repositories](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) were created on GitHub — a record in the platform's history.
 
-{{< image src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse: repository growth on GitHub" wide=true caption="Number of repositories on GitHub" >}}
+{{< image src="/images/octoverse-genai-projects.webp" alt="GitHub Octoverse chart showing growth in the number of repositories" caption="Number of repositories on GitHub" >}}
 
 One more thing worth emphasizing: Markdown is a format that any LLM understands unambiguously, unlike .docx, .pdf, and other document formats. And it's not just headers and lists — here's the full [spec](https://spec.commonmark.org/0.31.2/#introduction). Markdown will outlive any tool. Evernote is dying, Notion will shut down someday, Google Docs is tied to your account — but an .md file will open in any text editor 20 years from now. It's plain text.
 
 **Granola** is a service for recording, transcribing, and generating notes from meetings. It works on both smartphone and computer, supports online and in-person meetings, and handles Russian very well. Interestingly, [Granola](https://www.granola.ai/) outputs .md files (naturally), and one Obsidian enthusiast built a [Granola-to-Obsidian](https://github.com/dannymcc/Granola-to-Obsidian) plugin that syncs notes directly into your Obsidian workspace.
 
-This raises an important question around information security, especially when using the service for work. Transcription in Granola happens locally on your device — audio never leaves it. However, to generate meeting notes, Granola by default sends the transcript to ChatGPT. For that step, I use an internal corporate LLM instead.
+For work meetings, it matters where the conversation goes. Granola captures audio on your device and sends it to the cloud for transcription. It uses external models to turn that transcript into notes. I do that last step with our company’s internal LLM. [How Granola handles audio and transcripts](https://www.granola.ai/security).
 
 **Claude Code** is an agentic AI with access to the file system — in our case, the Obsidian vault folder. It can read, edit, create, and analyze any files in that workspace. The name might suggest it's only for writing code, but that's not the case — it handles analysis and work on any text documents just as well. One interesting quirk: you interact with Claude Code through the terminal. But trust me, it's intuitive enough that it doesn't cause any friction.
 
-{{< image src="/images/obsidian-claude-scr.webp" alt="Obsidian and Claude Code CLI" wide=true caption="Obsidian and Claude Code CLI" >}}
+{{< image src="/images/obsidian-claude-scr.webp" alt="Obsidian alongside Claude Code in the terminal" caption="Obsidian and Claude Code CLI" >}}
 
 [Claude](https://claude.ai/) offers other interfaces too: web, desktop, mobile app, and extensions for Chrome, Excel, and PowerPoint. They each serve their purpose, but none have direct access to files in the Obsidian vault — which is why Claude Code is the key tool in this smart stack.
 
@@ -70,7 +70,7 @@ What tasks you delegate to Claude is entirely up to you. My rule is simple: I on
 
 By the way, I'm writing this article together with Claude — it flags where the text sounds awkward or ambiguous, fixes typos, processes images, tweaks CSS styles, and helps with diagrams. Claude helped me migrate all my posts from an old WordPress blog to a new [Hugo](https://gohugo.io/) site in a single evening — something I'd been putting off for a long time, mostly because before LLMs could write code, the task felt daunting.
 
-Worth noting: the files Claude Code accesses are sent to external servers. But for sensitive data there are solutions: an [enterprise version](https://claude.com/product/claude-code/enterprise) where data stays within your infrastructure and is legally protected, or even running it locally with open-source models via [Ollama](https://ollama.com/).
+When Claude Code uses a cloud model, its requests to the provider can include excerpts from your files. For confidential documents, what matters is where the request is processed and how long its contents are retained. Commercial plans have their own [data policies](https://code.claude.com/docs/en/data-usage). For local processing, you can connect Claude Code to a model running on your own machine through [Ollama](https://docs.ollama.com/integrations/claude-code).
 
 Let's come back to the analogy between this stack and the structure of the human brain:
 
@@ -111,4 +111,4 @@ graph LR
 
 Each tool in the stack plays a distinct role: Granola captures the incoming stream (auditory cortex), PARA routes information (hippocampus), Obsidian stores knowledge (memory), and Claude Code analyzes and helps make decisions (prefrontal cortex).
 
-I arrived at this stack after a long series of experiments and an ongoing battle with the chaos of scattered storage — documents spread across a local drive, cloud services, Telegram saved messages, and various to-do apps. So far, it's working well.
+It took a lot of experimenting to get here. My documents used to be scattered across my hard drive, cloud services, Telegram’s Saved Messages and several to-do apps. So far, this setup is holding up.

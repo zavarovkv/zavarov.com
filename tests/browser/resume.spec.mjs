@@ -1,10 +1,11 @@
 import { test, expect } from './site-test.mjs';
 
-test('the full Russian CV keeps real content readable across widths and print', async ({ page, browserName }) => {
+for (const path of ['/cv/', '/en/cv/']) test(`the full CV at ${path} stays readable across widths and print`, async ({ page, browserName }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.goto('/cv/');
+  await page.goto(path);
   await page.evaluate(() => document.fonts.ready);
+  await expect(page.locator('article.resume')).toHaveAttribute('lang', path.startsWith('/en/') ? 'en' : 'ru');
   await expect(page.locator('main')).toHaveAttribute('data-pagefind-ignore', 'all');
   await expect(page.locator('#site-search')).toHaveCount(0);
   await expect(page.locator('.resume-entry').first()).toBeVisible();

@@ -1,28 +1,28 @@
 +++
-source_hash = "32aed736ccb7ba3c5ebd7cd46b5e48104b1be975ea6c17e26e8193b398239238"
+source_hash = "3b4ad1f04c65d60275a80981f80e042f03cafc54b51a49f3bf2b2f8a5c9a1324"
 title = "Product Strategy ≠ a Template"
 slug = "product-strategy"
 date = "2026-03-16T00:00:00+03:00"
-description = "There's no universal product strategy template. On what strategy actually looks like in practice — and why it's a living system, not a document."
+description = "What product strategy looks like in practice, from a leader’s daily decisions to a short team manifesto, and how it evolves as a product grows."
 categories = ["strategy"]
 telegram_post = 70
 dropCap = true
 +++
 
-The goal of strategy is to move from "build whatever anyone asks for" to a deliberate position aimed at creating a better future for both users and the business.
+Strategy helps a team move beyond “build whatever anyone asks for” and choose what will make things better for the people who use the product and for the business.
 
-As much as we'd like one to exist, there's no universal product strategy template — honestly, no template at all. The format depends on company and team maturity, team structure, business model, business strategy, and a whole host of other factors.
+I’d love to hand you a universal product strategy template. I don’t think one exists. The right format depends on the maturity of the company and its people, how the team is organized, the business model, the company’s strategy and plenty more.
 
-That's exactly why there are so many definitions of product strategy, each more abstract than the last. Authors of well-known books articulate elegant principles, but there's a chasm between those principles and actual day-to-day work. Take [“Good Strategy, Bad Strategy”]({{< relref "book-good-strategy-bad-strategy.md" >}}) — the ideas sound compelling, but try grounding them in a real product process. If you've managed it, reach out — I'd love to discuss.
+That may explain why definitions of product strategy abound, each more abstract than the last. The principles in well-known books sound elegant, but it’s a long way from a principle to a decision you have to make at work. Take [Good Strategy Bad Strategy]({{< relref "book-good-strategy-bad-strategy.md" >}}). The ideas are persuasive. How do you put them to work on a product team? If you’ve found a way, write to me. I’d love to compare notes.
 
-Read any article about building a product strategy — even ones written by leaders from Avito (I mention them because of their exceptionally well-developed product processes) — and you'll find a common comment in the replies: "Great article. Really enjoyed it, but it feels too abstract to use in practice."
+Look at the comments on articles about building a product strategy. Even leaders at Avito, a company I mention because its product teams have such well-established ways of working, get a version of the same reply: “Great read. I enjoyed it, but I can’t picture how this would work on my team.”
 
-Product strategy is an ongoing process. Depending on where you are in a product's lifecycle and what context you're operating in, strategy can take very different forms.
+**Product strategy** is ongoing work. The form it takes depends on the product, the people working on it and the decisions in front of them.
 
-Here are some genuinely workable examples.
+Here are two forms it can take in practice.
 
-1. Strategy as a person. A leader who accumulates knowledge across business, marketing, finance, and product — and channels it to the team through decisions and priorities. It works, but "strategy as tribal knowledge" stops scaling as the team grows.
+1. One person carries the strategy. A leader draws on what they know about the business, marketing, finance and the product. The team learns the strategy through the decisions that leader makes and the priorities they set. This can work well, but as the team grows, one person’s head becomes a poor place to keep the strategy.
 
-2. Or "strategy as manifesto" — an internal team artifact containing a set of principles and answers to the questions "what do we do" and "why." This kind of strategy can be written in an evening, but it can lose touch with reality just as quickly.
+2. The team writes a manifesto. It sets out a few principles and answers two questions: “What are we doing?” and “Why?” You can write it in an evening. It can lose touch with reality just as quickly.
 
-Strategy isn't a template document you write once and file away. It's a system that lives and evolves alongside the product.
+**Strategy** is a system that evolves with the product. Filling in a document once won’t do that work for you.
