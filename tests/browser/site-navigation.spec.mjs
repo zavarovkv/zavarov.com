@@ -17,8 +17,11 @@ for (const [path, label, colorScheme] of [['/blog/', 'Личный кабине�
     await expect(search).toBeVisible();
     const icon = await account.locator('svg').boundingBox();
     const loupe = await search.locator('svg').boundingBox();
-    const footerGap = await page.locator('footer .social-icons').evaluate(el => parseFloat(getComputedStyle(el).columnGap));
-    expect(loupe.x - icon.x - icon.width).toBeCloseTo(footerGap, 1);
+    const language = await page.locator('footer .lang-toggle').boundingBox();
+    const theme = await page.locator('footer .theme-toggle').boundingBox();
+    const accountBox = await account.boundingBox();
+    const searchBox = await search.boundingBox();
+    expect(searchBox.x - accountBox.x - accountBox.width).toBeCloseTo(theme.x - language.x - language.width, 1);
     expect(icon.y).toBeCloseTo(loupe.y, 0);
     await expectTrailingPlane();
     await expect(account).toHaveAttribute('title', label);
@@ -29,6 +32,7 @@ for (const [path, label, colorScheme] of [['/blog/', 'Личный кабине�
     await search.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.finished)));
     const hoverColor = await search.evaluate(el => getComputedStyle(el).color);
     await account.hover();
+    await expect(account.locator('svg')).toHaveCSS('cursor', 'pointer');
     await expect(account).toHaveCSS('color', hoverColor);
     await page.mouse.move(0, 0);
     await expect(account).toHaveCSS('color', restingColor);

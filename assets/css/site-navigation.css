@@ -15,7 +15,7 @@
   background: transparent;
   color: var(--color-muted);
   opacity: 1;
-  cursor: default;
+  cursor: pointer;
 }
 
 .account-preview span {
@@ -23,13 +23,18 @@
 }
 
 @media screen and (width > 48rem) {
-  /* Two adjacent 28px controls leave the footer's 12px gap between their 16px icons. */
-  .header-container {
-    column-gap: 0;
+  :root {
+    --site-control-gap: 10px;
   }
 
+  .header-container,
+  .footer-controls {
+    column-gap: var(--site-control-gap);
+  }
+
+  /* Preserve the theme's 26px separation between the wordmark and the menu. */
   .header-container > .title {
-    margin-inline-end: 26px;
+    margin-inline-end: calc(26px - var(--site-control-gap));
   }
 }
 
