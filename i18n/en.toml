@@ -1,5 +1,8 @@
 # Site-specific i18n overrides (these take priority over theme defaults)
 
+[consultation_account]
+other = "My account"
+
 # Category display names
 [cat_marketing]
 other = "Marketing"

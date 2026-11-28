@@ -52,6 +52,10 @@ ignoreErrors = ["error-disable-taxonomy"]
   [[module.mounts]]
     source = "layouts"
     target = "layouts"
+  # Let the blog extend the theme's menu without copying its navigation logic.
+  [[module.mounts]]
+    source = "themes/hugo-mini/layouts/_partials/nav.html"
+    target = "layouts/_partials/hugo-mini-nav.html"
   [[module.mounts]]
     source = "assets"
     target = "assets"

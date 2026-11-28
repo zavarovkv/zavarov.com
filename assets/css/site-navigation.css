@@ -1,0 +1,40 @@
+.main-nav a[href^="https://t.me/"] > .nav-icon {
+  order: 1;
+}
+
+.account-preview:disabled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  margin-inline-start: auto;
+  width: 28px;
+  min-block-size: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  opacity: 1;
+  cursor: default;
+}
+
+.account-preview span {
+  display: none;
+}
+
+@media (max-width: 48rem) {
+  .account-preview:disabled {
+    justify-content: flex-start;
+    gap: 0.4em;
+    width: auto;
+    min-block-size: var(--header-nav-target-small);
+    margin: 0;
+    padding-inline: 20px;
+    font: inherit;
+    font-size: var(--header-nav-size-small);
+  }
+
+  .account-preview span {
+    display: inline;
+  }
+}

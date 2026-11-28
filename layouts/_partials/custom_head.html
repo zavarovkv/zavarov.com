@@ -1,3 +1,6 @@
 <!-- Search engine verification -->
 <meta name="yandex-verification" content="10c4739e6b63e3ba" />
 <meta name="google-site-verification" content="RWjxPyaNQADInCj6PX17TNfV3Wuxorv_rEaf4pWpV4s" />
+{{- with resources.Get "css/site-navigation.css" | minify -}}
+<style>{{ .Content | safeCSS }}</style>
+{{- end }}
