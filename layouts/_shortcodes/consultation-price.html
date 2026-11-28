@@ -1,3 +1,4 @@
-<p class="beauty-stat-value beauty-nowrap" style="--beauty-stat-color: var(--heading-color); --beauty-heading-font: var(--font-title); --beauty-heading-weight: var(--font-weight-title)">
-  {{- lang.FormatNumber 0 (int (.Get 0)) -}}&#8239;<span class="beauty-stat-unit">₽</span>
+<p style="--beauty-stat-color: var(--heading-color); --beauty-heading-font: var(--font-quote); --beauty-heading-weight: var(--font-weight-quote); --beauty-muted: var(--text-color)">
+  <span class="beauty-stat-value beauty-nowrap" style="display: block; line-height: 1">{{ lang.FormatNumber 0 (int (.Get 0)) }}&#8239;<span class="beauty-stat-unit" style="font-size: 0.66em">₽</span></span>
+  <span class="beauty-stat-label" style="display: block; line-height: 1.25">{{ strings.TrimSpace .Inner }}</span>
 </p>

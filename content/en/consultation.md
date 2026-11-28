@@ -1,5 +1,5 @@
 +++
-source_hash = "f2af4f003f935e3d144a3995db9933b46640a42597b60dd4977328aab5ee642b"
+source_hash = "95010dfb1c8d430f780fbffa5fbd45d8632c4f307200b87466656f76a685dcd4"
 title = "Personal Consultation"
 description = "One-on-one product management consulting: career advice, metrics, processes, and interview preparation."
 +++
@@ -10,11 +10,11 @@ description = "One-on-one product management consulting: career advice, metrics,
 
 You're welcome to bring any practical question — we'll dig into it, find a solution, and put together a clear action plan.
 
-Each session lasts an hour. We can meet online or in person in Moscow. After the meeting, you'll receive a detailed action plan tailored to your topic.
+Sessions are held online or in person (if you're in Moscow) — by arrangement. After the meeting, you'll receive a detailed action plan tailored to your topic.
 
-{{< consultation-price 5000 >}}
+{{< consultation-price 5000 >}}1 hour{{< /consultation-price >}}
 
-[Arrange a time on Telegram](https://telegram.me/zavarov)
+To schedule a time, [reach out](https://telegram.me/zavarov).
 
 {{< plug >}}
 
