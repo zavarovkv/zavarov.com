@@ -1,52 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4200" height="300" viewBox="0 0 4200 300">
-  <title>Кончик уса приподнимается и возвращается на место</title>
+  <title>Обе половинки усов приподнимаются и возвращаются на место</title>
   <defs>
-    <path id="patch" d="M243 203L253 195 265 184 271 184 270 198 251 218 243 218Z"/>
-    <clipPath id="edge"><use xlink:href="#patch"/></clipPath>
-    <image id="tip" x="241" y="182" width="31" height="38" clip-path="url(#edge)" xlink:href="data:image/png;base64,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"/>
+    <path id="left-patch" d="M135 192L145 192 164 203 189 201 194 198 194 220 177 220 153 214 135 201Z"/>
+    <path id="right-patch" d="M243 203L253 195 265 184 271 184 270 198 251 218 243 218Z"/>
+    <clipPath id="left-edge"><use xlink:href="#left-patch"/></clipPath>
+    <clipPath id="right-edge"><use xlink:href="#right-patch"/></clipPath>
+    <g id="backdrop">
+      <use xlink:href="#left-patch" fill="#fff"/>
+      <use xlink:href="#right-patch" fill="#ffdf3d"/>
+    </g>
+    <image id="left" x="132" y="190" width="66" height="33" clip-path="url(#left-edge)" xlink:href="data:image/png;base64,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"/>
+    <image id="right" x="241" y="182" width="31" height="38" clip-path="url(#right-edge)" xlink:href="data:image/png;base64,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"/>
   </defs>
   <g transform="translate(300 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(2) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
   </g>
   <g transform="translate(600 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-12) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(5) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-12) translate(-243 0)"/>
   </g>
   <g transform="translate(900 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-22) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(9) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-22) translate(-243 0)"/>
   </g>
   <g transform="translate(1200 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-30) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(13) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-30) translate(-243 0)"/>
   </g>
   <g transform="translate(1500 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(15) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
   </g>
   <g transform="translate(1800 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(15) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
   </g>
   <g transform="translate(2100 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-27) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(12) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-27) translate(-243 0)"/>
   </g>
   <g transform="translate(2400 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-15) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(7) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-15) translate(-243 0)"/>
   </g>
   <g transform="translate(2700 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(2) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
   </g>
   <g transform="translate(3000 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(4) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(-2) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(4) translate(-243 0)"/>
   </g>
   <g transform="translate(3300 0)">
-    <use xlink:href="#patch" fill="#ffdf3d"/>
-    <use xlink:href="#tip" transform="translate(243 0) skewY(2) translate(-243 0)"/>
+    <use xlink:href="#backdrop"/>
+    <use xlink:href="#left" transform="translate(194 0) skewY(-1) translate(-194 0)"/>
+    <use xlink:href="#right" transform="translate(243 0) skewY(2) translate(-243 0)"/>
   </g>
 </svg>
