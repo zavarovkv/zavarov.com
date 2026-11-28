@@ -113,7 +113,7 @@ Third-party runtime behavior:
 
 Site-level `[params]` in `config.toml` consumed by theme templates (see `themes/hugo-mini/layouts/` for usage):
 
-- **Identity**: `authorURL`, optional `favicon` override (otherwise inherited from Hugo Mini), `avatar` / `avatarHover` (two-frame hover on header), `[params.author].jobTitle`, `[params.social]` (telegram, linkedin, github, email — rendered in footer and JSON-LD).
+- **Identity**: `authorURL`, optional `favicon` override (otherwise inherited from Hugo Mini), `avatar` (the yellow portrait in both color schemes), `[params.author].jobTitle`, `[params.social]` (telegram, linkedin, github, email — rendered in footer and JSON-LD).
 - **i18n UI**: `aiTranslatedLang` (language code whose footer gets the AI-translated sparkle icon; here `"en"`), per-language `authorName` / `description` / `title` under `[languages.<lang>.params]`.
 - **Copyright/freshness**: `copyrightYear` (start year for the `YYYY–currentYear` range in footer), `newPostDays` (window in days for the "new" badge on listings).
 - **Listing layout**: `socialSharing` (default true; set false to hide Likely bar on posts), `pinned` (front-matter, not params).

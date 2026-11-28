@@ -140,8 +140,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   copyrightYear = 2023
   newPostDays = 30
   aiTranslatedLang = "en"
-  avatar = "images/avatar1.webp"
-  avatarHover = "images/avatar2.webp"
+  avatar = "images/avatar2.webp"
   # Serve Mermaid from our own domain instead of the theme's default jsDelivr
   # URL, so diagrams make no third-party requests. The modules are vendored out of
   # node_modules into static/js/mermaid/ by scripts/vendor-mermaid.mjs (postinstall) —
