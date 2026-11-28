@@ -1,10 +1,10 @@
 +++
-source_hash = "0713fc39d032715ff1287a7f08701f7e7f5bdb3929a127a04bf3f2342d99fe73"
+source_hash = "40e1d150a6caa83e2d95e1ca67f9d4e3302b363eed10af6def8a14d7353f3cb1"
 title = "Thinking Through Writing"
 slug = "text"
 date = "2024-09-24T15:17:01+03:00"
 description = "How Amazon's document-centric culture develops critical thinking, and why the ability to work with text matters for product managers."
-categories = ["self-development"]
+categories = [ "self-development" ]
 telegram_post = 55
 dropCap = true
 +++
@@ -35,10 +35,12 @@ Many interesting people in the industry have written about thinking through writ
 
 - [Paul Graham](https://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%8D%D0%BC,_%D0%9F%D0%BE%D0%BB) (co-founder of Hacker News, named one of "The 25 Most Influential People on the Web" in 2008) published a post on his blog called ["Putting Ideas into Words"](https://paulgraham.com/words.html), in which he describes the value of writing essays as a way of thinking through a problem.
 - [David Heinemeier Hansson](https://ru.wikipedia.org/wiki/%D0%A5%D0%B0%D0%BD%D1%81%D1%81%D0%BE%D0%BD,_%D0%94%D0%B0%D0%B2%D0%B8%D0%B4_%D0%A5%D0%B5%D0%B9%D0%BD%D0%B5%D0%BC%D0%B5%D0%B9%D0%B5%D1%80) (co-owner of 37signals, creator of Ruby on Rails) talks in a short [YouTube interview](https://www.youtube.com/watch?v=Ip8jD3Y0FbM) about his experience of writing and how it shaped his career. The whole thing can be summed up in one line: "Clear writing is clear thinking."
-- [Georgy Schedrovitsky](https://ru.wikipedia.org/wiki/%D0%A9%D0%B5%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B9_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87) (Soviet philosopher and prolific author on the theory of management) wrote in his book [*Organizational Management Thinking: Ideology, Methodology, Technology*](https://www.ozon.ru/product/orgupravlencheskoe-myshlenie-shchedrovitskiy-georgiy-petrovich-255067492/): "If a person doesn't write — they don't think." Schedrovitsky's work has had a profound influence on me as a manager and leader — I wholeheartedly recommend it.
+- [Georgy Schedrovitsky](https://ru.wikipedia.org/wiki/%D0%A9%D0%B5%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B9_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87) (Soviet philosopher and prolific author on the theory of management) wrote in his book [Organizational Management Thinking: Ideology, Methodology, Technology](https://www.ozon.ru/product/orgupravlencheskoe-myshlenie-shchedrovitskiy-georgiy-petrovich-255067492/): "If a person doesn't write — they don't think." Schedrovitsky's work has had a profound influence on me as a manager and leader — I wholeheartedly recommend it.
 - [Anatoly Levenchuk](https://system-school.ru/levenchuk) (founder of the School of Systems Management and author of numerous lectures) published an article ["Cortex and Exocortex"](https://ailev.livejournal.com/1224251.html) on why thinking with a pencil and paper is more productive — tools he associates with the exocortex (an external information-processing system that extends and amplifies human intelligence).
 - [Andy Matuschak](https://andymatuschak.org/) (a researcher working at the intersection of UX/UI and learning) wrote a brilliant piece called ["Why books don't work"](https://andymatuschak.org/books/), in which he reflects on why simply reading books or listening to lectures isn't enough to actually absorb knowledge. To truly internalize material, you need to actively engage with it — and writing an essay is one of the best ways to do that.
 
 This list could go on, but I'll save the rest for a third installment.
 
-And finally, a note to myself: <span class="beauty-emphasis">write down your thoughts and ideas more often. Work through them in writing.</span>
+A note to myself:
+
+<p class="beauty-lead">Write down my thoughts more often. Come back to my notes to develop an idea and find a clearer way to express it.</p>
