@@ -22,6 +22,29 @@
   display: none;
 }
 
+@media screen and (width > 48rem) {
+  /* Two adjacent 28px controls leave the footer's 12px gap between their 16px icons. */
+  .header-container {
+    column-gap: 0;
+  }
+
+  .header-container > .title {
+    margin-inline-end: 26px;
+  }
+}
+
+@media (hover: hover) {
+  .account-preview:disabled:hover {
+    color: var(--color-accent);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .account-preview:disabled {
+    transition: color 0.2s ease;
+  }
+}
+
 @media (max-width: 48rem) {
   .account-preview:disabled {
     justify-content: flex-start;

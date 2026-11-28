@@ -1,7 +1,8 @@
 import { test, expect } from './site-test.mjs';
 
-for (const [path, label] of [['/blog/', 'Личный кабинет'], ['/en/blog/', 'My account']]) {
+for (const [path, label, colorScheme] of [['/blog/', 'Личный кабинет', 'light'], ['/en/blog/', 'My account', 'dark']]) {
   test(`the account and Telegram icons follow the blog menu at ${path}`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme });
     await page.goto(path);
     const account = page.locator('#main-navigation').getByRole('button', { name: label });
     const search = page.locator('.search-toggle-desktop');
@@ -16,9 +17,21 @@ for (const [path, label] of [['/blog/', 'Личный кабинет'], ['/en/bl
     await expect(search).toBeVisible();
     const icon = await account.locator('svg').boundingBox();
     const loupe = await search.locator('svg').boundingBox();
-    expect(icon.x + icon.width).toBeLessThan(loupe.x);
+    const footerGap = await page.locator('footer .social-icons').evaluate(el => parseFloat(getComputedStyle(el).columnGap));
+    expect(loupe.x - icon.x - icon.width).toBeCloseTo(footerGap, 1);
     expect(icon.y).toBeCloseTo(loupe.y, 0);
     await expectTrailingPlane();
+    await expect(account).toHaveAttribute('title', label);
+    const restingColor = await account.evaluate(el => getComputedStyle(el).color);
+    await search.hover();
+    await expect(search).not.toHaveCSS('color', restingColor);
+    // Wait for the search hover transition before comparing the two controls.
+    await search.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.finished)));
+    const hoverColor = await search.evaluate(el => getComputedStyle(el).color);
+    await account.hover();
+    await expect(account).toHaveCSS('color', hoverColor);
+    await page.mouse.move(0, 0);
+    await expect(account).toHaveCSS('color', restingColor);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(account).toBeHidden();
