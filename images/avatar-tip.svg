@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4200" height="300" viewBox="0 0 4200 300">
+  <title>Кончик уса приподнимается и возвращается на место</title>
+  <defs>
+    <path id="patch" d="M243 203L253 195 265 184 271 184 270 198 251 218 243 218Z"/>
+    <clipPath id="edge"><use xlink:href="#patch"/></clipPath>
+    <image id="tip" x="241" y="182" width="31" height="38" clip-path="url(#edge)" xlink:href="data:image/png;base64,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"/>
+  </defs>
+  <g transform="translate(300 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
+  </g>
+  <g transform="translate(600 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-12) translate(-243 0)"/>
+  </g>
+  <g transform="translate(900 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-22) translate(-243 0)"/>
+  </g>
+  <g transform="translate(1200 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-30) translate(-243 0)"/>
+  </g>
+  <g transform="translate(1500 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
+  </g>
+  <g transform="translate(1800 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-32) translate(-243 0)"/>
+  </g>
+  <g transform="translate(2100 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-27) translate(-243 0)"/>
+  </g>
+  <g transform="translate(2400 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-15) translate(-243 0)"/>
+  </g>
+  <g transform="translate(2700 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(-4) translate(-243 0)"/>
+  </g>
+  <g transform="translate(3000 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(4) translate(-243 0)"/>
+  </g>
+  <g transform="translate(3300 0)">
+    <use xlink:href="#patch" fill="#ffdf3d"/>
+    <use xlink:href="#tip" transform="translate(243 0) skewY(2) translate(-243 0)"/>
+  </g>
+</svg>
